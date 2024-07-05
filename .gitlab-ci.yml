@@ -13,7 +13,7 @@ stages:
 deploy_prod:
   stage: deploy
   script:
-    - sudo p -r * $TUTOR_DIR/tutor-indigo
+    - sudo cp -r * $TUTOR_DIR/tutor-indigo
     - source $TUTOR_DIR/venv/bin/activate
     - cd $TUTOR_DIR
     - sudo pip install -e ./tutor-indigo
