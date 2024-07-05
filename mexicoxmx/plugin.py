@@ -44,15 +44,15 @@ hooks.Filters.ENV_TEMPLATE_ROOTS.add_item(
 # This is where the theme is rendered in the openedx build directory
 hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
     [
-        ("indigo", "build/openedx/themes"),
+        ("mexicoxmx", "build/openedx/themes"),
     ],
 )
 
 # Force the rendering of scss files, even though they are included in a "partials" directory
 hooks.Filters.ENV_PATTERNS_INCLUDE.add_items(
     [
-        r"indigo/lms/static/sass/partials/lms/theme/",
-        r"indigo/cms/static/sass/partials/cms/theme/",
+        r"mexicoxmx/lms/static/sass/partials/lms/theme/",
+        r"mexicoxmx/cms/static/sass/partials/cms/theme/",
     ]
 )
 
@@ -61,7 +61,7 @@ hooks.Filters.ENV_PATTERNS_INCLUDE.add_items(
 with open(
     os.path.join(
         str(importlib_resources.files("mexicoxmx") / "templates"),
-        "indigo",
+        "mexicoxmx",
         "tasks",
         "init.sh",
     ),
@@ -83,9 +83,9 @@ def _override_openedx_docker_image(
         elif k == "MFE_DOCKER_IMAGE":
             mfe_image = v
     if openedx_image:
-        items.append(("DOCKER_IMAGE_OPENEDX", f"{openedx_image}-indigo"))
+        items.append(("DOCKER_IMAGE_OPENEDX", f"{openedx_image}-mexicoxmx"))
     if mfe_image:
-        items.append(("MFE_DOCKER_IMAGE", f"{mfe_image}-indigo"))
+        items.append(("MFE_DOCKER_IMAGE", f"{mfe_image}-mexicoxmx"))
     return items
 
 

@@ -1,9 +1,9 @@
 variables:
-    TUTOR_PLUGIN: indigo
+    TUTOR_PLUGIN: mexicoxmx
     TUTOR_EXTRA_ENABLED_PLUGINS: mfe
-    TUTOR_PYPI_PACKAGE: tutor-indigo
+    TUTOR_PYPI_PACKAGE: tutor-mexicoxmx
     TUTOR_IMAGES: openedx mfe
-    GITHUB_REPO: overhangio/tutor-indigo
+    GITHUB_REPO: overhangio/tutor-mexicoxmx
 
 stages:
   - build
@@ -13,11 +13,11 @@ stages:
 deploy_prod:
   stage: deploy
   script:
-    - sudo cp -r * $TUTOR_DIR/tutor-indigo
+    - sudo cp -r * $TUTOR_DIR/mexicoxmx
     - source $TUTOR_DIR/venv/bin/activate
     - cd $TUTOR_DIR
-    - sudo pip install -e ./tutor-indigo
-    - sudo tutor plugins enable indigo
+    - sudo pip install -e ./mexicoxmx
+    - sudo tutor plugins enable mexicoxmx
     - sudo tutor config save
     - sudo tutor images build openedx
     - sudo tutor local start -d
