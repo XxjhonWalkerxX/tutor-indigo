@@ -27,7 +27,7 @@ config: t.Dict[str, t.Dict[str, t.Any]] = {
         "FOOTER_NAV_LINKS": [
             {"title": "Sobre el proyecto", "url": "/about"},
             {"title": "Blog", "url": "/blog"},
-            {"title": "Terminos y", "url": "/tos"},
+            {"title": "Terminos y condiciones", "url": "/tos"},
             {"title": "Aviso de privacidad", "url": "/privacy"},
             {"title": "Soporte y ayuda", "url": "/help"},
             {"title": "Contacto", "url": "/contact"},
