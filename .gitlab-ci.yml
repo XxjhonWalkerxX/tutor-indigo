@@ -19,7 +19,7 @@ deploy_prod:
     - pip install -e ./tutor-indigo
     - tutor plugins enable indigo
   tags:
-    - production
+    - edx
   only:
     refs:
       - master
