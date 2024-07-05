@@ -17,7 +17,7 @@ deploy_prod:
     - source $TUTOR_DIR/venv/bin/activate
     - cd $TUTOR_DIR
     - sudo pip install -e ./tutor-indigo
-    - sudo tutor plugins enable indigo
+    - tutor plugins enable indigo
   tags:
     - edx
   only:
