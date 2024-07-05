@@ -25,13 +25,12 @@ config: t.Dict[str, t.Dict[str, t.Any]] = {
         # To remove all links, run:
         # tutor config save --set INDIGO_FOOTER_NAV_LINKS=[]
         "FOOTER_NAV_LINKS": [
-            {"title": "About Us", "url": "/about"},
+            {"title": "Sobre elif proyecto", "url": "/about"},
             {"title": "Blog", "url": "/blog"},
-            {"title": "Donate", "url": "/donate"},
-            {"title": "Terms of Service", "url": "/tos"},
-            {"title": "Privacy Policy", "url": "/privacy"},
-            {"title": "Help", "url": "/help"},
-            {"title": "Contact Us", "url": "/contact"},
+            {"title": "Terminos y", "url": "/tos"},
+            {"title": "Aviso de privacidad", "url": "/privacy"},
+            {"title": "Soporte y ayuda", "url": "/help"},
+            {"title": "Contacto", "url": "/contact"},
         ],
     },
     "unique": {},
@@ -40,7 +39,7 @@ config: t.Dict[str, t.Dict[str, t.Any]] = {
 
 # Theme templates
 hooks.Filters.ENV_TEMPLATE_ROOTS.add_item(
-    str(importlib_resources.files("tutorindigo") / "templates")
+    str(importlib_resources.files("mexicoxmx") / "templates")
 )
 # This is where the theme is rendered in the openedx build directory
 hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
@@ -61,7 +60,7 @@ hooks.Filters.ENV_PATTERNS_INCLUDE.add_items(
 # init script: set theme automatically
 with open(
     os.path.join(
-        str(importlib_resources.files("tutorindigo") / "templates"),
+        str(importlib_resources.files("mexicoxmx") / "templates"),
         "indigo",
         "tasks",
         "init.sh",
