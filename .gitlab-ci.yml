@@ -9,6 +9,15 @@ variables:
 stages:
   - build
   - deploy
+
+build_prod:
+  stage: build
+  script:
+    - ls
+  only:
+    refs:
+      - main
+
 deploy_prod:
   stage: deploy
   needs:
@@ -24,11 +33,3 @@ deploy_prod:
   only:
     refs:
       - master
-
-build_prod:
-  stage: build
-  script:
-    - ls
-  only:
-    refs:
-      - main
