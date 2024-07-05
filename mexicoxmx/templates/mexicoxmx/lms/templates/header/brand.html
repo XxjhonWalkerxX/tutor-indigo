@@ -19,6 +19,12 @@ from lms.djangoapps.branding import api as branding_api
       <img class="logo-image" src="${static.url("images/logo.png")}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}" itemprop="logo" />
     </a>
   </div>
+  <div class="logo">
+    <a class="navbar-brand" href="http://aprende.gob.mx/" itemprop="url">
+      <img class="logo-image" src="${static.url("images/logo.amx.png")}" alt="Dirección General @prende.mx" itemprop="logo" />
+    </a>
+  </div>
+
   % if course and not disable_courseware_header:
     <div class="course-header">
       <span class="provider">${course.display_org_with_default}:</span>
