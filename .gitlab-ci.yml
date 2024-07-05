@@ -20,7 +20,7 @@ deploy_prod:
     - tutor plugins enable indigo
     - tutor config save
     - tutor images build openedx
-    - tutor local start -d
+    - sudo tutor local start -d
   tags:
     - edx
   only:
