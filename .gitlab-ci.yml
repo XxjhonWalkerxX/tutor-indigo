@@ -5,23 +5,13 @@ variables:
     TUTOR_IMAGES: openedx mfe
     GITHUB_REPO: overhangio/tutor-indigo
 
-
 stages:
   - build
   - deploy
 
-build_prod:
-  stage: build
-  script:
-    - ls
-  only:
-    refs:
-      - main
 
 deploy_prod:
   stage: deploy
-  needs:
-    - job: build_prod
   script:
     - cp -r * $TUTOR_DIR/tutor-indigo
     - source $TUTOR_DIR/venv/bin/activate
