@@ -8,3 +8,22 @@ variables:
 include:
   - project: 'community/tutor-ci'
     file: 'plugin-gitlab-ci.yml'
+
+stages:
+  - deploy
+deploy_prod:
+  stage: deploy
+  needs:
+    - job: build_prod
+  script:
+    - cp -r * $TUTOR_DIR/tutor-indigo
+    - source $TUTOR_DIR/venv/bin/activate
+    - cd $TUTOR_DIR
+    - pip install -e ./tutor-indigo
+    - tutor plugins enable indigo
+  tags:
+    - production
+  only:
+    refs:
+      - master
+
