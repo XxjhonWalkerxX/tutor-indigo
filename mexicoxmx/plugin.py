@@ -19,13 +19,13 @@ config: t.Dict[str, t.Dict[str, t.Any]] = {
     # Add here your new settings
     "defaults": {
         "VERSION": __version__,
-        "WELCOME_MESSAGE": "The place for all your online learning",
-        "PRIMARY_COLOR": "#15376D",  # Indigo
+        "WELCOME_MESSAGE": "Plataforma de entenamiento digital educativo para instituciones públicas y de interés educativo",
+        "PRIMARY_COLOR": "#82c5be",  # Indigo
         # Footer links are dictionaries with a "title" and "url"
         # To remove all links, run:
         # tutor config save --set INDIGO_FOOTER_NAV_LINKS=[]
         "FOOTER_NAV_LINKS": [
-            {"title": "Sobre elif proyecto", "url": "/about"},
+            {"title": "Sobre el proyecto", "url": "/about"},
             {"title": "Blog", "url": "/blog"},
             {"title": "Terminos y", "url": "/tos"},
             {"title": "Aviso de privacidad", "url": "/privacy"},
