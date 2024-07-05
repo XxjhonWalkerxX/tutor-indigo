@@ -19,7 +19,7 @@ deploy_prod:
     - sudo pip install -e ./tutor-indigo
     - tutor plugins enable indigo
     - tutor config save
-    - tutor images build openedx
+    - sudo tutor images build openedx
     - sudo tutor local start -d
   tags:
     - edx
