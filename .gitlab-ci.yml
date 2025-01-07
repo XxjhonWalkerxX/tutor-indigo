@@ -13,15 +13,7 @@ stages:
 deploy_prod:
   stage: deploy
   script:
-    - sudo cp -r * $TUTOR_DIR/mexicoxmx
-    - source $TUTOR_DIR/venv/bin/activate
-    - cd $TUTOR_DIR
-    - sudo pip install -e ./mexicoxmx
-    - sudo tutor plugins enable mexicoxmx
-    - sudo tutor local do settheme mexicoxmx
-    - sudo tutor config save
-    - sudo tutor images build openedx
-    - sudo tutor local start -d
+    - cp -r * $TUTOR_DIR/mexicoxmx
   tags:
     - edx
   only:
