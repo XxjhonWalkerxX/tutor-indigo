@@ -13,7 +13,7 @@ stages:
 deploy_prod:
   stage: deploy
   script:
-    - cp -r * $TUTOR_DIR
+    - cp -rf * $TUTOR_DIR
   tags:
     - edx
   only:
