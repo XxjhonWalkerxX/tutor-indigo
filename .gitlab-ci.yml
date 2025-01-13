@@ -3,7 +3,7 @@ variables:
     TUTOR_EXTRA_ENABLED_PLUGINS: mfe
     TUTOR_PYPI_PACKAGE: mexicoxmx
     TUTOR_IMAGES: openedx mfe
-    GITHUB_REPO: overhangio/tutor-mexicoxmx
+    GITHUB_REPO: mexicox/tutor-indigo
 
 stages:
   - build

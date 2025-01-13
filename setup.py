@@ -27,7 +27,7 @@ ABOUT = load_about()
 setup(
     name="mexicoxmx",
     version=ABOUT["__version__"],
-    url="https://github.com/overhangio/tutor-indigo",
+    url="https://gitlab.com/mexicox/tutor-indigo",
     project_urls={
         "Documentation": "https://docs.tutor.edly.io/",
         "Code": "https://github.com/overhangio/tutor-indigo",

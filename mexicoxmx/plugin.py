@@ -19,7 +19,7 @@ config: t.Dict[str, t.Dict[str, t.Any]] = {
     # Add here your new settings
     "defaults": {
         "VERSION": __version__,
-        "WELCOME_MESSAGE": "Plataforma de entenamiento digital educativo para instituciones públicas y de interés educativo",
+        "WELCOME_MESSAGE": "Plataforma de entrenamiento digital educativo para instituciones públicas y de interés educativo",
         "PRIMARY_COLOR": "#82c5be",  # Indigo
         # Footer links are dictionaries with a "title" and "url"
         # To remove all links, run:
@@ -83,9 +83,9 @@ def _override_openedx_docker_image(
         elif k == "MFE_DOCKER_IMAGE":
             mfe_image = v
     if openedx_image:
-        items.append(("DOCKER_IMAGE_OPENEDX", f"{openedx_image}-indigo"))
+        items.append(("DOCKER_IMAGE_OPENEDX", f"{openedx_image}-mexicoxmx"))
     if mfe_image:
-        items.append(("MFE_DOCKER_IMAGE", f"{mfe_image}-indigo"))
+        items.append(("MFE_DOCKER_IMAGE", f"{mfe_image}-mexicoxmx"))
     return items
 
 
