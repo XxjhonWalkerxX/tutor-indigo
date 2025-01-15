@@ -13,7 +13,7 @@ def load_readme():
 def load_about():
     about = {}
     with io.open(
-        os.path.join(HERE, "mexicox", "__about__.py"),
+        os.path.join(HERE, "mexicoxmx", "__about__.py"),
         "rt",
         encoding="utf-8",
     ) as f:
@@ -25,9 +25,9 @@ ABOUT = load_about()
 
 
 setup(
-    name="tutor-mexicox",
+    name="mexicoxmx",
     version=ABOUT["__version__"],
-    url="https://github.com/overhangio/tutor-indigo",
+    url="https://gitlab.com/mexicox/tutor-indigo",
     project_urls={
         "Documentation": "https://docs.tutor.edly.io/",
         "Code": "https://github.com/overhangio/tutor-indigo",
@@ -35,25 +35,25 @@ setup(
         "Community": "https://discuss.openedx.org",
     },
     license="AGPLv3",
-    author="Edly",
-    author_email="hello@edly.io",
+    author="Overhang.IO",
+    author_email="contact@overhang.io",
     maintainer="Edly",
     maintainer_email="hina.khadim@arbisoft.com",
     description="Indigo theme plugin for Tutor",
     long_description=load_readme(),
-    long_description_content_type="text/x-rst",
     packages=find_packages(exclude=["tests*"]),
     include_package_data=True,
-    python_requires=">=3.9",
-    install_requires=["tutor>=19.0.0,<20.0.0", "tutor-mfe>=19.0.0,<20.0.0"],
-    extras_require={"dev": "tutor[dev]>=19.0.0,<20.0.0"},
-    entry_points={"tutor.plugin.v1": ["mexicox = mexicox.plugin"]},
+    python_requires=">=3.8",
+    install_requires=["tutor>=18.0.0,<=19.0.0", "tutor-mfe>=18.0.0,<=19.0.0"],
+    extras_require={"dev": "tutor[dev]>=18.0.0,<=19.0.0"},
+    entry_points={"tutor.plugin.v1": ["mexicoxmx = mexicoxmx.plugin"]},
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: GNU Affero General Public License v3",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
+        "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",

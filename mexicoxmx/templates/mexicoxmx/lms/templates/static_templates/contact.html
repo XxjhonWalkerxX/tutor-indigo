@@ -1,0 +1,44 @@
+<%namespace name='static' file='../static_content.html'/>
+<%page expression_filter="h"/>
+<%! from django.utils.translation import gettext as _ %>
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("Contact Us")}</%block>
+
+<main id="main" aria-label="Content" tabindex="-1">
+    <section class="container about">
+        <h1 class="encabezado">Contacto</h1>
+        <div class="texto">
+             <p class="subtitulo">Horario:</p>
+             <p>Lunes a Viernes: 09:00 - 18:00 h</p>
+             <p class="subtitulo">Soporte:</p>
+             <p><a href="https://soporte.mexicox.gob.mx/" target="_blank"> https://soporte.mexicox.gob.mx/ </a></p>
+             <p class="subtitulo">Dirección:</p>
+             <p>Av. Circunvalación s/n esquina Tabiqueros, Col. Morelos, alcaldía Venustiano Carranza, C.P. 15270, Ciudad de México.</p>
+        </div>
+        <div class="mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2111.527203237372!2d-99.11551560375209!3d19.442033581471243!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f94e5f4a1661%3A0xad1ad307ace473c8!2sSEP+Televisi%C3%B3n+Educativa!5e0!3m2!1ses!2sus!4v1516125007211" width="700" height="400" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+        </div>
+    </section>
+</main>
+<style>
+    .encabezado{
+        background-color: #83C6BF;
+        color:white;
+        padding: 10px;
+        text-transform: uppercase;
+    }
+    .texto{
+        float:left;
+        width:30%;
+        padding-right:35px;
+    }
+    .mapa{
+        float:left;
+        width:65%;
+    }
+    .subtitulo{
+        font-weight: bold;
+    }
+</style>
+

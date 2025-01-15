@@ -21,7 +21,7 @@ Install and enable Indigo plugin::
 
 The Indigo theme will be automatically enabled if you have not previously defined a theme. To override an existing theme, use the `settheme command <https://docs.tutor.edly.io/local.html#setting-a-new-theme>`__::
 
-    tutor local do settheme indigo
+    tutor local do settheme mexicoxmx
 
 Configuration
 -------------
@@ -29,7 +29,6 @@ Configuration
 - ``INDIGO_WELCOME_MESSAGE`` (default: "The place for all your online learning")
 - ``INDIGO_PRIMARY_COLOR`` (default: "#3b85ff")
 - ``INDIGO_FOOTER_NAV_LINKS`` (default: ``[{"title": "About", "url": "/about"}, {"title": "Contact", "url": "/contact"}]``)
-- ``INDIGO_ENABLE_DARK_TOGGLE`` (default: True)
 
 The ``INDIGO_*`` settings listed above may be modified by running ``tutor config save --set INDIGO_...=...``. For instance, to remove all links from the footer, run::
 
@@ -40,16 +39,6 @@ Or, to set the primary color to forest green, run::
     # Note: The nested quotes are needed in order to handle the hash (#) correctly.
     tutor config save --set 'INDIGO_PRIMARY_COLOR="#225522"'
 
-Theme Toggle Button
--------------------
-
-The theme toggle button is enabled by default when Tutor Indigo is installed. The theme can be switched from light to dark and vice versa. To disable it, run::
-
-    tutor config save --set INDIGO_ENABLE_DARK_TOGGLE=false
-    tutor images build openedx
-    tutor local start -d
-
-
 Customization
 -------------
 
@@ -58,8 +47,8 @@ This plugin can serve as a starting point to create your own themes. Just fork t
 You will have to start by installing indigo from source::
 
     git clone https://github.com/overhangio/tutor-indigo.git
-    pip install -e ./tutor-indigo
-    tutor plugins enable indigo
+    pip install -e ./mexicoxmx
+    tutor plugins enable mexicoxmx
 
 Any change you make to the theme can be viewed immediately in development mode (with `tutor dev ...` commands) after you run::
 
@@ -73,29 +62,29 @@ To deploy your changes to production, you will have to rebuild the "openedx" Doc
 Changing the Styling in Sass files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To customize the theme stylesheets, modify the files in the ``tutorindigo/templates/indigo/lms/static/sass/`` and  ``tutorindigo/templates/indigo/cms/static/sass/`` directories. In particular, the ``_extras.scss`` files should contain most styling rules.
+To customize the theme stylesheets, modify the files in the ``mexicoxmx/templates/mexicoxmx/lms/static/sass/`` and  ``mexicoxmx/templates/indigo/cms/static/sass/`` directories. In particular, the ``_extras.scss`` files should contain most styling rules.
 
 
 Changing the default logo and other images
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The theme images are stored in `tutorindigo/templates/indigo/lms/static/images <https://github.com/overhangio/tutor-indigo/tree/release/tutorindigo/templates/indigo/lms/static/images>`__ for the LMS, and in `tutorindigo/templates/indigo/cms/static/images <https://github.com/overhangio/tutor-indigo/tree/release/tutorindigo/templates/indigo/cms/static/images>`__ for the CMS. To use custom images in your theme, just replace the files stored in these folders with your own.
+The theme images are stored in `mexicoxmx/templates/mexicoxmx/lms/static/images <https://github.com/overhangio/tutor-indigo/tree/master/tutorindigo/templates/indigo/lms/static/images>`__ for the LMS, and in `tutorindigo/templates/indigo/cms/static/images <https://github.com/overhangio/tutor-indigo/tree/master/tutorindigo/templates/indigo/cms/static/images>`__ for the CMS. To use custom images in your theme, just replace the files stored in these folders with your own.
 
 Overriding the default "about", "contact", etc. static pages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 By default, the ``/about`` and ``/contact`` pages contain a simple line of text: "This page left intentionally blank. Feel free to add your own content". This is of course unusable in production. In the following, we detail how to override just any of the static templates used in Open edX.
 
-The static templates used by Open edX to render those pages are all stored in the `edx-platform/lms/templates/static_templates <https://github.com/edx/edx-platform/tree/open-release/sumac.master/lms/templates/static_templates>`__ folder. To override those templates, you should add your own in the following folder::
+The static templates used by Open edX to render those pages are all stored in the `edx-platform/lms/templates/static_templates <https://github.com/edx/edx-platform/tree/open-release/redwood.master/lms/templates/static_templates>`__ folder. To override those templates, you should add your own in the following folder::
 
-    ls tutorindigo/templates/indigo/lms/templates/static_templates"
+    ls mexicoxmx/templates/mexicoxmx/lms/templates/static_templates"
 
-For instance, edit the "donate.html" file in this directory. We can derive the content of this file from the contents of the `donate.html <https://github.com/edx/edx-platform/blob/open-release/sumac.master/lms/templates/static_templates/donate.html>`__ static template in edx-platform:
+For instance, edit the "donate.html" file in this directory. We can derive the content of this file from the contents of the `donate.html <https://github.com/edx/edx-platform/blob/open-release/redwood.master/lms/templates/static_templates/donate.html>`__ static template in edx-platform:
 
 .. code-block:: mako
 
     <%page expression_filter="h"/>
-    <%! from django.utils.translation import gettext as _ %>
+    <%! from django.utils.translation import ugettext as _ %>
     <%inherit file="../main.html" />
 
     <%block name="pagetitle">${_("Donate")}</%block>
@@ -137,4 +126,4 @@ This Tutor plugin is maintained by Hina Khadim from `Edly <https://edly.io>`__. 
 License
 -------
 
-This work is licensed under the terms of the `GNU Affero General Public License (AGPL) <https://github.com/overhangio/tutor-indigo/blob/release/LICENSE.txt>`_.
+This work is licensed under the terms of the `GNU Affero General Public License (AGPL) <https://github.com/overhangio/tutor-indigo/blob/master/LICENSE.txt>`_.
