@@ -83,9 +83,9 @@ def _override_openedx_docker_image(
         elif k == "MFE_DOCKER_IMAGE":
             mfe_image = v
     if openedx_image:
-        items.append(("DOCKER_IMAGE_OPENEDX", f"{openedx_image}-mexicoxmx"))
+        items.append(("DOCKER_IMAGE_OPENEDX", f"{openedx_image}"))
     if mfe_image:
-        items.append(("MFE_DOCKER_IMAGE", f"{mfe_image}-mexicoxmx"))
+        items.append(("MFE_DOCKER_IMAGE", f"{mfe_image}"))
     return items
 
 
