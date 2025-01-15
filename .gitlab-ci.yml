@@ -13,7 +13,8 @@ stages:
 deploy_prod:
   stage: deploy
   script:
-    - cp -rf * $TUTOR_DIR
+    - rm -rf "$(tutor config printroot)/env/build/openedx/themes/indigo/*"
+    - cp -rf "$(tutor config printroot)/env/build/openedx/themes/indigo/"
   tags:
     - edx
   only:
