@@ -30,7 +30,7 @@ setup(
     url="https://gitlab.com/mexicox/tutor-indigo",
     project_urls={
         "Documentation": "https://docs.tutor.edly.io/",
-        "Code": "https://github.com/overhangio/tutor-indigo",
+        "Code": "https://gitlab.com/mexicox/tutor-indigo",
         "Issue tracker": "https://github.com/overhangio/tutor-indigo/issues",
         "Community": "https://discuss.openedx.org",
     },
