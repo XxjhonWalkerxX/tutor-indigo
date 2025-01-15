@@ -13,7 +13,7 @@ def load_readme():
 def load_about():
     about = {}
     with io.open(
-        os.path.join(HERE, "tutorindigo", "__about__.py"),
+        os.path.join(HERE, "mexicox", "__about__.py"),
         "rt",
         encoding="utf-8",
     ) as f:
@@ -25,7 +25,7 @@ ABOUT = load_about()
 
 
 setup(
-    name="tutor-indigo",
+    name="tutor-mexicox",
     version=ABOUT["__version__"],
     url="https://github.com/overhangio/tutor-indigo",
     project_urls={
@@ -47,7 +47,7 @@ setup(
     python_requires=">=3.9",
     install_requires=["tutor>=19.0.0,<20.0.0", "tutor-mfe>=19.0.0,<20.0.0"],
     extras_require={"dev": "tutor[dev]>=19.0.0,<20.0.0"},
-    entry_points={"tutor.plugin.v1": ["indigo = tutorindigo.plugin"]},
+    entry_points={"tutor.plugin.v1": ["mexicox = mexicox.plugin"]},
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",

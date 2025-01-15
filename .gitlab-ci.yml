@@ -3,7 +3,7 @@ variables:
     TUTOR_EXTRA_ENABLED_PLUGINS: mfe
     TUTOR_PYPI_PACKAGE: mexicoxmx
     TUTOR_IMAGES: openedx mfe
-    GITHUB_REPO: mexicox/tutor-indigo
+    GITHUB_REPO: mexicox/tutor-mexicox
 
 stages:
   - build
@@ -13,8 +13,8 @@ stages:
 deploy_prod:
   stage: deploy
   script:
-    - rm -rf "$(tutor config printroot)/env/build/openedx/themes/indigo/*"
-    - cp -rf "$(tutor config printroot)/env/build/openedx/themes/indigo/"
+    - rm -rf "$(tutor config printroot)/env/build/openedx/themes/mexicox/*"
+    - cp -rf "$(tutor config printroot)/env/build/openedx/themes/mexicox/"
   tags:
     - edx
   only:
