@@ -29,17 +29,12 @@
       ## which are not technically powered by OpenEdX.
       % if not hide_openedx_link:
       <ul class="logo-list">
-        <li>Powered by:</li>
         <li>
-          <a href="https://docs.tutor.edly.io" rel="noopener" target="_blank">
-            <img src="${static.url('images/tutor-logo.png')}" alt="Runs on Tutor" width="57" />
+          <a href="https://aprende.gob.mx" rel="noopener" target="_blank">
+            <img src="${static.url('images/logo.abajo.png')}" alt="Runs on Tutor" width="57" />
           </a>
         </li>
-        <li>
-          <a href="${footer['openedx_link']['url']}" rel="noopener" target="_blank">
-            <img src="${static.url('images/openedx-logo.png')}" alt="${footer['openedx_link']['title']}" width="79" />
-          </a>
-        </li>
+
       </ul>
     </div>
     {% if INDIGO_FOOTER_NAV_LINKS %}
@@ -54,7 +49,7 @@
     </nav>
     {% endif %}
   </div>
-  <span class="copyright-site">Copyrights ©${datetime.now().year}. All Rights Reserved.</span>
+  <span class="copyright-site">Copyrights ©${datetime.now().year}. Todos los derechos reservados.</span>
   % endif
     <div class="colophon">
 
@@ -136,6 +131,17 @@
               % endif
           </p>
       </div>
+<div class="references">
+      <!--span>Built on <a href="http://open.edx.org">OpenEdX</a>.</span-->
+	 <li style="display:inline;">
+        <a href="//www.facebook.com/mexicoXgob/" target="_blank">
+            <img alt="logo fb" src="https://sisadmin.mexicox.gob.mx/redessociales/facebook1.png" height="40px" style=" margin-left:15px;"></a></li>
+	<li style="display:inline;">
+              <a href="//twitter.com/MexicoX_gob?lang=es" target="_blank">
+                <img alt="logotipo tw" src="https://sisadmin.mexicox.gob.mx/redessociales/twitter1.png" style="margin-left:6px;" height="40px">
+              </a>
+            </li>
+    </div>
     </footer>
   </div>
 % endif

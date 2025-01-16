@@ -26,11 +26,12 @@ config: t.Dict[str, t.Dict[str, t.Any]] = {
         # tutor config save --set INDIGO_FOOTER_NAV_LINKS=[]
         "FOOTER_NAV_LINKS": [
             {"title": "Sobre el proyecto", "url": "/about"},
-            {"title": "Blog", "url": "/blog"},
-            {"title": "Terminos y condiciones", "url": "/tos"},
+            {"title": "Boletín informativo", "url": "/blog"},
+            {"title": "Términos y condiciones", "url": "/tos"},
             {"title": "Aviso de privacidad", "url": "/privacy"},
-            {"title": "Soporte y ayuda", "url": "/help"},
+            {"title": "Preguntas frecuentes", "url": "/help"},
             {"title": "Contacto", "url": "/contact"},
+            {"title": "Soporte", "url": "https://soporte.mexicox.gob.mx"},
         ],
     },
     "unique": {},
