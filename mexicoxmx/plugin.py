@@ -1,14 +1,15 @@
 from __future__ import annotations
 
 import os
+from glob import glob
 import typing as t
 
 import importlib_resources
 from tutor import hooks
+from tutormfe.hooks import PLUGIN_SLOTS
 from tutor.__about__ import __version_suffix__
 
 from .__about__ import __version__
-from tutormfe.hooks import PLUGIN_SLOTS
 
 # Handle version suffix in nightly mode, just like tutor core
 if __version_suffix__:
