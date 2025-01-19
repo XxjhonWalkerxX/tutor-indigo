@@ -28,9 +28,9 @@ config: t.Dict[str, t.Dict[str, t.Any]] = {
         # tutor config save --set INDIGO_FOOTER_NAV_LINKS=[]
         "FOOTER_NAV_LINKS": [
             {"title": "Sobre el proyecto", "url": "/about"},
-            {"title": "Boletín informativo", "url": "/blog"},
-            {"title": "Términos y condiciones", "url": "/tos"},
-            {"title": "Aviso de privacidad", "url": "/privacy"},
+            {"title": "Boletín informativo", "url": "https://mail.mexicox.gob.mx/lists/?p=subscribe"},
+            {"title": "Código de honor", "url": "/honor"},
+            {"title": "Aviso de privacidad", "url": "/tos"},
             {"title": "Preguntas frecuentes", "url": "/help"},
             {"title": "Contacto", "url": "/contact"},
             {"title": "Soporte", "url": "https://soporte.mexicox.gob.mx"},
