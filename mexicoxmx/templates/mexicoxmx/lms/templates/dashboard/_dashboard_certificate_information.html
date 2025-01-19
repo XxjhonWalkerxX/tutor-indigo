@@ -49,7 +49,7 @@ else:
             certificate_available_date_string = course_overview.certificate_available_date.strftime('%Y-%m-%dT%H:%M:%S%z')
           elif course_overview.certificates_display_behavior == CertificatesDisplayBehaviors.END and course_overview.end:
             certificate_available_date_string = course_overview.end.strftime('%Y-%m-%dT%H:%M:%S%z')
-          container_string = _("Your grade and certificate will be ready after {date}.")
+          container_string = _("Las calificaciones se finalizán el día {date}.")
           format = 'shortDate'
         %>
         <span class="info-date-block localized-datetime" data-language="${user_language}" data-timezone="${user_timezone}" data-datetime="${certificate_available_date_string}" data-format=${format} data-string="${container_string}"></span>
@@ -101,7 +101,7 @@ else:
               <li>
                 <a class="btn btn-primary" href="${cert_status['cert_web_view_url']}" rel="noopener" target="_blank"
                    title="${_('This link will open the certificate web view')}">
-                  ${_("View my {cert_name_short}").format(cert_name_short=cert_name_short)}
+                  ${_("Ver constancia").format(cert_name_short=cert_name_short)}
                 </a>
               </li>
             % endif
