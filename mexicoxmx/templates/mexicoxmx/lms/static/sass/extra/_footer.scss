@@ -28,7 +28,7 @@ footer.tutor-container {
                 margin: 0 0 15px;
             }
             @include media-breakpoint-up(lg) {
-                float: left;
+                float: none;
             }
         }
     }

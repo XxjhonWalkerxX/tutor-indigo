@@ -92,22 +92,7 @@
       % endif
     >
     <div class="footer-top">
-      <div class="powered-area">
-        <img src="https://sisadmin.mexicox.gob.mx/extramexicox/eduaprende.jpg"  alt="Runs on Tutor" height="70px"/>
-        ## Please leave this link and use one of the logos provided
-        ## The OpenEdX link may be hidden when this view is served
-        ## through an API to partner sites (such as marketing sites or blogs),
-        ## which are not technically powered by OpenEdX.
-        % if not hide_openedx_link:
-          <ul class="logo-list">
-              <li>
-                  <a href="https://aprende.gob.mx" rel="noopener" target="_blank">
 
-                  </a>
-              </li>
-
-          </ul>
-      </div>
       {% if INDIGO_FOOTER_NAV_LINKS %}
       <nav class="nav-colophon" aria-label="${_('About')}">
         <ol>
@@ -133,6 +118,9 @@
             </li>
           </ol>
       </nav>
+        <div class="powered-area">
+            <img src="https://sisadmin.mexicox.gob.mx/extramexicox/eduaprende.jpg" alt="Runs on Tutor" height="70px"/>
+        </div>
     </div>
     <span class="copyright-site">©${datetime.now().year}. Todos los derechos reservados.</span>
     % endif
