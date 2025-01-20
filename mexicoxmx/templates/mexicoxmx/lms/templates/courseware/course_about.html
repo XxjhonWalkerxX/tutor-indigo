@@ -89,28 +89,28 @@ from openedx.core.lib.courses import course_image_url
             <a href="${course_target}">
           %endif
 
-          <span class="register disabled">${_("Already Enrolled")}</span>
+          <span class="register disabled">Ya estás inscrito</span>
 
           %if show_courseware_link:
-            <strong>${_("View Course")}</strong>
+            <strong>Ver curso</strong>
             </a>
           %endif
 
         % elif is_course_full:
           <span class="register disabled">
-            ${_("Course is full")}
+            Cupo  lleno
           </span>
         % elif invitation_only and not can_enroll:
-          <span class="register disabled">${_("Enrollment in this course is by invitation only")}</span>
+          <span class="register disabled">Curso sólo por invitación</span>
         ## Shib courses need the enrollment button to be displayed even when can_enroll is False,
         ## because AnonymousUsers cause can_enroll for shib courses to be False, but we need them to be able to click
         ## so that they can register and become a real user that can enroll.
         % elif not is_shib_course and not can_enroll:
-        <span class="register closed disabled"><i class="fa fa-lock" aria-hidden="true"></i> ${_("Enrollment is Closed")}</span>
+        <span class="register closed disabled"><i class="fa fa-lock" aria-hidden="true"></i> Inscripciones cerradas</span>
         %elif allow_anonymous:
           %if show_courseware_link:
             <a href="${course_target}">
-            <strong>${_("View Course")}</strong>
+            <strong>Ver Curso</strong>
             </a>
           %endif
         %else:
