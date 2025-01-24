@@ -29,11 +29,6 @@
       ## which are not technically powered by OpenEdX.
       % if not hide_openedx_link:
       <ul class="logo-list">
-        <li>
-          <a href="https://aprende.gob.mx" rel="noopener" target="_blank">
-            <img src="${static.url('images/logo.abajo.png')}" alt="Runs on Tutor" width="57" />
-          </a>
-        </li>
 
       </ul>
     </div>
@@ -48,8 +43,11 @@
       </ol>
     </nav>
     {% endif %}
+<div class="powered-area">
+            <img src="https://sisadmin.mexicox.gob.mx/extramexicox/eduaprende.jpg" alt="Runs on Tutor" height="70px"/>
+        </div>
   </div>
-  <span class="copyright-site">Copyrights ©${datetime.now().year}. Todos los derechos reservados.</span>
+  <span class="copyright-site">©${datetime.now().year}. Todos los derechos reservados.</span>
   % endif
     <div class="colophon">
 
@@ -67,17 +65,20 @@
             % endif
         </p>
     </div>
-<div class="references">
-      <!--span>Built on <a href="http://open.edx.org">OpenEdX</a>.</span-->
-	 <li style="display:inline;">
-        <a href="//www.facebook.com/mexicoXgob/" target="_blank">
-            <img alt="logo fb" src="https://sisadmin.mexicox.gob.mx/redessociales/facebook1.png" height="40px" style=" margin-left:15px;"></a></li>
-	<li style="display:inline;">
-              <a href="//twitter.com/MexicoX_gob?lang=es" target="_blank">
-                <img alt="logotipo tw" src="https://sisadmin.mexicox.gob.mx/redessociales/twitter1.png" style="margin-left:6px;" height="40px">
-              </a>
-            </li>
-    </div>
+    <div class="references">
+          <!--span>Built on <a href="http://open.edx.org">OpenEdX</a>.</span-->
+          <ol>
+                 <li style="display:inline;">
+            <a href="//www.facebook.com/mexicoXgob/" target="_blank">
+                <img alt="logo fb" src="https://sisadmin.mexicox.gob.mx/redessociales/facebook1.png" height="40px" style=" margin-left:15px;"></a></li>
+        <li style="display:inline;">
+                  <a href="//twitter.com/MexicoX_gob?lang=es" target="_blank">
+                    <img alt="logotipo tw" src="https://sisadmin.mexicox.gob.mx/redessociales/twitter1.png" style="margin-left:6px;" height="40px">
+                  </a>
+                </li>
+
+              </ol>
+        </div>
   </footer>
 </div>
 % else:
@@ -98,28 +99,27 @@
         ## through an API to partner sites (such as marketing sites or blogs),
         ## which are not technically powered by OpenEdX.
         % if not hide_openedx_link:
-          <ul class="logo-list">
-              <li>
-                  <a href="https://aprende.gob.mx" rel="noopener" target="_blank">
-                      <img src="${static.url('images/logo.abajo.png')}" alt="Runs on Tutor" width="57"/>
-                  </a>
-              </li>
+            <ul class="logo-list">
 
-          </ul>
-      </div>
-      {% if INDIGO_FOOTER_NAV_LINKS %}
-      <nav class="nav-colophon" aria-label="${_('About')}">
-        <ol>
-            {% for link in INDIGO_FOOTER_NAV_LINKS %}
-            <li>
-              <a href="{{ link['url'] }}">{{ link['title'] }}</a>
-            </li>
-            {% endfor %}
-        </ol>
-      </nav>
-      {% endif %}
-    </div>
-    <span class="copyright-site">Copyrights ©${datetime.now().year}. Todos los derechos reservados.</span>
+            </ul>
+          </div>
+          {% if INDIGO_FOOTER_NAV_LINKS %}
+          <nav class="nav-colophon" aria-label="${_('About')}">
+            <ol>
+                {% for link in INDIGO_FOOTER_NAV_LINKS %}
+                <li>
+                  <a href="{{ link['url'] }}">{{ link['title'] }}</a>
+                </li>
+                {% endfor %}
+            </ol>
+          </nav>
+          {% endif %}
+        <div class="powered-area">
+            <img src="https://sisadmin.mexicox.gob.mx/extramexicox/eduaprende.jpg" alt="Runs on Tutor" height="70px"/>
+        </div>
+
+        </div>
+        <span class="copyright-site">©${datetime.now().year}. Todos los derechos reservados.</span>
     % endif
       <div class="colophon">
 
@@ -139,7 +139,8 @@
       </div>
 <div class="references">
       <!--span>Built on <a href="http://open.edx.org">OpenEdX</a>.</span-->
-	 <li style="display:inline;">
+      <ol>
+        	 <li style="display:inline;">
         <a href="//www.facebook.com/mexicoXgob/" target="_blank">
             <img alt="logo fb" src="https://sisadmin.mexicox.gob.mx/redessociales/facebook1.png" height="40px" style=" margin-left:15px;"></a></li>
 	<li style="display:inline;">
@@ -147,8 +148,24 @@
                 <img alt="logotipo tw" src="https://sisadmin.mexicox.gob.mx/redessociales/twitter1.png" style="margin-left:6px;" height="40px">
               </a>
             </li>
+
+          </ol>
     </div>
     </footer>
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z97Y3FJQ9H"></script>
+      <script>
+          window.dataLayer = window.dataLayer || [];
+
+          function gtag() {
+              dataLayer.push(arguments);
+          }
+
+          gtag('js', new Date());
+
+          gtag('config', 'G-Z97Y3FJQ9H');
+      </script>
+
   </div>
 % endif
 % if include_dependencies:

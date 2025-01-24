@@ -1,23 +1,92 @@
 <%namespace name='static' file='../static_content.html'/>
 <%page expression_filter="h"/>
 <%! from django.utils.translation import gettext as _ %>
-
-
 <%inherit file="../main.html" />
 
-<%block name="pagetitle">${_("Privacy Policy")}</%block>
+<%block name="pagetitle">Aviso de privacidad Simplificado </%block>
 
 <main id="main" aria-label="Content" tabindex="-1">
     <section class="container about">
-        <h1>
-            <%block name="pageheader">${page_header or _("Privacy Policy")}</%block>
+        <h1 class="encabezado">
+            <%block name="pageheader">
+        Aviso de privacidad Simplificado
+        </%block>
         </h1>
         <p>
-            <%block name="pagecontent">${page_content or _("This page left intentionally blank. Feel free to add your own content.")}</%block>
+            <%block name="pagecontent">
+
+                <h1 >Aviso de Privacidad Simplificado</h1>
+
+                <p>La Secretaría de Educación Pública (SEP), a través de la Dirección General
+                    @prende.mx, al ser considerada responsable del tratamiento de los datos
+                    personales que proporcione, se obliga a protegerlos conforme a la Ley General
+                    de Transparencia y Acceso a la Información Pública (LGTAIP), publicada en el
+                    Diario Oficial de la Federación el 20 de mayo de 2021; la Ley Federal de
+                    Transparencia y Acceso a la Información Pública (LFTAIP), publicada en el Diario
+                    Oficial de la Federación el 20 de mayo de 2021; la Ley General de Protección de
+                    Datos Personales en Posesión de Sujetos Obligados (LGPDPPSO), publicada en
+                    el Diario Oficial de la Federación el 26 de enero de 2017, y demás normativa
+                    aplicable.</p>
+                <br>
+                <h3>Finalidad</h3>
+                <br>
+                <p>Se entenderá por consentido el uso de sus datos personales que se recaben
+                    exclusivamente para <b>trámites administrativos de control escolar, informes
+                        estadísticos, invitación a actividades de formación, capacitación y
+                        actualización sin fines de lucro y, en su caso, la certificación de los servicios
+                        educativos </b> que oferta la Dirección General @prende.mx, quedando
+                    almacenados en las instalaciones o servidores bajo el resguardo de la presente
+                    Unidad Administrativa, sin que los anteriores sean expuestos al público.</p>
+                <br>
+                <h3>Transferencia de datos personales</h3>
+                <br>
+                <p>No se realizarán transferencias adicionales, salvo aquéllas que sean necesarias
+                    para atender requerimientos de información de una autoridad competente o
+                    sujetos obligados de conformidad con el artículo 22 de la Ley General de
+                    Protección de Datos Personales en Posesión de Sujetos Obligados, publicada en
+                    el DOF el 26 de enero de 2017.</p>
+                <p>
+
+                </p>
+                <p>Asimismo, se informa que la Dirección General @prende.mx, no cuenta por el
+                    momento con medios automatizados o electrónicos de formatos estructurados
+                    y comúnmente utilizados para la portabilidad de datos personales.</p>
+                <br>
+                <h3>Mecanismo para ejercer sus derechos de acceso, rectificación,
+                    cancelación u oposición de sus datos personales (ARCO)</h3>
+                <br>
+                <p>Si desea conocer el procedimiento para el ejercicio de estos derechos, puede
+                    acudir a la Unidad de Transparencia de la Secretaría de Educación Pública
+                    ubicada en Donceles No. 100, Planta Baja, Colonia Centro Histórico, Delegación
+                    Cuauhtémoc, Ciudad de México, C.P. 06020, enviar un correo electrónico a la
+                    dirección unidaddeenlace@nube.sep.gob.mx o comunicarse al teléfono 55 36 01
+                    10 00, extensión 53417.</p>
+
+                <p>Pudiendo ejercer, de la misma manera estos derechos, a través de la Plataforma
+                    Nacional de Transparencia, cuyo sitio electrónico es:
+                    <a href="https://www.plataformadetransparencia.org.mx/">https://www.plataformadetransparencia.org.mx</a>
+                </p>
+
+                <br>
+                <h3>Consulta y cambios al Aviso de Privacidad</h3><br>
+
+                <p>El presente aviso de privacidad puede sufrir modificaciones, cambios o
+                    actualizaciones derivadas de nuevos requerimientos legales o por otras causas.</p>
+
+                <p>Nos comprometemos a mantenerlo informado sobre los cambios que pueda
+                    sufrir el presente aviso de privacidad, a través del sitio web
+                    <a href="https://www.gob.mx/sep/documentos/avisos-de-privacidad-157558">https://www.gob.mx/sep/documentos/avisos-de-privacidad-157558.</a>
+                </p>
+
+                <p align="right"><b>Fecha de actualización: 02 de enero de 2023</b></p>
+
+
+
+        </%block>
         </p>
         <!-- NEW IN INDIGO: add graphic image -->
         <div class="graphic-img">
-            <img src="${static.url('images/privacy.svg')}" alt="Runs on Tutor" />
+            <img src="${static.url('images/tos.svg')}" alt="Runs on Tutor" />
         </div>
     </section>
 </main>
