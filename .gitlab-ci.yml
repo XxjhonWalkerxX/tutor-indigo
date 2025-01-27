@@ -19,3 +19,22 @@ deploy_prod:
   only:
     refs:
       - master
+
+deploy_dev:
+  stage: deploy
+  script:
+    - source /opt/mexicox/ven/bin/activate
+    - cp -rf * "$(tutor config printroot)/env/build/openedx/themes/mexicoxmx"
+    - cd "$(tutor config printroot)/env/build/openedx/themes"
+    - pip install -e ./mexicoxmx
+    - tutor plugins enable mexicoxmx
+    - tutor config save
+    - tutor local do settheme mexicoxmx
+    - tutor images build openedx
+    - tutor local stop 
+    - tutor local start -d
+  tags:
+    - develop
+  only:
+    refs:
+      - develop  
