@@ -39,10 +39,19 @@ from django.utils.translation import gettext as _
     % if can_discover_courses:
       <div class="mobile-nav-item hidden-mobile nav-item nav-tab">
         <!-- <a href="/courses">Descubre nuestros cursos</a> -->
+             <!-- Imagen en la parte superior izquierda -->
+        <div class="logo" style="position: absolute; top: 0; left: 0;">
+          <a class="navbar-brand" href="http://aprende.gob.mx/" itemprop="url">
+            <img class="logo-image" src="${static.url("images/logo.amx.png")}" 
+                alt="Dirección General @prende.mx" 
+                itemprop="logo" style="width: 100%; height: auto; max-width: 150px;" />
+          </a>
+        </div>
       </div>
     %endif
   % endif
   </div>
+
   <div class="secondary">
     <div class="btn-holder">
       % if allows_login:
