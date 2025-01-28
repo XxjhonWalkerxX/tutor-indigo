@@ -36,6 +36,22 @@ enterprise_customer_link = get_enterprise_learner_portal(request)
         % endif
     </a>
   % endif
+  <!-- Imagen en la parte superior izquierda -->
+  <div class="logo" style="position: absolute; top: 0; left: 0;">
+    <a class="navbar-brand" href="http://aprende.gob.mx/" itemprop="url">
+      <img class="logo-image" src="${static.url("images/logo.amx.png")}" 
+           alt="Dirección General @prende.mx" 
+           itemprop="logo" />
+    </a>
+  </div>
+  <!-- Imagen centrada en la parte superior -->
+    <div class="logo" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%);">
+      <a class="navbar-brand" href="${branding_api.get_home_url()}" itemprop="url">
+        <img class="logo-image" src="${static.url("images/logo.png")}" 
+             alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}" 
+             itemprop="logo" />
+      </a>
+    </div>
   % if course:
     <div class="course-header">
       <span class="provider">${course.display_org_with_default}:</span>
