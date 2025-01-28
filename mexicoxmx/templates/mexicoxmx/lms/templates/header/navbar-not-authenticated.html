@@ -34,10 +34,11 @@ from django.utils.translation import gettext as _
       <a href="${marketing_link('SCHOOLS')}">${_("Schools")}</a>
     </div>
   % endif
+  
   % if allows_login:
     % if can_discover_courses:
       <div class="mobile-nav-item hidden-mobile nav-item nav-tab">
-        <a href="/courses">Descubre nuestros cursos</a>
+        <!-- <a href="/courses">Descubre nuestros cursos</a> -->
       </div>
     %endif
   % endif
