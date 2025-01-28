@@ -13,7 +13,8 @@ stages:
 deploy_prod:
   stage: deploy
   script:
-    - cp -rf * $TUTOR_DIR
+    - source /opt/mexicox/ven/bin/activate
+    - cp -rf * "$(tutor config printroot)/env/build/openedx/themes/mexicoxmx"
   tags:
     - edx
   only:
