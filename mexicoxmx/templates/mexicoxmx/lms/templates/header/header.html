@@ -73,7 +73,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                 flex-wrap: nowrap;
             }
             .interno {
-                    display: flex;
+                display: flex;
                 align-items: stretch;
                 justify-content: center;
                 flex-wrap: nowrap;
@@ -82,21 +82,18 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
             </style>
         <div class="cabeza">
             <div class="interno">
-
                 <%include file="navbar-logo-2-header.html" />
             </div>
             <div class="interno">
                 <%include file="navbar-logo-header.html" args="online_help_token=online_help_token"/>
             </div>
             <div class="interno">
-                        % if user.is_authenticated:
-            <%include file="navbar-authenticated.html" args="online_help_token=online_help_token"/>
-        % else:
-            <%include file="navbar-not-authenticated.html" args="online_help_token=online_help_token"/>
-        % endif
+                % if user.is_authenticated:
+                    <%include file="navbar-authenticated.html" args="online_help_token=online_help_token"/>
+                % else:
+                    <%include file="navbar-not-authenticated.html" args="online_help_token=online_help_token"/>
+                % endif
             </div>
-
-
         </div>
 
 
