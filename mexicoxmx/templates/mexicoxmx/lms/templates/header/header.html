@@ -59,6 +59,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
             <span class="line"></span>
             <span class="line"></span>
         </div>
+        <%include file="navbar-logo-2-header.html" />
         % if user.is_authenticated:
             <%include file="navbar-authenticated.html" args="online_help_token=online_help_token"/>
         % else:
