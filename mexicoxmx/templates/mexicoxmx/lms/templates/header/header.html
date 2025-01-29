@@ -78,7 +78,19 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                 justify-content: center;
                 flex-wrap: nowrap;
                 flex-direction: row;
+                padding-left: 20px;
             }
+
+            @media (max-width: 768px) {
+                .interno {
+                    width: 100%;
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: center;
+                    height: 30px;
+                }
+            }
+
             </style>
         <div class="cabeza">
             <div class="interno">
