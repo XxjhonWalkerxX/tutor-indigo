@@ -96,16 +96,19 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
     .container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
         margin-right: 0;
         margin-left: 0;
-        margin-top: -45px;
+        margin-top: -45px!important;
     }
 }
             @media (min-width: 768px) {
     .navbar-right {
         float: right !important;
         margin-right: -15px;
-        margin-top: -45px;
+        margin-top: -45px!important;
     }
 }
+            .global-header {
+                margin-top: 20px;
+            }
             </style>
         <div class="cabeza">
             <div class="interno">
