@@ -41,8 +41,6 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
     catch(e){window.attachEvent("onload", $buo_f)}
   </script>
 % endif
-<link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
-
 <header class="global-header ${'slim' if course else ''}">
     <div class="header-container">
     % if settings.FEATURES.get('ENABLE_COOKIE_POLICY_BANNER', use_cookie_banner):
@@ -64,33 +62,64 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
     <div class="mobile-menu hidden" aria-label=${_("More Options")} role="menu" id="mobile-menu"></div>
     </div>
             <style>
-            .cabeza {
-               display: flex;
-                justify-content: space-between;
-                align-items: center;
-                flex-wrap: nowrap;
-            }
-            .interno {
-                display: flex;
-                align-items: stretch;
-                justify-content: center;
-                flex-wrap: nowrap;
-                flex-direction: row;
-                padding-left: 20px;
-            }
-
-            @media (max-width: 768px) {
-                .interno {
-                    width: 100%;
-                    display: flex;
-                    align-items: flex-start;
-                    justify-content: center;
-                    height: 30px;
-                }
                 .cabeza {
-                    display:block;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-wrap: nowrap;
                 }
-            }
+
+                .interno {
+                    display: flex;
+                    align-items: stretch;
+                    justify-content: center;
+                    flex-wrap: nowrap;
+                    flex-direction: row;
+                    padding-left: 20px;
+                }
+
+                @media (max-width: 768px) {
+                    .interno {
+                        width: 100%;
+                        display: flex;
+                        align-items: flex-start;
+                        justify-content: center;
+                        height: 30px;
+                    }
+
+                    .cabeza {
+                        display: block;
+                    }
+                }
+
+
+                @media (min-width: 768px) {
+                    .container-fluid > .navbar-collapse, .container-fluid > .navbar-header, .container > .navbar-collapse, .container > .navbar-header {
+                        margin-right: 0;
+                        margin-left: 0;
+                        margin-top: -45px !important;
+                    }
+                }
+
+                @media (min-width: 768px) {
+                    .navbar-right {
+                        float: right !important;
+                        margin-right: -15px;
+                        margin-top: -45px !important;
+                    }
+                }
+
+                .global-header {
+                    margin-top: 44px;
+                }
+
+                .main-container {
+                    margin-top: 80px !important;
+                }
+
+                .btn-holder {
+                    margin-top: 20px;
+                }
             </style>
         <div class="cabeza">
             <div class="interno">
