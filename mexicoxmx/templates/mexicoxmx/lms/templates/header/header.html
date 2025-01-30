@@ -41,8 +41,6 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
     catch(e){window.attachEvent("onload", $buo_f)}
   </script>
 % endif
-<link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
-
 <header class="global-header ${'slim' if course else ''}">
     <div class="header-container">
     % if settings.FEATURES.get('ENABLE_COOKIE_POLICY_BANNER', use_cookie_banner):
@@ -91,6 +89,8 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                     display:block;
                 }
             }
+
+
             </style>
         <div class="cabeza">
             <div class="interno">
