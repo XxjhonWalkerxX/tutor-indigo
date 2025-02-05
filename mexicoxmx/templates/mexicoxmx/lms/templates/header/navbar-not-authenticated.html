@@ -36,14 +36,15 @@ from django.utils.translation import gettext as _
   % endif
   % if allows_login:
     % if can_discover_courses:
-      <div class="mobile-nav-item hidden-mobile nav-item nav-tab">
+      <!---<div class="mobile-nav-item hidden-mobile nav-item nav-tab">
         <a href="/courses">Descubre nuestros cursos</a>
       </div>
+      -->
     %endif
   % endif
   </div>
   <div class="secondary">
-    <div class="btn-holder">
+    <div class="btn-holder" style="margin: 9px -7px;margin-bottom: -7px;">
       % if allows_login:
         % if allow_public_account_creation and not disable_register_button:
             <div class="mobile-nav-item hidden-mobile nav-item">

@@ -24,7 +24,7 @@ deploy_prod:
 deploy_dev:
   stage: deploy
   script:
-    - source /opt/mexicox/ven/bin/activate
+    - source /opt/mexicox/venv/bin/activate
     - cp -rf * "$(tutor config printroot)/env/build/openedx/themes/mexicoxmx"
     - cd "$(tutor config printroot)/env/build/openedx/themes"
     - pip install -e ./mexicoxmx
