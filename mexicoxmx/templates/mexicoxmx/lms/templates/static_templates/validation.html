@@ -1,0 +1,43 @@
+<%namespace name='static' file='../static_content.html'/>
+<%page expression_filter="h"/>
+<%! from django.utils.translation import gettext as _ %>
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">Verificación de Certificados</%block>
+
+<main id="main" aria-label="Content" tabindex="-1">
+    <section class="container about">
+        <h1 class="encabezado">
+            <%block name="pageheader">
+                Verificación de Certificados
+            </%block>
+        </h1>
+        
+        <p>Ingrese el número de ID del certificado para verificar su validez.</p>
+
+        <form method="POST" action="{% url 'verify_certificate' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="certificate_id">Número de ID del certificado:</label>
+                <input type="text" name="certificate_id" id="certificate_id" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Verificar</button>
+        </form>
+
+        {% if certificate %}
+            <hr>
+            <h2>Detalles del Certificado</h2>
+            <table class="table table-striped">
+                <tbody>
+                    <tr><th>Folio:</th><td>{{ certificate.id }}</td></tr>
+                    <tr><th>Nombre:</th><td>{{ certificate.user.full_name }}</td></tr>
+                    <tr><th>Curso:</th><td>{{ certificate.course_name }}</td></tr>
+                    <tr><th>Calificación:</th><td>{{ certificate.grade }}</td></tr>
+                    <tr><th>Fecha de Emisión:</th><td>{{ certificate.issued_on }}</td></tr>
+                </tbody>
+            </table>
+        {% elif error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+    </section>
+</main>
