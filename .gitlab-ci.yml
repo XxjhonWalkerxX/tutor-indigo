@@ -32,8 +32,8 @@ deploy_dev:
     - tutor config save
     - tutor local do settheme mexicoxmx
     - tutor images build openedx
-    - tutor local stop 
-    - tutor local start -d
+    - tutor local stop lms
+    - tutor local start lms -d
   tags:
     - develop
   only:
