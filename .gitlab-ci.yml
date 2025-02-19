@@ -8,8 +8,6 @@ variables:
 stages:
   - build
   - deploy
-
-
 deploy_prod:
   stage: deploy
   script:

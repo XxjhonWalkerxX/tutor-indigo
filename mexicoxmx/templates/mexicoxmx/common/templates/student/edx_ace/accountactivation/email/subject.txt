@@ -1,0 +1,4 @@
+{% load i18n %}
+{% autoescape off %}
+{% blocktrans trimmed %}}Acción requerida: Activa tu cuenta de MéxicoX{% endblocktrans %}
+{% endautoescape %}
