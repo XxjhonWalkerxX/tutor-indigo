@@ -1,17 +1,13 @@
-{% load i18n %}
-{% load ace %}
+<%!
+from django.utils.translation import gettext as _
+%>
 
-{% if show_upsell %}
+% if show_upsell:
     <p>
-        {% filter force_escape %}
-        {% blocktrans trimmed %}
-            Don't miss the opportunity to highlight your new knowledge and skills by earning a verified
-            certificate. Upgrade by {{ user_schedule_upgrade_deadline_time }}.
-        {% endblocktrans %}
-        {% endfilter %}
+        ${_("Don't miss the opportunity to highlight your new knowledge and skills by earning a verified certificate. Upgrade by {}.").format(user_schedule_upgrade_deadline_time)}
     </p>
     <p>
-        <a href="{% with_link_tracking upsell_link %}"
+        <a href="${ace.with_link_tracking(upsell_link)}"
            style="
             color: #1e8142;
             text-decoration: none;
@@ -23,7 +19,7 @@
             display: inline-block;
             padding: 8px 65px;
             ">
-            <font color="#1e8142"><b>{% trans "Upgrade Now" as tmsg %}{{ tmsg | force_escape }}</b></font>
+            <font color="#1e8142"><b>${_("Upgrade Now")}</b></font>
         </a>
     </p>
-{% endif %}
+% endif

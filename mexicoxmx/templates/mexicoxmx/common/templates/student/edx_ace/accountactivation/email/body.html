@@ -1,71 +1,69 @@
-{% extends 'ace_common/edx_ace/common/base_body.html' %}
+<%inherit file="ace_common/edx_ace/common/base_body.html"/>
 
-{% load django_markup %}
-{% load i18n %}
-{% load static %}
-{% block content %}
+<%namespace name='static' file='../static_content.html'/>
+<%!
+import six
+
+from django.utils.translation import gettext as _
+from django.urls import reverse
+from django.conf import settings
+%>
+
+<%block name="content">
 <table width="100%" align="left" border="0" cellpadding="0" cellspacing="0" role="presentation">
-{% if route_enabled %}
+% if route_enabled:
     <tr>
         <td>
             <p style="color: rgba(0,0,0,.75);">
-                {% filter force_escape %}
-                    {% blocktrans %}This is a routed Account Activation email for {{ routed_user }} ({{ routed_user_email }}): {{ routed_profile_name }}{% endblocktrans %}
-                {% endfilter %}
+                ${_("This is a routed Account Activation email for {routed_user} ({routed_user_email}): {routed_profile_name}").format(
+                    routed_user=routed_user,
+                    routed_user_email=routed_user_email,
+                    routed_profile_name=routed_profile_name
+                )}
                 <br />
             </p>
         </td>
     </tr>
-{% endif %}
+% endif
     <tr>
         <td>
             <h1>
-                {% trans "Activación de cuenta" as header_msg %}{{ header_msg | force_escape }}
+                ${_("Activación de cuenta")}
             </h1>
             <p style="color: rgba(0,0,0,.75);">
-                {% filter force_escape %}
-                    {% blocktrans %}¡Ya casi! Utiliza el enlace a continuación para activar tu cuenta y acceder a cursos de MexicoX atractivos y de alta calidad. Ten en cuenta que no podrás volver a iniciar sesión en tu cuenta hasta que la hayas activado. {% endblocktrans %}
-                {% endfilter %}
+                ${_("¡Ya casi! Utiliza el enlace a continuación para activar tu cuenta y acceder a cursos de MexicoX atractivos y de alta calidad. Ten en cuenta que no podrás volver a iniciar sesión en tu cuenta hasta que la hayas activado.")}
                 <br />
             </p>
 
-            {% filter force_escape %}
-                {% blocktrans asvar course_cta_text %}Activa tu cuenta{% endblocktrans %}
-            {% endfilter %}
-            {% include "ace_common/edx_ace/common/return_to_course_cta.html" with course_cta_text=course_cta_text course_cta_url=confirm_activation_link %}
+            <%
+                course_cta_text = _("Activa tu cuenta")
+            %>
+            <%include file="ace_common/edx_ace/common/return_to_course_cta.html" args="{'course_cta_text': course_cta_text, 'course_cta_url': confirm_activation_link}"/>
         </td>
     </tr>
     <tr>
         <td>
             <p style="color: rgba(0,0,0,.75);">
-                {% filter force_escape %}
-                    {% blocktrans %}Disfruta aprendiendo con MexicoX.{% endblocktrans %}
-                {% endfilter %}
+                ${_("Disfruta aprendiendo con MexicoX.")}
                 <br />
             </p>
         </td>
     </tr>
+    <tr>
         <td>
             <p style="color: rgba(0,0,0,.75);">
-                {% blocktrans trimmed asvar assist_msg %}
-                    Si necesitas ayuda, utiliza nuestro formulario web en o envía un correo electrónico a contacto@mexicox.gob.mx.
-                {% endblocktrans %}
-                {% interpolate_html assist_msg start_anchor_web='<a href="'|add:support_url|add:'">'|safe start_anchor_email='<a href="mailto:'|add:support_email|add:'">'|safe end_anchor='</a>'|safe %}
+                <%
+                    assist_msg = _("Si necesitas ayuda, utiliza nuestro formulario web en o envía un correo electrónico a contacto@mexicox.gob.mx.")
+                %>
+                ${assist_msg | interpolate_html(start_anchor_web='<a href="' + support_url + '">', start_anchor_email='<a href="mailto:' + support_email + '">', end_anchor='</a>')}
                 <br />
             </p>
         </td>
-    <tr>
-
     </tr>
     <tr>
         <td>
             <p style="color: rgba(0,0,0,.75);">
-                {% filter force_escape %}
-                    {% blocktrans %}
-                    Este mensaje de correo electrónico fue enviado automáticamente por https://mexicox.gob.mx porque alguien intentó crear una cuenta en MéxicoX usando esta dirección de correo electrónico.
-
-                    {% endblocktrans %}
-                {% endfilter %}
+                ${_("Este mensaje de correo electrónico fue enviado automáticamente por https://mexicox.gob.mx porque alguien intentó crear una cuenta en MéxicoX usando esta dirección de correo electrónico.")}
                 <br />
             </p>
         </td>
@@ -74,13 +72,11 @@
         <td>
             <p style="">
                 © 2025 MexicoX, Todos los derechos reservados.
-
             </p>
             <p>
                 MexicoX - https://mexicox.gob.mx
             </p>
         </td>
-
     </tr>
 </table>
-{% endblock %}
+</%block>

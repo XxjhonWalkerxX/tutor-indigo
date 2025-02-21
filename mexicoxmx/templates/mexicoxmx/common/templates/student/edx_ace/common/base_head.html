@@ -1,11 +1,18 @@
-{% load i18n %}
+<%!
+from django.utils.translation import gettext as _
+from django.utils.translation import get_language
+%>
+
+<%page args="platform_name"/>
+<%
+    LANGUAGE_CODE = get_language()
+%>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-{% get_current_language as LANGUAGE_CODE %}
-<title lang="{{ LANGUAGE_CODE|default:"en" }}">
-  {% block title %}
-  {% filter force_escape %}{% blocktrans %}{{ platform_name }} Email{% endblocktrans %}{% endfilter %}
-  {% endblock %}
+<title lang="${LANGUAGE_CODE or 'en'}">
+  <%block name="title">
+    ${_("{} Email").format(platform_name)}
+  </%block>
 </title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -51,4 +58,4 @@
       .paddingtop_10 {padding-top: 10px !important;}
     }
 </style>
-{% block additional_styles %}{% endblock %}
+<%block name="additional_styles"></%block>

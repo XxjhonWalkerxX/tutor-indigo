@@ -1,11 +1,13 @@
-{% load i18n %}{% autoescape off %}
-{% blocktrans %}You’re almost there! Use the link below to activate your account to access engaging, high-quality {{ platform_name }} courses. Note that you will not be able to log back into your account until you have activated it.{% endblocktrans %}
+<%!
+from django.utils.translation import gettext as _
+%>
 
-{{ confirm_activation_link }}
+${_("You’re almost there! Use the link below to activate your account to access engaging, high-quality {platform_name} courses. Note that you will not be able to log back into your account until you have activated it.").format(platform_name=platform_name)}
 
-{% blocktrans %}Enjoy learning with {{ platform_name }}.{% endblocktrans %}
+${confirm_activation_link}
 
-{% blocktrans %}If you need help, please use our web form at {{ support_url }} or email {{ support_email }}.{% endblocktrans %}
+${_("Enjoy learning with {platform_name}.").format(platform_name=platform_name)}
 
-{% blocktrans %}This email message was automatically sent by {{ lms_url }} because someone attempted to create an account on {{ platform_name }} using this email address.{% endblocktrans %}
-{% endautoescape %}
+${_("If you need help, please use our web form at {support_url} or email {support_email}.").format(support_url=support_url, support_email=support_email)}
+
+${_("This email message was automatically sent by {lms_url} because someone attempted to create an account on {platform_name} using this email address.").format(lms_url=lms_url, platform_name=platform_name)}

@@ -1,4 +1,5 @@
-{% load i18n %}
-{% autoescape off %}
-{% blocktrans trimmed %}}Acción requerida: Activa tu cuenta de MéxicoX{% endblocktrans %}
-{% endautoescape %}
+<%!
+from django.utils.translation import gettext as _
+%>
+
+${_("Acción requerida: Activa tu cuenta de MéxicoX")}
