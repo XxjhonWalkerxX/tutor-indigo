@@ -197,7 +197,7 @@ from common.djangoapps.student.models import CourseEnrollment
                     getattr(settings, 'SOCIAL_SHARING_SETTINGS', {})
                 )
             %>
-            % for dashboard_index, enrollment in enumerate(course_entitlements + course_enrollments):
+              % for dashboard_index, enrollment in enumerate(reversed(course_entitlements + course_enrollments)):
               <%
                 # Check if the course run is an entitlement and if it has an associated session
                 entitlement = enrollment if isinstance(enrollment, CourseEntitlement) else None
@@ -212,33 +212,33 @@ from common.djangoapps.student.models import CourseEnrollment
 
                 entitlement_available_sessions = []
                 if entitlement:
-                  # Grab the available, enrollable sessions for a given entitlement and scrape them for relevant attributes
-                  entitlement_available_sessions = [{
-                    'session_id': course['key'],
-                    'enrollment_end': course['enrollment_end'],
-                    'pacing_type': course['pacing_type'],
-                    'advertised_start': CourseOverview.get_from_id(CourseKey.from_string(course['key'])).advertised_start,
-                    'start': CourseOverview.get_from_id(CourseKey.from_string(course['key'])).start,
-                    'end': CourseOverview.get_from_id(CourseKey.from_string(course['key'])).end,
-                    } for course in course_entitlement_available_sessions[str(entitlement.uuid)]]
-                  if is_fulfilled_entitlement:
-                    # If the user has a fulfilled entitlement, pass through the entitlements CourseEnrollment object
-                    enrollment = entitlement_session
-                  else:
-                    # If the user has an unfulfilled entitlement, pass through a bare CourseEnrollment object to populate card with metadata
-                    pseudo_session = unfulfilled_entitlement_pseudo_sessions[str(entitlement.uuid)]
-                    if not pseudo_session:
-                        continue
-                    pseudo_key = pseudo_session['key']
-                    if not isinstance(pseudo_key, CourseKey):
-                      pseudo_key = CourseKey.from_string(pseudo_session['key'])
-                    enrollment = CourseEnrollment(user=user, course=CourseOverview.get_from_id(pseudo_key), mode=pseudo_session['type'])
-                  # We only show email settings for entitlement cards if the entitlement has an associated enrollment
-                  show_email_settings = is_fulfilled_entitlement and (entitlement_session.course_id in show_email_settings_for)
-                  course_overview = enrollment.course_overview
+                # Grab the available, enrollable sessions for a given entitlement and scrape them for relevant attributes
+                entitlement_available_sessions = [{
+                  'session_id': course['key'],
+                  'enrollment_end': course['enrollment_end'],
+                  'pacing_type': course['pacing_type'],
+                  'advertised_start': CourseOverview.get_from_id(CourseKey.from_string(course['key'])).advertised_start,
+                  'start': CourseOverview.get_from_id(CourseKey.from_string(course['key'])).start,
+                  'end': CourseOverview.get_from_id(CourseKey.from_string(course['key'])).end,
+                  } for course in course_entitlement_available_sessions[str(entitlement.uuid)]]
+                if is_fulfilled_entitlement:
+                  # If the user has a fulfilled entitlement, pass through the entitlements CourseEnrollment object
+                  enrollment = entitlement_session
                 else:
-                  show_email_settings = (enrollment.course_id in show_email_settings_for)
-                  course_overview = CourseOverview.get_from_id(enrollment.course_id)
+                  # If the user has an unfulfilled entitlement, pass through a bare CourseEnrollment object to populate card with metadata
+                  pseudo_session = unfulfilled_entitlement_pseudo_sessions[str(entitlement.uuid)]
+                  if not pseudo_session:
+                    continue
+                  pseudo_key = pseudo_session['key']
+                  if not isinstance(pseudo_key, CourseKey):
+                  pseudo_key = CourseKey.from_string(pseudo_session['key'])
+                  enrollment = CourseEnrollment(user=user, course=CourseOverview.get_from_id(pseudo_key), mode=pseudo_session['type'])
+                # We only show email settings for entitlement cards if the entitlement has an associated enrollment
+                show_email_settings = is_fulfilled_entitlement and (entitlement_session.course_id in show_email_settings_for)
+                course_overview = enrollment.course_overview
+                else:
+                show_email_settings = (enrollment.course_id in show_email_settings_for)
+                course_overview = CourseOverview.get_from_id(enrollment.course_id)
 
                 session_id = enrollment.course_id
                 show_courseware_link = show_courseware_links_for.get(session_id, False)
@@ -261,7 +261,7 @@ from common.djangoapps.student.models import CourseEnrollment
                 resume_button_url = resume_button_urls[dashboard_index]
               %>
               <%include file='dashboard/_dashboard_course_listing.html' args='course_overview=course_overview, course_card_index=dashboard_index, enrollment=enrollment, enrollments_fbe_is_on=enrollments_fbe_is_on, is_unfulfilled_entitlement=is_unfulfilled_entitlement, is_fulfilled_entitlement=is_fulfilled_entitlement, entitlement=entitlement, entitlement_session=entitlement_session, entitlement_available_sessions=entitlement_available_sessions, entitlement_expiration_date=entitlement_expiration_date, entitlement_expired_at=entitlement_expired_at, show_courseware_link=show_courseware_link, cert_status=cert_status, can_refund_entitlement=can_refund_entitlement, can_unenroll=can_unenroll, credit_status=credit_status, show_email_settings=show_email_settings, course_mode_info=course_mode_info, is_paid_course=is_paid_course, is_course_voucher_refundable=is_course_voucher_refundable, course_requirements=course_requirements, dashboard_index=dashboard_index, share_settings=share_settings, user=user, related_programs=related_programs, display_course_modes_on_dashboard=display_course_modes_on_dashboard, show_consent_link=show_consent_link, enterprise_customer_name=enterprise_customer_name, resume_button_url=resume_button_url, partner_managed_enrollment=partner_managed_enrollment' />
-            % endfor
+              % endfor
             % if show_load_all_courses_link:
                 <br/>
                  ${len(course_enrollments)} ${_("results successfully populated,")}
