@@ -1,5 +1,0 @@
-<%!
-from django.utils.translation import gettext as _
-%>
-
-${_("Acción requerida: Activa tu cuenta de MéxicoX")}

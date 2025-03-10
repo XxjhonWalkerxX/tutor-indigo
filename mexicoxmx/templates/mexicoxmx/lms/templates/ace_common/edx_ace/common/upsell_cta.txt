@@ -1,9 +1,0 @@
-<%!
-from django.utils.translation import gettext as _
-%>
-
-% if show_upsell:
-    ${_("Don't miss the opportunity to highlight your new knowledge and skills by earning a verified certificate. Upgrade by {}.").format(user_schedule_upgrade_deadline_time)}
-
-    ${_("Upgrade Now")} <${ace.with_link_tracking(upsell_link)}>
-% endif
