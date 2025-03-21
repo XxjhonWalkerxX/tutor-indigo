@@ -58,11 +58,11 @@ course_mode_class = course_mode if course_mode else ''
 
 		    % if custom_organizacion_text:
 <!-- cambiar el las imagenes del encabezado-->
-			<p class="accomplishment-statement-detail copy copy-lead" style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: normal;">${custom_organizacion_text}, <br>a través de la plataforma <i>MéxicoX</i>.</p>
+            <p class="accomplishment-statement-detail copy copy-lead" style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: bold;"><strong>${custom_organizacion_text},</strong><br>a través de la plataforma <strong>MéxicoX</strong>.</p>
 
 		    % else:
 
-			<p class="accomplishment-statement-detail copy copy-lead" style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: normal;">impartido por ${organization_long_name}, <br>a través de la plataforma MéxicoX.</p>		    
+			<p class="accomplishment-statement-detail copy copy-lead" style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: normal;">impartido por <strong>${organization_long_name},</strong><br>a través de la plataforma MéxicoX.</p>		    
 
 		    % endif 
                 
@@ -101,33 +101,22 @@ course_mode_class = course_mode if course_mode else ''
 
             <div class="accomplishment-orgs">
                 <h3 class="accomplishment-orgs-title sr-only">${_("Supported by the following organizations")}</h3>
-                <div>
-                    
-                    <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}" alt="mujeres indigenas"style="float: left; margin-left: -50px; margin-top: 10px;" height="150px">
-                </div>
-                <div style="float: right; margin-right: 150px; margin-top: -15px; text-align: center;">
-                    <img src="https://certificados.mexicox.gob.mx/generate_qr/${certificate_id_number}/" alt="${certificate_id_number}" height="150px">
-                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 9pt; color: #717170; margin-top: 5px;">Certificate ID Number: ${certificate_id_number}</p>
-                </div>
-                <!--
+
                 <ul class="wrapper-orgs list-orgs">
+                    <li class="wrapper-organization">
+                        <div class="organization organization-edX"></div>
+                            <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}" alt="mujeres indigenas"style="float: left; margin-left: -50px; margin-top: 10px;" height="150px">
+                        </div>
+                    </li>
 
                     <li class="wrapper-organization">
                         <div class="organization organization-edX">
                             <!--img class="organization-logo" src="${logo_src}" alt="${platform_name}"  <!-- antes 
+                            -->
                             <img class="organization-logo" src="https://sisadmin.mexicox.gob.mx/images/mexicox-logo.png"
                                  alt="${platform_name}">
                         </div>
                     </li>
-                    <li>
-                        <div>
-                            <a href="https://certificados.mexicox.gob.mx/validate/${certificate_id_number}/"></a>
-                            <img src="https://certificados.mexicox.gob.mx/generate_qr/${certificate_id_number}/" alt="${certificate_id_number} " style="width: 150px; float: left; margin-left: 40px; margin-top: -125px;">
-                            </a>
-                        </div>
-                    </li>
-
-
                     % if organization_logo_extra:
                     <li class="wrapper-organization">
                         <div class="organization">
@@ -143,9 +132,13 @@ course_mode_class = course_mode if course_mode else ''
                         </div>
                     </li>
                     % endif
-
+                    <li class="wrapper-organization" >
+                        <div class="organization organization-edX" style="margin-right: 100px; margin-left: 100px; margin-top: -15px; text-align: center;">
+                            <img src="https://certificados.mexicox.gob.mx/generate_qr/a90998ef326a40a3ac1aac34243d60fe/" alt="${certificate_id_number}" height="150px">
+                            <p style="font-family: 'Noto Sans', sans-serif; font-size: 9pt; color: #717170; margin-top: 5px;">Certificate ID Number: ${certificate_id_number}</p>
+                        </div>
+                    </li>
                 </ul>
-                -->
                 <div class="accomplishment-orgs" style="margin-top: 200px; margin-left: -60px;">
 
                     % if score_available:
