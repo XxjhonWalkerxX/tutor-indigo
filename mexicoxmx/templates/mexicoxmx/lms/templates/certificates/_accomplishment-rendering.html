@@ -49,13 +49,6 @@ course_mode_class = course_mode if course_mode else ''
         margin: auto;
         padding: 20px;
     }
-    .layout-accomplishment .accomplishment-orgs .organization-logo {
-    max-width: 80%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
     @media print {
         .accomplishment-rendering {
             background-image: url('${static.url("images/BACK.png")}');
@@ -83,7 +76,7 @@ course_mode_class = course_mode if course_mode else ''
                 % if organization_long_name == "Secretaria Anticorrupción y Buen Gobierno, y la UnADM.":
                 <img class="src" src="${static.url("images/ENDOSO_1.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
                 % else:
-                <img class="src" src="${static.url("images/ENDOSO_1.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
+                <img class="src" src="${static.url("images/ENDOSO_2.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
                 % endif
 
                 <div style="margin-top: 40px;">
@@ -93,7 +86,7 @@ course_mode_class = course_mode if course_mode else ''
                     <br>
                     <br>
                     <span style="font-family: 'Patria Regular', serif; font-size: 41pt; color: #AE8420; font-weight: bold;">
-                        <strong>CONSTANCIA</strong>
+                        <strong>${course_grade}</strong>
                     </span>
                     <br>
                     <br>
