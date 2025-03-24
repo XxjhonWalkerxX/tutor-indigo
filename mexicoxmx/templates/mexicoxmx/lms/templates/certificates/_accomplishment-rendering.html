@@ -55,8 +55,8 @@ course_mode_class = course_mode if course_mode else ''
             background-size: 100% auto; /* Ajuste para impresión */
             background-position: center;
             background-repeat: no-repeat;
-            width: 816px;  /* Tamaño carta en píxeles */
-            height: 1056px; /* Tamaño carta en píxeles */
+            width: 1100px;  /* Tamaño carta en píxeles */
+            height: 850px; /* Tamaño carta en píxeles */
             page-break-before: always; /* Asegura que cada certificado se imprima en una página nueva */
         }
     }
@@ -146,36 +146,36 @@ course_mode_class = course_mode if course_mode else ''
 
             <div class="accomplishment-orgs">
                 <h3 class="accomplishment-orgs-title sr-only">${_("Supported by the following organizations")}</h3>
-                <ul class="wrapper-orgs list-orgs">
-                    <li class="wrapper-organization">
+                <ul class="wrapper-orgs list-orgs" style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 900px; margin: auto;" >
+                    <li class="wrapper-organization" style="flex: 1; text-align: left;">
                         <div class="organization organization-edX">
-                            <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}" alt="mujeres indigenas" style="margin-left: -400px; margin-top: -80px;">
+                            <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}" alt="mujeres indigenas" style="margin-left: -100px; margin-top: -80px;">
                         </div>
                     </li>
-                    <li class="wrapper-organization"style="display: flex; flex-direction: column; align-items: center;">
+                    <li class="wrapper-organization" style="flex: 2; display: flex; justify-content: center; gap: 20px;">
                         <div class="organization organization-edX">
-                            <img class="organization-logo" src="https://sisadmin.mexicox.gob.mx/images/mexicox-logo.png" alt="${platform_name}" style="max-width: 150px">
+                            <img class="organization-logo" src="https://sisadmin.mexicox.gob.mx/images/mexicox-logo.png" alt="${platform_name}">
                         </div>
                     </li>
-                    % if organization_logo_extra or organization_logo:
-                    <li class="wrapper-organization" style="display: flex; flex-direction: column; align-items: center;">
-                        % if organization_logo_extra:
+                    % if organization_logo_extra:
+                    <li class="wrapper-organization" style="flex: 2; display: flex; justify-content: center; gap: 20px;">
+                        
                         <div class="organization">
-                            <img class="organization-logo" src="${organization_logo_extra}" alt="${platform_name}" style="max-width: 150px;">
+                            <img class="organization-logo" src="${organization_logo_extra}" alt="${platform_name}">
                         </div>
-                        % endif
-                
-                        % if organization_logo:
-                        <div class="organization">
-                            <img class="organization-logo" src="${organization_logo.url}" alt="${platform_name}" style="max-width: 150px;">
-                        </div>
-                        % endif
                     </li>
                     % endif
-                    <li class="wrapper-organization">
-                        <div class="organization organization-edX" style="margin-right: 150px; margin-left: 150px;">
-                            <img src="https://certificados.mexicox.gob.mx/generate_qr/a90998ef326a40a3ac1aac34243d60fe/" alt="${certificate_id_number}" height="100px" style="margin-top: -90px;">
-                            <p style="font-family: 'Noto Sans', sans-serif; font-size: 9pt; color: #717170">Certificate ID Number: <strong>${certificate_id_number}</strong></p>
+                    % if organization_logo:
+                    <li class="wrapper-organization" style="flex: 2; display: flex; justify-content: center; gap: 20px;">
+                        <div class="organization">
+                            <img class="organization-logo" src="${organization_logo.url}" alt="${platform_name}">
+                        </div>
+                    </li>
+                    % endif
+                    <li class="wrapper-organization" style="flex: 1; text-align: right;">
+                        <div class="organization organization-edX">
+                            <img src="https://certificados.mexicox.gob.mx/generate_qr/a90998ef326a40a3ac1aac34243d60fe/" alt="${certificate_id_number}" height="100px" style="margin-top: -160px;">
+                            <p style="font-family: 'Noto Sans', sans-serif; font-size: 9pt; color: #717170 margin-left: -50px; margin-top: -10px">Certificate ID Number: <strong>${certificate_id_number}</strong></p>
                         </div>
                     </li>
                 </ul>
