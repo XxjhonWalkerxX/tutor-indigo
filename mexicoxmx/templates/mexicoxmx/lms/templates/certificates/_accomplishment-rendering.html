@@ -51,12 +51,13 @@ course_mode_class = course_mode if course_mode else ''
     }
     @media print {
         .accomplishment-rendering {
-            width: 1100px;
-            height: 850px;
-            box-shadow: none;
-            border: none;
-            margin: 0;
-            padding: 0;
+            background-image: url('${static.url("images/BACK.png")}');
+            background-size: 100% auto; /* Ajuste para impresión */
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 816px;  /* Tamaño carta en píxeles */
+            height: 1056px; /* Tamaño carta en píxeles */
+            page-break-before: always; /* Asegura que cada certificado se imprima en una página nueva */
         }
     }
 </style>
@@ -151,23 +152,24 @@ course_mode_class = course_mode if course_mode else ''
                             <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}" alt="mujeres indigenas" style="margin-left: -400px; margin-top: -80px;">
                         </div>
                     </li>
-                    <li class="wrapper-organization">
+                    <li class="wrapper-organization"style="display: flex; flex-direction: column; align-items: center;">
                         <div class="organization organization-edX">
-                            <img class="organization-logo" src="https://sisadmin.mexicox.gob.mx/images/mexicox-logo.png" alt="${platform_name}">
+                            <img class="organization-logo" src="https://sisadmin.mexicox.gob.mx/images/mexicox-logo.png" alt="${platform_name}" style="max-width: 150px">
                         </div>
                     </li>
-                    % if organization_logo_extra:
-                    <li class="wrapper-organization">
+                    % if organization_logo_extra or organization_logo:
+                    <li class="wrapper-organization" style="display: flex; flex-direction: column; align-items: center;">
+                        % if organization_logo_extra:
                         <div class="organization">
-                            <img class="organization-logo" src="${organization_logo_extra}" alt="${platform_name}">
+                            <img class="organization-logo" src="${organization_logo_extra}" alt="${platform_name}" style="max-width: 150px;">
                         </div>
-                    </li>
-                    % endif
-                    % if organization_logo:
-                    <li class="wrapper-organization">
+                        % endif
+                
+                        % if organization_logo:
                         <div class="organization">
-                            <img class="organization-logo" src="${organization_logo.url}" alt="${platform_name}">
+                            <img class="organization-logo" src="${organization_logo.url}" alt="${platform_name}" style="max-width: 150px;">
                         </div>
+                        % endif
                     </li>
                     % endif
                     <li class="wrapper-organization">
