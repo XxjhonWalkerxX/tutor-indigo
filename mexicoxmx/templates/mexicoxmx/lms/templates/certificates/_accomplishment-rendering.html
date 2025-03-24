@@ -34,6 +34,33 @@ course_mode_class = course_mode if course_mode else ''
         font-weight: 300;
         font-style: normal;
     }
+    /* Ajuste del tamaño de la hoja a tamaño carta */
+    .accomplishment-rendering {
+        width: 8.5in; /* Tamaño carta en pulgadas */
+        height: 11in;
+        background-image: url('${static.url("images/BACK.png")}');
+        background-size: contain; /* Mantiene la relación de aspecto */
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        border: 1px solid #ddd;
+    }
+    @media print {
+        .accomplishment-rendering {
+            width: 8.5in;
+            height: 11in;
+            box-shadow: none;
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+    }
 </style>
 
 <main class="accomplishment accomplishment-main">
