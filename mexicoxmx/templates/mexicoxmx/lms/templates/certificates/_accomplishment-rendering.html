@@ -36,8 +36,8 @@ course_mode_class = course_mode if course_mode else ''
     }
     /* Ajuste del tamaño de la hoja a tamaño carta */
     .accomplishment-rendering {
-        width: 8.5in; /* Tamaño carta en pulgadas */
-        height: 11in;
+        width: 1100px; /* Tamaño carta en pulgadas */
+        height: 850px;
         background-image: url('${static.url("images/BACK.png")}');
         background-size: contain; /* Mantiene la relación de aspecto */
         background-position: center;
@@ -48,13 +48,11 @@ course_mode_class = course_mode if course_mode else ''
         justify-content: center;
         margin: auto;
         padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-        border: 1px solid #ddd;
     }
     @media print {
         .accomplishment-rendering {
-            width: 8.5in;
-            height: 11in;
+            width: 1100px;
+            height: 850px;
             box-shadow: none;
             border: none;
             margin: 0;
@@ -150,7 +148,7 @@ course_mode_class = course_mode if course_mode else ''
                 <ul class="wrapper-orgs list-orgs">
                     <li class="wrapper-organization">
                         <div class="organization organization-edX">
-                            <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}" alt="mujeres indigenas" style="float: left; margin-left: -200px; margin-top: 10px;">
+                            <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}" alt="mujeres indigenas" style="margin-left: -400px; margin-top: -40px;">
                         </div>
                     </li>
                     <li class="wrapper-organization">
@@ -175,14 +173,14 @@ course_mode_class = course_mode if course_mode else ''
                     <li class="wrapper-organization">
                         <div class="organization organization-edX" style="margin-right: 100px; margin-left: 100px;">
                             <img src="https://certificados.mexicox.gob.mx/generate_qr/a90998ef326a40a3ac1aac34243d60fe/" alt="${certificate_id_number}" height="100px">
-                            <p style="font-family: 'Noto Sans', sans-serif; font-size: 9pt; color: #717170; margin-top: 5px;">Certificate ID Number: <strong>${certificate_id_number}</strong></p>
+                            <p style="font-family: 'Noto Sans', sans-serif; font-size: 9pt; color: #717170; margin-top: -50px;">Certificate ID Number: <strong>${certificate_id_number}</strong></p>
                         </div>
                     </li>
                 </ul>
                 <div class="accomplishment-orgs" style="margin-top: 50px; margin-left: -60px;">
                     % if score_available:
                     % else:
-                    <p style="font-family: 'Noto Sans', sans-serif; font-weight: 300; font-size: 6pt; color: #717170; text-align:center; line-height: 0.5%">Este curso no acredita al participante como alumno oficial de la institución que lo imparte.</p>
+                    <p style="font-family: 'Noto Sans', sans-serif; font-weight: 300; font-size: 6pt; color: #717170; text-align:center; line-height: 0.5% margin-top: -50px">Este curso no acredita al participante como alumno oficial de la institución que lo imparte.</p>
                     <p style="font-family: 'Noto Sans', sans-serif; font-weight: 300; font-size: 6pt; color: #717170; text-align:center; line-height: 0.5%;">No contiene créditos académicos ni revalidación académica en ninguno de los programas de estudios formales o de extensión. </p>
                     % endif
                 </div>
