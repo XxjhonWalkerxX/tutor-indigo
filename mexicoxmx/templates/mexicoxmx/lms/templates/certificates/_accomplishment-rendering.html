@@ -1,17 +1,65 @@
 <%page expression_filter="h"/>
 <%! from django.utils.translation import gettext as _ %>
 <%namespace name='static' file='../static_content.html'/>
+<%
+course_mode_class = course_mode if course_mode else ''
+%>
 
 <style>
+    /* Definición de las fuentes personalizadas */
+    @font-face {
+        font-family: 'Patria Regular';
+        src: url('${static.url("fonts/Patria_Regular.woff")}') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Noto Sans';
+        src: url('${static.url("fonts/NotoSans-Regular.woff")}') format('woff');
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Noto Sans';
+        src: url('${static.url("fonts/NotoSans-Bold.woff")}') format('woff');
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Noto Sans';
+        src: url('${static.url("fonts/NotoSans-Light.woff")}') format('woff');
+        font-weight: 300;
+        font-style: normal;
+    }
+
     /* Estilos base para la plantilla */
+    body {
+        font-family: 'Noto Sans', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .accomplishment-main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f5f5f5;
+    }
+    .wrapper-accomplishment-rendering {
+        width: 1100px;
+        height: 850px;
+        position: relative;
+        background: url('${static.url("images/BACK.png")}') no-repeat center center/cover;
+        padding: 20px;
+        box-sizing: border-box;
+    }
     .accomplishment-rendering {
         position: relative;
         text-align: center;
-        padding: 20px;
-        background: url('${static.url("images/BACK.png")}') no-repeat center center/cover;
-        max-width: 800px;
-        margin: 0 auto;
-        font-family: 'Noto Sans', sans-serif;
+        height: 100%;
     }
     .deco-corner {
         position: absolute;
@@ -34,6 +82,9 @@
     .deco-corner-br {
         bottom: 0;
         right: 0;
+    }
+    .accomplishment-type {
+        margin-bottom: 20px;
     }
     .accomplishment-type img {
         max-width: 100%;
@@ -87,43 +138,13 @@
         margin: 10px 0;
     }
 
-    /* Estilos específicos */
-    .text-presentation {
-        font-family: 'Noto Sans', sans-serif;
-        font-size: 15pt;
-        color: #717170;
-        font-weight: bold;
-    }
-    .text-constancia {
-        font-family: 'Patria Regular', serif;
-        font-size: 41pt;
-        color: #AE8420;
-        font-weight: bold;
-    }
-    .text-name {
-        font-family: 'Patria Regular', serif;
-        font-size: 40pt;
-        color: #717170;
-    }
-    .text-course {
-        font-family: 'Noto Sans', sans-serif;
-        font-size: 22pt;
-        color: #717170;
-        font-weight: bold;
-    }
-    .text-detail {
-        font-family: 'Noto Sans', sans-serif;
-        font-size: 12pt;
-        color: #717170;
-    }
-    .text-small {
-        font-family: 'Noto Sans', sans-serif;
-        font-size: 9pt;
-        color: #717170;
-    }
-
     /* Media Queries para dispositivos móviles */
     @media (max-width: 768px) {
+        .wrapper-accomplishment-rendering {
+            width: 100%;
+            height: auto;
+            padding: 10px;
+        }
         .accomplishment-statement-lead {
             font-size: 1.5rem;
         }
@@ -144,124 +165,126 @@
 </style>
 
 <main class="accomplishment accomplishment-main">
-    <div class="accomplishment-rendering">
-        <span class="deco-corner deco-corner-tl"></span>
-        <span class="deco-corner deco-corner-tr"></span>
-        <span class="deco-corner deco-corner-bl"></span>
-        <span class="deco-corner deco-corner-br"></span>
+    <div class="wrapper-accomplishment-rendering">
+        <div class="accomplishment-rendering">
+            <span class="deco-corner deco-corner-tl"></span>
+            <span class="deco-corner deco-corner-tr"></span>
+            <span class="deco-corner deco-corner-bl"></span>
+            <span class="deco-corner deco-corner-br"></span>
 
-        <div class="accomplishment-type">
-            % if organization_long_name == "Secretaria Anticorrupción y Buen Gobierno, y la UnADM.":
-            <img class="src" src="${static.url("images/ENDOSO_1.png")}" alt="logo gobierno" style="max-width: 100%; height: auto;">
-            % else:
-            <img class="src" src="${static.url("images/ENDOSO_1.png")}" alt="logo gobierno" style="max-width: 100%; height: auto;">
-            % endif
-
-            <div style="margin-top: 40px;">
-                <span class="text-presentation">
-                    <strong>Otorgan la presente</strong>
-                </span>
-                <br>
-                <br>
-                <span class="text-constancia">
-                    <strong>CONSTANCIA</strong>
-                </span>
-                <br>
-                <br>
-                <span class="text-presentation">
-                    <strong>a</strong>
-                </span>
-            </div>
-        </div>
-
-        <div class="wrapper-statement-and-signatories">
-            <div class="accomplishment-statement">
-                <p class="accomplishment-statement-lead">
-                    <strong class="text-name">${accomplishment_copy_name}</strong>
-                    <br>
-                    <span class="text-detail">por haber concluido satisfactoriamente el curso masivo abierto en línea</span>
-                    <span class="accomplishment-course hd-1 emphasized">
-                        <span class="text-course">${accomplishment_copy_course_name}</span>
-                    </span>
-                </p>
-
-                % if custom_organizacion_text:
-                <p class="accomplishment-statement-detail copy copy-lead text-detail">
-                    <strong>${custom_organizacion_text},</strong><br>a través de la plataforma <strong>MéxicoX</strong>.
-                </p>
+            <div class="accomplishment-type">
+                % if organization_long_name == "Secretaria Anticorrupción y Buen Gobierno, y la UnADM.":
+                <img class="src" src="${static.url("images/ENDOSO_1.png")}" alt="logo gobierno" style="max-width: 100%; height: auto;">
                 % else:
-                <p class="accomplishment-statement-detail copy copy-lead text-detail">
-                    impartido por <strong>${organization_long_name},</strong><br>a través de la plataforma <strong>MéxicoX</strong>.
-                </p>
+                <img class="src" src="${static.url("images/ENDOSO_1.png")}" alt="logo gobierno" style="max-width: 100%; height: auto;">
                 % endif
 
-                % if score_available:
-                <p class='accomplishment-statement-detail copy copy-lead text-detail'>Con una calificación de <strong>${course_grade}</strong></p>
-                % endif
-            </div>
-
-            % if mode != 'base':
-            <div class="accomplishment-signatories">
-                <h3 class="accomplishment-signatories-title sr-only">${_("Noted by")}</h3>
-                <div class="wrapper-signatories">
-                    <div class="list-signatories">
-                        % if certificate_data:
-                        % for signatory in certificate_data.get('signatories', []):
-                        <div style="text-align: center;">
-                            <span class="text-detail">${signatory['name']}</span>
-                            <p class="text-detail">
-                                <span class="role">${signatory['title']}</span>
-                                <span class="organization">${signatory['organization']}</span>
-                            </p>
-                        </div>
-                        % endfor
-                        % endif
-                    </div>
+                <div style="margin-top: 40px;">
+                    <span class="text-presentation">
+                        <strong>Otorgan la presente</strong>
+                    </span>
+                    <br>
+                    <br>
+                    <span class="text-constancia">
+                        <strong>CONSTANCIA</strong>
+                    </span>
+                    <br>
+                    <br>
+                    <span class="text-presentation">
+                        <strong>a</strong>
+                    </span>
                 </div>
             </div>
-            % endif
-        </div>
 
-        <div class="accomplishment-orgs">
-            <h3 class="accomplishment-orgs-title sr-only">${_("Supported by the following organizations")}</h3>
-            <ul class="wrapper-orgs list-orgs">
-                <li class="wrapper-organization">
-                    <div class="organization organization-edX">
-                        <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}" alt="mujeres indigenas" style="max-width: 100%; height: auto;">
+            <div class="wrapper-statement-and-signatories">
+                <div class="accomplishment-statement">
+                    <p class="accomplishment-statement-lead">
+                        <strong class="text-name">${accomplishment_copy_name}</strong>
+                        <br>
+                        <span class="text-detail">por haber concluido satisfactoriamente el curso masivo abierto en línea</span>
+                        <span class="accomplishment-course hd-1 emphasized">
+                            <span class="text-course">${accomplishment_copy_course_name}</span>
+                        </span>
+                    </p>
+
+                    % if custom_organizacion_text:
+                    <p class="accomplishment-statement-detail copy copy-lead text-detail">
+                        <strong>${custom_organizacion_text},</strong><br>a través de la plataforma <strong>MéxicoX</strong>.
+                    </p>
+                    % else:
+                    <p class="accomplishment-statement-detail copy copy-lead text-detail">
+                        impartido por <strong>${organization_long_name},</strong><br>a través de la plataforma <strong>MéxicoX</strong>.
+                    </p>
+                    % endif
+
+                    % if score_available:
+                    <p class='accomplishment-statement-detail copy copy-lead text-detail'>Con una calificación de <strong>${course_grade}</strong></p>
+                    % endif
+                </div>
+
+                % if mode != 'base':
+                <div class="accomplishment-signatories">
+                    <h3 class="accomplishment-signatories-title sr-only">${_("Noted by")}</h3>
+                    <div class="wrapper-signatories">
+                        <div class="list-signatories">
+                            % if certificate_data:
+                            % for signatory in certificate_data.get('signatories', []):
+                            <div style="text-align: center;">
+                                <span class="text-detail">${signatory['name']}</span>
+                                <p class="text-detail">
+                                    <span class="role">${signatory['title']}</span>
+                                    <span class="organization">${signatory['organization']}</span>
+                                </p>
+                            </div>
+                            % endfor
+                            % endif
+                        </div>
                     </div>
-                </li>
-                <li class="wrapper-organization">
-                    <div class="organization organization-edX">
-                        <img class="organization-logo" src="https://sisadmin.mexicox.gob.mx/images/mexicox-logo.png" alt="${platform_name}" style="max-width: 100%; height: auto;">
-                    </div>
-                </li>
-                % if organization_logo_extra:
-                <li class="wrapper-organization">
-                    <div class="organization">
-                        <img class="organization-logo" src="${organization_logo_extra}" alt="${platform_name}" style="max-width: 100%; height: auto;">
-                    </div>
-                </li>
+                </div>
                 % endif
-                % if organization_logo:
-                <li class="wrapper-organization">
-                    <div class="organization">
-                        <img class="organization-logo" src="${organization_logo.url}" alt="${platform_name}" style="max-width: 100%; height: auto;">
-                    </div>
-                </li>
-                % endif
-                <li class="wrapper-organization">
-                    <div class="organization organization-edX">
-                        <img src="https://certificados.mexicox.gob.mx/generate_qr/a90998ef326a40a3ac1aac34243d60fe/" alt="${certificate_id_number}" style="max-width: 100%; height: auto;">
-                        <p class="text-small">Certificate ID Number: <strong>${certificate_id_number}</strong></p>
-                    </div>
-                </li>
-            </ul>
-            <div class="accomplishment-orgs" style="margin-top: 50px;">
-                % if score_available:
-                % else:
-                <p class="text-small">Este curso no acredita al participante como alumno oficial de la institución que lo imparte.</p>
-                <p class="text-small">No contiene créditos académicos ni revalidación académica en ninguno de los programas de estudios formales o de extensión. </p>
-                % endif
+            </div>
+
+            <div class="accomplishment-orgs">
+                <h3 class="accomplishment-orgs-title sr-only">${_("Supported by the following organizations")}</h3>
+                <ul class="wrapper-orgs list-orgs">
+                    <li class="wrapper-organization">
+                        <div class="organization organization-edX">
+                            <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}" alt="mujeres indigenas" style="max-width: 100%; height: auto;">
+                        </div>
+                    </li>
+                    <li class="wrapper-organization">
+                        <div class="organization organization-edX">
+                            <img class="organization-logo" src="https://sisadmin.mexicox.gob.mx/images/mexicox-logo.png" alt="${platform_name}" style="max-width: 100%; height: auto;">
+                        </div>
+                    </li>
+                    % if organization_logo_extra:
+                    <li class="wrapper-organization">
+                        <div class="organization">
+                            <img class="organization-logo" src="${organization_logo_extra}" alt="${platform_name}" style="max-width: 100%; height: auto;">
+                        </div>
+                    </li>
+                    % endif
+                    % if organization_logo:
+                    <li class="wrapper-organization">
+                        <div class="organization">
+                            <img class="organization-logo" src="${organization_logo.url}" alt="${platform_name}" style="max-width: 100%; height: auto;">
+                        </div>
+                    </li>
+                    % endif
+                    <li class="wrapper-organization">
+                        <div class="organization organization-edX">
+                            <img src="https://certificados.mexicox.gob.mx/generate_qr/a90998ef326a40a3ac1aac34243d60fe/" alt="${certificate_id_number}" style="max-width: 100%; height: auto;">
+                            <p class="text-small">Certificate ID Number: <strong>${certificate_id_number}</strong></p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="accomplishment-orgs" style="margin-top: 50px;">
+                    % if score_available:
+                    % else:
+                    <p class="text-small">Este curso no acredita al participante como alumno oficial de la institución que lo imparte.</p>
+                    <p class="text-small">No contiene créditos académicos ni revalidación académica en ninguno de los programas de estudios formales o de extensión. </p>
+                    % endif
+                </div>
             </div>
         </div>
     </div>
