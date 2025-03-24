@@ -49,6 +49,13 @@ course_mode_class = course_mode if course_mode else ''
         margin: auto;
         padding: 20px;
     }
+    .layout-accomplishment .accomplishment-orgs .organization-logo {
+    max-width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
     @media print {
         .accomplishment-rendering {
             background-image: url('${static.url("images/BACK.png")}');
@@ -97,7 +104,7 @@ course_mode_class = course_mode if course_mode else ''
             </div>
 
             <div class="wrapper-statement-and-signatories" style="flex: 0 1 90%;">
-                <div class="accomplishment-statement" style="margin-bottom: 0px;">
+                <div class="accomplishment-statement" style="margin-bottom: -50px;">
                     <p class="accomplishment-statement-lead" style="flex: 0 1 90%; margin-top: 0px;">
                         <strong style="font-family: 'Patria Regular', serif; font-size: 40pt; color: #717170;">${accomplishment_copy_name}</strong>
                         <br>
@@ -181,10 +188,13 @@ course_mode_class = course_mode if course_mode else ''
                 </ul>
                 <div class="accomplishment-orgs" style="margin-top: -40px; margin-left: -60px;">
                     % if score_available:
-                    % else:
+                    <p class="accomplishment-statement-detail copy copy-lead">
+                        Con una calificación de <strong>${course_grade}%</strong>
+                    </p>
+                    % endif
                     <p style="font-family: 'Noto Sans', sans-serif; font-weight: 300; font-size: 6pt; color: #717170; text-align:center; line-height: 0.5% margin-top: -5px; margin-bottom: 0px;">Este curso no acredita al participante como alumno oficial de la institución que lo imparte.</p>
                     <p style="font-family: 'Noto Sans', sans-serif; font-weight: 300; font-size: 6pt; color: #717170; text-align:center; line-height: 0.5%; margin-top: 0px;">No contiene créditos académicos ni revalidación académica en ninguno de los programas de estudios formales o de extensión. </p>
-                    % endif
+                    
                 </div>
             </div>
         </div>
