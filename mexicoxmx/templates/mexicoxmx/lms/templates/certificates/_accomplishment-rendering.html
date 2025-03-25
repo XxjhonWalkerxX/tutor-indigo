@@ -117,11 +117,7 @@ course_mode_class = course_mode if course_mode else ''
                     </p>
                     % endif
 
-                    % if course_grade:
-                        <p style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: bold; margin-bottom: 5px;">
-                            Calificación: ${course_grade}%
-                        </p>
-                    % endif
+
                 </div>
 
                 % if mode != 'base':
@@ -133,6 +129,11 @@ course_mode_class = course_mode if course_mode else ''
                             % for signatory in certificate_data.get('signatories', []):
                             <div style="text-align: center;">
                                 <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 12pt; color: #717170;">${signatory['name']}</span>
+                                % if course_grade:
+                                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: bold; margin-bottom: 5px;">
+                                        Calificación: ${course_grade}%
+                                    </p>
+                            % endif
                                 <p style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 12pt; color: #717170;">
                                     <span class="role">${signatory['title']}</span>
                                     <span class="organization">${signatory['organization']}</span>
