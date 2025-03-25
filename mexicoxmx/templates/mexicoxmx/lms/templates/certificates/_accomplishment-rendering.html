@@ -76,7 +76,7 @@ course_mode_class = course_mode if course_mode else ''
                 % if organization_long_name == "Secretaria Anticorrupción y Buen Gobierno, y la UnADM.":
                 <img class="src" src="${static.url("images/ENDOSO_4.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
                 % else:
-                <img class="src" src="${static.url("images/ENDOSO_3.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
+                <img class="src" src="${static.url("images/ENDOSO_4.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
                 % endif
 
                 <div style="margin-top: 40px;">
@@ -118,12 +118,8 @@ course_mode_class = course_mode if course_mode else ''
                     % endif
 
                     % if course_grade:
-                        <p style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: bold;">
+                        <p style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: bold; margin-bottom: 5px;">
                             Calificación: ${course_grade}%
-                        </p>
-                    % else:
-                        <p style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: bold;">
-                            Calificación no disponible.
                         </p>
                     % endif
                 </div>
@@ -175,17 +171,12 @@ course_mode_class = course_mode if course_mode else ''
                     % endif
                     <li class="wrapper-organization" style="flex: 1; text-align: right;">
                         <div class="organization organization-edX">
-                            <img src="https://certificados.mexicox.gob.mx/generate_qr/${certificate_id_number}/" alt="${certificate_id_number}" height="100px" style="margin-top: -160px;">
+                            <img src="https://certificados.mexicox.gob.mx/generate_qr/f836ac8cbfec4927862c7e44d16c88ec/" height="100px" style="margin-top: -160px;">
                             <p style="font-family: 'Noto Sans', sans-serif; font-size: 9pt; color: #717170; margin-left: -700px; margin-top: -10px">Certificate ID Number: <strong>${certificate_id_number}</strong></p>
                         </div>
                     </li>
                 </ul>
                 <div class="accomplishment-orgs" style="margin-top: -40px; margin-left: -60px;">
-                    % if score_available:
-                    <p class="accomplishment-statement-detail copy copy-lead">
-                        Con una calificación de <strong>${course_grade}%</strong>
-                    </p>
-                    % endif
                     <p style="font-family: 'Noto Sans', sans-serif; font-weight: 300; font-size: 6pt; color: #717170; text-align:center; line-height: 0.5% margin-top: -5px; margin-bottom: 0px;">Este curso no acredita al participante como alumno oficial de la institución que lo imparte.</p>
                     <p style="font-family: 'Noto Sans', sans-serif; font-weight: 300; font-size: 6pt; color: #717170; text-align:center; line-height: 0.5%; margin-top: 0px;">No contiene créditos académicos ni revalidación académica en ninguno de los programas de estudios formales o de extensión. </p>
                     
