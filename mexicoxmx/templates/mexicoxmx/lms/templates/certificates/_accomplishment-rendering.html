@@ -74,9 +74,9 @@ course_mode_class = course_mode if course_mode else ''
                 <span class="accomplishment-type-symbol">
                 </span>
                 % if organization_long_name == "Secretaria Anticorrupción y Buen Gobierno, y la UnADM.":
-                <img class="src" src="${static.url("images/ENDOSO_1.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
+                <img class="src" src="${static.url("images/ENDOSO_3.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
                 % else:
-                <img class="src" src="${static.url("images/ENDOSO_2.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
+                <img class="src" src="${static.url("images/ENDOSO_3.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
                 % endif
 
                 <div style="margin-top: 40px;">
@@ -117,7 +117,15 @@ course_mode_class = course_mode if course_mode else ''
                     </p>
                     % endif
 
-                    <p class='accomplishment-statement-detail copy copy-lead'>Con una calificación de <strong>${course_grade}</strong></p>
+                    % if course_grade:
+                        <p style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: bold;">
+                            Calificación: ${course_grade}%
+                        </p>
+                    % else:
+                        <p style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: bold;">
+                            Calificación no disponible.
+                        </p>
+                    % endif
                 </div>
 
                 % if mode != 'base':
