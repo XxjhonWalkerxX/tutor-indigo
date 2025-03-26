@@ -88,7 +88,7 @@
 
         <div class="course-holder courses${'' if course_discovery_enabled else ' no-course-discovery'}" role="region" aria-label="${_('List of Courses')}">
           <ul class="courses-listing courses-list">
-            %for course in sorted(courses, key=lambda c: c.get('title', '').lower(), reverse=True):
+            %for course in sorted(courses, key=lambda c: c.get('created', ''), reverse=True):
             <li class="courses-listing-item">
               <%include file="../course.html" args="course=course" />
             </li>
