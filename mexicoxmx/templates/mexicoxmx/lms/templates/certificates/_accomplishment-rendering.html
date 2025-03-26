@@ -5,8 +5,64 @@
 course_mode_class = course_mode if course_mode else ''
 %>
 
-<main class="accomplishment accomplishment-main">
+<style>
+    /* Definición de las fuentes personalizadas */
+    @font-face {
+        font-family: 'Patria Regular';
+        src: url('${static.url("fonts/Patria_Regular.woff")}') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
 
+    @font-face {
+        font-family: 'Noto Sans';
+        src: url('${static.url("fonts/NotoSans-Regular.woff")}') format('woff');
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Noto Sans';
+        src: url('${static.url("fonts/NotoSans-Bold.woff")}') format('woff');
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Noto Sans';
+        src: url('${static.url("fonts/NotoSans-Light.woff")}') format('woff');
+        font-weight: 300;
+        font-style: normal;
+    }
+    /* Ajuste del tamaño de la hoja a tamaño carta */
+    .accomplishment-rendering {
+        width: 1100px; /* Tamaño carta en pulgadas */
+        height: 850px;
+        background-image: url('${static.url("images/BACK.png")}');
+        background-size: contain; /* Mantiene la relación de aspecto */
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        padding: 20px;
+    }
+    @media print {
+        .accomplishment-rendering {
+            background-image: url('${static.url("images/BACK.png")}');
+            background-size: 100% auto; /* Ajuste para impresión */
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 1100px;  /* Tamaño carta en píxeles */
+            height: 850px; /* Tamaño carta en píxeles */
+            page-break-before: always; /* Asegura que cada certificado se imprima en una página nueva */
+        }
+    }
+</style>
+
+<main class="accomplishment accomplishment-main">
     <div class="wrapper-accomplishment-rendering">
         <div class="accomplishment-rendering" style="background: url('${static.url("images/BACK.png")}')">
             <span class="deco-corner deco-corner-tl"></span>
@@ -17,10 +73,10 @@ course_mode_class = course_mode if course_mode else ''
             <div class="accomplishment-type" style="flex: 0 1 90%; margin-bottom: 0px;">
                 <span class="accomplishment-type-symbol">
                 </span>
-                % if organization_long_name == "Secretaria Anticorrupción y Buen Gobierno, y la UnADM.":
-                <img class="src" src="${static.url("images/ENDOSO_1.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
+                % if fullTheme:
+                <img class="src" src="${static.url("images/ENDOSO_4.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
                 % else:
-                <img class="src" src="${static.url("images/ENDOSO_1.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
+                <img class="src" src="${static.url("images/ENDOSO_2.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
                 % endif
 
                 <div style="margin-top: 40px;">
@@ -38,55 +94,47 @@ course_mode_class = course_mode if course_mode else ''
                         <strong>a</strong>
                     </span>
                 </div>
-
-                <!-- <span class="accomplishment-type-label hd-4">Otorgan la presente CONSTANCIA</span>
-                <span class="accomplishment-type-label hd-3">a</span> -->
             </div>
 
             <div class="wrapper-statement-and-signatories" style="flex: 0 1 90%;">
-                <div class="accomplishment-statement" style="margin-bottom: 0px;">
+                <div class="accomplishment-statement" style="margin-bottom: -50px;">
                     <p class="accomplishment-statement-lead" style="flex: 0 1 90%; margin-top: 0px;">
                         <strong style="font-family: 'Patria Regular', serif; font-size: 40pt; color: #717170;">${accomplishment_copy_name}</strong>
                         <br>
                         <span style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170;">por haber concluido satisfactoriamente el curso masivo abierto en línea</span>
                         <span class="accomplishment-course hd-1 emphasized">
-	                    <!--span class="accomplishment-course-org">${accomplishment_copy_course_org}</span>
-                            <span class="accomplishment-course-number">${course_number}</span-->
-                                <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 22pt; color: #717170;">${accomplishment_copy_course_name}</span>
+                            <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 22pt; color: #717170;">${accomplishment_copy_course_name}</span>
                         </span>
                     </p>
 
-		    % if custom_organizacion_text:
-<!-- cambiar el las imagenes del encabezado-->
-			<p class="accomplishment-statement-detail copy copy-lead" style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: normal;">${custom_organizacion_text}, <br>a través de la plataforma <i>MéxicoX</i>.</p>
-
-		    % else:
-
-			<p class="accomplishment-statement-detail copy copy-lead" style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: normal;">impartido por ${organization_long_name}, <br>a través de la plataforma MéxicoX.</p>		    
-
-		    % endif 
-                
-		%if score_available:
+                    % if custom_organizacion_text:
+                    <p class="accomplishment-statement-detail copy copy-lead" style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: bold; ;margin-bottom: 50px;">
+                        <strong>${custom_organizacion_text},</strong><br>a través de la plataforma <strong>MéxicoX</strong>.
+                    </p>
+                    % else:
+                    <p class="accomplishment-statement-detail copy copy-lead" style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: normal; ;margin-bottom: 50px;">
+                        impartido por <strong>${organization_long_name},</strong><br>a través de la plataforma <strong>MéxicoX</strong>.
+                    </p>
+                    % endif
 
 
-		<p class='accomplishment-statement-detail copy copy-lead'>Con una calificación de <strong>${course_grade}</strong></p>
-
-		% endif
-		</div>
+                </div>
 
                 % if mode != 'base':
                 <div class="accomplishment-signatories">
                     <h3 class="accomplishment-signatories-title sr-only">${_("Noted by")}</h3>
-
                     <div class="wrapper-signatories">
                         <div class="list-signatories">
                             % if certificate_data:
                             % for signatory in certificate_data.get('signatories', []):
                             <div style="text-align: center;">
-                                <!-- <img class="signatory-signature" src="${static.url(signatory['signature_image_path'])}"
-                                     alt="${signatory['name']}"> -->
-                                <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 12pt; color: #717170;">${signatory['name']}</span>
-                                <p style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 12pt; color: #717170;">
+                                <span style="font-family: 'Noto Sans', sans-serif; font-weight: normal; font-size: 12pt; color: #717170;">${signatory['name']}</span>
+                                % if course_grade:
+                                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: normal; margin-bottom: 5px;">
+                                        Calificación: ${course_grade}%
+                                    </p>
+                            % endif
+                                <p style="font-family: 'Noto Sans', sans-serif; font-weight: normal; font-size: 12pt; color: #717170;">
                                     <span class="role">${signatory['title']}</span>
                                     <span class="organization">${signatory['organization']}</span>
                                 </p>
@@ -101,66 +149,38 @@ course_mode_class = course_mode if course_mode else ''
 
             <div class="accomplishment-orgs">
                 <h3 class="accomplishment-orgs-title sr-only">${_("Supported by the following organizations")}</h3>
-                <div>
-                    
-                    <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}" alt="mujeres indigenas"style="float: left; margin-left: -50px; margin-top: 10px;" height="150px">
-                </div>
-                <div style="float: right; margin-right: 150px; margin-top: -15px; text-align: center;">
-                    <img src="https://certificados.mexicox.gob.mx/generate_qr/${certificate_id_number}/" alt="${certificate_id_number}" height="150px">
-                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 9pt; color: #717170; margin-top: 5px;">Certificate ID Number: ${certificate_id_number}</p>
-                </div>
-                <!--
-                <ul class="wrapper-orgs list-orgs">
-
-                    <li class="wrapper-organization">
+                <ul class="wrapper-orgs list-orgs" style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 900px; margin: auto;" >
+                    <li class="wrapper-organization" style="flex: 1; text-align: left;">
                         <div class="organization organization-edX">
-                            <!--img class="organization-logo" src="${logo_src}" alt="${platform_name}"  <!-- antes 
-                            <img class="organization-logo" src="https://sisadmin.mexicox.gob.mx/images/mexicox-logo.png"
-                                 alt="${platform_name}">
+                            <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}" alt="mujeres indigenas" style="margin-left: -100px; margin-top: -80px;">
                         </div>
                     </li>
-                    <li>
-                        <div>
-                            <a href="https://certificados.mexicox.gob.mx/validate/${certificate_id_number}/"></a>
-                            <img src="https://certificados.mexicox.gob.mx/generate_qr/${certificate_id_number}/" alt="${certificate_id_number} " style="width: 150px; float: left; margin-left: 40px; margin-top: -125px;">
-                            </a>
-                        </div>
-                    </li>
-
-
                     % if organization_logo_extra:
-                    <li class="wrapper-organization">
+                    <li class="wrapper-organization" style="flex: 2; display: flex; justify-content: center; gap: 20px;">
+                        
                         <div class="organization">
                             <img class="organization-logo" src="${organization_logo_extra}" alt="${platform_name}">
                         </div>
                     </li>
                     % endif
-
                     % if organization_logo:
-                    <li class="wrapper-organization">
+                    <li class="wrapper-organization" style="flex: 2; display: flex; justify-content: center; gap: 20px;">
                         <div class="organization">
                             <img class="organization-logo" src="${organization_logo.url}" alt="${platform_name}">
                         </div>
                     </li>
                     % endif
-
+                    <li class="wrapper-organization" style="flex: 1; text-align: right;">
+                        <div class="organization organization-edX">
+                            <img src="https://certificados.mexicox.gob.mx/generate_qr/ ${certificate_id_number}/" height="100px" style="margin-top: -160px;">
+                            <p style="font-family: 'Noto Sans', sans-serif; font-size: 9pt; color: #717170; margin-left: -700px; margin-top: -10px">Certificate ID Number: <strong>${certificate_id_number}</strong></p>
+                        </div>
+                    </li>
                 </ul>
-                -->
-                <div class="accomplishment-orgs" style="margin-top: 200px; margin-left: -60px;">
-
-                    % if score_available:
-
-
-                    % else:
-
-                    <p style="font-family: 'Noto Sans', sans-serif; font-weight: 300; font-size: 6pt; color: #717170; text-align:center; line-height: 0.5%">Este curso no acredita al participante como alumno oficial de la institución que lo imparte.</p>
-
-                    <p style="font-family: 'Noto Sans', sans-serif; font-weight: 300; font-size: 6pt; color: #717170; text-align:center; line-height: 0.5%;">No contiene créditos académicos ni revalidación académica en ninguno de los programas de estudios formales o de extensión. </p>
-
-                    %endif
-                    <h3 class="accomplishment-orgs-title sr-only">${_("Supported by the following organizations")}</h3>
-
-
+                <div class="accomplishment-orgs" style="margin-top: -40px; margin-left: -60px;">
+                    <p style="font-family: 'Noto Sans', sans-serif; font-weight: 300; font-size: 6pt; color: #717170; text-align:center; line-height: 0.5% margin-top: -5px; margin-bottom: 0px;">Este curso no acredita al participante como alumno oficial de la institución que lo imparte.</p>
+                    <p style="font-family: 'Noto Sans', sans-serif; font-weight: 300; font-size: 6pt; color: #717170; text-align:center; line-height: 0.5%; margin-top: 0px;">No contiene créditos académicos ni revalidación académica en ninguno de los programas de estudios formales o de extensión. </p>
+                    
                 </div>
             </div>
         </div>
@@ -168,15 +188,13 @@ course_mode_class = course_mode if course_mode else ''
         <div class="wrapper-accomplishment-metadata">
             <div class="accomplishment-metadata">
                 <h2 class="accomplishment-metadata-title hd-6">${accomplishment_copy_more_about}</h2>
-
                 <div class="wrapper-metadata">
                     <dl class="metadata accomplishment-recipient">
                         <dt class="label sr-only">${_("Awarded to:")}</dt>
                         <dd class="value copy copy-meta">
-                        <span class="recipient-img">
-                            <img class="src" src="/static/certificates/images/demo-user-profile.png"
-                                 alt="Recipient Image">
-                        </span>
+                            <span class="recipient-img">
+                                <img class="src" src="/static/certificates/images/demo-user-profile.png" alt="Recipient Image">
+                            </span>
                             <div class="recipient-details">
                                 <h3 class="recipient-name">${accomplishment_copy_name}</h3>
                                 <p class="recipient-username">${accomplishment_copy_username} @ ${platform_name}</p>
@@ -194,5 +212,5 @@ course_mode_class = course_mode if course_mode else ''
                 </div>
             </div>
         </div>
-
+    </div>
 </main>
