@@ -73,7 +73,7 @@ course_mode_class = course_mode if course_mode else ''
             <div class="accomplishment-type" style="flex: 0 1 90%; margin-bottom: 0px;">
                 <span class="accomplishment-type-symbol">
                 </span>
-                % if organization_long_name == "Secretaria Anticorrupción y Buen Gobierno, y la UnADM.":
+                % if full_theme:
                 <img class="src" src="${static.url("images/ENDOSO_4.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
                 % else:
                 <img class="src" src="${static.url("images/ENDOSO_2.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
@@ -128,13 +128,13 @@ course_mode_class = course_mode if course_mode else ''
                             % if certificate_data:
                             % for signatory in certificate_data.get('signatories', []):
                             <div style="text-align: center;">
-                                <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 12pt; color: #717170;">${signatory['name']}</span>
+                                <span style="font-family: 'Noto Sans', sans-serif; font-weight: normal; font-size: 12pt; color: #717170;">${signatory['name']}</span>
                                 % if course_grade:
-                                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: bold; margin-bottom: 5px;">
+                                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: normal; margin-bottom: 5px;">
                                         Calificación: ${course_grade}%
                                     </p>
                             % endif
-                                <p style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 12pt; color: #717170;">
+                                <p style="font-family: 'Noto Sans', sans-serif; font-weight: normal; font-size: 12pt; color: #717170;">
                                     <span class="role">${signatory['title']}</span>
                                     <span class="organization">${signatory['organization']}</span>
                                 </p>
