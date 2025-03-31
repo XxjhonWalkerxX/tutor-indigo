@@ -35,7 +35,7 @@
 
 <main id="main" aria-label="Content" tabindex="-1">
     <section class="find-courses">
-      <section class="courses-container" style="padding-right: 0px; padding-left: 0px;" >
+      <section class="courses-container" style="padding-right: 15px; padding-left: 15px;" >
         <!-- NEW IN INDIGO Heading was added. -->
         <div class="course-heading-area">
           <h2>¡Descubre tu potencial!</h2>
@@ -88,7 +88,8 @@
 
         <div class="course-holder courses${'' if course_discovery_enabled else ' no-course-discovery'}" role="region" aria-label="${_('List of Courses')}">
           <ul class="courses-listing courses-list">
-            %for course in reversed(courses):
+            %for course in sorted(courses, key=lambda c: c.created or datetime.datetime.min, reverse=True):
+
             <li class="courses-listing-item">
               <%include file="../course.html" args="course=course" />
             </li>
