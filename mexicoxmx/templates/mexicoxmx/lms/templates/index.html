@@ -52,8 +52,9 @@ from openedx.core.djangolib.markup import HTML, Text
 
       </header>
       <div class="home-page-content" style="padding-right: 15px; padding-left: 15px;">
-        <%include file="${courses_list}" />
-      </div>
+        <% ordered_courses = sorted(courses_list, key=lambda c: c.created, reverse=True) %>
+        <%include file="${ordered_courses}" />
+    </div>
 
     </section>
 </main>
