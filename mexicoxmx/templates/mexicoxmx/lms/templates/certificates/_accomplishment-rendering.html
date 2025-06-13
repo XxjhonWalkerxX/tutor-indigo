@@ -52,12 +52,18 @@ course_mode_class = course_mode if course_mode else ''
     @media print {
         .accomplishment-rendering {
             background-image: url('${static.url("images/BACK.png")}');
-            background-size: 100% auto; /* Ajuste para impresión */
+            background-size: 100% 100%; /* Ajuste para ocupar toda la página */
             background-position: center;
             background-repeat: no-repeat;
-            width: 1100px;  /* Tamaño carta en píxeles */
-            height: 850px; /* Tamaño carta en píxeles */
+            width: 100%;  /* Ocupa todo el ancho disponible */
+            height: 100vh; /* Ocupa toda la altura de la ventana */
             page-break-before: always; /* Asegura que cada certificado se imprima en una página nueva */
+            page-break-after: always; /* Evita que se imprima contenido después */
+            page-break-inside: avoid; /* Evita que el contenido se divida entre páginas */
+            margin: 0; /* Elimina márgenes */
+            padding: 0; /* Elimina padding */
+            -webkit-print-color-adjust: exact; /* Asegura que los colores se impriman correctamente */
+            print-color-adjust: exact;
         }
     }
 </style>
