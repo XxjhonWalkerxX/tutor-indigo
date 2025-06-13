@@ -36,7 +36,7 @@ enterprise_customer_link = get_enterprise_learner_portal(request)
     <div class="header-logo center-logo">
       <a href="${branding_api.get_home_url()}">
       <%block name="navigation_logo">
-        <img  class="logo" src="${static.url("images/MexicoX_logo.png")}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}"/>
+        <img  class="logo" src="${static.url("images/MexicoX_logo.png")}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}" style="height:90px;"/>
       </%block>
         % if settings.LOGO_IMAGE_EXTRA_TEXT == 'edge':
             <span class="font-italic"> | EDGE</span>
