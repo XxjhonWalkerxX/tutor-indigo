@@ -67,6 +67,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                     justify-content: space-between;
                     align-items: center;
                     flex-wrap: nowrap;
+                    max-height: 90px;
                 }
 
                 .interno {
@@ -125,7 +126,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
             <div class="interno">
                 <%include file="navbar-logo-2-header.html" />
             </div>
-            <div class="interno">
+            <div class="interno" style="position: relative;top: 29px;">
                 <%include file="navbar-logo-header.html" args="online_help_token=online_help_token"/>
             </div>
             <div class="interno">
