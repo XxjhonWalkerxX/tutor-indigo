@@ -8,6 +8,35 @@ from django.urls import reverse
 from openedx.core.djangolib.markup import HTML, Text
 %>
 
+<style>
+
+    .principal_imgtxt{
+        display: flex;
+        justify-content: center;
+        align-items:center
+    }
+    .imgtxt_mx{
+        width:50%;
+        padding: 0 2% 0 2%;
+    }
+
+    @media (max-width: 768px) {
+        .imgtxt_mx{
+            width: 100%;
+        }
+
+        .principal_imgtxt{
+            display: block;
+        }
+    }
+
+    }
+
+
+
+</style>
+
+
 <main id="main" aria-label="Content" tabindex="-1">
     <section class="home style-logout" style="padding-right: 0px; padding-left: 0px;">
       <header>
@@ -15,8 +44,8 @@ from openedx.core.djangolib.markup import HTML, Text
             <div id="carousel_amx_la_banners-14"></div>
             <script src="https://amx.la/code/973f0345-8cc9-4a52-89b3-eeb988b9f31e/"></script>
 
-            <div class="title" style="padding-right: 15px; padding-left: 15px;">
-            <div class="heading-group ">
+            <div class="title principal_imgtxt" style="padding-right: 15px; padding-left: 15px; ">
+            <div class="heading-group imgtxt_mx" >
               % if homepage_overlay_html:
                 ${homepage_overlay_html | n, decode.utf8}
               % else:
@@ -24,7 +53,7 @@ from openedx.core.djangolib.markup import HTML, Text
               % endif
             </div>
             % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
-              <div class="course-search">
+              <div class="course-search imgtxt_mx">
                 <form method="get" action="/courses">
                   <!-- UPDATE IN INDIGO2.1 - Change the structure for search bar  -->
                   <div class="search-field-wrapper">
@@ -45,7 +74,6 @@ from openedx.core.djangolib.markup import HTML, Text
             % endif
 
           </div>
-
 
           <%include file="index_promo_video.html" />
         </div>
