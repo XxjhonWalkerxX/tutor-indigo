@@ -20,10 +20,10 @@ from django.urls import reverse
       </h2>
 
         <%
-        if course.start is not None:
-        course_date_string = course.start.strftime('%Y-%m-%dT%H:%M:%S%z')
-        else:
-        course_date_string = ''
+            if course.start is not None:
+                course_date_string = course.start.strftime('%Y-%m-%dT%H:%M:%S%z')
+            else:
+                course_date_string = ''
         %>
         % if course.advertised_start is not None:
         <div class="course-date" aria-hidden="true">
