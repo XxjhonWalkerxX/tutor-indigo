@@ -89,12 +89,11 @@
         <div class="course-holder courses${'' if course_discovery_enabled else ' no-course-discovery'}" role="region" aria-label="${_('List of Courses')}">
           <ul class="courses-listing courses-list">
               <!-- [::-1] -->
-              %for course in courses:
+              %for course in reversed(courses):
                 <li class="courses-listing-item">
                     <%include file="../course.html" args="course=course" />
                 </li>
               %endfor
-
           </ul>
         </div>
       </section>
