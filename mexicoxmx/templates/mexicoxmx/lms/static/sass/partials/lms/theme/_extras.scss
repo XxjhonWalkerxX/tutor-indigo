@@ -99,23 +99,23 @@ header.global-header .nav-links .secondary .dropdown-user-menu {
 
 /* estilos en index para la imagen mexicox y el buscador*/
 
-    .principal_imgtxt{
+    .principal_imgtxt {
         display: flex;
         justify-content: center;
         align-items:center;
     }
 
-    .imgtxt_mx{
+    .imgtxt_mx {
         width:50%;
         padding: 0 2% 0 2%;
     }
 
     @media (max-width: 768px) {
-        .imgtxt_mx{
+        .imgtxt_mx {
             width: 100%;
         }
 
-        .principal_imgtxt{
+        .principal_imgtxt {
             display: block;
         }
     }
