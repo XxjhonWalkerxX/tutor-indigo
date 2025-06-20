@@ -4,7 +4,6 @@
 <%
 course_mode_class = course_mode if course_mode else ''
 %>
-
 <style>
     /* Definición de las fuentes personalizadas */
     @font-face {
@@ -13,118 +12,59 @@ course_mode_class = course_mode if course_mode else ''
         font-weight: normal;
         font-style: normal;
     }
-
     @font-face {
         font-family: 'Noto Sans';
         src: url('${static.url("fonts/NotoSans-Regular.woff")}') format('woff');
         font-weight: 400;
         font-style: normal;
     }
-
     @font-face {
         font-family: 'Noto Sans';
         src: url('${static.url("fonts/NotoSans-Bold.woff")}') format('woff');
         font-weight: 700;
         font-style: normal;
     }
-
     @font-face {
         font-family: 'Noto Sans';
         src: url('${static.url("fonts/NotoSans-Light.woff")}') format('woff');
         font-weight: 300;
         font-style: normal;
     }
-
-  /* Contenedor fijo */
-  .accomplishment-rendering {
-    position: relative;
-    width: 1100px;
-    height: 850px;
-    background: url('${static.url("images/BACK.png")}') no-repeat center/cover;
-    margin: auto;
-    padding: 0;
-  }
-
-  /* 1) Título “CONSTANCIA” y logo superior */
-  .accomplishment-type {
-    position: absolute;
-    top: 140px;           /* distancia desde el top del folio */
-    left: 50%;            
-    transform: translateX(-50%);
-    text-align: center;
-  }
-
-  /* 2) Nombre y curso */
-  .accomplishment-statement {
-    position: absolute;
-    top: 260px;           /* ponlo justo debajo del título */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;           /* ancho máximo para quiebre */
-    text-align: center;
-  }
-  .accomplishment-statement-lead strong,
-  .accomplishment-statement-lead .accomplishment-course {
-    display: block;
-    word-break: break-word;
-    overflow-wrap: break-word;
-    font-size: clamp(24pt, 4vw, 40pt);
-    margin: 0.2em 0;
-  }
-
-  /* 3) Texto de “impartido por…” */
-  .accomplishment-statement-detail {
-    font-size: 12pt;
-    position: absolute;
-    top: 360px;           /* ajusta para que quede en el espacio intermedio */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70%;
-    text-align: center;
-  }
-
-  /* 4) Bloque de firmas (si lo hay) */
-  .accomplishment-signatories {
-    position: absolute;
-    top: 410px;           /* justo debajo del texto anterior */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-  }
-
-  /* 5) Pie con logos (la imagen 2025 y QR) */
-  .accomplishment-orgs {
-    position: absolute;
-    bottom: 120px;        /* distancia desde la base del folio */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  /* 6) Datos finales: Certificate ID, disclaimer, etc */
-  .wrapper-accomplishment-metadata {
-    position: absolute;
-    bottom: 20px;         /* muy cerca de la base */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    font-size: 9pt;
-    text-align: center;
-  }
+    /* Ajuste del tamaño de la hoja a tamaño carta */
+    .accomplishment-rendering {
+        width: 1100px; /* Tamaño carta en pulgadas */
+        height: 850px;
+        background-image: url('${static.url("images/BACK.png")}');
+        background-size: contain; /* Mantiene la relación de aspecto */
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        padding: 20px;
+    }
+    @media print {
+        .accomplishment-rendering {
+            background-image: url('${static.url("images/BACK.png")}');
+            background-size: 100% auto; /* Ajuste para impresión */
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 1100px;  /* Tamaño carta en píxeles */
+            height: 850px; /* Tamaño carta en píxeles */
+            page-break-before: always; /* Asegura que cada certificado se imprima en una página nueva */
+        }
+    }
 </style>
-
 <main class="accomplishment accomplishment-main">
     <div class="wrapper-accomplishment-rendering">
-        <div class="accomplishment-rendering" style="background: url('${static.url("images/BACK3.png")}')">
+        <div class="accomplishment-rendering" style="background: url('${static.url("images/BACK.png")}')">
             <span class="deco-corner deco-corner-tl"></span>
             <span class="deco-corner deco-corner-tr"></span>
             <span class="deco-corner deco-corner-bl"></span>
             <span class="deco-corner deco-corner-br"></span>
-
-            <div class="accomplishment-type">
+            <div class="accomplishment-type" style="flex: 0 1 90%; margin-bottom: 0px;">
                 <span class="accomplishment-type-symbol">
                 </span>
                 % if not fullTheme:
@@ -132,7 +72,6 @@ course_mode_class = course_mode if course_mode else ''
                 % else:
                 <img class="src" src="${static.url("images/ENDOSO_2.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
                 % endif
-
                 <div style="margin-top: 40px;">
                     <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 15pt; color: #717170; font-weight: bold;">
                         <strong>Otorgan la presente</strong>
@@ -149,18 +88,16 @@ course_mode_class = course_mode if course_mode else ''
                     </span>
                 </div>
             </div>
-
             <div class="wrapper-statement-and-signatories" style="flex: 0 1 90%;">
                 <div class="accomplishment-statement">
                     <p class="accomplishment-statement-lead" style="flex: 0 1 90%; margin-top: 0px;">
                         <strong style="font-family: 'Patria Regular', serif; font-size: 40pt; color: #717170;">${accomplishment_copy_name}</strong>
                         <br>
                         <span style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170;">por haber concluido satisfactoriamente el curso masivo abierto en línea</span>
-                        <span class="accomplishment-course hd-1 emphasized" style="white-space: nowrap;"></span>
+                        <span class="accomplishment-course hd-1 emphasized">
                             <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 22pt; color: #717170;">${accomplishment_copy_course_name}</span>
                         </span>
                     </p>
-
                     % if customOrganizacionText:
                     <p class="accomplishment-statement-detail copy copy-lead" style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: bold; ;margin-bottom: 50px;">
                         <strong>${customOrganizacionText},</strong><br>a través de la plataforma <strong>MéxicoX</strong>.
@@ -170,10 +107,7 @@ course_mode_class = course_mode if course_mode else ''
                         impartido por <strong>${organization_long_name},</strong><br>a través de la plataforma <strong>MéxicoX</strong>.
                     </p>
                     % endif
-
-
                 </div>
-
                 % if mode != 'base':
                 <div class="accomplishment-signatories">
                     <h3 class="accomplishment-signatories-title sr-only">${_("Noted by")}</h3>
@@ -200,7 +134,6 @@ course_mode_class = course_mode if course_mode else ''
                 </div>
                 % endif
             </div>
-
             <div class="accomplishment-orgs">
                 <h3 class="accomplishment-orgs-title sr-only">${_("Supported by the following organizations")}</h3>
                 <ul class="wrapper-orgs list-orgs" style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 900px; margin: auto;" >
@@ -238,7 +171,6 @@ course_mode_class = course_mode if course_mode else ''
                 </div>
             </div>
         </div>
-
         <div class="wrapper-accomplishment-metadata">
             <div class="accomplishment-metadata">
                 <h2 class="accomplishment-metadata-title hd-6">${accomplishment_copy_more_about}</h2>
