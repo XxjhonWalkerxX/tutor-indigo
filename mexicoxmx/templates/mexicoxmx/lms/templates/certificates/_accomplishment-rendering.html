@@ -46,16 +46,34 @@ course_mode_class = course_mode if course_mode else ''
         padding: 20px;
     }
     @media print {
-        .accomplishment-rendering {
-            background-image: url('${static.url("images/BACK.png")}');
-            background-size: 100% auto; /* Ajuste para impresión */
-            background-position: center;
-            background-repeat: no-repeat;
-            width: 1100px;  /* Tamaño carta en píxeles */
-            height: 850px; /* Tamaño carta en píxeles */
-            page-break-before: always; /* Asegura que cada certificado se imprima en una página nueva */
-        }
-    }
+  /* 1) Papel Carta en horizontal */
+  @page {
+    size: letter landscape;
+    margin: 0;
+  }
+
+  /* 2) Oculta todo menos el certificado */
+  body * {
+    visibility: hidden !important;
+    margin: 0;
+    padding: 0;
+  }
+  .accomplishment-rendering,
+  .accomplishment-rendering * {
+    visibility: visible !important;
+  }
+
+  /* 3) Haz que el certificado llene toda la página horizontal */
+  .accomplishment-rendering {
+    position: fixed !important;
+    top: 0; left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+}
 </style>
 <main class="accomplishment accomplishment-main">
     <div class="wrapper-accomplishment-rendering">
