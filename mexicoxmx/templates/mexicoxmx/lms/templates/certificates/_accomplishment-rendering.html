@@ -222,12 +222,12 @@ course_mode_class = course_mode if course_mode else ''
                 % if mode != 'base':
                     % if certificate_data:
                         % for signatory in certificate_data.get('signatories', []):
-                            <p class="info-secundaria-fecha">${signatory['name']}</p>
+                            <p class="info-secundaria info-secundaria-fecha">${signatory['name']}</p>
                             % if course_grade:
-                                <p class="info-secundaria-calif">Calificación: ${course_grade}%</p>
+                                <p class="info-secundaria info-secundaria-calif">Calificación: ${course_grade}%</p>
                             % endif
-                            <p class="info-secundaria-duracion">${signatory['title']}</p>
-                            <p class="info-secundaria-duracion">${signatory['organization']}</p>
+                            <p class="info-secundaria info-secundaria-duracion">${signatory['title']}</p>
+                            <p class="info-secundaria info-secundaria-duracion">${signatory['organization']}</p>
                         % endfor
                     % endif
                 % endif
