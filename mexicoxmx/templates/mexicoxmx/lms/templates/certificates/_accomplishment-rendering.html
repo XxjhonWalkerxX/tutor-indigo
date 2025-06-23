@@ -8,33 +8,36 @@ course_mode_class = course_mode if course_mode else ''
     /* Definición de las fuentes personalizadas */
     @font-face {
         font-family: 'Patria Regular';
-        src: url('${static.url("fonts/Patria_Regular.woff")}') format('woff');
+        src: url('fonts/Patria_Regular.woff') format('woff');
         font-weight: normal;
         font-style: normal;
     }
+
     @font-face {
         font-family: 'Noto Sans';
-        src: url('${static.url("fonts/NotoSans-Regular.woff")}') format('woff');
+        src: url('fonts/NotoSans-Regular.woff') format('woff');
         font-weight: 400;
         font-style: normal;
     }
+
     @font-face {
         font-family: 'Noto Sans';
-        src: url('${static.url("fonts/NotoSans-Bold.woff")}') format('woff');
+        src: url('fonts/NotoSans-Bold.woff') format('woff');
         font-weight: 700;
         font-style: normal;
     }
+
     @font-face {
         font-family: 'Noto Sans';
-        src: url('${static.url("fonts/NotoSans-Light.woff")}') format('woff');
+        src: url('fonts/NotoSans-Light.woff') format('woff');
         font-weight: 300;
         font-style: normal;
     }
     /* Ajuste del tamaño de la hoja a tamaño carta */
     .accomplishment-rendering {
-        width: 1100px; /* Tamaño carta en pulgadas */
-        height: 850px;
-        background-image: url('${static.url("images/BACK.png")}');
+        width: 1100px;height: 850px;
+        box-sizing: border-box;      /* Para que el padding no amplíe el ancho total */
+        padding-right: 200px;   
         background-size: contain; /* Mantiene la relación de aspecto */
         background-position: center;
         background-repeat: no-repeat;
@@ -45,7 +48,48 @@ course_mode_class = course_mode if course_mode else ''
         margin: auto;
         padding: 20px;
     }
-    @media print {
+    .contenedor_principal{
+        width: 1000px;
+        height: 850px;
+    }
+    .accomplishment-type {
+        text-align: center;
+        padding-top: 5px;
+      }
+    .accomplishment-name {
+        font-family: 'Patria Regular', serif;
+        color: #717170;
+        white-space: nowrap;       /* Sin quiebres de línea */
+        font-size: 40pt;
+        text-align: center;
+        margin-top: -40px;
+      }
+    .info-curso{
+        text-align: center;
+    }
+    .info-curso p {
+        font-family: 'Noto Sans', sans-serif;
+        color: #717170;
+        margin-bottom: 0;
+        font-weight: normal;
+    }
+    .info-curso .texto-normal,
+    .info-curso .accomplishment-course,
+    .info-curso .accomplishment-statement-detail {
+        font-family: 'Noto Sans', sans-serif !important;
+    }
+    .info-curso .accomplishment-course {
+        font-weight: bold;
+        font-size: 22pt;
+        color: #717170;
+    }
+    .info-curso .accomplishment-statement-detail {
+        font-size: 12pt;
+        font-weight: bold;
+        margin-bottom: 50px;
+    }
+      
+@media print {
   /* 1) Papel Carta en horizontal */
   @page {
     size: letter landscape;
@@ -74,15 +118,75 @@ course_mode_class = course_mode if course_mode else ''
     padding: 0;
   }
 }
+
+    .info-secundaria {
+        font-family: 'Noto Sans', sans-serif;
+        color: #717170;
+        text-align: center;
+    }
+    .info-secundaria-fecha {
+        margin-top: -40px;
+        font-size: 12pt;
+        font-weight: normal;
+    }
+    .info-secundaria-calif {
+        margin-top: 15px;
+        font-size: 12pt;
+        font-weight: normal;
+        margin-bottom: 15px;
+    }
+    .info-secundaria-duracion {
+        margin-top: -5px;
+        font-size: 12pt;
+        font-weight: normal;
+    }
+    .info-secundaria-cert-id {
+        font-size: 9pt;
+        margin-left: -700px;
+        margin-top: -10px;
+    }
+    .info-secundaria-nota {
+        font-size: 6pt;
+        font-weight: 300;
+        text-align: center;
+        line-height: 0.5%;
+        margin-bottom: 15px;
+    }
+    .img-organization {
+        margin-top: 135px;
+    }
+    .images{
+        width: 950px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+    }
+    .images > div {
+        flex: 0 1 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .images > div img {
+        display: block;
+        margin: 0 auto;
+    }
+    .images > div p.info-secundaria-cert-id {
+        font-size: 10pt;
+        color: #555;
+    }
 </style>
-<main class="accomplishment accomplishment-main">
-    <div class="wrapper-accomplishment-rendering">
-        <div class="accomplishment-rendering" style="background: url('${static.url("images/BACK.png")}')">
+
+<main>
+    <div class="accomplishment-rendering" style="background: url('${static.url("images/BACK.png")}')">
+        <section class="contenedor_principal">
             <span class="deco-corner deco-corner-tl"></span>
             <span class="deco-corner deco-corner-tr"></span>
             <span class="deco-corner deco-corner-bl"></span>
             <span class="deco-corner deco-corner-br"></span>
-            <div class="accomplishment-type" style="flex: 0 1 90%; margin-bottom: 0px;">
+            <div class="accomplishment-type">
                 <span class="accomplishment-type-symbol">
                 </span>
                 % if not fullTheme:
@@ -90,105 +194,70 @@ course_mode_class = course_mode if course_mode else ''
                 % else:
                 <img class="src" src="${static.url("images/ENDOSO_2.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
                 % endif
-                <div style="margin-top: 40px;">
-                    <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 15pt; color: #717170; font-weight: bold;">
-                        <strong>Otorgan la presente</strong>
-                    </span>
+                <div style="margin-top: 25px;">
+                    <span class="margen-otorgan" style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 15pt; color: #717170;"><strong>Otorgan la presente</strong></span>
                     <br>
                     <br>
-                    <span style="font-family: 'Patria Regular', serif; font-size: 41pt; color: #AE8420; font-weight: bold;">
-                        <strong>CONSTANCIA</strong>
-                    </span>
+                    <span class="margen-constancia" style="font-family: 'Patria Regular', serif; font-size: 41pt; color: #AE8420; font-weight: bold;"><strong>CONSTANCIA</strong></span>
                     <br>
                     <br>
-                    <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 15pt; color: #717170; font-weight: bold;">
-                        <strong>a</strong>
-                    </span>
+                    <span class="margen-a" style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 15pt; color: #717170;"><strong>a</strong></span>
                 </div>
             </div>
-            <div class="wrapper-statement-and-signatories" style="flex: 0 1 90%;">
-                <div class="accomplishment-statement">
-                    <p class="accomplishment-statement-lead" style="flex: 0 1 90%; margin-top: 0px;">
-                        <strong style="font-family: 'Patria Regular', serif; font-size: 40pt; color: #717170;">${accomplishment_copy_name}</strong>
-                        <br>
-                        <span style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170;">por haber concluido satisfactoriamente el curso masivo abierto en línea</span>
-                        <span class="accomplishment-course hd-1 emphasized">
-                            <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 22pt; color: #717170;">${accomplishment_copy_course_name}</span>
-                        </span>
-                    </p>
-                    % if customOrganizacionText:
-                    <p class="accomplishment-statement-detail copy copy-lead" style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: bold; ;margin-bottom: 50px;">
-                        <strong>${customOrganizacionText},</strong><br>a través de la plataforma <strong>MéxicoX</strong>.
-                    </p>
-                    % else:
-                    <p class="accomplishment-statement-detail copy copy-lead" style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: normal; ;margin-bottom: 50px;">
-                        impartido por <strong>${organization_long_name},</strong><br>a través de la plataforma <strong>MéxicoX</strong>.
-                    </p>
-                    % endif
-                </div>
-                % if mode != 'base':
-                <div class="accomplishment-signatories">
-                    <h3 class="accomplishment-signatories-title sr-only">${_("Noted by")}</h3>
-                    <div class="wrapper-signatories">
-                        <div class="list-signatories">
-                            % if certificate_data:
-                            % for signatory in certificate_data.get('signatories', []):
-                            <div style="text-align: center;">
-                                <span style="font-family: 'Noto Sans', sans-serif; font-weight: normal; font-size: 12pt; color: #717170;">${signatory['name']}</span>
-                                % if course_grade:
-                                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: normal; margin-bottom: 5px;">
-                                        Calificación: ${course_grade}%
-                                    </p>
-                            % endif
-                                <p style="font-family: 'Noto Sans', sans-serif; font-weight: normal; font-size: 12pt; color: #717170;">
-                                    <span class="role">${signatory['title']}</span>
-                                    <span class="organization">${signatory['organization']}</span>
-                                </p>
-                            </div>
-                            % endfor
-                            % endif
-                        </div>
-                    </div>
-                </div>
+            <div class="accomplishment-name">
+                <strong>${accomplishment_copy_name}</strong>
+            </div>
+            <div class="info-curso">
+                <span style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170;">por haber concluido satisfactoriamente el curso masivo abierto en línea</span>
+                <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 22pt; color: #717170;">${accomplishment_copy_course_name}</span>
+                % if customOrganizacionText:
+                <p class="accomplishment-statement-detail copy copy-lead" style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: bold; ;margin-bottom: 50px;">
+                    <strong>${customOrganizacionText},</strong><br>a través de la plataforma <strong>MéxicoX</strong>.
+                </p>
+                % else:
+                <p class="accomplishment-statement-detail copy copy-lead" style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: normal; ;margin-bottom: 50px;">
+                    impartido por <strong>${organization_long_name},</strong><br>a través de la plataforma <strong>MéxicoX</strong>.
+                </p>
                 % endif
             </div>
-            <div class="accomplishment-orgs">
-                <h3 class="accomplishment-orgs-title sr-only">${_("Supported by the following organizations")}</h3>
-                <ul class="wrapper-orgs list-orgs" style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 900px; margin: auto;" >
-                    <li class="wrapper-organization" style="flex: 1; text-align: left;">
-                        <div class="organization organization-edX">
-                            <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}" alt="mujeres indigenas" style="margin-left: -100px; margin-top: -80px;">
-                        </div>
-                    </li>
-                    % if organization_logo_extra:
-                    <li class="wrapper-organization" style="flex: 2; display: flex; justify-content: center; gap: 20px;">
-                        
-                        <div class="organization">
-                            <img class="organization-logo" src="${organization_logo_extra}" alt="${platform_name}">
-                        </div>
-                    </li>
+            <div class="datos">
+                % if mode != 'base':
+                    % if certificate_data:
+                        % for signatory in certificate_data.get('signatories', []):
+                            <p class=" info-secundaria-fecha">${signatory['name']}</p>
+                            % if course_grade:
+                                <p class="info-secundaria-calif">Calificación: ${course_grade}%</p>
+                            % endif
+                            <p class="info-secundaria-duracion">${signatory['title']}</p>
+                            <p class="info-secundaria-duracion">${signatory['organization']}</p>
+                        % endfor
                     % endif
-                    % if organization_logo:
-                    <li class="wrapper-organization" style="flex: 2; display: flex; justify-content: center; gap: 20px;">
-                        <div class="organization">
-                            <img class="organization-logo" src="${organization_logo.url}" alt="${platform_name}">
-                        </div>
-                    </li>
-                    % endif
-                    <li class="wrapper-organization" style="flex: 1; text-align: right;">
-                        <div class="organization organization-edX">
-                            <img src="https://certificados.mexicox.gob.mx/generate_qr/${certificate_id_number}/" height="100px" style="margin-top: -160px;">
-                            <p style="font-family: 'Noto Sans', sans-serif; font-size: 9pt; color: #717170; margin-left: -700px; margin-top: -10px">Certificate ID Number: <strong>${certificate_id_number}</strong></p>
-                        </div>
-                    </li>
-                </ul>
-                <div class="accomplishment-orgs" style="margin-top: -40px; margin-left: -60px;">
-                    <p style="font-family: 'Noto Sans', sans-serif; font-weight: 300; font-size: 6pt; color: #717170; text-align:center; line-height: 0.5% margin-top: -5px; margin-bottom: 0px;">Este curso no acredita al participante como alumno oficial de la institución que lo imparte.</p>
-                    <p style="font-family: 'Noto Sans', sans-serif; font-weight: 300; font-size: 6pt; color: #717170; text-align:center; line-height: 0.5%; margin-top: 0px;">No contiene créditos académicos ni revalidación académica en ninguno de los programas de estudios formales o de extensión. </p>
-                    
-                </div>
+                % endif
             </div>
-        </div>
+            <section class="images">
+                <div>
+                    <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}" alt="mujeres indigenas" style="margin-left: -100px; margin-top: -80px;">
+                </div>
+                % if organization_logo_extra:
+                    <div>
+                        <img src="${organization_logo_extra}" alt="${platform_name}">
+                    </div>
+                % endif
+                % if organization_logo:
+                    <div>
+                        <img src="${organization_logo.url}" alt="${platform_name}">
+                    </div>
+                % endif
+                <div>
+                    <img src="https://certificados.mexicox.gob.mx/generate_qr/${certificate_id_number}/" height="100px" style="margin-top: -160px;">
+                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 9pt; color: #717170; margin-left: -700px; margin-top: -10px">Certificate ID Number: <strong>${certificate_id_number}</strong></p>
+                </div>
+            </section>
+            <div>
+                <p class="info-secundaria info-secundaria-nota">Este curso no acredita al participante como alumno oficial de la institución que lo imparte.</p>
+                <p style="info-secundaria info-secundaria-nota">No contiene créditos académicos ni revalidación académica en ninguno de los programas de estudios formales o de extensión. </p>  
+            </div>
+        </section>
         <div class="wrapper-accomplishment-metadata">
             <div class="accomplishment-metadata">
                 <h2 class="accomplishment-metadata-title hd-6">${accomplishment_copy_more_about}</h2>
@@ -216,5 +285,7 @@ course_mode_class = course_mode if course_mode else ''
                 </div>
             </div>
         </div>
-    </div>
+        
+    
+
 </main>
