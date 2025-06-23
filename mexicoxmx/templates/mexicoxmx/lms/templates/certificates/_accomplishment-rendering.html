@@ -206,14 +206,14 @@ course_mode_class = course_mode if course_mode else ''
                 <strong>${accomplishment_copy_name}</strong>
             </div>
             <div class="info-curso">
-                <span style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170;">por haber concluido satisfactoriamente el curso masivo abierto en línea</span>
+                <span class="texto-normal">por haber concluido satisfactoriamente el curso masivo abierto en línea</span>
                 <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 22pt; color: #717170;">${accomplishment_copy_course_name}</span>
                 % if customOrganizacionText:
-                <p class="accomplishment-statement-detail copy copy-lead" style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: bold; ;margin-bottom: 50px;">
+                <p class="accomplishment-statement-detail">
                     <strong>${customOrganizacionText},</strong><br>a través de la plataforma <strong>MéxicoX</strong>.
                 </p>
                 % else:
-                <p class="accomplishment-statement-detail copy copy-lead" style="font-family: 'Noto Sans', sans-serif; font-size: 12pt; color: #717170; font-weight: normal; ;margin-bottom: 50px;">
+                <p class="accomplishment-statement-detail">
                     impartido por <strong>${organization_long_name},</strong><br>a través de la plataforma <strong>MéxicoX</strong>.
                 </p>
                 % endif
