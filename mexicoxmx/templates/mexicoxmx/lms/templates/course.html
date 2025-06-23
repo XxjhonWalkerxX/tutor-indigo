@@ -53,7 +53,7 @@ from django.urls import reverse
         <!-- Div que contiene la informacion de que institucion se imparte el curso-->
         <div style="width:100%; background-color:#FFE4C4;">
             <span class="course-organization">${course.display_org_with_default}</span>
-            <img src="${static.url("images/CONASAMA.png")}" height="28px" style="display:block; margin:auto;" />
+            <img src="${course.org.logo}" height="28px" style="display:block; margin:auto;" />
             <img src="${static.url("images/Logos_Educacion_Aprende_black.png")}" height="28px" style="display:block; margin:auto;" />
         </div>
     </div>
