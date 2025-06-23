@@ -222,19 +222,19 @@ course_mode_class = course_mode if course_mode else ''
                 % if mode != 'base':
                     % if certificate_data:
                         % for signatory in certificate_data.get('signatories', []):
-                            <p class="info-secundaria-fecha">${signatory['name']}</p>
+                            <p class="info-secundaria info-secundaria-fecha">${signatory['name']}</p>
                             % if course_grade:
-                                <p class="info-secundaria-calif">Calificación: ${course_grade}%</p>
+                                <p class="info-secundaria info-secundaria-calif">Calificación: ${course_grade}%</p>
                             % endif
-                            <p class="info-secundaria-duracion">${signatory['title']}</p>
-                            <p class="info-secundaria-duracion">${signatory['organization']}</p>
+                            <p class="info-secundaria info-secundaria-duracion">${signatory['title']}</p>
+                            <p class="info-secundaria info-secundaria-duracion">${signatory['organization']}</p>
                         % endfor
                     % endif
                 % endif
             </div>
             <section class="images">
                 <div>
-                    <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}" alt="mujeres indigenas" style="margin-left: -100px; margin-top: -80px;">
+                    <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}">
                 </div>
                 % if organization_logo_extra:
                     <div>
@@ -247,7 +247,7 @@ course_mode_class = course_mode if course_mode else ''
                     </div>
                 % endif
                 <div>
-                    <img src="https://certificados.mexicox.gob.mx/generate_qr/${certificate_id_number}/" height="100px" style="margin-top: -160px;">
+                    <img src="https://certificados.mexicox.gob.mx/generate_qr/${certificate_id_number}/" height="100px">
                     <p style="font-family: 'Noto Sans', sans-serif; font-size: 9pt; color: #717170; margin-left: -700px; margin-top: -10px">Certificate ID Number: <strong>${certificate_id_number}</strong></p>
                 </div>
             </section>
