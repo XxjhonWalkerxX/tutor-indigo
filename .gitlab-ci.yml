@@ -34,7 +34,7 @@ deploy_dev:
     - tutor plugins enable mexicoxmx
     - tutor config save
     - tutor local do settheme mexicoxmx
-    - tutor images build --build-arg EDX_PLATFORM_REPOSITORY=https://github.com/aprendemx/edx-platform.git --build-arg EDX_PLATFORM_VERSION=correo_masivos openedx
+    - tutor images build openedx
     - tutor local stop 
     - tutor local start -d
   tags:
