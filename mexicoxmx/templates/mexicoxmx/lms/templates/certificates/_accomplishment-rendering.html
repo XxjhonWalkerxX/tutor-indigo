@@ -88,37 +88,6 @@ course_mode_class = course_mode if course_mode else ''
         font-weight: bold;
         margin-bottom: 50px;
     }
-      
-@media print {
-  /* 1) Papel Carta en horizontal */
-  @page {
-    size: letter landscape;
-    margin: 0;
-  }
-
-  /* 2) Oculta todo menos el certificado */
-  body * {
-    visibility: hidden !important;
-    margin: 0;
-    padding: 0;
-  }
-  .accomplishment-rendering,
-  .accomplishment-rendering * {
-    visibility: visible !important;
-  }
-
-  /* 3) Haz que el certificado llene toda la página horizontal */
-  .accomplishment-rendering {
-    position: fixed !important;
-    top: 0; left: 0;
-    width: 100% !important;
-    height: 100% !important;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-}
-
     .info-secundaria {
         font-family: 'Noto Sans', sans-serif;
         color: #717170;
@@ -177,6 +146,35 @@ course_mode_class = course_mode if course_mode else ''
         font-size: 10pt;
         color: #555;
     }
+    @media print {
+  /* 1) Papel Carta en horizontal */
+    @page {
+        size: letter landscape;
+        margin: 0;
+    }
+
+    /* 2) Oculta todo menos el certificado */
+    body * {
+        visibility: hidden !important;
+        margin: 0;
+        padding: 0;
+    }
+    .accomplishment-rendering,
+    .accomplishment-rendering * {
+        visibility: visible !important;
+    }
+
+    /* 3) Haz que el certificado llene toda la página horizontal */
+    .accomplishment-rendering {
+        position: fixed !important;
+        top: 0; left: 0;
+        width: 100% !important;
+        height: 100% !important;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+}
 </style>
 
 <main>
@@ -195,13 +193,13 @@ course_mode_class = course_mode if course_mode else ''
                 <img class="src" src="${static.url("images/ENDOSO_2.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
                 % endif
                 <div style="margin-top: 25px;">
-                    <span class="margen-otorgan" style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 15pt; color: #717170;"><strong>Otorgan la presente</strong></span>
+                    <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 15pt; color: #717170;"><strong>Otorgan la presente</strong></span>
                     <br>
                     <br>
-                    <span class="margen-constancia" style="font-family: 'Patria Regular', serif; font-size: 41pt; color: #AE8420; font-weight: bold;"><strong>CONSTANCIA</strong></span>
+                    <span style="font-family: 'Patria Regular', serif; font-size: 41pt; color: #AE8420; font-weight: bold;"><strong>CONSTANCIA</strong></span>
                     <br>
                     <br>
-                    <span class="margen-a" style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 15pt; color: #717170;"><strong>a</strong></span>
+                    <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 15pt; color: #717170;"><strong>a</strong></span>
                 </div>
             </div>
             <div class="accomplishment-name">
