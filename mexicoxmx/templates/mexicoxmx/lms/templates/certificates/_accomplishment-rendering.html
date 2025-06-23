@@ -234,7 +234,7 @@ course_mode_class = course_mode if course_mode else ''
             </div>
             <section class="images">
                 <div>
-                    <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}" alt="mujeres indigenas" style="margin-left: -100px; margin-top: -80px;">
+                    <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}">
                 </div>
                 % if organization_logo_extra:
                     <div>
@@ -247,7 +247,7 @@ course_mode_class = course_mode if course_mode else ''
                     </div>
                 % endif
                 <div>
-                    <img src="https://certificados.mexicox.gob.mx/generate_qr/${certificate_id_number}/" height="100px" style="margin-top: -160px;">
+                    <img src="https://certificados.mexicox.gob.mx/generate_qr/${certificate_id_number}/" height="100px">
                     <p style="font-family: 'Noto Sans', sans-serif; font-size: 9pt; color: #717170; margin-left: -700px; margin-top: -10px">Certificate ID Number: <strong>${certificate_id_number}</strong></p>
                 </div>
             </section>
