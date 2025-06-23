@@ -8,28 +8,28 @@ course_mode_class = course_mode if course_mode else ''
     /* Definición de las fuentes personalizadas */
     @font-face {
         font-family: 'Patria Regular';
-        src: url('fonts/Patria_Regular.woff') format('woff');
+        src: url('${static.url("fonts/Patria_Regular.woff")}') format('woff');
         font-weight: normal;
         font-style: normal;
     }
 
     @font-face {
         font-family: 'Noto Sans';
-        src: url('fonts/NotoSans-Regular.woff') format('woff');
+        src: url('${static.url("fonts/NotoSans-Regular.woff")}') format('woff');
         font-weight: 400;
         font-style: normal;
     }
 
     @font-face {
         font-family: 'Noto Sans';
-        src: url('fonts/NotoSans-Bold.woff') format('woff');
+        src: url('${static.url("fonts/NotoSans-Bold.woff")}') format('woff');
         font-weight: 700;
         font-style: normal;
     }
 
     @font-face {
         font-family: 'Noto Sans';
-        src: url('fonts/NotoSans-Light.woff') format('woff');
+        src: url('${static.url("fonts/NotoSans-Light.woff")}') format('woff');
         font-weight: 300;
         font-style: normal;
     }
@@ -222,7 +222,7 @@ course_mode_class = course_mode if course_mode else ''
                 % if mode != 'base':
                     % if certificate_data:
                         % for signatory in certificate_data.get('signatories', []):
-                            <p class=" info-secundaria-fecha">${signatory['name']}</p>
+                            <p class="info-secundaria-fecha">${signatory['name']}</p>
                             % if course_grade:
                                 <p class="info-secundaria-calif">Calificación: ${course_grade}%</p>
                             % endif
@@ -283,7 +283,4 @@ course_mode_class = course_mode if course_mode else ''
                 </div>
             </div>
         </div>
-        
-    
-
 </main>
