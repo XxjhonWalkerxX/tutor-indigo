@@ -255,34 +255,35 @@ course_mode_class = course_mode if course_mode else ''
             </section>
             <div>
                 <p class="info-secundaria info-secundaria-nota">Este curso no acredita al participante como alumno oficial de la institución que lo imparte.</p>
-                <p style="info-secundaria info-secundaria-nota">No contiene créditos académicos ni revalidación académica en ninguno de los programas de estudios formales o de extensión. </p>  
+                <p class="info-secundaria info-secundaria-nota">No contiene créditos académicos ni revalidación académica en ninguno de los programas de estudios formales o de extensión. </p>  
             </div>
-        </section>
-        <div class="wrapper-accomplishment-metadata">
-            <div class="accomplishment-metadata">
-                <h2 class="accomplishment-metadata-title hd-6">${accomplishment_copy_more_about}</h2>
-                <div class="wrapper-metadata">
-                    <dl class="metadata accomplishment-recipient">
-                        <dt class="label sr-only">${_("Awarded to:")}</dt>
-                        <dd class="value copy copy-meta">
-                            <span class="recipient-img">
-                                <img class="src" src="/static/certificates/images/demo-user-profile.png" alt="Recipient Image">
-                            </span>
-                            <div class="recipient-details">
-                                <h3 class="recipient-name">${accomplishment_copy_name}</h3>
-                                <p class="recipient-username">${accomplishment_copy_username} @ ${platform_name}</p>
-                            </div>
-                        </dd>
-                    </dl>
-                    <dl class="metadata accomplishment-id">
-                        <dt class="label copy copy-meta">${certificate_id_number_title}:</dt>
-                        <dd class="value copy copy-base">${certificate_id_number}</dd>
-                    </dl>
-                    <dl class="metadata accomplishment-date">
-                        <dt class="label copy copy-meta">${certificate_date_issued_title}</dt>
-                        <dd class="value copy copy-base">${certificate_date_issued}</dd>
-                    </dl>
+            <div class="wrapper-accomplishment-metadata">
+                <div class="accomplishment-metadata">
+                    <h2 class="accomplishment-metadata-title hd-6">${accomplishment_copy_more_about}</h2>
+                    <div class="wrapper-metadata">
+                        <dl class="metadata accomplishment-recipient">
+                            <dt class="label sr-only">${_("Awarded to:")}</dt>
+                            <dd class="value copy copy-meta">
+                                <span class="recipient-img">
+                                    <img class="src" src="/static/certificates/images/demo-user-profile.png" alt="Recipient Image">
+                                </span>
+                                <div class="recipient-details">
+                                    <h3 class="recipient-name">${accomplishment_copy_name}</h3>
+                                    <p class="recipient-username">${accomplishment_copy_username} @ ${platform_name}</p>
+                                </div>
+                            </dd>
+                        </dl>
+                        <dl class="metadata accomplishment-id">
+                            <dt class="label copy copy-meta">${certificate_id_number_title}:</dt>
+                            <dd class="value copy copy-base">${certificate_id_number}</dd>
+                        </dl>
+                        <dl class="metadata accomplishment-date">
+                            <dt class="label copy copy-meta">${certificate_date_issued_title}</dt>
+                            <dd class="value copy copy-base">${certificate_date_issued}</dd>
+                        </dl>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+
 </main>
