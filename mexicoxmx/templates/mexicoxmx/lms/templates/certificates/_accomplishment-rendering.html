@@ -149,7 +149,7 @@ course_mode_class = course_mode if course_mode else ''
     @media print {
   /* 1) Papel Carta en horizontal */
     @page {
-        size: letter landscape;
+        size: 11in 8.5in;
         margin: 0;
     }
 
@@ -208,6 +208,7 @@ course_mode_class = course_mode if course_mode else ''
             <div class="info-curso">
                 <p>
                     <span class="texto-normal" style="font-family: 'Noto Sans', sans-serif;">por haber concluido satisfactoriamente el curso masivo abierto en línea</span>
+                    <br>
                     <span class="accomplishment-course">${accomplishment_copy_course_name}</span>
                 </p>
                 % if customOrganizacionText:
