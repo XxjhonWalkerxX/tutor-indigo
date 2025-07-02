@@ -35,7 +35,7 @@ course_mode_class = course_mode if course_mode else ''
     }
     /* Ajuste del tamaño de la hoja a tamaño carta */
     .accomplishment-rendering {
-        width: 1100px;height: 850px;
+        width: 2550px;height: 3300px;
         box-sizing: border-box;      /* Para que el padding no amplíe el ancho total */
         padding-right: 200px;   
         background-size: contain; /* Mantiene la relación de aspecto */
@@ -49,8 +49,8 @@ course_mode_class = course_mode if course_mode else ''
         padding: 20px;
     }
     .contenedor_principal{
-        width: 1000px;
-        height: 850px;
+        width: 2400px;
+        height: 3300px;
     }
     .accomplishment-type {
         text-align: center;
@@ -147,7 +147,7 @@ course_mode_class = course_mode if course_mode else ''
         color: #555;
     }
     @media print {
-  /* 1) Papel Carta en horizontal */
+    /* 1) Papel Carta en horizontal */
     @page {
         size: letter landscape;
         margin: 0;
@@ -178,7 +178,7 @@ course_mode_class = course_mode if course_mode else ''
 </style>
 
 <main>
-    <div class="accomplishment-rendering" style="background: url('${static.url("images/BACK.png")}')">
+    <div class="accomplishment-rendering" style="background: url('${static.url("images/BACK_LETTER.png")}')">
         <section class="contenedor_principal">
             <span class="deco-corner deco-corner-tl"></span>
             <span class="deco-corner deco-corner-tr"></span>
@@ -208,6 +208,7 @@ course_mode_class = course_mode if course_mode else ''
             <div class="info-curso">
                 <p>
                     <span class="texto-normal" style="font-family: 'Noto Sans', sans-serif;">por haber concluido satisfactoriamente el curso masivo abierto en línea</span>
+                    <br>
                     <br>
                     <span class="accomplishment-course">${accomplishment_copy_course_name}</span>
                 </p>
@@ -241,12 +242,12 @@ course_mode_class = course_mode if course_mode else ''
                 </div>
                 % if organization_logo_extra:
                     <div>
-                        <img src="${organization_logo_extra}" alt="${platform_name}">
+                        <img src="${organization_logo_extra}" alt="${platform_name}" style="max-width: 200px; max-height: 200px; width: auto; height: auto;">
                     </div>
                 % endif
                 % if organization_logo:
                     <div>
-                        <img src="${organization_logo.url}" alt="${platform_name}">
+                        <img src="${organization_logo.url}" alt="${platform_name}" style="max-width: 200px; max-height: 200px; width: auto; height: auto;">
                     </div>
                 % endif
                 <div>
