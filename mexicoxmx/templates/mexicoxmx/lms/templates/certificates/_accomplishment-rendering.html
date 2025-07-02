@@ -38,7 +38,7 @@ course_mode_class = course_mode if course_mode else ''
         width: 1100px;height: 850px;
         box-sizing: border-box;      /* Para que el padding no amplíe el ancho total */
         padding-right: 200px;   
-        background-size: contain; /* Mantiene la relación de aspecto */
+        background-size: cover !important; /* Mantiene la relación de aspecto */
         background-position: center;
         background-repeat: no-repeat;
         display: flex;
@@ -146,35 +146,44 @@ course_mode_class = course_mode if course_mode else ''
         font-size: 10pt;
         color: #555;
     }
-    @media print {
-  /* 1) Papel Carta en horizontal */
-    @page {
-        size: letter landscape;
-        margin: 0px;
-    }
+@media print {
+  @page {
+    size: letter landscape;
+    margin: 0;
+  }
 
-    /* 2) Oculta todo menos el certificado */
-    body * {
-        visibility: hidden !important;
-        margin: 0;
-        padding: 0;
-    }
-    .accomplishment-rendering,
-    .accomplishment-rendering * {
-        visibility: visible !important;
-    }
+  body * {
+    visibility: hidden !important;
+    margin: 0;
+    padding: 0;
+  }
 
-    /* 3) Haz que el certificado llene toda la página horizontal */
-    .accomplishment-rendering {
-        position: fixed !important;
-        top: 0; left: 0;
-        width: 279.4mm !important;   /* 11 pulgadas */
-        height: 215.9mm !important;  /* 8.5 pulgadas */
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-    }
+  .accomplishment-rendering,
+  .accomplishment-rendering * {
+    visibility: visible !important;
+  }
+
+  .accomplishment-rendering {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 279.4mm !important;
+    height: 215.9mm !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .contenedor_principal {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+  }
+}
+
 </style>
 
 <main>
@@ -188,9 +197,10 @@ course_mode_class = course_mode if course_mode else ''
                 <span class="accomplishment-type-symbol">
                 </span>
                 % if not fullTheme:
-                <img class="src" src="${static.url("images/ENDOSO_5.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
+                    <img class="src" src="${static.url("images/ENDOSO_5.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
                 % else:
-                <img class="src" src="${static.url("images/Logos_Educacion_Aprende.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
+                <!-- <img class="src" src="${static.url("images/Logos_Educacion_Aprende.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;"> -->
+                  <img class="src" src="${static.url("images/ENDOSO_2.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
                 % endif
                 <div style="margin-top: 25px;">
                     <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 15pt; color: #717170;"><strong>Otorgan la presente</strong></span>
@@ -233,16 +243,16 @@ course_mode_class = course_mode if course_mode else ''
                             <p class="info-secundaria info-secundaria-duracion">${signatory['title']}</p>
                             <p class="info-secundaria info-secundaria-duracion">${signatory['organization']}</p>
                         % endfor
-                    % endif
+                    % endif 
                 % endif
             </div>
             <section class="images">
                 <div>
                     <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}">
                 </div>
-                <div>
+                <!-- <div>
                     <img src="${static.url("images/logo.png")}" alt="${platform_name}" style="max-width: 100px; max-height: 50px; width: auto; height: auto;">
-                </div>
+                </div> -->
                 % if organization_logo:
                     <div>
                         <img src="${organization_logo.url}" alt="${platform_name}" style="max-width: 100px; max-height: 50px; width: auto; height: auto;">
