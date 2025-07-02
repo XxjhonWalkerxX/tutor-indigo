@@ -35,7 +35,7 @@ course_mode_class = course_mode if course_mode else ''
     }
     /* Ajuste del tamaño de la hoja a tamaño carta */
     .accomplishment-rendering {
-        width: 1100px;height: 1424px;
+        width: 1100px;height: 850px;
         box-sizing: border-box;      /* Para que el padding no amplíe el ancho total */
         padding-right: 200px;   
         background-size: contain; /* Mantiene la relación de aspecto */
@@ -50,7 +50,7 @@ course_mode_class = course_mode if course_mode else ''
     }
     .contenedor_principal{
         width: 1000px;
-        height: 1424px;
+        height: 850px;
     }
     .accomplishment-type {
         text-align: center;
@@ -146,39 +146,37 @@ course_mode_class = course_mode if course_mode else ''
         font-size: 10pt;
         color: #555;
     }
-    @media print {
-    /* 1) Papel Carta en horizontal */
-    @page {
-        size: letter landscape;
-        margin: 0;
-    }
-
-    /* 2) Oculta todo menos el certificado */
-    body * {
-        visibility: hidden !important;
-        margin: 0;
-        padding: 0;
-    }
-    .accomplishment-rendering,
-    .accomplishment-rendering * {
-        visibility: visible !important;
-    }
-
-    /* 3) Haz que el certificado llene toda la página horizontal */
-    .accomplishment-rendering {
-        position: fixed !important;
-        top: 0; left: 0;
-        width: 100% !important;
-        height: 100% !important;
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+@media print {
+  @page {
+    size: letter landscape;
+    margin: 0;
+  }
+  body * {
+    visibility: hidden !important;
+    margin: 0;
+    padding: 0;
+  }
+  .accomplishment-rendering,
+  .accomplishment-rendering * {
+    visibility: visible !important;
+  }
+  .accomplishment-rendering {
+    position: absolute !important;
+    top: 0; left: 0;
+    width: 279.4mm !important;   /* 11 pulgadas */
+    height: 215.9mm !important;  /* 8.5 pulgadas */
+    box-sizing: border-box;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
 }
 </style>
 
 <main>
-    <div class="accomplishment-rendering" style="background: url('${static.url("images/BACK_2_LETTER.png")}')">
+    <div class="accomplishment-rendering" style="background: url('${static.url("images/BACK.png")}')">
         <section class="contenedor_principal">
             <span class="deco-corner deco-corner-tl"></span>
             <span class="deco-corner deco-corner-tr"></span>
