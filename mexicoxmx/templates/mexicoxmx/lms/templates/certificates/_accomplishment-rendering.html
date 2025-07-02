@@ -150,7 +150,7 @@ course_mode_class = course_mode if course_mode else ''
   /* 1) Papel Carta en horizontal */
     @page {
         size: letter landscape;
-        margin: 1px;
+        margin: 0px;
     }
 
     /* 2) Oculta todo menos el certificado */
@@ -190,7 +190,7 @@ course_mode_class = course_mode if course_mode else ''
                 % if not fullTheme:
                 <img class="src" src="${static.url("images/ENDOSO_5.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
                 % else:
-                <img class="src" src="${static.url("images/ENDOSO_2.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
+                <img class="src" src="${static.url("images/Logos_Educacion_Aprende.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
                 % endif
                 <div style="margin-top: 25px;">
                     <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 15pt; color: #717170;"><strong>Otorgan la presente</strong></span>
@@ -240,14 +240,12 @@ course_mode_class = course_mode if course_mode else ''
                 <div>
                     <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}">
                 </div>
-                % if organization_logo_extra:
-                    <div>
-                        <img src="${organization_logo_extra}" alt="${platform_name}" style="max-width: 200px; max-height: 200px; width: auto; height: auto;">
-                    </div>
-                % endif
+                <div>
+                    <img src="${static.url("images/logo.png")}" alt="${platform_name}" style="max-width: 50px; max-height: 50px; width: auto; height: auto;">
+                </div>
                 % if organization_logo:
                     <div>
-                        <img src="${organization_logo.url}" alt="${platform_name}" style="max-width: 200px; max-height: 200px; width: auto; height: auto;">
+                        <img src="${organization_logo.url}" alt="${platform_name}" style="max-width: 50px; max-height: 50px; width: auto; height: auto;">
                     </div>
                 % endif
                 <div>
