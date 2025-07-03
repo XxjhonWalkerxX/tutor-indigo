@@ -178,7 +178,7 @@ course_mode_class = course_mode if course_mode else ''
         max-height: 90px;
         width: auto;
         height: auto;
-        padding-left: 150px;
+        padding-left: 100px;
     }
 @media print {
   @page {
@@ -313,7 +313,7 @@ course_mode_class = course_mode if course_mode else ''
                     % endif
                 </div>
                 <div>
-                    <img src="https://certificados.mexicox.gob.mx/generate_qr/${certificate_id_number}/" height="100px">
+                    <img class="img-qr" src="https://certificados.mexicox.gob.mx/generate_qr/${certificate_id_number}/" height="100px">
                     <!-- <p style="font-family: 'Noto Sans', sans-serif; font-size: 9pt; color: #717170; margin-left: -700px; margin-top: -10px">Certificate ID Number: <strong>${certificate_id_number}</strong></p> -->
                 </div>
             </section>
