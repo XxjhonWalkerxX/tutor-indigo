@@ -33,12 +33,11 @@ course_mode_class = course_mode if course_mode else ''
         font-weight: 300;
         font-style: normal;
     }
-    /* Ajuste del tamaño de la hoja a tamaño carta */
     .accomplishment-rendering {
         width: 1100px;height: 850px;
         box-sizing: border-box;      /* Para que el padding no amplíe el ancho total */
         padding-right: 200px;   
-        background-size: cover !important; /* Mantiene la relación de aspecto */
+        background-size: contain; /* Mantiene la relación de aspecto */
         background-position: center;
         background-repeat: no-repeat;
         display: flex;
@@ -124,19 +123,29 @@ course_mode_class = course_mode if course_mode else ''
     .img-organization {
         margin-top: 135px;
     }
-    .images{
+    .images {
         width: 950px;
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: row;           /* Alinea horizontalmente */
+        justify-content: space-between;/* Espacio entre los elementos */
+        align-items: center;           /* Centra verticalmente */
         gap: 20px;
     }
-    .images > div {
-        flex: 0 1 auto;
+
+    /* .images > div {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+    } */
+
+    .logos-row {
+        display: flex;
+        flex-direction: row;           /* Alinea horizontalmente los logos */
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        max-width: 350px;
+        margin: 0 auto;
     }
     .images > div img {
         display: block;
@@ -145,6 +154,31 @@ course_mode_class = course_mode if course_mode else ''
     .images > div p.info-secundaria-cert-id {
         font-size: 10pt;
         color: #555;
+    }
+    .img-ilustracion {
+        max-width: 300px;
+        max-height: 300px;
+        width: auto;
+        height: auto;
+    }
+    .img-unicef-grande {
+        max-width: 150px;
+        max-height: 100px;
+        width: auto;
+        height: auto;
+    }
+    .img-unicef-chico {
+        max-width: 150px;
+        max-height: 100px;
+        width: auto;
+        height: auto;
+    }
+    .img-qr {
+        max-width: 90px;
+        max-height: 90px;
+        width: auto;
+        height: auto;
+        padding-left: 100px;
     }
 @media print {
   @page {
@@ -182,7 +216,25 @@ course_mode_class = course_mode if course_mode else ''
     height: 215.9mm;
     box-sizing: border-box;
   }
+
+    .img-ilustracion {
+      max-width: 300px !important;
+      max-height: 3000px !important;
+  }
+  .img-unicef-grande {
+      max-width: 150px !important;
+      max-height: 150px !important;
+  }
+  .img-unicef-chico {
+      max-width: 150px !important;
+      max-height: 150px !important;
+  }
+  .img-qr {
+      max-width: 90px !important;
+      max-height: 90px !important;
+  }
 }
+
 
 </style>
 
@@ -248,15 +300,15 @@ course_mode_class = course_mode if course_mode else ''
             </div>
             <section class="images">
                 <div>
-                    <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}">
+                    <img class="img-ilustracion" src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}">
                 </div>
-                <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                <div class="logos-row">
                     <!-- <div>
-                            <img src="${static.url("images/logo.png")}" alt="${platform_name}" style="max-width: 100px; max-height: 50px; width: auto; height: auto;">
+                            <img src="${static.url("images/logo.png")}" alt="${platform_name}">
                         </div> -->
                     % if organization_logo:
                         <div>
-                            <img src="${organization_logo.url}" alt="${platform_name}" style="max-width: 100px; max-height: 100px; width: auto; height: auto;">
+                            <img class="img-unicef-grande" src="${organization_logo.url}" alt="${platform_name}">
                         </div>
                     % endif
                 </div>
@@ -265,7 +317,7 @@ course_mode_class = course_mode if course_mode else ''
                     <!-- <p style="font-family: 'Noto Sans', sans-serif; font-size: 9pt; color: #717170; margin-left: -700px; margin-top: -10px">Certificate ID Number: <strong>${certificate_id_number}</strong></p> -->
                 </div>
             </section>
-            <div>
+            <div style="padding-top: 10px;">
                 <p class="info-secundaria info-secundaria-nota">Este curso no acredita al participante como alumno oficial de la institución que lo imparte.</p>
                 <p class="info-secundaria info-secundaria-nota">No contiene créditos académicos ni revalidación académica en ninguno de los programas de estudios formales o de extensión. </p>  
             </div>
