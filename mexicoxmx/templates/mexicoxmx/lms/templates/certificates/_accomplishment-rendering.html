@@ -250,14 +250,16 @@ course_mode_class = course_mode if course_mode else ''
                 <div>
                     <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}">
                 </div>
-                <!-- <div>
-                    <img src="${static.url("images/logo.png")}" alt="${platform_name}" style="max-width: 100px; max-height: 50px; width: auto; height: auto;">
-                </div> -->
-                % if organization_logo:
-                    <div>
-                        <img src="${organization_logo.url}" alt="${platform_name}" style="max-width: 100px; max-height: 50px; width: auto; height: auto;">
-                    </div>
-                % endif
+                <div>
+                    <!-- <div>
+                            <img src="${static.url("images/logo.png")}" alt="${platform_name}" style="max-width: 100px; max-height: 50px; width: auto; height: auto;">
+                        </div> -->
+                    % if organization_logo:
+                        <div>
+                            <img src="${organization_logo.url}" alt="${platform_name}" style="max-width: 100px; max-height: 50px; width: auto; height: auto;">
+                        </div>
+                    % endif
+                </div>
                 <div>
                     <img src="https://certificados.mexicox.gob.mx/generate_qr/${certificate_id_number}/" height="100px">
                     <!-- <p style="font-family: 'Noto Sans', sans-serif; font-size: 9pt; color: #717170; margin-left: -700px; margin-top: -10px">Certificate ID Number: <strong>${certificate_id_number}</strong></p> -->
