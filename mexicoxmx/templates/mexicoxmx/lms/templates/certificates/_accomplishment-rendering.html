@@ -250,13 +250,13 @@ course_mode_class = course_mode if course_mode else ''
                 <div>
                     <img src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}">
                 </div>
-                <div>
+                <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
                     <!-- <div>
                             <img src="${static.url("images/logo.png")}" alt="${platform_name}" style="max-width: 100px; max-height: 50px; width: auto; height: auto;">
                         </div> -->
                     % if organization_logo:
                         <div>
-                            <img src="${organization_logo.url}" alt="${platform_name}" style="max-width: 100px; max-height: 50px; width: auto; height: auto;">
+                            <img src="${organization_logo.url}" alt="${platform_name}" style="max-width: 100px; max-height: 100px; width: auto; height: auto;">
                         </div>
                     % endif
                 </div>
