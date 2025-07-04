@@ -69,11 +69,12 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                     align-items: center;
                     flex-wrap: nowrap;
                     max-height: 90px;
+                    flex-direction: row;
                 }
 
                 .interno {
                     display: flex;
-                    align-items: stretch;
+                    align-items: center;
                     justify-content: center;
                     flex-wrap: nowrap;
                     flex-direction: row;
@@ -81,16 +82,17 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                 }
 
                 @media (max-width: 768px) {
-                    .interno {
-                        width: 100%;
-                        display: flex;
-                        align-items: flex-start;
-                        justify-content: center;
-                        height: 30px;
-                    }
-
                     .cabeza {
-                        display: block;
+                        display: flex; /* Mantén flex en móvil */
+                        flex-direction: row; /* Mantén en fila en móvil */
+                        flex-wrap: wrap; /* Permite que bajen si no caben */
+                        max-height: none;
+                    }
+                    .interno {
+                        width: auto;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                        height: auto;
                     }
                 }
 
