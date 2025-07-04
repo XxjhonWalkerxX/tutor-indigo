@@ -83,16 +83,16 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 
                 @media (max-width: 768px) {
                     .cabeza {
-                        display: flex; /* Mantén flex en móvil */
-                        flex-direction: row; /* Mantén en fila en móvil */
-                        flex-wrap: wrap; /* Permite que bajen si no caben */
+                        flex-direction: row; /* Siempre horizontal */
+                        flex-wrap: wrap;     /* Permite que bajen si no caben */
                         max-height: none;
                     }
                     .interno {
-                        width: auto;
-                        padding-left: 10px;
-                        padding-right: 10px;
-                        height: auto;
+                        padding-left: 5px;
+                        padding-right: 5px;
+                    }
+                    .interno img {
+                        max-height: 35px; /* Reduce el tamaño en móvil */
                     }
                 }
 
