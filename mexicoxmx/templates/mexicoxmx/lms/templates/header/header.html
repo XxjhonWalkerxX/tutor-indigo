@@ -87,6 +87,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                 /* En móviles: reducir tamaño de logos pero no permitir que salten de línea */
                 @media (max-width: 768px) {
                     .cabeza {
+                        position: relative;
                         flex-direction: row;
                         flex-wrap: nowrap;  /* <- no permitir que bajen */
                         justify-content: space-between;
@@ -94,8 +95,6 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                     }
 
                     .interno img {
-                        max-height: 150px;
-                        max-width: 150px;
                         height: auto;
                         width: auto;
                     }
@@ -104,12 +103,17 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                         padding: 0 5px;
                     }
                     .logo-principal {
+                        max-height: 150px;
+                        max-width: 150px;
                         position: relative;
                         top: 23px;
                     }
                     .logo-central {
-                        position: relative;
-                        top: 10px;
+                        max-height: 100px;
+                        max-width: 100px;
+                        top: 20px; /* ajusta si quieres menos separación */
+                        z-index: 10; /* lo "sube" visualmente */
+                        top: 33px;
                     }
 
                 }
