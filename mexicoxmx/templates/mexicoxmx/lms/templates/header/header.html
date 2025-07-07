@@ -80,8 +80,12 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                     flex-direction: row;
                     padding-left: 20px;
                 }
+                .logo-central {
+                    position: relative;
+                    top: 29px;
+                }
                 /* En móviles: reducir tamaño de logos pero no permitir que salten de línea */
-                @media (max-width: 600px) {
+                @media (max-width: 768px) {
                     .cabeza {
                         flex-direction: row;
                         flex-wrap: nowrap;  /* <- no permitir que bajen */
@@ -99,11 +103,14 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                     .interno {
                         padding: 0 5px;
                     }
+                    .logo-central {
+                        top: 10px;
+                    }
                 }
 
 
 
-                @media (min-width: 350px) {
+                @media (min-width: 768px) {
                     .container-fluid > .navbar-collapse, .container-fluid > .navbar-header, .container > .navbar-collapse, .container > .navbar-header {
                         margin-right: 0;
                         margin-left: 0;
@@ -111,7 +118,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                     }
                 }
 
-                @media (min-width: 350px) {
+                @media (min-width: 768px) {
                     .navbar-right {
                         float: right !important;
                         margin-right: -15px;
@@ -135,7 +142,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
             <div class="interno">
                 <%include file="navbar-logo-2-header.html" />
             </div>
-            <div class="interno" style="position: relative;top: 29px;">
+            <div class="interno logo-central">
                 <%include file="navbar-logo-header.html" args="online_help_token=online_help_token"/>
             </div>
             <div class="interno">
