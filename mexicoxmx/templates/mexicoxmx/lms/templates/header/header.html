@@ -106,8 +106,13 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                         padding: 0 5px;
                     }
                     .logo-central {
+                        order: -1; /* Hace que la imagen central esté arriba */
                         position: relative;
-                        top: 10px;
+                        top: 0;
+                        margin-bottom: 10px;
+                        display: flex;
+                        justify-content: center;
+                        width: 100%;
                     }
                 }
 
@@ -146,7 +151,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                 <%include file="navbar-logo-2-header.html" />
             </div>
             <div class="interno logo-central">
-                <%include file="navbar-logo-header.html" args="online_help_token=online_help_token"/>
+                <%include file="navbar-</div>logo-header.html" args="online_help_token=online_help_token"/>
             </div>
             <div class="interno">
                 % if user.is_authenticated:
