@@ -80,21 +80,27 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                     flex-direction: row;
                     padding-left: 20px;
                 }
-
-                @media (max-width: 350px) {
+                /* En móviles: reducir tamaño de logos pero no permitir que salten de línea */
+                @media (max-width: 600px) {
                     .cabeza {
-                        flex-direction: row; /* Siempre horizontal */
-                        flex-wrap: wrap;     /* Permite que bajen si no caben */
-                        max-height: none;
+                        flex-direction: row;
+                        flex-wrap: nowrap;  /* <- no permitir que bajen */
+                        justify-content: space-between;
+                        padding: 0 10px;
                     }
-                    .interno {
-                        padding-left: 5px;
-                        padding-right: 5px;
-                    }
+
                     .interno img {
-                        max-height: 35px; /* Reduce el tamaño en móvil */
+                        max-height: 40px;
+                        max-width: 80px;
+                        height: auto;
+                        width: auto;
+                    }
+
+                    .interno {
+                        padding: 0 5px;
                     }
                 }
+
 
 
                 @media (min-width: 350px) {
