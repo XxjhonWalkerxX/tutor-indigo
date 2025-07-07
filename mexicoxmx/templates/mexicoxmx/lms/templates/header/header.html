@@ -87,7 +87,6 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                 /* En móviles: reducir tamaño de logos pero no permitir que salten de línea */
                 @media (max-width: 768px) {
                     .cabeza {
-                        position: relative; /* importante para posicionar hijo absolute */
                         flex-direction: row;
                         flex-wrap: nowrap;  /* <- no permitir que bajen */
                         justify-content: space-between;
@@ -104,14 +103,15 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                     .interno {
                         padding: 0 5px;
                     }
-                    .logo-central {
-                        position: absolute;
-                        top: 10px;
-                    }
                     .logo-principal {
                         position: relative;
                         top: 23px;
                     }
+                    .logo-central {
+                        position: relative;
+                        top: 10px;
+                    }
+
                 }
 
 
@@ -145,7 +145,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                 }
             </style>
         <div class="cabeza">
-            <div class="interno">
+            <div class="interno logo-principal">
                 <%include file="navbar-logo-2-header.html" />
             </div>
             <div class="interno logo-central">
