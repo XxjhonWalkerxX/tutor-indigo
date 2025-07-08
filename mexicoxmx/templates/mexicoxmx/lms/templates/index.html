@@ -20,6 +20,10 @@ from openedx.core.djangolib.markup import HTML, Text
             <script src="https://amx.la/code/973f0345-8cc9-4a52-89b3-eeb988b9f31e/"></script>
             <div class="title principal_imgtxt" style="padding-right: 15px; padding-left: 15px; display: flex; ">
               <div class="heading-group imgtxt_mx" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
+                  <div class="img-row" style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; padding: 10px 30px;">
+                    <img src="${static.url("images/left")}" alt="left" style="max-width: 100px; height: auto;">
+                    <img src="${static.url("images/right")}" alt="right" style="max-width: 100px; height: auto;">
+                  </div>
                 <div style="display: flex; flex-direction: row; align-items: center; gap: 10px;" >
                   % if homepage_overlay_html:
                     ${homepage_overlay_html | n, decode.utf8}
@@ -27,6 +31,26 @@ from openedx.core.djangolib.markup import HTML, Text
                     <%include file="index_overlay.html" />
                   % endif
                 </div>
+                <style>
+                  .button-holder {
+                    background-color: #481720 !important;
+                    color: #fff !important;
+                    border-radius: 50px !important; /* Circular */
+                    padding: 10px 24px !important;
+                    border: none !important;
+                    font-weight: bold;
+                    transition: background 0.2s;
+                  }
+                  .button-holder {
+                    background-color: #A32044 !important;
+                    color: #fff !important;
+                    border-radius: 50px !important; /* Circular */
+                    padding: 10px 24px !important;
+                    border: none !important;
+                    font-weight: bold;
+                    transition: background 0.2s;
+                  }
+                </style>
                 % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
                   <div class="course-search imgtxt_mx" style="width: 100%; display: flex; justify-content: center;">
                     <form method="get" action="/courses" style="width: 100%; max-width: 3000px; padding-top: 20px;">
@@ -48,8 +72,7 @@ from openedx.core.djangolib.markup import HTML, Text
                   </div>
                 % endif
               </div>
-
-          </div>
+            </div>
 
           <%include file="index_promo_video.html" />
         </div>
