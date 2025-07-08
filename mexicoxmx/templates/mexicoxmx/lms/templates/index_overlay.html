@@ -1,6 +1,23 @@
 <%namespace name='static' file='static_content.html'/>
-
-<img src="${static.url("images/MexicoX_logo_2.png")}" height="88px"/>
-<p class="" style="display: inline-block; vertical-align: center;" >
+<style>
+    .logo-overlay {
+        height: 88px;
+        width: auto;
+        max-width: 100%;
+        display: block;
+        margin: 0 auto 10px auto;
+    }
+    @media (max-width: 768px) {
+        .logo-overlay {
+            height: 48px;
+        }
+        p {
+            font-size: 15px;
+            text-align: center;
+        }
+    }
+</style>
+<img src="${static.url("images/MexicoX_logo_2.png")}" class="logo-overlay" alt="Logo MexicoX"/>
+<p style="display: block; text-align: center;">
     La plataforma de cursos en línea de la Dirección General @prende.mx
 </p>
