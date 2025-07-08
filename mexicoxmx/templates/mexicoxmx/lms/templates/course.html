@@ -51,7 +51,7 @@ from django.urls import reverse
         <!-- NEW IN INDIGO Learn more button is displayed under the course image instead of the hover functionality. -->
       <a  href="${reverse('about_course', args=[str(course.id)])}" class="learn-more" aria-hidden="true">Saber más</a>
         <!-- Div que contiene la informacion de que institucion se imparte el curso-->
-        <div style="width:100%; background: color #c79158;">
+        <div style="width:100%; background-color:#c79158;">
             <span class="course-organization">${course.display_org_with_default}</span>
             <img src="${static.url("images/CONASAMA.png")}" height="28px" style="display:block; margin:auto;" />
             <img src="${static.url("images/Logos_Educacion_Aprende_black.png")}" height="28px" style="display:block; margin:auto;" />
