@@ -91,7 +91,6 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                         flex-direction: row;
                         flex-wrap: nowrap;  /* <- no permitir que bajen */
                         justify-content: space-between;
-                        padding: 0 10px;
                     }
 
                     .interno img {
@@ -105,10 +104,10 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                         padding: 0 5px;
                     }
                     .logo-principal {
-                        max-height: 150px;
+                        max-height: 100px;
                         max-width: 150px;
                         position: relative;
-                        top: 23px;
+                        top: 18px;
                     }
                     .logo-central {
                         max-height: 100px;
@@ -116,7 +115,11 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                         top: 30px;
                         z-index: 10; 
                     }
-
+                    .hamburger-menu {
+                        position: relative;
+                        z-index: 1001; 
+                        background: #fff; 
+                    }
                 }
 
 
