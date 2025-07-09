@@ -4,7 +4,6 @@
 from django.utils.translation import gettext as _
 from django.urls import reverse
 from django.conf import settings
-from lms.djangoapps.branding.models import Organization
 %>
 <%page args="course" expression_filter="h"/>
 
@@ -52,16 +51,16 @@ from lms.djangoapps.branding.models import Organization
         <!-- NEW IN INDIGO Learn more button is displayed under the course image instead of the hover functionality. -->
 
       <a  href="${reverse('about_course', args=[str(course.id)])}" class="learn-more" aria-hidden="true">Saber más</a>
-      <%
-          # course.org = short_name de la org (por ej. "UNICEF")
-          org_obj = Organization.objects.filter(short_name=course.org).first()
-      %>
+         <%
+            org_key = course.org or ''
+            org_logo_url = '%sorganization_logos/%s.png' % (settings.MEDIA_URL, org_key)
+          %>
         <!-- Div que contiene la informacion de que institucion se imparte el curso-->
         <div style="width:100%; background-color:#c79158;">
             <span class="course-organization">${course.display_org_with_default}</span>
-            % if org_obj and org_obj.logo:
+            % if org_key:
                 <img
-                  src="${org_obj.logo.url}"
+                  src="${org_logo_url}"
                   alt="${course.display_org_with_default}"
                   class="course-org-logo"
                   style="display:block; margin:8px auto 0; max-height:28px;"
