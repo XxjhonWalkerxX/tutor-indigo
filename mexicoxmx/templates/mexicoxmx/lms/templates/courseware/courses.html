@@ -11,6 +11,7 @@
 
 <%namespace name='static' file='../static_content.html'/>
 <%block name="js_extra">
+  <script> window.MEDIA_URL = "${settings.MEDIA_URL}";</script>
   <script type="text/javascript" src="${static.url('common/js/vendor/bootstrap.bundle.js')}"></script>
 </%block>
 % if course_discovery_enabled:
@@ -30,10 +31,6 @@
   </%static:require_module>
 </%block>
 % endif
-<script>
-  window.MEDIA_URL = "${settings.MEDIA_URL}";
-</script>
-
 <%block name="pagetitle">${_("Courses")}</%block>
 
 <main id="main" aria-label="Content" tabindex="-1">
