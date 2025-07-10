@@ -30,6 +30,9 @@
   </%static:require_module>
 </%block>
 % endif
+<script>
+  window.MEDIA_URL = "${settings.MEDIA_URL}";
+</script>
 
 <%block name="pagetitle">${_("Courses")}</%block>
 
