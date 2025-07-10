@@ -1,3 +1,4 @@
+<%! from django.conf import settings %>
 <article class="course" role="region" aria-label="<%- content.display_name %>">
         <header class="course-image">
             <div class="cover-image">
@@ -21,9 +22,20 @@
                     ) %>
             </div>
             <a href="/courses/<%- course %>/about" class="learn-more">Saber más</a>
+         <%
+            org_key = course.org or ''
+            org_logo_url = '%sorganization_logos/%s.png' % (settings.MEDIA_URL, org_key)
+          %>
             <!-- Div que contiene la informacion de que institucion se imparte el curso-->
             <div style="width:100%; background-color:#F8E1BF;">
                <span class="course-organization" style="color: #000000;"><%- org %></span>
+            % if org_key:
+                <img
+                  src="${org_logo_url}"
+                  class="course-org-logo"
+                  style="display:block; margin:8px auto 0; max-height:28px;"
+                />
+            % endif               
                <img src="/static/mexicoxmx/images/Logos_Educacion_Aprende_black.png" height="28px" style="display:block; margin:auto;" />
             </div>
         </section>
