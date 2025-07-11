@@ -26,7 +26,7 @@ from openedx.core.djangolib.markup import HTML, Text
                 justify-content: center;
                 width: 100%;
 
-                background-image: url('${static.url("images/right.jpg")}'), url('${static.url("images/left.jpg")}');
+                background-image: url('${static.url("images/a1.png")}'), url('${static.url("images/a2.png")}');
                 background-repeat: no-repeat, no-repeat;
                 background-position: left center, right center;
                 background-size: auto 100%, auto 100%;
@@ -35,7 +35,7 @@ from openedx.core.djangolib.markup import HTML, Text
               }
             </style>
             <div class="title principal_imgtxt">
-              <div class="heading-group imgtxt_mx fondo-lateral" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
+              <div class="heading-group imgtxt_mx fondo-lateral" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; margin-bottom: 0px;">
                 <div style="display: flex; flex-direction: row; align-items: center; gap: 10px;" >
                   % if homepage_overlay_html:
                     ${homepage_overlay_html | n, decode.utf8}
