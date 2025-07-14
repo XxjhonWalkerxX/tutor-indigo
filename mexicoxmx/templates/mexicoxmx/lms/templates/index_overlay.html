@@ -1,23 +1,52 @@
 <%namespace name='static' file='static_content.html'/>
+
 <style>
-    .logo-overlay {
+    .logo-text-wrapper {
+        display: flex;
+        align-items: center; /* Centra verticalmente ambos elementos */
+        justify-content: center;
+        gap: 15px;
+        padding: 20px 10px;
+    }
+
+    .logo-image {
         height: 88px;
         width: auto;
-        max-width: 100%;
-        display: block;
-        margin: 0 auto 10px auto;
     }
+
+    .vertical-divider {
+        width: 1px;
+        height: 60%;
+        background-color: #999;
+    }
+
+    .logo-text {
+        font-size: 18px;
+        color: #333;
+        margin: 0;
+        white-space: nowrap;
+    }
+
     @media (max-width: 768px) {
-        .logo-overlay {
+        .logo-image {
             height: 48px;
         }
-        p {
+        .logo-text-wrapper {
+            flex-direction: column;
+            gap: 10px;
+        }
+        .vertical-divider {
+            display: none;
+        }
+        .logo-text {
             font-size: 15px;
             text-align: center;
         }
     }
 </style>
-<img src="${static.url("images/MexicoX_logo_2.png")}" class="logo-overlay" alt="Logo MexicoX"/>
-<p style="display: block; text-align: center;">
-    La plataforma de cursos en línea de la Dirección General @prende.mx
-</p>
+
+<div class="logo-text-wrapper">
+    <img src="${static.url('images/Logo_ap_2.png')}" class="logo-image" alt="Logo MexicoX">
+    <div class="vertical-divider"></div>
+    <p class="logo-text">La plataforma de cursos en línea de la Dirección General @prende.mx</p>
+</div>
