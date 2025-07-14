@@ -1,23 +1,59 @@
 <%namespace name='static' file='static_content.html'/>
+
 <style>
-    .logo-overlay {
+    .logo-text-container {
+        display: flex;
+        align-items: center; /* Alineación vertical */
+        justify-content: center; /* Centrado horizontal */
+        gap: 30px;
+        padding: 20px;
+        flex-wrap: wrap;
+    }
+
+    .logo-img {
         height: 88px;
         width: auto;
         max-width: 100%;
         display: block;
-        margin: 0 auto 10px auto;
     }
+
+    .divider {
+        height: 50px;
+        width: 1px;
+        background-color: #C9A06C;
+    }
+
+    .logo-description {
+        font-size: 18px;
+        color: #4A4A4A;
+        margin: 0;
+        line-height: 1.3;
+        max-width: 400px;
+    }
+
     @media (max-width: 768px) {
-        .logo-overlay {
+        .logo-text-container {
+            flex-direction: column;
+            gap: 10px;
+        }
+        .logo-img {
             height: 48px;
         }
-        p {
-            font-size: 15px;
+        .divider {
+            display: none;
+        }
+        .logo-description {
+            font-size: 16px;
             text-align: center;
         }
     }
 </style>
-<img src="${static.url("images/Logo_ap_2.png")}" class="logo-overlay" alt="Logo MexicoX"/>
-<p style="display: block; text-align: center;">
-    La plataforma de cursos en línea de la Dirección General @prende.mx
-</p>
+
+<div class="logo-text-container">
+    <img src="${static.url("images/Logo_ap_2.png")}" class="logo-img" alt="Logo Aprende.mx" />
+    <div class="divider"></div>
+    <p class="logo-description">
+        La plataforma de cursos en línea <br />
+        de la Secretaría de Educación Pública
+    </p>
+</div>
