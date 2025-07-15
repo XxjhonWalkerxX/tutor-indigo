@@ -44,47 +44,65 @@ from openedx.core.djangolib.markup import HTML, Text
                   % endif
                 </div>
                 <style>
+                  .search-field-wrapper {
+                    display: flex !important;
+                    width: 100% !important;
+                    gap: 10px !important;
+                  }
+
+                  .input-holder {
+                    display: flex !important;
+                    align-items: center !important;
+                    background-color: #A32044 !important;
+                    border-radius: 50px !important;
+                    padding: 0 20px !important;
+                    height: 52px !important;
+                    flex: 1 !important;
+                  }
+
+                  .input-holder svg {
+                    flex-shrink: 0 !important;
+                    width: 20px !important;
+                    height: 20px !important;
+                    margin-right: 10px !important;
+                    display: flex !important;
+                    align-items: center !important;
+                    justify-content: center !important;
+                    vertical-align: middle !important;
+                  }
+                  .search-input {
+                    background-color: transparent !important;
+                    border: none !important;
+                    color: white !important;
+                    outline: none !important;
+                    font-size: 16px !important;
+                    width: 100% !important;
+                    height: 100% !important;
+                    display: flex !important;
+                    align-items: center !important;
+                  }
+
+                  .search-input::placeholder {
+                    color: white !important;
+                    opacity: 1 !important;
+                  }
+
                   .search-button {
                     background-color: #481720 !important;
                     color: #fff !important;
                     border-radius: 50px !important;
-                    padding: 14px 24px !important;
-                    border: none !important;
-                    font-weight: bold;
-                    transition: background 0.2s;
-                    height: 52px; /* misma altura que input */
-                  }
-
-                  .input-holder {
-                    background-color: #A32044 !important;
-                    border-radius: 50px !important;
                     padding: 0 24px !important;
-                    display: flex;
-                    align-items: center;
-                    height: 52px; /* misma altura que botón */
-                    flex-grow: 1;
-                  }
-
-                  .search-input {
-                    background-color: transparent;
-                    border: none;
-                    color: white;
-                    outline: none;
-                    font-size: 16px;
-                    flex-grow: 1;
-                  }
-
-                  .search-input::placeholder {
-                    color: white;
-                    opacity: 1; /* Asegura visibilidad */
-                  }
-
-                  .search-field-wrapper {
-                    display: flex;
-                    width: 100%;
-                    gap: 10px;
+                    border: none !important;
+                    font-weight: bold !important;
+                    font-size: 16px !important;
+                    height: 52px !important;
+                    display: flex !important;
+                    align-items: center !important;
+                    justify-content: center !important;
+                    white-space: nowrap !important;
                   }
                 </style>
+
 
                 % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
                   <div class="course-search imgtxt_mx" style="width: 100%; display: flex; justify-content: center;">
