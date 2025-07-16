@@ -114,8 +114,22 @@
             </ol>
           </nav>
           {% endif %}
-        <div class="powered-area" style="text-align: center; padding-left: 30px;padding-top: 8px;">
-          <img src="https://sisadmin.mexicox.gob.mx/extramexicox/eduaprende.jpg" alt="Runs on Tutor" height="70px"/>
+        <style>
+          @media (max-width: 768px) {
+            .footer-logo-responsive {
+              max-width: 80%;
+              height: auto;
+            }
+          }
+          @media (min-width: 768px) {
+            .footer-logo-responsive {
+              max-width: 250px;
+              height: auto;
+            }
+          }
+        </style>
+        <div class="powered-area" style="text-align: center; padding-left: 30px; padding-top: 8px;">
+          <img src="https://sisadmin.mexicox.gob.mx/extramexicox/eduaprende.jpg" alt="Runs on Tutor" class="footer-logo-responsive" height="70"/></div>
         </div>
 
         </div>
@@ -143,10 +157,10 @@
       <!--span>Built on <a href="http://open.edx.org">OpenEdX</a>.</span-->
       <ol>
         	 <li style="display:inline;">
-        <a href="//www.facebook.com/mexicoXgob/" target="_blank">
+        <a href="https://www.facebook.com/CursosAprendeMX" target="_blank">
             <img alt="logo fb" src="${static.url("images/logoface.png")}" height="40px" style=" margin-left:0.5px; margin-top: 26px"></a></li>
 	<li style="display:inline;">
-              <a href="//twitter.com/MexicoX_gob?lang=es" target="_blank">
+              <a href="https://x.com/CursosAprendeMX" target="_blank">
                 <img alt="logotipo tw" src="${static.url("images/logox.png")}" style="margin-left:10.5px; margin-top: 26px;" height="40px">
               </a>
             </li>
