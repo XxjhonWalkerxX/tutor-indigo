@@ -50,6 +50,7 @@ course_mode_class = course_mode if course_mode else ''
     .contenedor_principal{
         width: 1000px;
         height: 850px;
+        position: relative;
     }
     .accomplishment-type {
         text-align: center;
@@ -180,6 +181,12 @@ course_mode_class = course_mode if course_mode else ''
         height: auto;
         padding-left: 100px;
     }
+    .feed {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    }
 @media print {
   @page {
     size: letter landscape;
@@ -279,11 +286,11 @@ course_mode_class = course_mode if course_mode else ''
                 </p>
                 % if customOrganizacionText:
                     <p class="accomplishment-statement-detail">
-                        <strong>${customOrganizacionText},</strong><br>a través de la plataforma <strong>MéxicoX</strong>.
+                        <strong>${customOrganizacionText},</strong><br>a través de la plataforma <strong>Cursos @prende.mx</strong>.
                     </p>
                 % else:
                     <p class="accomplishment-statement-detail">
-                        impartido por <strong>${organization_long_name},</strong><br>a través de la plataforma <strong>MéxicoX</strong>.
+                        impartido por <strong>${organization_long_name},</strong><br>a través de la plataforma <strong>Cursos @prende.mx</strong>.
                     </p>
                 % endif
             </div>
@@ -301,6 +308,9 @@ course_mode_class = course_mode if course_mode else ''
                     % endif 
                 % endif
             </div>
+            <br>
+            <br>
+            <br>
             <section class="images">
                 <div>
                     <img class="img-ilustracion" src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}">
