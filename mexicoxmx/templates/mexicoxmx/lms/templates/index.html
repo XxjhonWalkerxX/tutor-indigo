@@ -12,11 +12,20 @@ from openedx.core.djangolib.markup import HTML, Text
 
 
 <main id="main" aria-label="Content" tabindex="-1">
-
+    <style>
+      @media screen and (min-width: 768px) {
+          div {
+              margin: 22px;
+          }
+      }
+      @media screen and (min-width: 768px) {
+          #carousel_amx_la_banners-14{ margin-top: 22px;}
+      }
+    </style>
     <section class="home style-logout" style="padding-right: 0px; padding-left: 0px;">
       <header>
         <div class="outer-wrapper">
-            <div id="carousel_amx_la_banners-14" style="margin-top: 22px;"></div>
+            <div id="carousel_amx_la_banners-14"></div>
             <script src="https://amx.la/code/973f0345-8cc9-4a52-89b3-eeb988b9f31e/"></script>
             <style>
               .fondo-lateral {
