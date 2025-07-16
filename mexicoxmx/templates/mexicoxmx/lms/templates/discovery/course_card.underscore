@@ -9,9 +9,8 @@
             <h2 class="course-name">
                 <span class="course-code"><%- content.number %></span>
                 <span class="course-title"><%- content.display_name %></span>
-                <span class="course-organization"><%- org %></span>
+
             </h2>
-            <a href="/courses/<%- course %>/about" class="learn-more">Saber más</a>
             <div class="course-date" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M15 3.83332H15.8333C16.75 3.83332 17.5 4.58332 17.5 5.49999V17.1667C17.5 18.0833 16.75 18.8333 15.8333 18.8333H4.16667C3.24167 18.8333 2.5 18.0833 2.5 17.1667L2.50833 5.49999C2.50833 4.58332 3.24167 3.83332 4.16667 3.83332H5V2.16666H6.66667V3.83332H13.3333V2.16666H15V3.83332ZM4.16667 8.83332V17.1667H15.8333V8.83332H4.16667ZM15.8333 7.16666H4.16667V5.49999H15.8333V7.16666ZM14.1667 11.3333H10V15.5H14.1667V11.3333Z" fill="#9CA3AF"/>
@@ -20,6 +19,20 @@
                       gettext("Comienza: %(start_date)s"),
                       { start_date: start }, true
                     ) %>
+            </div>
+            <a href="/courses/<%- course %>/about" class="learn-more">Saber más</a>
+            <!-- Div que contiene la informacion de que institucion se imparte el curso-->
+            <div style="width:100%; background-color:#F8E1BF;">
+            <% if (content.org_key) { %>
+                <img
+                src="<%- MEDIA_URL + 'organization_logos/' + content.org_key + '.png' %>"
+                class="course-org-logo"
+                style="display:block; margin:8px auto 0; max-height:28px;"
+                alt="Logo de <%- content.org %>"
+                />
+            <% } %>            
+               <span class="course-organization" style="color: #000000;"><%- org %></span>
+               <img src="/static/mexicoxmx/images/Logos_Educacion_Aprende_black.png" height="28px" style="display:block; margin:auto;" />
             </div>
         </section>
         <div class="sr">
