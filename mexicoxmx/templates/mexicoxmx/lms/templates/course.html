@@ -51,12 +51,13 @@ from django.conf import settings
 
       <a  href="${reverse('about_course', args=[str(course.id)])}" class="learn-more" aria-hidden="true">Saber más</a>
         <%!
-          from openedx.core.djangoapps.orgs.models import Organization
+            from common.djangoapps.orgs.models import Organization
         %>
+
         <%
-          org_key = course.org or ''
-          org_inst = Organization.objects.filter(short_name=org_key).first()
-          org_logo_url = org_inst.logo.url if org_inst and org_inst.logo else None
+            org_key = course.org or ''
+            org_inst = Organization.objects.filter(short_name=org_key).first()
+            org_logo_url = org_inst.logo.url if org_inst and org_inst.logo else None
         %>
         <!-- Div que contiene la informacion de que institucion se imparte el curso-->
         <style>
@@ -73,16 +74,15 @@ from django.conf import settings
           }
         </style>
         <div style="width:100%; background-color:#F8E1BF;">
-            <span class="course-organization">${course.display_org_with_default}</span>
+          <span class="course-organization">${course.display_org_with_default}</span>
+          % if org_logo_url:
             <div class="org-logo-container">
-            % if org_logo_url:
-              <div class="org-logo-container">
-                <img src="${org_logo_url}"
-                    class="course-org-logo"
-                    onerror="this.style.display='none';"
-                />
-              </div>
-            % endif
+              <img src="${org_logo_url}"
+                  class="course-org-logo"
+                  onerror="this.style.display='none';"
+              />
+            </div>
+          % endif
             </div>
 
             <!-- <img src="${static.url("images/CONASAMA.png")}" height="28px" style="display:block; margin:auto;" /> -->
