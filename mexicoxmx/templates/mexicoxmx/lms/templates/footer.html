@@ -114,19 +114,11 @@
             </ol>
           </nav>
           {% endif %}
-        <style>
-          @media (max-width: 768px) {
-            .footer-logo-responsive {
-              max-width: 80%;
-              height: auto;
-            }
-          }
-        </style>
         <div class="powered-area" style="text-align: center; padding-left: 30px; padding-top: 8px;">
           <img src="https://sisadmin.mexicox.gob.mx/extramexicox/eduaprende.jpg" alt="Runs on Tutor" class="footer-logo-responsive" height="70px"/></div>
         </div>
 
-        </div>
+      </div>
         <div style="text-align: center; padding-left: 54px;">
           <span class="copyright-site">©${datetime.now().year}. Todos los derechos reservados.</span>
         </div>
@@ -149,17 +141,49 @@
       </div>
 <div class="references" style="text-align: center;">
       <!--span>Built on <a href="http://open.edx.org">OpenEdX</a>.</span-->
-      <ol>
-        	 <li style="display:inline;">
-        <a href="https://www.facebook.com/CursosAprendeMX" target="_blank">
-            <img alt="logo fb" src="${static.url("images/logoface.png")}" height="40px" style=" margin-left:0.5px; margin-top: 26px"></a></li>
-	<li style="display:inline;">
-              <a href="https://x.com/CursosAprendeMX" target="_blank">
-                <img alt="logotipo tw" src="${static.url("images/logox.png")}" style="margin-left:10.5px; margin-top: 26px;" height="40px">
-              </a>
-            </li>
-
-          </ol>
+      <ol style="display: flex; justify-content: center; align-items: center; padding: 0; margin: 0;">
+        <li style="display:inline;">
+          <a href="https://www.facebook.com/CursosAprendeMX" target="_blank">
+            <img alt="logo fb" src="${static.url("images/logoface.png")}" height="40px" style="margin-left:0.5px; margin-top: 26px;">
+          </a>
+        </li>
+        <li style="display:inline;">
+          <a href="https://x.com/CursosAprendeMX" target="_blank">
+            <img alt="logotipo tw" src="${static.url("images/logox.png")}" style="margin-left:10.5px; margin-top: 26px;" height="40px">
+          </a>
+        </li>
+      </ol>
+      <style>
+        @media (max-width: 768px) {
+        .footer-logo-responsive {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          max-width: 80%;
+          height: auto;
+        }
+        .references ol {
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          margin-top: 10px;
+        }
+        .references li {
+          margin: 0 8px;
+        }
+        }
+        .references ol {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        }
+        .references li {
+        margin: 0 12px;
+        }
+      </style>
     </div>
     </footer>
       <!-- Google tag (gtag.js) -->
