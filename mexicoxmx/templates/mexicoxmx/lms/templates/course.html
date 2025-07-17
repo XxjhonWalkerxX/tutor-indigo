@@ -12,6 +12,7 @@ from django.conf import settings
 <%
     org_key = course.org or ''
     if org_key:
+
         logo_path   = f'organization_logos/{org_key}.png'
         org_logo_url = default_storage.url(logo_path)
     else:
@@ -86,13 +87,12 @@ from django.conf import settings
                 class="course-org-logo"
                 onerror="this.style.display='none';"
                 alt="${course.display_org_with_default} logo"
+                style="margin-bottom: 10px;"
               />
             </div>
             % endif
             </div>
-
-            <!-- <img src="${static.url("images/CONASAMA.png")}" height="28px" style="display:block; margin:auto;" /> -->
-            <img src="${static.url("images/Logos_Educacion_Aprende_black.png")}" height="20px" style="display:block; margin:auto;" />
+            <img src="${static.url("images/Logos_Educacion_Aprende_black.png")}" height="20px" style="display:block; margin: 10px auto;" />
         </div>
     </div>
 
