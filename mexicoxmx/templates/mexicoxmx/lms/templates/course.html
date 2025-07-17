@@ -6,6 +6,18 @@ from django.urls import reverse
 from django.conf import settings
 %>
 <%page args="course" expression_filter="h"/>
+<%!
+    from django.core.files.storage import default_storage
+%>
+<%
+    org_key = course.org or ''
+    if org_key:
+        # Sólo construimos la URL, NO llamamos a exists()
+        logo_path   = f'organization_logos/{org_key}.png'
+        org_logo_url = default_storage.url(logo_path)
+    else:
+        org_logo_url = None
+%>
 <article class="course" id="${course.id}" role="region" aria-label="${course.display_name_with_default}">
     <header class="course-image">
       <div class="cover-image">
@@ -50,17 +62,6 @@ from django.conf import settings
         <!-- NEW IN INDIGO Learn more button is displayed under the course image instead of the hover functionality. -->
 
       <a  href="${reverse('about_course', args=[str(course.id)])}" class="learn-more" aria-hidden="true">Saber más</a>
-        <%!
-            from django.core.files.storage import default_storage
-        %>
-        <%
-            org_key = course.org or ''
-            logo_path = 'organization_logos/{0}.png'.format(org_key)
-            if default_storage.exists(logo_path):
-                org_logo_url = default_storage.url(logo_path)
-            else:
-                org_logo_url = None
-        %>
 
         <!-- Div que contiene la informacion de que institucion se imparte el curso-->
         <style>
@@ -79,15 +80,16 @@ from django.conf import settings
         <div style="width:100%; background-color:#F8E1BF;">
             <span class="course-organization">${course.display_org_with_default}</span>
             <div class="org-logo-container">
-              % if org_logo_url:
-                <div class="org-logo-container">
-                  <img
-                    src="${org_logo_url}"
-                    class="course-org-logo"
-                    onerror="this.style.display='none';"
-                  />
-                </div>
-              % endif
+            % if org_logo_url:
+            <div class="org-logo-container">
+              <img
+                src="${org_logo_url}"
+                class="course-org-logo"
+                onerror="this.style.display='none';"
+                alt="${course.display_org_with_default} logo"
+              />
+            </div>
+            % endif
             </div>
 
             <!-- <img src="${static.url("images/CONASAMA.png")}" height="28px" style="display:block; margin:auto;" /> -->
