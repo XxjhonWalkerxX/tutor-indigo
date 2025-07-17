@@ -51,14 +51,12 @@ from django.conf import settings
 
       <a  href="${reverse('about_course', args=[str(course.id)])}" class="learn-more" aria-hidden="true">Saber más</a>
         <%!
-            # Trae el storage activo (filesystem en dev, file-manager en prod)
             from django.core.files.storage import default_storage
         %>
         <%
             org_key = course.org or ''
             logo_path = 'organization_logos/{0}.png'.format(org_key)
             if default_storage.exists(logo_path):
-                # default_storage.url() ya monta la URL correcta para cada backend
                 org_logo_url = default_storage.url(logo_path)
             else:
                 org_logo_url = None
