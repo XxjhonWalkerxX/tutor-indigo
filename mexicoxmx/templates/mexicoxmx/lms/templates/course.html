@@ -12,7 +12,6 @@ from django.conf import settings
 <%
     org_key = course.org or ''
     if org_key:
-        # Sólo construimos la URL, NO llamamos a exists()
         logo_path   = f'organization_logos/{org_key}.png'
         org_logo_url = default_storage.url(logo_path)
     else:
