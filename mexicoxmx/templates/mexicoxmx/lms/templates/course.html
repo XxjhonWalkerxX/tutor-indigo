@@ -78,7 +78,9 @@ from django.conf import settings
           }
         </style>
         <div style="width:100%; background-color:#F8E1BF; display: block; overflow: hidden;">
-            <span class="course-organization">${course.display_org_with_default}</span>
+            <div style="height: 40px; display: flex; align-items: center; justify-content: center; padding: 0 10px; overflow: hidden;">
+                <span class="course-organization" style="display: block; word-wrap: break-word; overflow-wrap: break-word; text-align: center; font-size: 12px; font-weight: 500; line-height: 1.1; max-height: 100%; overflow: hidden;">${course.display_org_with_default}</span>
+            </div>
             <div class="org-logo-container">
             % if org_logo_url:
             <div class="org-logo-container">
