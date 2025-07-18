@@ -32,7 +32,6 @@
                 />
             <% } %>            
                <span class="course-organization" style="color: #000000;"><%- org %></span>
-               <img src="/static/mexicoxmx/images/Logos_Educacion_Aprende_black.png" height="28px" style="display:block; margin:auto;" />
             </div>
         </section>
         <div class="sr">
