@@ -15,7 +15,6 @@ deploy_prod:
     - cp -rf * /opt/tutor/env/build/openedx/themes/mexicoxmx/
     - source /opt/mexicox/venv/bin/activate
     - pip install -e  /opt/tutor/env/build/openedx/themes/mexicoxmx
-    - tutor plugins enable mexicoxmx
   tags:
     - edx
   only:
