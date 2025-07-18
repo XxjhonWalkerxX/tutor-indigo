@@ -78,30 +78,59 @@ from django.conf import settings
           }
         </style>
         <div style="width:100%; background-color:#F8E1BF; display: block; overflow: hidden;">
-            <div style="height: 40px; display: flex; align-items: center; justify-content: center; padding: 0 8px; overflow: hidden; position: relative;">
-                <span class="course-organization auto-fit-text" style="display: block; word-wrap: break-word; text-align: center; font-weight: 500; line-height: 1.2; width: 100%; font-size: 12px;">${course.display_org_with_default}</span>
+            <div class="org-text-container" style="min-height: 40px; display: flex; align-items: center; justify-content: center; padding: 8px; position: relative;">
+                <span class="course-organization auto-fit-text" style="display: block; word-wrap: break-word; text-align: center; font-weight: 500; line-height: 1.2; width: 100%; font-size: 12px; hyphens: auto;">${course.display_org_with_default}</span>
             </div>
             <script>
                 (function() {
                     function adjustTextSize() {
                         document.querySelectorAll('.auto-fit-text').forEach(function(element) {
                             var container = element.parentElement;
-                            var maxHeight = container.offsetHeight;
+                            var containerWidth = container.offsetWidth - 16; // Resta padding
+                            var maxHeight = 40; // Altura máxima deseada
                             var fontSize = 12;
-                            element.style.fontSize = fontSize + 'px';
+                            var minFontSize = 8;
                             
-                            while (element.scrollHeight > maxHeight && fontSize > 8) {
-                                fontSize -= 0.5;
-                                element.style.fontSize = fontSize + 'px';
+                            // Reset inicial
+                            element.style.fontSize = fontSize + 'px';
+                            element.style.whiteSpace = 'normal';
+                            
+                            // Crear elemento temporal para medir texto
+                            var temp = document.createElement('span');
+                            temp.style.visibility = 'hidden';
+                            temp.style.position = 'absolute';
+                            temp.style.whiteSpace = 'nowrap';
+                            temp.style.fontSize = fontSize + 'px';
+                            temp.style.fontWeight = element.style.fontWeight;
+                            temp.style.fontFamily = getComputedStyle(element).fontFamily;
+                            temp.textContent = element.textContent;
+                            document.body.appendChild(temp);
+                            
+                            var textWidth = temp.offsetWidth;
+                            document.body.removeChild(temp);
+                            
+                            // Si el texto es muy largo, permitir múltiples líneas
+                            if (textWidth > containerWidth) {
+                                element.style.whiteSpace = 'normal';
+                                
+                                // Ajustar tamaño hasta que quepa en el contenedor
+                                while (element.scrollHeight > maxHeight && fontSize > minFontSize) {
+                                    fontSize -= 0.5;
+                                    element.style.fontSize = fontSize + 'px';
+                                }
                             }
                         });
                     }
                     
+                    // Ejecutar cuando el DOM esté listo
                     if (document.readyState === 'loading') {
                         document.addEventListener('DOMContentLoaded', adjustTextSize);
                     } else {
                         adjustTextSize();
                     }
+                    
+                    // También ejecutar después de que las imágenes se carguen
+                    window.addEventListener('load', adjustTextSize);
                 })();
             </script>
             <div class="org-logo-container">
