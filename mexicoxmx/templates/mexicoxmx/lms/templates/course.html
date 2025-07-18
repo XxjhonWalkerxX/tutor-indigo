@@ -78,7 +78,53 @@ from django.conf import settings
           }
         </style>
         <div style="width:100%; background-color:#F8E1BF; display: block; overflow: hidden;">
-            <span class="course-organization">${course.display_org_with_default}</span>
+            <div class="org-text-container" style="height: 40px; display: flex; align-items: center; justify-content: center; padding: 8px; position: relative; overflow: hidden;">
+                <span class="course-organization auto-fit-text" style="display: block; word-wrap: break-word; text-align: center; font-weight: 500; line-height: 1.2; width: 100%; font-size: 12px; hyphens: auto;">${course.display_org_with_default}</span>
+            </div>
+            <script>
+                (function() {
+                    function adjustTextSize() {
+                        document.querySelectorAll('.auto-fit-text').forEach(function(element) {
+                            var container = element.parentElement;
+                            var containerHeight = container.offsetHeight;
+                            var containerPadding = 16; // padding total (8px arriba + 8px abajo)
+                            var availableHeight = containerHeight - containerPadding;
+                            var fontSize = 12;
+                            var minFontSize = 8;
+                            
+                            // Reset inicial
+                            element.style.fontSize = fontSize + 'px';
+                            element.style.whiteSpace = 'normal';
+                            element.style.overflow = 'hidden';
+                            
+                            // Ajustar tamaño de fuente hasta que el texto quepa en la altura disponible
+                            while (element.scrollHeight > availableHeight && fontSize > minFontSize) {
+                                fontSize -= 0.5;
+                                element.style.fontSize = fontSize + 'px';
+                            }
+                            
+                            // Si aún es muy alto después del tamaño mínimo, forzar ellipsis
+                            if (element.scrollHeight > availableHeight) {
+                                element.style.overflow = 'hidden';
+                                element.style.textOverflow = 'ellipsis';
+                                element.style.display = '-webkit-box';
+                                element.style.webkitBoxOrient = 'vertical';
+                                element.style.webkitLineClamp = Math.floor(availableHeight / (fontSize * 1.2)); // líneas que caben
+                            }
+                        });
+                    }
+                    
+                    // Ejecutar cuando el DOM esté listo
+                    if (document.readyState === 'loading') {
+                        document.addEventListener('DOMContentLoaded', adjustTextSize);
+                    } else {
+                        adjustTextSize();
+                    }
+                    
+                    // También ejecutar después de que las imágenes se carguen
+                    window.addEventListener('load', adjustTextSize);
+                })();
+            </script>
             <div class="org-logo-container">
             % if org_logo_url:
             <div class="org-logo-container">
@@ -92,7 +138,6 @@ from django.conf import settings
             </div>
             % endif
             </div>
-            <img src="${static.url("images/Logos_Educacion_Aprende_black.png")}" height="20px" style="display:block; margin: 10px auto;" />
         </div>
     </div>
 

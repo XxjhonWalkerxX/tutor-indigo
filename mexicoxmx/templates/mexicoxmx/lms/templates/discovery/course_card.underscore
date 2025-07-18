@@ -22,17 +22,10 @@
             </div>
             <a href="/courses/<%- course %>/about" class="learn-more">Saber más</a>
             <!-- Div que contiene la informacion de que institucion se imparte el curso-->
-            <div style="width:100%; background-color:#F8E1BF;">
-            <% if (content.org_key) { %>
-                <img
-                src="<%- MEDIA_URL + 'organization_logos/' + content.org_key + '.png' %>"
-                class="course-org-logo"
-                style="display:block; margin:8px auto 0; max-height:28px;"
-                alt="Logo de <%- content.org %>"
-                />
-            <% } %>            
-               <span class="course-organization" style="color: #000000;"><%- org %></span>
-               <img src="/static/mexicoxmx/images/Logos_Educacion_Aprende_black.png" height="28px" style="display:block; margin:auto;" />
+            <div style="width:100%; background-color:#F8E1BF; display: block; overflow: hidden;">
+                <div style="height: 40px; display: flex; align-items: center; justify-content: center; padding: 0 8px; overflow: hidden; position: relative;">
+                    <span class="course-organization auto-fit-text" style="display: block; word-wrap: break-word; text-align: center; font-weight: 500; line-height: 1.2; width: 100%; font-size: 12px; color: #000000;"><%- org %></span>
+                </div>
             </div>
         </section>
         <div class="sr">
