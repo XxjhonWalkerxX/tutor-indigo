@@ -78,9 +78,32 @@ from django.conf import settings
           }
         </style>
         <div style="width:100%; background-color:#F8E1BF; display: block; overflow: hidden;">
-            <div style="height: 40px; display: flex; align-items: center; justify-content: center; padding: 0 10px; overflow: hidden;">
-                <span class="course-organization" style="display: block; word-wrap: break-word; overflow-wrap: break-word; text-align: center; font-size: 12px; font-weight: 500; line-height: 1.1; max-height: 100%; overflow: hidden;">${course.display_org_with_default}</span>
+            <div style="height: 40px; display: flex; align-items: center; justify-content: center; padding: 0 8px; overflow: hidden; position: relative;">
+                <span class="course-organization auto-fit-text" style="display: block; word-wrap: break-word; text-align: center; font-weight: 500; line-height: 1.2; width: 100%; font-size: 12px;">${course.display_org_with_default}</span>
             </div>
+            <script>
+                (function() {
+                    function adjustTextSize() {
+                        document.querySelectorAll('.auto-fit-text').forEach(function(element) {
+                            var container = element.parentElement;
+                            var maxHeight = container.offsetHeight;
+                            var fontSize = 12;
+                            element.style.fontSize = fontSize + 'px';
+                            
+                            while (element.scrollHeight > maxHeight && fontSize > 8) {
+                                fontSize -= 0.5;
+                                element.style.fontSize = fontSize + 'px';
+                            }
+                        });
+                    }
+                    
+                    if (document.readyState === 'loading') {
+                        document.addEventListener('DOMContentLoaded', adjustTextSize);
+                    } else {
+                        adjustTextSize();
+                    }
+                })();
+            </script>
             <div class="org-logo-container">
             % if org_logo_url:
             <div class="org-logo-container">
