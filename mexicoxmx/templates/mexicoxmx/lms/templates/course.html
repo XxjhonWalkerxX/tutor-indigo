@@ -67,8 +67,8 @@ from django.conf import settings
         <style>
           .org-logo-container {
             width: 100%;              /* Usar todo el ancho disponible de la tarjeta */
-            max-width: 250px;         /* Ancho máximo del contenedor */
-            height: 36px;             /* Altura original */
+            max-width: 250px;         /* Ancho proporcional a 36px de altura (5:1 ratio) */
+            height: 50px;             /* Altura original */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -77,9 +77,10 @@ from django.conf import settings
             overflow: hidden;
           }
           .course-org-logo {
-            width: 100%;             /* Ocupar todo el ancho del contenedor */
-            height: 100%;            /* Ocupar toda la altura del contenedor */
-            object-fit: fill;        /* Estirar la imagen para llenar todo el contenedor */
+            width: 100%;             /* Ancho completo del contenedor */
+            height: auto;            /* Altura automática para mantener proporciones */
+            max-height: 50px;        /* No exceder la altura del contenedor */
+            object-fit: contain;     /* Mostrar toda la imagen sin recortar */
             display: block;
           }
         </style>
