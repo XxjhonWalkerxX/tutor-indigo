@@ -76,9 +76,11 @@ from django.conf import settings
             overflow: hidden;          /* Ocultar cualquier desbordamiento */
           }
           .course-org-logo {
-            width: 100%;              /* Llenar todo el ancho del contenedor */
-            height: 100%;             /* Llenar toda la altura del contenedor */
-            object-fit: cover;        /* La imagen cubrirá todo el espacio, recortando si es necesario */
+            max-width: 100%;          /* No exceder el ancho del contenedor */
+            max-height: 100%;         /* No exceder la altura del contenedor */
+            width: auto;              /* Mantener proporciones */
+            height: auto;             /* Mantener proporciones */
+            object-fit: contain;      /* Mostrar toda la imagen sin recortar */
             display: block;
           }
         </style>
