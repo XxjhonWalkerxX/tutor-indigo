@@ -67,12 +67,12 @@ from django.conf import settings
         <style>
           .org-logo-container {
             width: 100%;              /* Usar todo el ancho disponible de la tarjeta */
-            max-width: 250px;         /* Ancho proporcional a 36px de altura (5:1 ratio) */
-            height: 50px;             /* Altura original */
+            max-width: 250px;         /* Ancho máximo */
+            height: 50px;             /* Altura del logo */
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 8px auto 0;
+            margin: 4px auto 0;       /* Reducir margen superior */
             background-color: #F8E1BF; /* Color de fondo */
             overflow: hidden;
           }
@@ -85,7 +85,7 @@ from django.conf import settings
           }
         </style>
         <div style="width:100%; background-color:#F8E1BF; display: block; overflow: hidden;">
-            <div class="org-text-container" style="height: 40px; display: flex; align-items: center; justify-content: center; padding: 8px; position: relative; overflow: hidden;">
+            <div class="org-text-container" style="height: 35px; display: flex; align-items: center; justify-content: center; padding: 6px 8px; position: relative; overflow: hidden;">
                 <span class="course-organization auto-fit-text" style="display: block; word-wrap: break-word; text-align: center; font-weight: 500; line-height: 1.2; width: 100%; font-size: 12px; hyphens: auto;">${course.display_org_with_default}</span>
             </div>
             <script>
@@ -94,7 +94,7 @@ from django.conf import settings
                         document.querySelectorAll('.auto-fit-text').forEach(function(element) {
                             var container = element.parentElement;
                             var containerHeight = container.offsetHeight;
-                            var containerPadding = 16; // padding total (8px arriba + 8px abajo)
+                            var containerPadding = 12; // padding total (6px arriba + 6px abajo)
                             var availableHeight = containerHeight - containerPadding;
                             var fontSize = 12;
                             var minFontSize = 8;
