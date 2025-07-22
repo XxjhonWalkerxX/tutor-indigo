@@ -66,14 +66,21 @@ from django.conf import settings
         <!-- Div que contiene la informacion de que institucion se imparte el curso-->
         <style>
           .org-logo-container {
-            height: 36px;              /* Espacio fijo reservado */
+            width: 100%;              /* Usar todo el ancho disponible de la tarjeta */
+            max-width: 180px;         /* Ancho proporcional a 36px de altura (5:1 ratio) */
+            height: 36px;             /* Altura original */
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 8px auto 0;
+            background-color: #F8E1BF; /* Color de fondo */
+            overflow: hidden;
           }
           .course-org-logo {
-            max-height: 28px;
+            width: 100%;             /* Ancho completo del contenedor */
+            height: auto;            /* Altura automática para mantener proporciones */
+            max-height: 36px;        /* No exceder la altura del contenedor */
+            object-fit: contain;     /* Mostrar toda la imagen sin recortar */
             display: block;
           }
         </style>
@@ -127,15 +134,12 @@ from django.conf import settings
             </script>
             <div class="org-logo-container">
             % if org_logo_url:
-            <div class="org-logo-container">
               <img
                 src="${org_logo_url}"
                 class="course-org-logo"
                 onerror="this.style.display='none';"
                 alt="${course.display_org_with_default} logo"
-                style="margin-bottom: 10px;"
               />
-            </div>
             % endif
             </div>
         </div>
