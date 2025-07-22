@@ -78,7 +78,7 @@ from django.conf import settings
           }
           .course-org-logo {
             width: 100%;             /* Ancho completo del contenedor */
-            height:45px;            /* Altura fija forzada */
+            height:40px;            /* Altura fija forzada */
             object-fit: contain;     /* Mostrar toda la imagen sin recortar */
             display: block;
           }
@@ -93,7 +93,7 @@ from django.conf import settings
                         document.querySelectorAll('.auto-fit-text').forEach(function(element) {
                             var container = element.parentElement;
                             var containerHeight = container.offsetHeight;
-                            var containerPadding = 8; // padding total (4px arriba + 4px abajo)
+                            var containerPadding = 12; // padding total (4px arriba + 4px abajo)
                             var availableHeight = containerHeight - containerPadding;
                             var fontSize = 12;
                             var minFontSize = 8;
