@@ -43,7 +43,7 @@
       </ol>
     </nav>
     {% endif %}
-<div class="powered-area">
+        <div class="powered-area">
             <img src="https://sisadmin.mexicox.gob.mx/extramexicox/eduaprende.jpg" alt="Runs on Tutor" height="70px"/>
         </div>
   </div>
@@ -114,14 +114,67 @@
             </ol>
           </nav>
           {% endif %}
-        <div class="powered-area" style="text-align: center; padding-left: 30px; padding-top: 8px;">
+        <div class="powered-area" style="text-align: center; padding-top: 45px;">
           <img src="https://sisadmin.mexicox.gob.mx/extramexicox/eduaprende.jpg" alt="Runs on Tutor" class="footer-logo-responsive" height="70px"/></div>
         </div>
-
-      </div>
-        <div style="text-align: center; padding-left: 54px;">
+        <div style="text-align: center;">
           <span class="copyright-site">©${datetime.now().year}. Todos los derechos reservados.</span>
         </div>
+        <div class="references" style="text-align: center;">
+          <!--span>Built on <a href="http://open.edx.org">OpenEdX</a>.</span-->
+          <ol style="display: flex; justify-content: center; align-items: center; padding: 0; margin: 0 0 5px 0;">
+            <li style="display:inline;">
+              <a href="https://www.facebook.com/CursosAprendeMX" target="_blank">
+                <img alt="logo fb" src="${static.url("images/logoface.png")}" height="40px" style="margin-left:0.5px; margin-top: 26px; margin-bottom: 5px;">
+              </a>
+            </li>
+            <li style="display:inline;">
+              <a href="https://x.com/CursosAprendeMX" target="_blank">
+                <img alt="logotipo tw" src="${static.url("images/logox.png")}" style="margin-left:10.5px; margin-top: 26px; margin-bottom: 5px;" height="40px">
+              </a>
+            </li>
+          </ol>
+          <style>
+            @media (max-width: 768px) {
+            .footer-logo-responsive {
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+              max-width: 100%;
+              height: auto;
+            }
+            .references ol {
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              margin-top: 10px;
+              margin-bottom: 5px;
+            }
+            .references li {
+              margin: 0 8px;
+            }
+            .references img {
+              margin-bottom: 5px;
+            }
+            }
+            .references ol {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            margin: 0 0 5px 0;
+            list-style: none;
+            }
+            .references li {
+            margin: 0 12px;
+            }
+            .references img {
+            margin-bottom: 5px;
+            }
+          </style>
+        </div>
+      </div>
+
     % endif
       <!-- <div class="colophon">
 
@@ -139,59 +192,6 @@
               % endif
           </p>
       </div> -->
-<div class="references" style="text-align: center;">
-      <!--span>Built on <a href="http://open.edx.org">OpenEdX</a>.</span-->
-      <ol style="display: flex; justify-content: center; align-items: center; padding: 0; margin: 0 0 5px 0;">
-        <li style="display:inline;">
-          <a href="https://www.facebook.com/CursosAprendeMX" target="_blank">
-            <img alt="logo fb" src="${static.url("images/logoface.png")}" height="40px" style="margin-left:0.5px; margin-top: 26px; margin-bottom: 5px;">
-          </a>
-        </li>
-        <li style="display:inline;">
-          <a href="https://x.com/CursosAprendeMX" target="_blank">
-            <img alt="logotipo tw" src="${static.url("images/logox.png")}" style="margin-left:10.5px; margin-top: 26px; margin-bottom: 5px;" height="40px">
-          </a>
-        </li>
-      </ol>
-      <style>
-        @media (max-width: 768px) {
-        .footer-logo-responsive {
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-          max-width: 100%;
-          height: auto;
-        }
-        .references ol {
-          flex-direction: row;
-          justify-content: center;
-          align-items: center;
-          margin-top: 10px;
-          margin-bottom: 5px;
-        }
-        .references li {
-          margin: 0 8px;
-        }
-        .references img {
-          margin-bottom: 5px;
-        }
-        }
-        .references ol {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0;
-        margin: 0 0 5px 0;
-        list-style: none;
-        }
-        .references li {
-        margin: 0 12px;
-        }
-        .references img {
-        margin-bottom: 5px;
-        }
-      </style>
-    </div>
     </footer>
       <!-- Google tag (gtag.js) -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z97Y3FJQ9H"></script>
