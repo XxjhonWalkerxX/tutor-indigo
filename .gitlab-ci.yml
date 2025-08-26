@@ -3,7 +3,7 @@ variables:
     TUTOR_EXTRA_ENABLED_PLUGINS: mfe
     TUTOR_PYPI_PACKAGE: tutor-indigo
     TUTOR_IMAGES: openedx mfe
-    GITHUB_REPO: overhangio/tutor-indigo
+    GITHUB_REPO: aprende/tutor-indigo
 
 include:
   - project: 'community/tutor-ci'

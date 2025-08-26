@@ -1,6 +1,8 @@
 // Include custom header
 body {
-  .nav-skip {
+    font-family: $font-family-title;
+
+    .nav-skip {
 
     &:focus {
       left: 50%;
@@ -36,17 +38,10 @@ header.global-header {
         display: block;
     }
     .main-header {
-        display: flex;
-        align-items: center;
-        height: 50px;
-
-        @include media-breakpoint-up(lg) {
-            display: unset;
-            height: auto;
-        }
+        height: auto;
     }
     .header-logo {
-        margin: 0;
+        margin: 3px;
         a {
             margin: 15px 0 15px 35px;
             height: auto;
@@ -55,7 +50,7 @@ header.global-header {
                 margin: 20px 0 0;
             }
             .logo {
-                height: 24px;
+                height: 38px;
                 margin: 0;
             }
         }
@@ -64,7 +59,6 @@ header.global-header {
         }
     }
     .nav-links {
-        width: 100%;
         .main {
             margin: 0 0 0 38px;
             .nav-tab {
@@ -86,7 +80,6 @@ header.global-header {
         .secondary {
             margin: 0;
             position: relative;
-            justify-content: end;
             .toggle-user-dropdown {
                 padding: 9px 15px;
                 background: $primary-light;
@@ -145,15 +138,10 @@ header.global-header {
         }
     }
     .hamburger-menu {
-        height: 17px;
+        height: 12px;
         width: 20px;
         left: 15px;
         top: 18px;
-        background: none;
-        border: 0;
-        padding: 0;
-        box-shadow: none;
-
         .line {
             height: 2px;
             &:nth-child(2), &:nth-child(3) {
@@ -191,9 +179,12 @@ header.global-header {
 }
 .header-container {
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0 60px;
     max-width: 1600px;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     &:after {
         display: block;
         clear: both;
@@ -283,7 +274,10 @@ header.global-header {
     }
 }
 
-
+.center-logo {
+    flex: 2;
+    text-align: center;
+}
 
 body.indigo-dark-theme {
     background: $body-bg-d !important;

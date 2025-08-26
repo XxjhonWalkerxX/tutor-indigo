@@ -3,20 +3,619 @@
 <%! from django.utils.translation import gettext as _ %>
 <%inherit file="../main.html" />
 
-<%block name="pagetitle">${_("Help")}</%block>
-
+<%block name="pagetitle">Preguntas Frecuentes</%block>
 <main id="main" aria-label="Content" tabindex="-1">
-    <section class="container about">
-        <h1>
-            <%block name="pageheader">${page_header or _("Help")}</%block>
-        </h1>
-        <p>
-            <%block name="pagecontent">${page_content or _("This page left intentionally blank. Feel free to add your own content.")}</%block>
-        </p>
-        <!-- NEW IN INDIGO: add graphic image -->
-        <div class="graphic-img">
-            <img src="${static.url('images/help.svg')}" alt="Runs on Tutor" />
-            <img class="dark" src="${static.url('images/help-dark.svg')}" alt="Runs on Tutor" />
+
+    <%block name="pagecontent">
+        <section class="container about">
+        <h1 class="encabezado">Preguntas Frecuentes</h1>
+        <div class="tab">
+
+            <div class="opcion_top active" onclick="openCity(event, 'estudiantes')">
+                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                <div></div>
+                <span id="defaultOpen">Estudiantes</span>
+            </div>
+            <div class="opcion_top" onclick="openCity(event, 'cursos')">
+                <i class="fas fa-laptop" aria-hidden="true"></i>
+                <div></div>
+                <span>Referente a los cursos</span>
+            </div>
+            <div class="opcion_top" onclick="openCity(event, 'creditos')">
+                <i class="fas fa-award" aria-hidden="true"></i>
+                <div></div>
+                <span>Constancias y créditos</span>
+            </div>
+        </div>
+        <div class="tab">
+            <div class="opcion_top" onclick="openCity(event, 'cuentas')">
+                <i class="fas fa-question-circle" aria-hidden="true"></i>
+                <div></div>
+                <span>Preguntas sobre las cuentas</span>
+            </div>
+            <!--
+            <div class="opcion_top" onclick="openCity(event, 'asesores')">
+                <i class="fas fa-users" aria-hidden="true"></i>
+                <div></div>
+                <span>Asesores de cursos</span>
+            </div>
+            -->
+            <div class="opcion_top" onclick="openCity(event, 'sesion')">
+                <i class="far fa-newspaper" aria-hidden="true"></i>
+                <div></div>
+                <span>Cursos validados por USICAMM</span>
+            </div>
+        </div>
+        <div id="estudiantes" class="tabcontent" style="display: block;">
+            <center><h2>Estudiantes</h2></center>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Quién puede tomar un curso de Cursos @prende.mx?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">La mayoría de los cursos están abiertos a público en general. Solo necesitas tener acceso a una computadora con un navegador actualizado, como Firefox o Chrome, una conexión a Internet, elegir un curso de tu interés y ¡muchas ganas de aprender! </p>
+                        <p class="main">Registrarte para crear una cuenta en Cursos @prende.mx y realizar el curso que hayas seleccionado.</p>
+                        <p class="main">Toda la oferta educativa es completamente gratuita y abierta las 24 horas, los siete días de la semana.</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Cuesta dinero tomar un curso?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">No, los cursos son totalmente gratuitos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Los cursos de Cursos @prende.mx son en español?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Sí. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Tienen transcripción los cursos de Cursos @prende.mx?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Principalmente los materiales audiovisuales de todos los cursos alojados en Cursos @prende.mx tienen las transcripciones activas.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Cuáles son las recomendaciones mínimas de su equipo de cómputo para tomar un curso en Cursos @prende.mx?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Es importante utilizar las versiones más actualizadas de los navegadores Firefox o Google Chrome, para optimizar el desempeño de la plataforma.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Qué puedo hacer si los videos alojados en la plataforma de YouTube están restringidos en mi institución o lugar de trabajo? </b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">En este caso, revisa con el área de informática correspondiente, que te configuren los accesos necesarios durante el periodo de duración del curso que estes realizando.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Puedo acceder a los cursos de Cursos @prende.mx con mi dispositivo móvil o tableta?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Cursos @prende.mx está disponible para visualizarse desde tu smartphone o tableta; sin embargo, se recomienda utilizar un equipo de cómputo de escritorio o laptop para disfrutar de los cursos de manera óptima.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="cursos" class="tabcontent" style="display: none;">
+            <center><h2>Referente a los Cursos</h2></center>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Cómo inicio sesión para tomar un curso de Cursos @prende.mx?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Una vez que te registres en la plataforma y actives tu cuenta, sigue estos pasos:</p>
+                        <ol class="main"></ol>
+                            <li>Haz clic en el botón "Iniciar sesión" en la página principal de Cursos @prende.mx.</li>
+                            <li>Escribe la dirección de correo electrónico y la contraseña con las que te registraste.</li>
+                            <li>Esto te llevará al panel de control, donde tendrás acceso a tus cursos activos, o bien, da clic en “Encuentra un nuevo curso", donde encontrarás otros disponibles.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Cuándo inicia o termina mi curso?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Podrás encontrar la fecha de inicio y la duración para cada curso en la página de descripción de este. Si estás registrado en uno, también verás su fecha de inicio en el tablero.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Cuánta carga de trabajo tendré para aprobar un curso?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Las horas previstas de estudio para cada curso se incluyen en la página de descripción de este.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Qué requisitos necesito antes de que empiece el curso que quiero realizar?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p>Cada curso es diferente:  algunos tienen requisitos previos y otros no. Consulta la página de descripción del curso, para conocer las recomendaciones específicas sobre estos.</p>
+                    </div>
+                </div>
+            </div>
+            <!--|          
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Qué libros debo leer? Estoy interesado en la lectura de
+                    los materiales antes de que comience el curso.</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Todos los materiales académicos requeridos serán proporcionados durante el
+                            curso, dentro de tu navegador. Algunos cursos pueden enumerar los recursos adicionales en
+                            las páginas de descripción del curso. Para material de lectura suplementario durante un
+                            curso, publica una pregunta en el foro de la asignatura de discusión para pedir a tus
+                            compañeros y personal del curso que te den algunas sugerencias.</p>
+                    </div>
+                </div>
+            </div>
+            -->
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Puedo descargar el material de lectura para mi curso?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Todo el contenido está disponible en la plataforma; descargarlo atenta contra las leyes de derecho de autor. Si necesitas o deseas una copia impresa del algún documento, te recomendamos que lo compres.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Puedo tomar más de un curso a la vez?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">¡Claro!, puedes inscribirte en los cursos que desees realizar.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Dónde veo el horario del curso?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Todos los cursos están disponibles las 24 horas, incluyendo los videos y las lecturas. Basta con que te inscribas y accedas al contenido. Sin embargo, revisa bien las fechas de exámenes y de entrega de trabajos, para cumplir a tiempo.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>Si me pierdo una semana del curso, ¿cómo afectará a mi rendimiento?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Es posible completar un curso de Cursos @prende.mx si te pierdes una semana. Sin embargo, los cursos son progresivos, por lo que debes revisar y estudiar lo que te hayas perdido. Además, no podrás presentar los trabajos y exámenes después de las fechas de vencimiento. Revisa el programa del curso para conocer las fechas y horarios importantes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>Se me pasó una fecha límite, ¿podré tener una extensión de tiempo?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">No es posible. Consulta previamente el cierre del curso para que lo concluyas satisfactoriamente.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Qué pasa si tengo una pregunta sobre el contenido de un curso y su forma de calificarlo?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Todas las dudas relacionadas a los cursos o a su evaluación, pueden ser respondidas por el personal académico que asesore el servicio educativo. La distribución de calificaciones debe estar en la información principal del mismo. En caso necesario, puedes escribir tu duda al centro de soporte y se canalizará al personal académico del curso para su atención.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Cómo puedo hablar con profesores, ayudantes de cátedra y personal relacionado con la impartición de los cursos?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Simplemente envía tus preguntas al correo electrónico del personal académico del curso y cada institución hará su mejor esfuerzo para responderte lo antes posible.</p>
+                        <p class="main">Te recordamos que algunos cursos cuentan con una sección de información general que explica los detalles de la impartición del mismo.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Puedo encontrar y conocer a otros estudiantes?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Algunos cursos de Cursos @prende.mx tienen foros de discusión, donde se puede comunicarse y realizar trabajo colaborativo con otros estudiantes en el contexto del curso.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Cómo puedo obtener ayuda y soporte correspondiente a mi curso?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Revisa a detalle el contenido del curso, participa en todas las actividades y colabora con tu experiencia y conocimiento sobre el tema. En caso de que haya algún foro de discusión activo, menciona tus preguntas y comparte posibles comentarios que apoyen a algunas dudas que tengan tus compañeros. Recuerda que eres parte de una gran comunidad, donde todas y todos somos Cursos @prende.mx.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Puedo volver a tomar un curso?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">¡Claro que sí! Revisa periódicamente la página de Cursos @prende.mx para conocer su programación y saber las fechas en las que iniciará otra emisión del curso que deseas realizar</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Se volverán a ofrecer los mismos cursos en el futuro?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Cada institución decide la programación de su oferta educativa, así como su periodicidad a lo largo del año en curso.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>Un curso en el que estoy interesado ya comenzó. ¿Puedo inscribirme?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Si está disponible la inscripción del curso, puedes realizar este proceso y entrar al contenido directamente o esperar a la fecha de inicio de su impartición.</p>
+                        <p class="main">Es importante mencionar que en algunos cursos hay fechas establecidas para realizar las actividades y tareas, revisa estos datos para asegurarte que no estén vencidas en la fecha que ingreses. Lo ideal es que te inscribas al curso cerca de su fecha de inicio.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Qué pasa si tengo que darme de baja de un curso. Puedo tomarlo en el futuro?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">No puedes darte de baja después de inscribirte a un curso; sin embargo, en caso de que la institución vuelva a ofertarlo, puedes realizarlo nuevamente.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Qué es un curso archivado?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Algunos de los cursos de Cursos @prende.mx estarán disponibles como archivados. En estos casos, sólo puedes acceder a ellos para visualizar el contenido general; sin embargo, algunos recursos o herramientas de comunicación no estarán disponibles.</p>
+                        <p class="main">En este tipo de cursos no se otorgan constancias de participación.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="creditos" class="tabcontent" style="display: none;">
+            <center><h2>Constancias</h2></center>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Qué tipo de constancias ofrece Cursos @prende.mx</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Las personas que acrediten satisfactoriamente un curso podrán obtener una constancia gratuita de participación. Consulta la información al respecto dentro del curso, para conocer en qué momento estará disponible.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Dónde puedo obtener la constancia de un curso que realicé antes de 2025?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Las constancias de cursos realizados antes de la actualización de la plataforma Cursos @prende.mx en enero de 2025, estarán disponibles para consulta y descarga hasta el 28 de febrero de este mismo año. Después de dicho periodo ya no será posible obtenerla.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Puedo pedir una copia impresa de mi constancia?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Cursos @prende.mx no envía copias impresas a sus usuarios. Sin embargo, puedes imprimir dicho documento en formato PDF desde tu computadora.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Los cursos realizados en la plataforma MèxicoX pueden contarse como créditos universitarios?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">No, los cursos que realices son independientes a los programas de estudios de las instituciones que participan en esta plataforma digital. Te recomendamos consultar directamente con el personal académico de tu institución, si es posible tomar en cuenta tu trabajo realizado en el curso o la constancia de término correspondiente como crédito extra a la materia o clase.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Cómo se determina la expedición de una constancia?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Un estudiante que recibe una calificación aprobatoria en un curso, obtendrá una constancia de participación emitida por la plataforma  Cursos @prende.mx y la institución que ofreció el curso.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Cómo se entregan las constancias de Cursos @prende.mx?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Las constancias de Cursos @prende.mx se emiten a través de la plataforma. Una vez que hayas finalizado y aprobado el curso, podrás descargarla desde la pestaña correspondiente</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Cuándo recibiré mi constancia?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">En algunas ocasiones, la constancia podrá descargarse inmediatamente al concluir y aprobar un curso. En otros casos, estará disponible posteriormente al cierre del mismo. Este proceso depende de la institución que imparte el servicio educativo y generalmente dentro del contenido, se especifica el proceso para obtener la constancia.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Por qué no recibí mi constancia de participación?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Si has obtenido una calificación aprobatoria y ya verificaste que la constancia no está activa en tu panel de control o en la pestaña de progreso dentro del curso, te sugerimos enviar un ticket al Centro de Soporte de Cursos @prende.mx, para recibir apoyo.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Cuánto tiempo tengo para descargar mi constancia?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Como se especifica en el Código de Honor, las constancias estarán disponibles en la plataforma para su descarga por tres meses a partir de la fecha de conclusión del curso. Es importante precisar que no se emitirán constancias extemporáneas.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>Perdí mi constancia. ¿Podrían enviarla de nuevo?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">No se reenvían las constancias de los cursos que acreditaste, pero sí puedes descargarlas nuevamente. Inicia sesión en tu cuenta y revisa en el tablero del curso. Podrás descargar y visualizar la constancia hasta antes de que pasen los tres meses en los que estará disponible para este proceso. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="cuentas" class="tabcontent" style="display: none;">
+            <center><h2>Sobre las cuentas</h2></center>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Qué pasa si mi nombre de usuario ya fue utilizado?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Por favor regístrate con otro nombre de usuario.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Es necesario registrar un correo y mi nombre real?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">El correo es necesario para inscribirse al curso, e indispensable en caso de que se necesite reestablecer la contraseña.</p>
+                        <p class="main">Sobre el nombre, recuerda que las constancias de participación se emitirán con los datos que tú hayas registrado.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Qué pasa si tengo problemas para acceder a mi cuenta y en la plataforma no se reconoce mi contraseña y/o correo electrónico?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">¿Por favor asegúrate de tener una versión actualizada de Firefox, Chrome o Internet Explorer, con cookies y JavaScript habilitados. Asimismo, vacía el caché de tu computadora. Si persiste el problema levanta un ticket<a style="font-family:sans-serif;" href="http://soporte.mexicox.gob.mx/">http://soporte.mexicox.gob.mx/</a>.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Qué pasa si olvidé mi contraseña?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Da clic en “Olvide mi contraseña” y posteriormente recibirás un mensaje a tu correo electrónico para modificarla.</p>
+                        <p class="main">También encontrarás el vínculo "Restablecer contraseña" en la sección de “Configuración de cuenta”.  Haz clic en este enlace y se enviará un mensaje con las respectivas indicaciones, directo al correo electrónico que proporcionaste.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Qué pasa si no recibí un correo electrónico de activación o para restablecimiento de contraseña?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Si no recibiste un correo electrónico automatizado puede ser por estas razones:</p>
+                        <ul>
+                            <li>Escribiste con algún error tu dirección de correo electrónico.</li>
+                            <li>El correo para activar tu cuenta se recibió directamente en tu bandeja de spam o de correo no deseado. Revisa y recupera el mensaje para realizar el proceso correspondiente.</li>
+                            <li>Estas utilizando un navegador antiguo. Te recomendamos que descargues la versión actual de Firefox o Chrome.</li>
+                            <li>Verifica si JavaScript está deshabilitado en tu navegador. Por favor, comprueba la configuración del navegador y confirma que JavaScript esté activado.</li>
+                            <li>No se registró con exitosamente la cuenta en Cursos @prende.mx. Por favor, regístrate de nuevo con la misma dirección de correo electrónico. Si ya existe una cuenta con este dato, visualizarás un error con respecto a una dirección de correo electrónico duplicado. Comunícate al Centro de Soporte de Cursos @prende.mx para recibir apoyo.</li>
+                        </ul>
+                        <p class="main">No hay necesidad de hacer alguna acción específica para recuperar la cuenta que no se activó. Si no se activa a través del enlace en el correo electrónico, ésta desaparecerá después.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Puedo borrar mi cuenta?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Una cuenta que no esté activa o no haya entrado al contenido de algún curso durante un periodo determinado, será dada de baja automáticamente.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b></b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Una cuenta que no esté activa o no haya entrado al contenido de algún curso durante un periodo determinado, será dada de baja automáticamente.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Puedo borrar mi cuenta?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Una cuenta que no esté activa o no haya entrado al contenido de algún curso durante un periodo determinado, será dada de baja automáticamente.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Mi información personal está segura y resguardada?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Sí, se han tomado medidas para garantizar que tu información no esté disponible públicamente. Sin embargo, puede ser consultada por el personal técnico pedagógico de Cursos @prende.mx y los responsables de la institución que imparte el curso, esto como parte del seguimiento académico o la emisión de constancias.  Si tienes alguna duda, consulta el aviso de privacidad.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Qué sucede si tengo problemas con la visualización del tablero (herramientas faltantes en el curso o en caso de no visualizar un video)?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Por favor, verifica tu navegador y configuración, también JavaScript debe estar habilitado. Te recomendamos descargar y utilizar la versión actual de Firefox o Chrome.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Qué pasa si tengo otra consulta o alguna duda diferente a las que se espondieron aquí?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Por favor, ponte en contacto a través de <a style="font-family:sans-serif;" href="http://soporte.mexicox.gob.mx/">http://soporte.mexicox.gob.mx/</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+        
+        
+        -->
+        <div id="sesion" class="tabcontent" style="display: none;">
+            <center><h2>Cursos validados por USICAMM</h2></center>
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Qué cursos validados por USICAMM estarán disponibles en Cursos @prende.mx?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <ol class="main">
+                            <li>Hacia una pedagogía digital de la práctica docente</li>
+                            <li>Estrategia en el aula: Prevención de adicciones</li>
+                            <li>Saberes digitales para docentes. Nivel 1</li>
+                            <li>Educación musical en México</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Cuándo estarán disponibles?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Consulta la oferta formativa de tu entidad para conocer las fechas y registrarte en la convocatoria.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Cómo me puedo registrar al curso?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <ol class="main">
+                            <li>Revisa la convocatoria estatal, el responsable de Formación Continua de tu estado puede apoyarte con esta información; en caso de que no lo conozcas, en el siguiente enlace podrás identificarlo: <a href="https://dgfcdd.sep.gob.mx/">Dirección General de Formación Continua a Docentes y Directivos</a></li>
+                            <li>Regístrate al curso de tu preferencia</li>
+                            <li>A través del correo electrónico que proporcionaste, te llegarán los datos necesarios para el acceso al curso.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Qué costo tiene el curso?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">El curso es totalmente gratuito, al igual que todos los servicios educativos de Cursos @prende.mx.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Cómo obtengo la constancia de participación?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Al obtener la calificación aprobatoria que se requiere en el curso, la Autoridad Educativa de tu estado emitirá la constancia a través de las unidades de Formación Continua estatales, en el periodo que dicha área establezca dentro de la respectiva convocatoria.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Cómo puedo saber quién es la autoridad educativa estatal de Formación Continua?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">En el siguiente enlace encontrarás la Unidad de Formación Continua en tu
+                            entidad, así como información acerca de cómo se lleva a cabo la Estrategia Estatal:
+                            <a href="https://dgfcdd.sep.gob.mx/">Dirección General de Formación Continua a Docentes y Directivos</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿En dónde puedo acceder a los cursos validados por USICAMM?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">Los cursos validados por USICAMM que promueve la Dirección General @prende.mx estarán disponibles a través de la plataforma Cursos @prende.mx. Es importante que tu registro lo realices directamente a través de la convocatoria de tu entidad, para que recibas los datos necesarios de acceso al curso.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="g-pregunta">
+                <div class="p-btn" onclick="openap(event)"><b>¿Los cursos me sirven para los procesos de admisión al SEN?</b>
+                    <div style="display: none; margin-top: 5px;">
+                        <p class="main">No, estos cursos validados por USICAMM son de apoyo a los procesos de promoción para educación básica.</p>
+                    </div>
+                </div>
+            </div>
+            <script>
+                function openap(evt) {
+                    if (evt.currentTarget.children[1].style.display == "block") {
+                        evt.currentTarget.children[1].style.display = "none";
+                    } else {
+                        evt.currentTarget.children[1].style.display = "block";
+                    }
+                }
+
+                function openCity(evt, cityName) {
+                    var i, tabcontent, tablinks;
+                    tabcontent = document.getElementsByClassName("tabcontent");
+                    for (i = 0; i < tabcontent.length; i++) {
+                        tabcontent[i].style.display = "none";
+                    }
+                    tablinks = document.getElementsByClassName("opcion_top");
+                    for (i = 0; i < tablinks.length; i++) {
+                        tablinks[i].className = tablinks[i].className.replace(" active", "");
+                    }
+                    document.getElementById(cityName).style.display = "block";
+                    evt.currentTarget.className += " active";
+                }
+
+                // Get the element with id="defaultOpen" and click on it
+                document.getElementById("defaultOpen").click();
+            </script>
         </div>
     </section>
+    </%block>
 </main>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/d3js/5.12.0/d3.min.js"></script>
+<script src="https://kit.fontawesome.com/bebc26d4f1.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+<style>
+    .encabezado{
+        background-color: #83C6BF;
+        color:white;
+        padding:10px;
+        text-transform: uppercase;
+    }
+    * {box-sizing: border-box}
+    body {
+        font-family: "Lato", sans-serif;
+    }
+    #main{
+        font-family: 'Ubuntu', sans-serif;
+    }
+    #main:focus{
+        outline: none;
+    }
+    .opcion_top {
+        background: #F1F1F1;
+        text-align: center;
+        font-size: 30px;
+        padding: 30px 30px;
+        margin: 2px;
+        min-width: 33%;
+        color: #78A349;
+        transition-duration: 0.3s;
+    }
+    .opcion_top span {
+        background: rgb(0,0,0,0);
+        border: none;
+        font-size: 15px;
+    }
+    .opcion_top:hover span {
+        color: #F1F1F1;
+    }
+    .opcion_top:hover {
+        background: #78A349;
+        color: #83C6BF;
+    }
+    .opcion_top span:focus {
+        outline: none;
+    }
+    .tab {
+        display: flex;
+    }
+    .active {
+        background: #83C6BF;
+        color: #F1F1F1;
+    }
+    .active span {
+        color: #F1F1F1;
+    }
+    .g-pregunta {
+        margin-bottom: 10px;
+        background: #83C6BF;
+        padding: 15px;
+        border-radius: 10px;
+    }
+    .g-pregunta:hover {
+        background: #FF9F2D;
+    }
+    .p-btn {
+        padding: 3px;
+        display: block;
+        cursor: pointer;
+    }
+    .opcion_top div {
+        height: 15px;
+    }
+</style>
+<!-- <script>
+  (function(d,t) {
+    var BASE_URL="https://helpdesk.aprende.gob.mx";
+    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=BASE_URL+"/packs/js/sdk.js";
+    g.defer = true;
+    g.async = true;
+    s.parentNode.insertBefore(g,s);
+    g.onload=function(){
+      window.chatwootSDK.run({
+        websiteToken: 'LxT3TnbMgiuKLkee7gUhK9MP',
+        baseUrl: BASE_URL
+      })
+    }
+  })(document,"script");
+</script> -->

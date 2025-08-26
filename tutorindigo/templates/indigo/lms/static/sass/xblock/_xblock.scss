@@ -403,7 +403,7 @@
         }
 
         .tox .tox-edit-area__iframe{
-          background-color: $gray-light;
+            background-color: $body-bg-d;
         }
 
         .openassessment .submission__answer__display__title{
@@ -481,10 +481,10 @@
             background-color: $light-dark-d;
         }
     }
-      
+
     .emoji-button-highlighted{
         background-color: $text-color-d;
-      
+
         &:hover,
         &:hover:not(:disabled){
             background-color: $text-color-d;

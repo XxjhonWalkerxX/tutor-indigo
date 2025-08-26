@@ -1,0 +1,366 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import gettext as _ %>
+<%namespace name='static' file='../static_content.html'/>
+<%
+course_mode_class = course_mode if course_mode else ''
+%>
+<style>
+    /* Definición de las fuentes personalizadas */
+    @font-face {
+        font-family: 'Patria Regular';
+        src: url('${static.url("fonts/Patria_Regular.woff")}') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Noto Sans';
+        src: url('${static.url("fonts/NotoSans-Regular.woff")}') format('woff');
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Noto Sans';
+        src: url('${static.url("fonts/NotoSans-Bold.woff")}') format('woff');
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Noto Sans';
+        src: url('${static.url("fonts/NotoSans-Light.woff")}') format('woff');
+        font-weight: 300;
+        font-style: normal;
+    }
+    .accomplishment-rendering {
+        width: 1100px;height: 850px;
+        box-sizing: border-box;      /* Para que el padding no amplíe el ancho total */
+        padding-right: 200px;   
+        background-size: contain; /* Mantiene la relación de aspecto */
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        padding: 20px;
+    }
+    .contenedor_principal{
+        width: 1000px;
+        height: 830px;
+        position: relative;
+    }
+    .accomplishment-type {
+        text-align: center;
+        padding-top: 5px;
+      }
+    .accomplishment-name {
+        font-family: 'Patria Regular', serif;
+        color: #717170;
+        white-space: nowrap;       /* Sin quiebres de línea */
+        font-size: 40pt;
+        text-align: center;
+        margin-top: -40px;
+      }
+    .info-curso{
+        text-align: center;
+    }
+    .info-curso p {
+        font-family: 'Noto Sans', sans-serif;
+        color: #717170;
+        margin-bottom: 0;
+        font-weight: normal;
+    }
+    .info-curso .texto-normal,
+    .info-curso .accomplishment-course,
+    .info-curso .accomplishment-statement-detail {
+        font-family: 'Noto Sans', sans-serif !important;
+    }
+    .info-curso .accomplishment-course {
+        font-weight: bold;
+        font-size: 22pt;
+        color: #717170;
+    }
+    .info-curso .accomplishment-statement-detail {
+        font-size: 12pt;
+        font-weight: bold;
+        margin-bottom: 50px;
+    }
+    .info-secundaria {
+        font-family: 'Noto Sans', sans-serif;
+        color: #717170;
+        text-align: center;
+    }
+    .info-secundaria-fecha {
+        margin-top: -40px;
+        font-size: 12pt;
+        font-weight: normal;
+    }
+    .info-secundaria-calif {
+        margin-top: 15px;
+        font-size: 12pt;
+        font-weight: normal;
+        margin-bottom: 15px;
+    }
+    .info-secundaria-duracion {
+        margin-top: -5px;
+        font-size: 12pt;
+        font-weight: normal;
+    }
+    .info-secundaria-cert-id {
+        font-size: 9pt;
+        margin-left: -700px;
+        margin-top: -10px;
+    }
+    .info-secundaria-nota {
+        font-size: 6pt;
+        font-weight: 300;
+        text-align: center;
+        line-height: 0.5%;
+        margin-bottom: 15px;
+    }
+    .img-organization {
+        margin-top: 135px;
+    }
+    .images {
+        width: 950px;
+        display: flex;
+        flex-direction: row;           /* Alinea horizontalmente */
+        justify-content: space-between;/* Espacio entre los elementos */
+        align-items: center;           /* Centra verticalmente */
+        gap: 20px;
+    }
+
+    /* .images > div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    } */
+
+    .logos-row {
+        display: flex;
+        flex-direction: row;           /* Alinea horizontalmente los logos */
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+    .images > div img {
+        display: block;
+        margin: 0 auto;
+    }
+    .images > div p.info-secundaria-cert-id {
+        font-size: 10pt;
+        color: #555;
+    }
+    .img-ilustracion {
+        max-width: 300px;
+        max-height: 300px;
+        width: auto;
+        height: auto;
+    }
+    .img-unicef-grande {
+        max-width: 150px;
+        max-height: 100px;
+        width: auto;
+        height: auto;
+    }
+    .img-unicef-chico {
+        max-width: 150px;
+        max-height: 100px;
+        width: auto;
+        height: auto;
+    }
+    .img-qr {
+        max-width: 90px;
+        max-height: 90px;
+        width: auto;
+        height: auto;
+        padding-left: 100px;
+    }
+    .feed {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    }
+@media print {
+  @page {
+    size: letter landscape;
+    margin: 0;
+  }
+
+  body * {
+    visibility: hidden !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  .accomplishment-rendering,
+  .accomplishment-rendering * {
+    visibility: visible !important;
+  }
+
+  .accomplishment-rendering {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 279.4mm !important;
+    height: 215.9mm !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .contenedor_principal {
+    width: 254mm;
+    height: 215.9mm;
+    box-sizing: border-box;
+  }
+
+    .img-ilustracion {
+      max-width: 300px !important;
+      max-height: 3000px !important;
+  }
+  .img-unicef-grande {
+      max-width: 150px !important;
+      max-height: 150px !important;
+  }
+  .img-unicef-chico {
+      max-width: 150px !important;
+      max-height: 150px !important;
+  }
+  .img-qr {
+      max-width: 90px !important;
+      max-height: 90px !important;
+  }
+  .feed{
+    padding-top: 60px !important;
+  }
+}
+
+
+</style>
+
+<main>
+    <div class="accomplishment-rendering" style="background: url('${static.url("images/BACK.png")}')">
+        <section class="contenedor_principal">
+            <span class="deco-corner deco-corner-tl"></span>
+            <span class="deco-corner deco-corner-tr"></span>
+            <span class="deco-corner deco-corner-bl"></span>
+            <span class="deco-corner deco-corner-br"></span>
+            <div class="accomplishment-type">
+                <span class="accomplishment-type-symbol">
+                </span>
+                % if not fullTheme:
+                    <img class="src" src="${static.url("images/ENDOSO_5.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
+                % else:
+                <img class="src" src="${static.url("images/Logos_Educacion_Aprende.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
+                <!-- <img class="src" src="${static.url("images/ENDOSO_2.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;"> -->
+                % endif
+                <div style="margin-top: 25px;">
+                    <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 15pt; color: #717170;"><strong>Otorgan la presente</strong></span>
+                    <br>
+                    <br>
+                    <span style="font-family: 'Patria Regular', serif; font-size: 41pt; color: #AE8420; font-weight: bold;"><strong>CONSTANCIA</strong></span>
+                    <br>
+                    <br>
+                    <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 15pt; color: #717170;"><strong>a</strong></span>
+                </div>
+            </div>
+            <div class="accomplishment-name">
+                <strong>${accomplishment_copy_name}</strong>
+            </div>
+            <div class="info-curso">
+                <p>
+                    <span class="texto-normal" style="font-family: 'Noto Sans', sans-serif;">por haber concluido satisfactoriamente el curso masivo abierto en línea</span>
+                    <br>
+                    <br>
+                    <span class="accomplishment-course">${accomplishment_copy_course_name}</span>
+                </p>
+                % if customOrganizacionText:
+                    <p class="accomplishment-statement-detail">
+                        <strong>${customOrganizacionText},</strong><br>a través de la plataforma <strong>Cursos @prende.mx</strong>.
+                    </p>
+                % else:
+                    <p class="accomplishment-statement-detail">
+                        impartido por <strong>${organization_long_name},</strong><br>a través de la plataforma <strong>Cursos @prende.mx</strong>.
+                    </p>
+                % endif
+            </div>
+            <div class="datos">
+                % if mode != 'base':
+                    % if certificate_data:
+                        % for signatory in certificate_data.get('signatories', []):
+                            <p class="info-secundaria info-secundaria-fecha">${signatory['name']}</p>
+                            % if course_grade:
+                                <p class="info-secundaria info-secundaria-calif">Calificación: ${course_grade}%</p>
+                            % endif
+                            <p class="info-secundaria info-secundaria-duracion">${signatory['title']}</p>
+                            <p class="info-secundaria info-secundaria-duracion">${signatory['organization']}</p>
+                        % endfor
+                    % endif 
+                % endif
+            </div>
+            <br>
+            <br>
+            <br>
+            <section class="images">
+                <div>
+                    <img class="img-ilustracion" src="${static.url("images/ILUSTR_MUJERES INDIGENAS.png")}">
+                </div>
+                <div class="logos-row">
+                    <!-- <div>
+                            <img src="${static.url("images/logo.png")}" alt="${platform_name}">
+                        </div> -->
+                    % if organization_logo:
+                        <div>
+                            <img class="img-unicef-grande" src="${organization_logo.url}" alt="${platform_name}">
+                        </div>
+                    % endif
+                </div>
+                <div>
+                    <img class="img-qr" src="https://certificados.mexicox.gob.mx/generate_qr/${certificate_id_number}/" height="100px">
+                    <!-- <p style="font-family: 'Noto Sans', sans-serif; font-size: 9pt; color: #717170; margin-left: -700px; margin-top: -10px">Certificate ID Number: <strong>${certificate_id_number}</strong></p> -->
+                </div>
+            </section>
+            <div class="feed">
+                <p class="info-secundaria info-secundaria-nota">Este curso no acredita al participante como alumno oficial de la institución que lo imparte.</p>
+                <p class="info-secundaria info-secundaria-nota">No contiene créditos académicos ni revalidación académica en ninguno de los programas de estudios formales o de extensión. </p>  
+            </div>
+            <!-- <div class="wrapper-accomplishment-metadata">
+                <div class="accomplishment-metadata">
+                    <h2 class="accomplishment-metadata-title hd-6">${accomplishment_copy_more_about}</h2>
+                    <div class="wrapper-metadata">
+                        <dl class="metadata accomplishment-recipient">
+                            <dt class="label sr-only">${_("Awarded to:")}</dt>
+                            <dd class="value copy copy-meta">
+                                <span class="recipient-img">
+                                    <img class="src" src="/static/certificates/images/demo-user-profile.png" alt="Recipient Image">
+                                </span>
+                                <div class="recipient-details">
+                                    <h3 class="recipient-name">${accomplishment_copy_name}</h3>
+                                    <p class="recipient-username">${accomplishment_copy_username} @ ${platform_name}</p>
+                                </div>
+                            </dd>
+                        </dl>
+                        <dl class="metadata accomplishment-id">
+                            <dt class="label copy copy-meta">${certificate_id_number_title}:</dt>
+                            <dd class="value copy copy-base">${certificate_id_number}</dd>
+                        </dl>
+                        <dl class="metadata accomplishment-date">
+                            <dt class="label copy copy-meta">${certificate_date_issued_title}</dt>
+                            <dd class="value copy copy-base">${certificate_date_issued}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div> -->
+        </section>
+    </div>
+</main>

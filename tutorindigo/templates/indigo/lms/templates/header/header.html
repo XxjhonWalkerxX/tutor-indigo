@@ -41,13 +41,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
     catch(e){window.attachEvent("onload", $buo_f)}
   </script>
 % endif
-
-
-<%block name="js_extra">
-  <script src="${static.url('js/responsive-nav.js')}"></script>
-</%block>
-
-<header class="global-header ${'slim' if course else ''}">
+<header class="global-header ${'slim' if course else ''}" style="background: #F6F1EB;">
     <div class="header-container">
     % if settings.FEATURES.get('ENABLE_COOKIE_POLICY_BANNER', use_cookie_banner):
         ${static.renderReact(
@@ -57,21 +51,125 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
         )}
     % endif
     <div class="main-header">
-      <button class="hamburger-menu" role="button" aria-label=${_("Options Menu")} aria-expanded="false" aria-controls="mobile-menu" tabindex="0">
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line"></span>
-      </button>
-      <%include file="navbar-logo-header.html" args="online_help_token=online_help_token"/>
-        % if user.is_authenticated:
-            <%include file="navbar-authenticated.html" args="online_help_token=online_help_token"/>
-        % else:
-            <%include file="navbar-not-authenticated.html" args="online_help_token=online_help_token"/>
-        % endif
+        
+        <div class="hamburger-menu" role="button" aria-label=${_("Options Menu")} aria-expanded="false" aria-controls="mobile-menu" tabindex="0">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </div>
     </div>
     <div class="mobile-menu hidden" aria-label=${_("More Options")} role="menu" id="mobile-menu"></div>
     </div>
+            <style>
+
+                .cabeza {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-wrap: nowrap;
+                    max-height: 90px;
+                    flex-direction: row;
+                }
+
+                .interno {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-wrap: nowrap;
+                    flex-direction: row;
+                    padding-left: 20px;
+                }
+                .logo-central {
+                    position: relative;
+                    top: 29px;
+                }
+                /* En móviles: reducir tamaño de logos pero no permitir que salten de línea */
+                @media (max-width: 768px) {
+                    .cabeza {
+                        position: relative;
+                        flex-direction: row;
+                        flex-wrap: nowrap;  /* <- no permitir que bajen */
+                        justify-content: space-between;
+                    }
+
+                    .interno img {
+                        height: auto;
+                        width: auto;
+                        max-height: 60px; 
+                        max-width: 120px; 
+                    }
+
+                    .interno {
+                        padding: 0 5px;
+                    }
+                    .logo-principal {
+                        max-height: 100px;
+                        max-width: 150px;
+                        position: relative;
+                        top: 18px;
+                    }
+                    .logo-central {
+                        max-height: 60px;
+                        max-width: 60px;
+                        top: 35px;
+                        z-index: 10; 
+                    }
+                    .hamburger-menu {
+                        position: relative;
+                        z-index: 1001; 
+                        background: #fff; 
+                    }
+                }
+
+
+
+                @media (min-width: 768px) {
+                    .container-fluid > .navbar-collapse, .container-fluid > .navbar-header, .container > .navbar-collapse, .container > .navbar-header {
+                        margin-right: 0;
+                        margin-left: 0;
+                        margin-top: -45px !important;
+                    }
+                }
+
+                @media (min-width: 768px) {
+                    .navbar-right {
+                        float: right !important;
+                        margin-right: -15px;
+                        margin-top: -45px !important;
+                    }
+                }
+
+                .global-header {
+                    margin-top: 44px;
+                   }
+
+                .main-container {
+                    margin-top: 80px !important;
+                }
+
+                .btn-holder {
+                    margin-top: 20px;
+                }
+            </style>
+        <div class="cabeza">
+            <div class="interno logo-principal">
+                <%include file="navbar-logo-2-header.html" />
+            </div>
+            <div class="interno logo-central">
+                <%include file="navbar-logo-header.html" args="online_help_token=online_help_token"/>
+            </div>
+            <div class="interno">
+                % if user.is_authenticated:
+                    <%include file="navbar-authenticated.html" args="online_help_token=online_help_token"/>
+                % else:
+                    <%include file="navbar-not-authenticated.html" args="online_help_token=online_help_token"/>
+                % endif
+            </div>
+        </div>
+
+
+
 </header>
 
 % if course:
@@ -97,7 +195,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
             % if user.is_authenticated:
                 <input title="preference api" type="hidden" class="url-endpoint" value="${reverse('preferences_api', kwargs={'username': user.username})}" data-user-is-authenticated="true">
             % else:
-                <input title="session update url" type="hidden" class="url-endpoint" value="${reverse('update_language')}" data-user-is-authenticated="false">
+                <input title="session update url" type="hidden" class="url-endpoint" value="${reverse('session_language')}" data-user-is-authenticated="false">
             % endif
             <label><span class="sr">${_("Choose Language")}</span>
             <select class="input select language-selector" id="settings-language-value" name="language">

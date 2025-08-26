@@ -3,8 +3,21 @@
 <%!
 from django.utils.translation import gettext as _
 from django.urls import reverse
+from django.conf import settings
 %>
 <%page args="course" expression_filter="h"/>
+<%!
+    from django.core.files.storage import default_storage
+%>
+<%
+    org_key = course.org or ''
+    if org_key:
+
+        logo_path   = f'organization_logos/{org_key}.png'
+        org_logo_url = default_storage.url(logo_path)
+    else:
+        org_logo_url = None
+%>
 <article class="course" id="${course.id}" role="region" aria-label="${course.display_name_with_default}">
     <header class="course-image">
       <div class="cover-image">
@@ -13,41 +26,133 @@ from django.urls import reverse
       </div>
     </header>
     <div class="course-info" aria-hidden="true">
-      <h2 class="course-name">
+      <h2 class="course-name" style="padding: 10px 20px 0;">
         <span class="course-code">${course.display_number_with_default}</span>
         <span class="course-title">${course.display_name_with_default}</span>
-        <span class="course-organization">${course.display_org_with_default}</span>
       </h2>
-      <!-- NEW IN INDIGO Learn more button is displayed under the course image instead of the hover functionality. -->
-      <a  href="${reverse('about_course', args=[str(course.id)])}" class="learn-more" aria-hidden="true">${_("Learn More")}</a>
-      <%
-      if course.start is not None:
-          course_date_string = course.start.strftime('%Y-%m-%dT%H:%M:%S%z')
-      else:
-          course_date_string = ''
-      %>
-      % if course.advertised_start is not None:
-          <div class="course-date" aria-hidden="true">
+        <%
+            if course.start is not None:
+                course_date_string = course.start.strftime('%Y-%m-%dT%H:%M:%S%z')
+            else:
+                course_date_string = ''
+        %>
+        % if course.advertised_start is not None:
+        <div class="course-date" aria-hidden="true">
             <!-- NEW IN INDIGO calendar icon is displayed next to the course start date -->
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M15 3.83332H15.8333C16.75 3.83332 17.5 4.58332 17.5 5.49999V17.1667C17.5 18.0833 16.75 18.8333 15.8333 18.8333H4.16667C3.24167 18.8333 2.5 18.0833 2.5 17.1667L2.50833 5.49999C2.50833 4.58332 3.24167 3.83332 4.16667 3.83332H5V2.16666H6.66667V3.83332H13.3333V2.16666H15V3.83332ZM4.16667 8.83332V17.1667H15.8333V8.83332H4.16667ZM15.8333 7.16666H4.16667V5.49999H15.8333V7.16666ZM14.1667 11.3333H10V15.5H14.1667V11.3333Z" fill="#9CA3AF"/>
-            </svg>  ${_("Starts")}: ${course.advertised_start}</div>
-      % else:
-          <div class="course-date">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M15 3.83332H15.8333C16.75 3.83332 17.5 4.58332 17.5 5.49999V17.1667C17.5 18.0833 16.75 18.8333 15.8333 18.8333H4.16667C3.24167 18.8333 2.5 18.0833 2.5 17.1667L2.50833 5.49999C2.50833 4.58332 3.24167 3.83332 4.16667 3.83332H5V2.16666H6.66667V3.83332H13.3333V2.16666H15V3.83332ZM4.16667 8.83332V17.1667H15.8333V8.83332H4.16667ZM15.8333 7.16666H4.16667V5.49999H15.8333V7.16666ZM14.1667 11.3333H10V15.5H14.1667V11.3333Z"
+                      fill="#9CA3AF"/>
+            </svg>
+            Comienza: ${course.advertised_start}
+        </div>
+        % else:
+        <div class="course-date">
             <!-- NEW IN INDIGO calendar icon is displayed next to the course start date -->
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M15 3.83332H15.8333C16.75 3.83332 17.5 4.58332 17.5 5.49999V17.1667C17.5 18.0833 16.75 18.8333 15.8333 18.8333H4.16667C3.24167 18.8333 2.5 18.0833 2.5 17.1667L2.50833 5.49999C2.50833 4.58332 3.24167 3.83332 4.16667 3.83332H5V2.16666H6.66667V3.83332H13.3333V2.16666H15V3.83332ZM4.16667 8.83332V17.1667H15.8333V8.83332H4.16667ZM15.8333 7.16666H4.16667V5.49999H15.8333V7.16666ZM14.1667 11.3333H10V15.5H14.1667V11.3333Z" fill="#9CA3AF"/>
-          </svg><span class="localized_datetime" aria-hidden="true" data-format="shortDate" data-datetime="${course_date_string}" data-language="${LANGUAGE_CODE}" data-string="${_("Starts: {date}")}"></span></div>
-      % endif
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M15 3.83332H15.8333C16.75 3.83332 17.5 4.58332 17.5 5.49999V17.1667C17.5 18.0833 16.75 18.8333 15.8333 18.8333H4.16667C3.24167 18.8333 2.5 18.0833 2.5 17.1667L2.50833 5.49999C2.50833 4.58332 3.24167 3.83332 4.16667 3.83332H5V2.16666H6.66667V3.83332H13.3333V2.16666H15V3.83332ZM4.16667 8.83332V17.1667H15.8333V8.83332H4.16667ZM15.8333 7.16666H4.16667V5.49999H15.8333V7.16666ZM14.1667 11.3333H10V15.5H14.1667V11.3333Z"
+                      fill="#9CA3AF"/>
+            </svg>
+            <span class="localized_datetime" aria-hidden="true" data-format="shortDate"
+                  data-datetime="${course_date_string}" data-language="${LANGUAGE_CODE}"
+                  data-string="${_("Comienza: {date}")}"></span>
+        </div>
+        % endif>
+        <!-- NEW IN INDIGO Learn more button is displayed under the course image instead of the hover functionality. -->
+
+      <a  href="${reverse('about_course', args=[str(course.id)])}" class="learn-more" aria-hidden="true">Saber más</a>
+
+        <!-- Div que contiene la informacion de que institucion se imparte el curso-->
+        <style>
+          .org-logo-container {
+            width: 100%;              /* Usar todo el ancho disponible de la tarjeta */
+            max-width: 250px;         /* Ancho máximo */
+            height: 50px;             /* Altura del logo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: -12px auto 0;      /* Margen negativo para subir el logo */
+            background-color: #F8E1BF; /* Color de fondo */
+            overflow: hidden;
+          }
+          .course-org-logo {
+            width: 100%;             /* Ancho completo del contenedor */
+            height:40px;            /* Altura fija forzada */
+            object-fit: contain;     /* Mostrar toda la imagen sin recortar */
+            display: block;
+          }
+        </style>
+        <div style="width:100%; background-color:#F8E1BF; display: block; overflow: hidden;">
+            <div class="org-text-container" style="height: 40px; display: flex; align-items: center; justify-content: center; padding: 4px 8px; position: relative; overflow: hidden;">
+                <span class="course-organization auto-fit-text" style="display: block; word-wrap: break-word; text-align: center; font-weight: 500; line-height: 1.2; width: 100%; font-size: 12px; hyphens: auto;">${course.display_org_with_default}</span>
+            </div>
+            <script>
+                (function() {
+                    function adjustTextSize() {
+                        document.querySelectorAll('.auto-fit-text').forEach(function(element) {
+                            var container = element.parentElement;
+                            var containerHeight = container.offsetHeight;
+                            var containerPadding = 14; // padding total (4px arriba + 4px abajo)
+                            var availableHeight = containerHeight - containerPadding;
+                            var fontSize = 12;
+                            var minFontSize = 8;
+                            
+                            // Reset inicial
+                            element.style.fontSize = fontSize + 'px';
+                            element.style.whiteSpace = 'normal';
+                            element.style.overflow = 'hidden';
+                            
+                            // Ajustar tamaño de fuente hasta que el texto quepa en la altura disponible
+                            while (element.scrollHeight > availableHeight && fontSize > minFontSize) {
+                                fontSize -= 0.5;
+                                element.style.fontSize = fontSize + 'px';
+                            }
+                            
+                            // Si aún es muy alto después del tamaño mínimo, forzar ellipsis
+                            if (element.scrollHeight > availableHeight) {
+                                element.style.overflow = 'hidden';
+                                element.style.textOverflow = 'ellipsis';
+                                element.style.display = '-webkit-box';
+                                element.style.webkitBoxOrient = 'vertical';
+                                element.style.webkitLineClamp = Math.floor(availableHeight / (fontSize * 1.2)); // líneas que caben
+                            }
+                        });
+                    }
+                    
+                    // Ejecutar cuando el DOM esté listo
+                    if (document.readyState === 'loading') {
+                        document.addEventListener('DOMContentLoaded', adjustTextSize);
+                    } else {
+                        adjustTextSize();
+                    }
+                    
+                    // También ejecutar después de que las imágenes se carguen
+                    window.addEventListener('load', adjustTextSize);
+                })();
+            </script>
+            <div class="org-logo-container">
+            % if org_logo_url:
+              <img
+                src="${org_logo_url}"
+                class="course-org-logo"
+                onerror="this.style.display='none';"
+                alt="${course.display_org_with_default} logo"
+                style="margin-top: -5px;"
+              />
+            % endif
+            </div>
+        </div>
     </div>
+
     <div class="sr">
       <ul>
         <li>${course.display_org_with_default}</li>
         <li>${course.display_number_with_default}</li>
         % if course.advertised_start is not None:
-            <li>${_("Starts")}: <time itemprop="startDate">${course.advertised_start}</time></li>
+            <li>${_("Comienza")}: <time itemprop="startDate">${course.advertised_start}</time></li>
         % else:
-            <li>${_("Starts")}: <time class="localized_datetime" itemprop="startDate" data-format="shortDate" data-datetime="${course_date_string}" data-language="${LANGUAGE_CODE}"></time></li>
+            <li>${_("Comienza")}: <time class="localized_datetime" itemprop="startDate" data-format="shortDate" data-datetime="${course_date_string}" data-language="${LANGUAGE_CODE}"></time></li>
         % endif
       </ul>
     </div>

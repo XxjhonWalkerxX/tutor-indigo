@@ -1,7 +1,7 @@
 // Include custom Footer
 .wrapper-footer {
     padding: 25px 0;
-    border-top: 1px solid $gray-light;
+    border-top: 1px solid #E5E7EB;
     @include media-breakpoint-up(md) {
         padding: 45px 0;
     }
@@ -28,7 +28,7 @@ footer.tutor-container {
                 margin: 0 0 15px;
             }
             @include media-breakpoint-up(lg) {
-                float: left;
+                float: none;
             }
         }
     }

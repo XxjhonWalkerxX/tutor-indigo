@@ -17,41 +17,11 @@ body, body.view-profile {
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
 }
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active{
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: $dark;
-    transition: background-color 5000s ease-in-out 0s;
-    box-shadow: none;
-}
-
-.register-btn,
-.sign-in-btn,
-.search-button,
-.learn-more,
-.see-children a,
-.add-article-btn,
-.member-list-widget .add,
-section.wiki .btn.btn-primary {
-
-  &:focus,
-  &:focus-visible {
-    outline-offset: 3px;
-  }
-}
-
 .page-content-container {
   max-width: 1600px;
   margin: 0 auto;
   padding: 0 15px;
   border: none;
-}
-
-:focus,
-:focus-visible {
-    outline-width: 2px;
 }
 
 %btn-pl-default-base {
@@ -131,6 +101,32 @@ header.global-header .nav-links .secondary .dropdown-user-menu {
   width: 100%;
   text-align: center;
 }
+
+/* estilos en index para la imagen mexicox y el buscador*/
+
+    .principal_imgtxt {
+        display: flex;
+        justify-content: center;
+        align-items:center;
+    }
+
+    .imgtxt_mx {
+        width:50%;
+        padding: 0 2% 0 2%;
+    }
+
+    @media (max-width: 768px) {
+        .imgtxt_mx {
+            width: 100%;
+        }
+
+        .principal_imgtxt {
+            display: block;
+        }
+    }
+
+/* ************************************************* */
+
 .home > header .title > .heading-group h1 {
   text-align: center;
 }
@@ -140,7 +136,9 @@ header.global-header .nav-links .secondary .dropdown-user-menu {
 }
 
 .highlighted-courses .courses, .find-courses .courses {
-  padding-top: 0;
+  padding-top: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .home .courses-container .courses .courses-listing {
@@ -319,51 +317,33 @@ nav.wrapper-preview-menu {
     }
   }
 }
-.wrapper-course-material[aria-label="Course Material"] {
-  margin: 0 auto;
-  max-width: 1600px;
-  padding: 20px 15px !important;
-
-  .course-material {
-    overflow: visible;
-  }
-
-  .tabs.course-tabs {
-    margin: 0 0 10px;
-    border-bottom: 1px solid $gray-light;
-    padding: 0;
-    li {
-      margin: 0 32px 0 0;
-
-      &.more {
-        margin-right: 0;
-      }
-
-      button {
-        border: 0;
-        background: none;
-      }
-
-      a,
-      button {
-        border-width: 2px;
-        font-size: 14px;
-        font-weight: 500;
-        color: $light-dark;
-        &:hover, &:visited {
-          color: $dark;
-          border-color: transparent;
-        }
-        &.active {
-          color: $dark;
-          border-color: $primary;
+body.view-statictab, body.view-instructordash, body.view-teams, body.view-wiki {
+  .wrapper-course-material {
+    margin: 0 auto;
+    max-width: 1600px;
+    padding: 20px 15px !important;
+    .tabs.course-tabs {
+      margin: 0 0 10px;
+      border-bottom: 1px solid #E5E7EB;
+      li {
+        margin: 0 32px 0 0;
+        a {
+          border-width: 2px;
+          font-size: 14px;
+          font-weight: 500;
+          color: $light-dark;
+          &:hover, &:visited {
+            color: $dark;
+            border-color: transparent;
+          }
+          &.active {
+            color: $dark;
+            border-color: $primary;
+          }
         }
       }
     }
   }
-}
-body.view-statictab, body.view-instructordash, body.view-teams, body.view-wiki,
-body.view-student-notes {
   #main {
     .container {
       padding: 0;
@@ -377,48 +357,6 @@ body.view-student-notes {
         background: no-repeat;
     }
   }
-  .container.about {
-    color: $text-color-primary;
-    h1 {
-      color: $primary-d;
-    }
-    a {
-      color: $primary-d;
-    }
-    .graphic-img {
-      img {
-        display: none;
-        &.dark {
-          display: block;
-        }
-      }
-    }
-  }
-
-  .wrapper-member-select {
-    background: $primary-light !important;
-    select {
-      background: none;
-      color: dark;
-    }
-  }
-  .member-list {
-    .label {
-      color: dark !important;
-      background: $primary-light !important;
-    }
-  }
-  .bottom-bar {
-    background: $primary-light !important;
-    input[type="button"] {
-      background: $primary !important;
-      border-color: $primary !important;
-      color: white !important;
-      text-shadow: none !important;
-      font-size: 14px;
-      font-weight: 500;
-    }
-  } 
 }
 body.view-teams {
   .container {
@@ -443,14 +381,6 @@ body.view-instructordash {
   }
   .instructor-dashboard-content-2 {
     padding: 0;
-
-    .wrap-instructor-info {
-      @include media-breakpoint-down(xs) {
-        display: block;
-        text-align: right;
-      }
-    }
-
     h2.instructor-dashboard-title {
       font-size: 24px;
       line-height: 30px;
@@ -459,33 +389,33 @@ body.view-instructordash {
       background: $primary;
       color: white;
       margin: 0 0 10px;
-      outline-offset: 3px;
-      @include media-breakpoint-down(xs) {
-        display: inline-block;
-        float: none;
-      }
     }
     .instructor-nav {
-      display: flex;
+      overflow: hidden;
       width: 100%;
       white-space: nowrap;
-      border: 1px solid $gray-light;
-      border-radius: 0;
+      overflow-x: auto;
+      border: 1px solid #E5E7EB;
+      border-radius: 6px;
       padding: 0 !important;
-
+      letter-spacing: -.32em;
       li {
-
+        letter-spacing: normal;
+        &:first-child {
+          button {
+            border: none;
+          }
+        }
         button {
           border: none !important;
           border-radius: 0 !important;
-          border-left: 1px solid $gray-light !important;
+          border-left: 1px solid #E5E7EB !important;
           font-size: 14px;
           line-height: 20px;
           font-weight: 500;
           padding: 9px 17px;
           color: #374151;
           text-decoration: none !important;
-          outline-offset: 3px;
           &.active-section {
             background: $primary !important;
             color: white !important;
@@ -533,7 +463,7 @@ body.view-instructordash {
           color: #111827;
         }
         .total {
-          border-top: 1px solid $gray-light;
+          border-top: 1px solid #E5E7EB;
           th, td {
             color: $primary;
             font-weight: 700;
@@ -541,25 +471,7 @@ body.view-instructordash {
         }
       }
     }
-    #course_info > h4 {
-      background: $primary-light;
-      padding: 15px 0 0 15px;
-      font-size: 18px;
-      color: $dark;
-      font-weight: 600;
-      margin-bottom: 0;
-    }
-    #course_info > .enrollment-wrapper {
-      padding-top: 0 !important;
-      .tip {
-        text-align: left;
-        font-size: 14px;
-        font-weight: normal;
-        color: $light-dark;
-        margin-bottom: 10px;
-      }
-    }
-    #course_info  .enrollment-wrapper, .basic-wrapper, .course-errors-wrapper, .running-tasks-container {
+    .info-holder, .basic-wrapper, .course-errors-wrapper, .running-tasks-container {
       background: $primary-light;
       padding: 15px;
       margin: 0 0 30px;
@@ -618,76 +530,6 @@ body.view-wiki{
       background: none;
       box-shadow: none;
       border: none;
-    }
-    #alert_stat_bar {
-      .paragon__alert-warning {
-        color: $dark;
-        background: $primary-light;
-        border: none;
-        button.paragon__close {
-          background: none !important;
-          box-shadow: none !important;
-          color: $dark !important;
-          opacity: 1 !important;
-          font-size: 1.2rem;
-          border: none !important;
-        }
-      }
-    }
-    section.wiki {
-      .diff-container table {
-        tr.insert td {
-          background: $success-d;
-          color: $text-color-d;
-        }
-        tr.delete td {
-          background: $danger-d;
-          color: $text-color-d;
-        }
-      }
-      .table.table-striped {
-        tr:nth-child(2n) {
-          background: $primary-light;
-        }
-        td {
-          a {
-            color: $primary !important;
-          }
-        }
-      }
-      .directory-toolbar {
-        background: $primary-light;
-        a.btn {
-          background: $primary !important;
-          border-color: $primary !important;
-          box-shadow: none !important;
-          color: white !important;
-          text-shadow: none;
-        }
-      }
-    }
-    .wiki-wrapper section.wiki .btn.btn-large, .wiki-wrapper section.wiki .btn.btn-danger {
-      background: none;
-      color: $dark !important;
-      border-color: $dark !important;
-      text-shadow: none !important;
-      box-shadow: none !important;
-      &:hover {
-        background: none !important;
-        color: $dark !important;
-        border-color: $dark !important;
-      }
-    }
-    .wiki-wrapper section.wiki .btn.btn-primary, .wiki-wrapper section.wiki .btn.btn-brand {
-      background: $primary!important;
-      border-color: $primary !important;
-      color: white !important;
-      box-shadow: none;
-      &:hover {
-        background: $primary!important;
-        border-color: $primary !important;
-        color: white !important;
-      }
     }
     .wiki {
       .breadcrumbs-header {
@@ -799,7 +641,7 @@ body.view-wiki{
           }
         }
         .timestamp {
-          border: 1px solid $gray-light;
+          border: 1px solid #E5E7EB;
           border-radius: 8px;
           border-left: 6px solid $primary-light;
           padding: 15px;
@@ -908,8 +750,8 @@ body div.book-wrapper{
 
 body.indigo-dark-theme {
   input:-webkit-autofill,
-  input:-webkit-autofill:hover, 
-  input:-webkit-autofill:focus, 
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
   input:-webkit-autofill:active{
       -webkit-text-fill-color: $text-color-d;
   }
@@ -1050,7 +892,7 @@ body.indigo-dark-theme {
         background: $primary-light-d;
         color: $text-color-d;
       }
-      #course_info  .enrollment-wrapper { 
+      #course_info  .enrollment-wrapper {
         padding-top: 0;
         .tip {
           color: $text-color-primary;
@@ -1229,7 +1071,7 @@ body.indigo-dark-theme {
       small {
         color: $text-color-d;
       }
-    } 
+    }
     .container{
      .wiki {
        .breadcrumbs-header {
@@ -1395,7 +1237,7 @@ body.indigo-dark-theme {
     .idash-section .message-confirmation {
       background: $body-bg-d;
       border-color: $success-d;
-      .message-title { 
+      .message-title {
         color: $success-d;
       }
     }
@@ -1481,7 +1323,7 @@ body.indigo-dark-theme {
       font-size: 14px;
       font-weight: 500;
     }
-  } 
+  }
   &.view-teams {
     .page-header {
       .page-title {
@@ -1534,7 +1376,7 @@ body.indigo-dark-theme {
       .page-content-secondary{
         color: grey;
       }
-    } 
+    }
 
     .card {
       .card-type, .card-description{
@@ -1544,8 +1386,8 @@ body.indigo-dark-theme {
       .wrapper-card-meta{
         background: $primary-light-d;
         .meta-detail{ color: $text-color-primary; }
-      } 
-      
+      }
+
       .card-actions .action-view{
         border-color: $primary-d;
         color: $primary-d;
@@ -1600,7 +1442,7 @@ body.indigo-dark-theme {
         color: lightgrey;
       }
 
-      .tab.is-active{ 
+      .tab.is-active{
         .tab-label{
           color: $text-color-d;
           border-bottom-color: $text-color-primary;
@@ -1613,12 +1455,12 @@ body.indigo-dark-theme {
         border-color: transparent;
         box-shadow: none;
       }
-    } 
+    }
 
     .listing-tools{ color: lightgrey; }
 
-    .placeholder{ 
-      border-color: $primary-d; 
+    .placeholder{
+      border-color: $primary-d;
       background: $primary-light-d;
 
       .placeholder-title{ color: $text-color-d; }
@@ -1652,7 +1494,7 @@ body.indigo-dark-theme {
 
           .note-comments .note-comment-p{ color: $text-color-d; }
         }
-        &:hover{ 
+        &:hover{
           .note-excerpt{
             background: $danger-d;
           }
@@ -1660,10 +1502,10 @@ body.indigo-dark-theme {
 
         footer.reference .wrapper-reference-content{
           a.reference-meta{
-            color: $primary-d; 
+            color: $primary-d;
           }
-          .reference-meta{ 
-            color: $text-color-d; 
+          .reference-meta{
+            color: $text-color-d;
             &::after{ color: $text-color-primary; }
           }
         }
