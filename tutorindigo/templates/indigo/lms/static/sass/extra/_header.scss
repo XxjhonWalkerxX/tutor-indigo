@@ -26,7 +26,6 @@ body {
     }
   }
 }
-
 header.global-header {
     border: none;
     padding: 0;
@@ -41,7 +40,7 @@ header.global-header {
         height: auto;
     }
     .header-logo {
-        margin: 3px;
+        margin: 3pk;
         a {
             margin: 15px 0 15px 35px;
             height: auto;
@@ -376,4 +375,8 @@ body.indigo-dark-theme {
             }
         }
     }
+}
+.left-logo {
+    flex: 1;
+    text-align: left;
 }
