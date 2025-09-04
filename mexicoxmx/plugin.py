@@ -11,18 +11,23 @@ from tutor.__about__ import __version_suffix__
 
 from .__about__ import __version__
 
-# Handle version suffix in nightly mode, just like tutor core
+# ------------------------------------------------------------------------------
+# Handle version suffix in nightly mode
+# ------------------------------------------------------------------------------
 if __version_suffix__:
     __version__ += "-" + __version_suffix__
 
-
-################# Configuration
+# ------------------------------------------------------------------------------
+# Theme configuration
+# ------------------------------------------------------------------------------
 config: t.Dict[str, t.Dict[str, t.Any]] = {
-    # Add here your new settings
     "defaults": {
         "VERSION": __version__,
         "WELCOME_MESSAGE": "Plataforma de entrenamiento digital educativo para instituciones públicas y de interés educativo",
-        "PRIMARY_COLOR": "#82c5be",  # Indigo
+        "PRIMARY_COLOR": "#82c5be",
+        "ACCENT_COLOR": "#A67F00",
+        "HIGHLIGHT_COLOR": "#FFE19F",
+        "ENABLE_DARK_TOGGLE": True,
         # Footer links are dictionaries with a "title" and "url"
         # To remove all links, run:
         # tutor config save --set INDIGO_FOOTER_NAV_LINKS=[]
@@ -39,41 +44,34 @@ config: t.Dict[str, t.Dict[str, t.Any]] = {
     "unique": {},
     "overrides": {},
 }
-# Theme templates
+# ------------------------------------------------------------------------------
+# Templates and static assets
+# ------------------------------------------------------------------------------
 hooks.Filters.ENV_TEMPLATE_ROOTS.add_item(
     str(importlib_resources.files("mexicoxmx") / "templates")
 )
-# This is where the theme is rendered in the openedx build directory
-hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
-    [
-        ("mexicoxmx", "build/openedx/themes"),
-        ("mexicoxmx/env.config.jsx", "plugins/mfe/build/mfe"),
-    ],
-)
+hooks.Filters.ENV_TEMPLATE_TARGETS.add_items([
+    ("mexicoxmx", "build/openedx/themes"),
+    ("mexicoxmx/env.config.jsx", "plugins/mfe/build/mfe"),
+])
+hooks.Filters.ENV_PATTERNS_INCLUDE.add_items([
+    r"mexicoxmx/lms/static/sass/partials/lms/theme/",
+    r"mexicoxmx/cms/static/sass/partials/cms/theme/",
+])
 
-# Force the rendering of scss files, even though they are included in a "partials" directory
-hooks.Filters.ENV_PATTERNS_INCLUDE.add_items(
-    [
-        r"mexicoxmx/lms/static/sass/partials/lms/theme/",
-        r"mexicoxmx/cms/static/sass/partials/cms/theme/",
-    ]
-)
-
-
-# init script: set theme automatically
+# init tasks script
 with open(
     os.path.join(
         str(importlib_resources.files("mexicoxmx") / "templates"),
-        "mexicoxmx",
-        "tasks",
-        "init.sh",
+        "mexicoxmx", "tasks", "init.sh",
     ),
     encoding="utf-8",
 ) as task_file:
     hooks.Filters.CLI_DO_INIT_TASKS.add_item(("lms", task_file.read()))
 
-
-# Override openedx & mfe docker image names
+# ------------------------------------------------------------------------------
+# Override Docker image names
+# ------------------------------------------------------------------------------
 @hooks.Filters.CONFIG_DEFAULTS.add(priority=hooks.priorities.LOW)
 def _override_openedx_docker_image(
     items: list[tuple[str, t.Any]]
@@ -92,17 +90,22 @@ def _override_openedx_docker_image(
     return items
 
 
-# Load all configuration entries
+# ------------------------------------------------------------------------------
+# Load all config entries into Tutor
+# ------------------------------------------------------------------------------
 hooks.Filters.CONFIG_DEFAULTS.add_items(
     [(f"INDIGO_{key}", value) for key, value in config["defaults"].items()]
 )
 hooks.Filters.CONFIG_UNIQUE.add_items(
     [(f"INDIGO_{key}", value) for key, value in config["unique"].items()]
 )
-hooks.Filters.CONFIG_OVERRIDES.add_items(list(config["overrides"].items()))
+hooks.Filters.CONFIG_OVERRIDES.add_items(
+    list(config["overrides"].items())
+)
 
-
-#  MFEs that are styled using Indigo
+# ------------------------------------------------------------------------------
+# NPM patches for Indigo branding
+# ------------------------------------------------------------------------------
 indigo_styled_mfes = [
     "learning",
     "learner-dashboard",
@@ -111,22 +114,17 @@ indigo_styled_mfes = [
     "discussions",
 ]
 
-hooks.Filters.ENV_PATCHES.add_items(
-    [
+for mfe in indigo_styled_mfes:
+    hooks.Filters.ENV_PATCHES.add_item(
         (
             f"mfe-dockerfile-post-npm-install-{mfe}",
             """
-           
-RUN npm install @edly-io/indigo-frontend-component-footer@^2.0.0
-RUN npm install '@edx/frontend-component-header@npm:@edly-io/indigo-frontend-component-header@^3.2.2'
+RUN npm install @edly-io/indigo-frontend-component-footer@^3.0.0
+RUN npm install '@edx/frontend-component-header@npm:@edly-io/indigo-frontend-component-header@^4.0.0'
 RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^2.2.2'
-
 """,
-        )
-        for mfe in indigo_styled_mfes
-    ]
-)
-
+        ),
+    )
 
 hooks.Filters.ENV_PATCHES.add_item(
     (
@@ -135,47 +133,63 @@ hooks.Filters.ENV_PATCHES.add_item(
     )
 )
 
-# Include js file in lms main.html, main_django.html, and certificate.html
+# ------------------------------------------------------------------------------
+# Inyectar colores y componentes en TODOS los MFEs
+# ------------------------------------------------------------------------------
+hooks.Filters.ENV_PATCHES.add_item(
+    (
+        "mfe-env-config-runtime-definitions",
+        f"""
+// --- Componente Footer Indigo ---
+const {{ default: IndigoFooter }} = await import('@edly-io/indigo-frontend-component-footer');
 
-hooks.Filters.ENV_PATCHES.add_items(
-    [
-        # for production
-        (
-            "openedx-common-assets-settings",
-            """
-javascript_files = ['base_application', 'application', 'certificates_wv']
-dark_theme_filepath = ['mexicoxmx/js/dark-theme.js']
-
-for filename in javascript_files:
-    if filename in PIPELINE['JAVASCRIPT']:
-        PIPELINE['JAVASCRIPT'][filename]['source_filenames'] += dark_theme_filepath
-""",
-        ),
-        # for development
-        (
-            "openedx-lms-development-settings",
-            """
-javascript_files = ['base_application', 'application', 'certificates_wv']
-dark_theme_filepath = ['mexicoxmx/js/dark-theme.js']
-
-for filename in javascript_files:
-    if filename in PIPELINE['JAVASCRIPT']:
-        PIPELINE['JAVASCRIPT'][filename]['source_filenames'] += dark_theme_filepath
-
-MFE_CONFIG['INDIGO_ENABLE_DARK_TOGGLE'] = {{ INDIGO_ENABLE_DARK_TOGGLE }}
-""",
-        ),
-        (
-            "openedx-lms-production-settings",
-            """
-MFE_CONFIG['INDIGO_ENABLE_DARK_TOGGLE'] = {{ INDIGO_ENABLE_DARK_TOGGLE }}
-""",
-        ),
-    ]
+// --- Colores personalizados MexicoXMX (todos los MFEs) ---
+MFE_CONFIG['PRIMARY_COLOR']   = '{config['defaults']['PRIMARY_COLOR']}';
+MFE_CONFIG['SECONDARY_COLOR'] = '{config['defaults']['ACCENT_COLOR']}';
+MFE_CONFIG['HIGHLIGHT_COLOR'] = '{config['defaults']['HIGHLIGHT_COLOR']}';
+"""
+    )
 )
 
+# ------------------------------------------------------------------------------
+# Include dark-theme.js in Django PIPELINE and toggle flag
+# ------------------------------------------------------------------------------
+hooks.Filters.ENV_PATCHES.add_items([
+    (
+        "openedx-common-assets-settings",
+        """
+javascript_files = ['base_application', 'application', 'certificates_wv']
+dark_theme_filepath = ['mexicoxmx/js/dark-theme.js']
 
-# Apply patches from tutor-indigo
+for filename in javascript_files:
+    if filename in PIPELINE['JAVASCRIPT']:
+        PIPELINE['JAVASCRIPT'][filename]['source_filenames'] += dark_theme_filepath
+"""
+    ),
+    (
+        "openedx-lms-development-settings",
+        """
+javascript_files = ['base_application', 'application', 'certificates_wv']
+dark_theme_filepath = ['mexicoxmx/js/dark-theme.js']
+
+for filename in javascript_files:
+    if filename in PIPELINE['JAVASCRIPT']:
+        PIPELINE['JAVASCRIPT'][filename]['source_filenames'] += dark_theme_filepath
+
+MFE_CONFIG['INDIGO_ENABLE_DARK_TOGGLE'] = {{ INDIGO_ENABLE_DARK_TOGGLE }}
+"""
+    ),
+    (
+        "openedx-lms-production-settings",
+        """
+MFE_CONFIG['INDIGO_ENABLE_DARK_TOGGLE'] = {{ INDIGO_ENABLE_DARK_TOGGLE }}
+"""
+    ),
+])
+
+# ------------------------------------------------------------------------------
+# Load any additional patches from mexicoxmx/patches/
+# ------------------------------------------------------------------------------
 for path in glob(
     os.path.join(
         str(importlib_resources.files("mexicoxmx") / "patches"),
@@ -185,13 +199,17 @@ for path in glob(
     with open(path, encoding="utf-8") as patch_file:
         hooks.Filters.ENV_PATCHES.add_item((os.path.basename(path), patch_file.read()))
 
+# ------------------------------------------------------------------------------
+# Footer slot widgets
+# ------------------------------------------------------------------------------
+
 
 for mfe in indigo_styled_mfes:
     PLUGIN_SLOTS.add_item(
         (
             mfe,
             "footer_slot",
-            """ 
+            """
             {
                 op: PLUGIN_OPERATIONS.Hide,
                 widgetId: 'default_contents',
@@ -214,6 +232,6 @@ for mfe in indigo_styled_mfes:
                     RenderWidget: AddDarkTheme,
                 },
             },
-  """,
+            """
         ),
     )
