@@ -1,2 +1,48 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mexicoxmx"
+description = "MexicoXMX theme plugin for Tutor - Secretaría de Educación Pública"
+readme = { file = "README.rst", content-type = "text/x-rst" }
+license = { text = "AGPLv3" }
+requires-python = ">=3.9"
+authors = [{ name = "MexicoXMX Team" }, { email = "mexicoxmx@mexicox.gob.mx" }]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+  "tutor>=20.0.0,<21.0.0", 
+  "tutor-mfe>=20.0.0,<21.0.0"
+]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+dev = [
+  "tutor[dev]>=20.0.0,<21.0.0"
+]
+
+[project.entry-points."tutor.plugin.v1"]
+mexicoxmx = "mexicoxmx.plugin"
+
+[project.urls]
+Code = "https://https://gitlab.com/mexicox/tutor-indigo"
+Homepage = "https://https://gitlab.com/mexicox/tutor-indigo"
+
+[tool.setuptools]
+packages = ["mexicoxmx"]
+
+[tool.setuptools.dynamic]
+version = {attr = "mexicoxmx.__about__.__version__"}
+
+[tool.setuptools.package-data]
+mexicoxmx = ["**/*"]
