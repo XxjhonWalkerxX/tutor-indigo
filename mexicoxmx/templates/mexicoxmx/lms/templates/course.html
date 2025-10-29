@@ -132,15 +132,17 @@ from django.conf import settings
                 })();
             </script>
             <div class="org-logo-container">
-            % if org_logo_url:
-              <img
-                src="${org_logo_url}"
-                class="course-org-logo"
-                onerror="this.style.display='none';"
-                alt="${course.display_org_with_default} logo"
-                style="margin-top: -5px;"
-              />
-            % endif
+            <!--
+                  % if org_logo_url:
+                    <img
+                    src="${org_logo_url}"
+                    class="course-org-logo"
+                    onerror="this.style.display='none';"
+                    alt="${course.display_org_with_default} logo"
+                    style="margin-top: -5px;"
+                    />
+                  % endif
+            -->
             </div>
         </div>
     </div>
