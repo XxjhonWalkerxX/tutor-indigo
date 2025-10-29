@@ -34,7 +34,6 @@ from openedx.core.djangolib.markup import HTML, Text
                 position: relative;
                 width: 100%;
                 margin-top: 0;
-                min-height: 500px;
               }
               
               .banner-content {
@@ -45,44 +44,41 @@ from openedx.core.djangolib.markup import HTML, Text
                 height: 100%;
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
-                padding: 40px 60px;
+                padding: 50px 80px 80px;
                 z-index: 2;
               }
               
               .celular-image {
-                width: 24%;
-                max-width: 320px;
-                height: auto;
+                width: auto;
+                height: 85%;
+                max-height: 450px;
                 object-fit: contain;
-                z-index: 3;
+                margin-right: 60px;
               }
               
               .banner-text-content {
                 flex: 1;
-                padding: 0 40px;
                 display: flex;
                 flex-direction: column;
-                gap: 25px;
-                align-items: flex-start;
+                gap: 20px;
+                max-width: 700px;
               }
               
               .banner-title {
-                font-size: 74px;
+                font-size: 52px;
                 font-weight: 700;
                 color: #FFFFFF;
-                line-height: 1.1;
+                line-height: 1.15;
                 margin: 0;
                 text-align: left;
               }
               
               .banner-description {
-                font-size: 18px;
+                font-size: 16px;
                 font-weight: 400;
                 color: #FFFFFF;
-                line-height: 1.5;
+                line-height: 1.6;
                 margin: 0;
-                max-width: 650px;
                 text-align: left;
               }
               
@@ -93,22 +89,23 @@ from openedx.core.djangolib.markup import HTML, Text
               .btn-conoce-mas {
                 background-color: #FFFFFF;
                 color: #2D5649;
-                font-size: 18px;
+                font-size: 16px;
                 font-weight: 600;
-                padding: 14px 40px;
+                padding: 12px 35px;
                 border-radius: 50px;
                 border: none;
                 cursor: pointer;
                 text-decoration: none;
                 display: inline-block;
                 transition: all 0.3s ease;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+                align-self: flex-start;
               }
               
               .btn-conoce-mas:hover {
-                background-color: #F0F0F0;
-                transform: translateY(-2px);
-                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+                background-color: #F5F5F5;
+                transform: translateY(-1px);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
               }
               
               .contenedor-verde {
@@ -126,52 +123,48 @@ from openedx.core.djangolib.markup import HTML, Text
               }
               
               @media (max-width: 1200px) {
-                .banner-title {
-                  font-size: 56px;
-                }
-                
-                .banner-description {
-                  font-size: 16px;
-                }
-                
                 .banner-content {
-                  padding: 30px 40px;
+                  padding: 40px 50px 70px;
                 }
                 
                 .celular-image {
-                  width: 28%;
-                  max-width: 260px;
+                  height: 80%;
+                  max-height: 380px;
+                  margin-right: 40px;
+                }
+                
+                .banner-title {
+                  font-size: 44px;
+                }
+                
+                .banner-description {
+                  font-size: 15px;
                 }
               }
               
               @media (max-width: 768px) {
-                .banner-container {
-                  min-height: auto;
-                }
-                
                 .banner-content {
                   flex-direction: column;
-                  padding: 30px 20px;
-                  gap: 20px;
-                  position: relative;
+                  padding: 30px 20px 60px;
+                  gap: 15px;
+                  align-items: center;
                 }
                 
                 .celular-image {
-                  width: 50%;
-                  max-width: 200px;
-                  order: 1;
+                  height: auto;
+                  width: 45%;
+                  max-width: 180px;
+                  margin-right: 0;
+                  margin-bottom: 10px;
                 }
                 
                 .banner-text-content {
-                  order: 2;
-                  padding: 0;
                   align-items: center;
-                  text-align: center;
                   gap: 15px;
                 }
                 
                 .banner-title {
-                  font-size: 32px;
+                  font-size: 28px;
                   text-align: center;
                 }
                 
@@ -181,14 +174,12 @@ from openedx.core.djangolib.markup import HTML, Text
                 }
                 
                 .btn-conoce-mas {
-                  font-size: 16px;
-                  padding: 12px 32px;
+                  font-size: 15px;
+                  padding: 10px 28px;
                 }
                 
                 .contenedor-verde {
                   padding: 12px 10px;
-                  position: relative;
-                  bottom: auto;
                 }
               }
             </style>
