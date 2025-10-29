@@ -13,12 +13,15 @@ from openedx.core.djangolib.markup import HTML, Text
 
 <main id="main" aria-label="Content" tabindex="-1">
     <style>
-        #carousel_amx_la_banners-14 {
+        .imagen-intro {
           margin-top: 20px;
+          width: 100%;
+          height: auto;
+          display: block;
         }
 
         @media (max-width: 768px) {
-          #carousel_amx_la_banners-14 {
+          .imagen-intro {
             margin-top: 0 !important;
           }
         }
@@ -26,8 +29,7 @@ from openedx.core.djangolib.markup import HTML, Text
     <section class="home style-logout" style="padding-right: 0px; padding-left: 0px;">
       <header>
         <div class="outer-wrapper">
-            <div id="carousel_amx_la_banners-14"></div>
-            <script src="https://amx.la/code/973f0345-8cc9-4a52-89b3-eeb988b9f31e/"></script>
+            <img src="${static.url('images/fondo_intro.png')}" alt="Banner principal" class="imagen-intro" />
             <style>
               .fondo-lateral {
                 display: flex;
