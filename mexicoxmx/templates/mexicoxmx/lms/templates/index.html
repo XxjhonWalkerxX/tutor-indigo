@@ -156,38 +156,7 @@ from openedx.core.djangolib.markup import HTML, Text
               
               @media (max-width: 768px) {
                 .banner-content {
-                  flex-direction: column;
-                  padding: 30px 20px 60px;
-                  gap: 15px;
-                  align-items: center;
-                }
-                
-                .celular-image {
-                  height: auto;
-                  width: 45%;
-                  max-width: 180px;
-                  margin-right: 0;
-                  margin-bottom: 10px;
-                }
-                
-                .banner-text-content {
-                  align-items: center;
-                  gap: 15px;
-                }
-                
-                .banner-title {
-                  font-size: 28px;
-                  text-align: center;
-                }
-                
-                .banner-description {
-                  font-size: 14px;
-                  text-align: center;
-                }
-                
-                .btn-conoce-mas {
-                  font-size: 15px;
-                  padding: 10px 28px;
+                  display: none !important;
                 }
                 
                 .contenedor-verde {
@@ -196,7 +165,7 @@ from openedx.core.djangolib.markup import HTML, Text
               }
             </style>
             <div class="banner-container">
-              <img src="${static.url('images/fondo_intro.png')}" alt="Banner principal" class="imagen-intro" />
+              <img src="${static.url('images/fondo_intro3.png')}" alt="Banner principal" class="imagen-intro" />
               
               <!-- Contenido sobre el banner -->
               <div class="banner-content">
