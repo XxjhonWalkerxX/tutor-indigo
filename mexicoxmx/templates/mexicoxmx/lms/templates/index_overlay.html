@@ -6,15 +6,18 @@
         align-items: center;
         justify-content: center;
         gap: 15px;
-        padding: 0;
+        padding: 5px 0;
         flex-wrap: nowrap;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
     .logo-img {
         width: 50px;
-        height: 75px;
+        height: 40px;
         display: block;
         object-fit: contain;
+        flex-shrink: 0;
     }
 
     .divider {
@@ -25,32 +28,33 @@
     }
 
     .logo-description {
-        font-size: 30px;
+        font-size: 15px;
         font-weight: 400;
         color: #FFFFFF;
         margin: 0;
-        line-height: 40px;
+        line-height: 1.4;
         white-space: nowrap;
     }
 
     @media (max-width: 768px) {
         .logo-text-container {
             flex-direction: column;
-            gap: 10px;
-            flex-wrap: wrap;
+            gap: 8px;
+            padding: 8px 0;
         }
         .logo-img {
             width: 40px;
-            height: 60px;
+            height: 32px;
         }
         .divider {
             display: none;
         }
         .logo-description {
-            font-size: 16px;
+            font-size: 14px;
             line-height: 1.3;
             text-align: center;
             white-space: normal;
+            max-width: 90%;
         }
     }
 </style>

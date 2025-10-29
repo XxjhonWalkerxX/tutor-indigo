@@ -14,7 +14,7 @@ from openedx.core.djangolib.markup import HTML, Text
 <main id="main" aria-label="Content" tabindex="-1">
     <style>
         .imagen-intro {
-          margin-top: 20px;
+          margin-top: 0;
           width: 100%;
           height: auto;
           display: block;
@@ -26,13 +26,14 @@ from openedx.core.djangolib.markup import HTML, Text
           }
         }
     </style>
-    <section class="home style-logout" style="padding-right: 0px; padding-left: 0px;">
-      <header>
-        <div class="outer-wrapper">
+    <section class="home style-logout" style="padding-right: 0px; padding-left: 0px; padding-top: 0px;">
+      <header style="margin-top: 0;">
+        <div class="outer-wrapper" style="padding-top: 0;">
             <style>
               .banner-container {
                 position: relative;
                 width: 100%;
+                margin-top: 0;
               }
               
               .contenedor-verde {
@@ -41,15 +42,18 @@ from openedx.core.djangolib.markup import HTML, Text
                 left: 0;
                 background-color: #182A24;
                 width: 100%;
-                padding: 10px 20px;
+                padding: 15px 20px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
               }
               
               @media (max-width: 768px) {
                 .contenedor-verde {
-                  padding: 10px;
+                  padding: 12px 10px;
+                  position: relative;
+                  bottom: auto;
                 }
               }
             </style>
