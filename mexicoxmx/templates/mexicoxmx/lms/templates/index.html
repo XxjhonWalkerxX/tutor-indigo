@@ -31,29 +31,32 @@ from openedx.core.djangolib.markup import HTML, Text
         <div class="outer-wrapper">
             <img src="${static.url('images/fondo_intro.png')}" alt="Banner principal" class="imagen-intro" />
             <style>
-              .fondo-lateral {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
+              .contenedor-verde {
+                background-color: #182A24;
                 width: 100%;
-
-                background-image: url('${static.url("images/a1.png")}'), url('${static.url("images/a2.png")}');
-                background-repeat: no-repeat, no-repeat;
-                background-position: left center, right center;
-                background-size: auto 100%, auto 100%;
-                min-height: 300px;
-                padding: 20px;
+                padding: 40px 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+              
+              @media (max-width: 768px) {
+                .contenedor-verde {
+                  padding: 20px 10px;
+                }
               }
             </style>
+            <div class="contenedor-verde">
+              % if homepage_overlay_html:
+                ${homepage_overlay_html | n, decode.utf8}
+              % else:
+                <%include file="index_overlay.html" />
+              % endif
+            </div>
+
             <div class="title principal_imgtxt" style="padding-top: 0px;">
-              <div class="heading-group imgtxt_mx fondo-lateral" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; margin-bottom: 0px;">
+              <div>
                 <div style="display: flex; flex-direction: row; align-items: center; gap: 10px;" >
-                  % if homepage_overlay_html:
-                    ${homepage_overlay_html | n, decode.utf8}
-                  % else:
-                    <%include file="index_overlay.html" />
-                  % endif
                 </div>
                 <style>
                   .search-field-wrapper {
@@ -117,21 +120,23 @@ from openedx.core.djangolib.markup import HTML, Text
 
 
                 % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
-                  <div class="course-search imgtxt_mx" style="width: 100%; display: flex; justify-content: center;">
-                    <form method="get" action="/courses" style="width: 100%; max-width: 3000px; padding-top: 20px;">
-                      <div class="search-field-wrapper">
-                        <label class="input-holder">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-right: 10px; margin-top: 7px;">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4ZM2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8C14 9.29583 13.5892 10.4957 12.8907 11.4765L17.7071 16.2929C18.0976 16.6834 18.0976 17.3166 17.7071 17.7071C17.3166 18.0976 16.6834 18.0976 16.2929 17.7071L11.4765 12.8907C10.4957 13.5892 9.29583 14 8 14C4.68629 14 2 11.3137 2 8Z" fill="#fff"></path>
-                          </svg>
-                          <input class="search-input" name="search_query" type="text" placeholder="Busca tu curso" />
-                        </label>
-                        <div class="button-holder">
-                          <button class="search-button" type="submit">Buscar</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
+                  <!--
+                            <div class="course-search imgtxt_mx" style="width: 100%; display: flex; justify-content: center;">
+                            <form method="get" action="/courses" style="width: 100%; max-width: 3000px; padding-top: 20px;">
+                              <div class="search-field-wrapper">
+                              <label class="input-holder">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-right: 10px; margin-top: 7px;">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4ZM2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8C14 9.29583 13.5892 10.4957 12.8907 11.4765L17.7071 16.2929C18.0976 16.6834 18.0976 17.3166 17.7071 17.7071C17.3166 18.0976 16.6834 18.0976 16.2929 17.7071L11.4765 12.8907C10.4957 13.5892 9.29583 14 8 14C4.68629 14 2 11.3137 2 8Z" fill="#fff"></path>
+                                </svg>
+                                <input class="search-input" name="search_query" type="text" placeholder="Busca tu curso" />
+                              </label>
+                              <div class="button-holder">
+                                <button class="search-button" type="submit">Buscar</button>
+                              </div>
+                              </div>
+                            </form>
+                            </div>
+                  -->
 
                 % endif
               </div>
