@@ -140,7 +140,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 
                 .global-header {
                     margin-top: 44px;
-                   }
+                }
 
                 .main-container {
                     margin-top: 80px !important;
@@ -148,6 +148,16 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 
                 .btn-holder {
                     margin-top: 20px;
+                }
+                
+                @media (max-width: 768px) {
+                    .global-header {
+                        margin-top: 0 !important;
+                    }
+                    
+                    .main-container {
+                        margin-top: 60px !important;
+                    }
                 }
             </style>
         <div class="cabeza">
