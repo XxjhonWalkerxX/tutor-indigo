@@ -136,6 +136,18 @@ from openedx.core.djangolib.markup import HTML, Text
                 z-index: 4;
               }
               
+              @media (max-width: 1600px) {
+                .btn-conoce-mas {
+                  margin-left: 400px !important;
+                }
+              }
+              
+              @media (max-width: 1400px) {
+                .btn-conoce-mas {
+                  margin-left: 300px !important;
+                }
+              }
+              
               @media (max-width: 1200px) {
                 .banner-content {
                   padding: 40px 50px 70px;
@@ -154,11 +166,53 @@ from openedx.core.djangolib.markup import HTML, Text
                 .banner-description {
                   font-size: 15px;
                 }
+                
+                .btn-conoce-mas {
+                  margin-left: 200px !important;
+                }
+              }
+              
+              @media (max-width: 992px) {
+                .btn-conoce-mas {
+                  margin-left: 100px !important;
+                }
               }
               
               @media (max-width: 768px) {
                 .banner-content {
+                  display: flex !important;
+                  flex-direction: column;
+                  padding: 30px 20px 80px !important;
+                  justify-content: center;
+                  align-items: center;
+                }
+                
+                .celular-image {
                   display: none !important;
+                }
+                
+                .banner-text-content {
+                  max-width: 100%;
+                  align-items: center;
+                  text-align: center;
+                  gap: 15px;
+                }
+                
+                .banner-title {
+                  font-size: 32px !important;
+                  text-align: center !important;
+                }
+                
+                .banner-description {
+                  font-size: 14px !important;
+                  text-align: center !important;
+                }
+                
+                .btn-conoce-mas {
+                  margin-left: 0 !important;
+                  align-self: center !important;
+                  padding: 12px 40px !important;
+                  font-size: 15px !important;
                 }
                 
                 .contenedor-verde {
@@ -180,7 +234,7 @@ from openedx.core.djangolib.markup import HTML, Text
                     Impulsa tu desarrollo con <strong>cursos abiertos, gratuitos y disponibles 24/7</strong>, enfocados en la formación de saberes transversales.
                   </p>
                   
-                  <a href="#" class="btn-conoce-mas">Conoce más</a>
+                  <a href="/about" class="btn-conoce-mas">Conoce más</a>
                 </div>
               </div>
               
