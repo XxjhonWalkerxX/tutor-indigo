@@ -19,6 +19,27 @@ from openedx.core.djangolib.markup import HTML, Text
         margin-top: 0 !important;
         padding-top: 0 !important;
     }
+    
+    /* Eliminar espacios del body y contenedores principales */
+    body {
+        padding-top: 0 !important;
+    }
+    
+    .content-wrapper {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    .wrapper-main {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    /* Asegurar que la sección home empiece desde arriba */
+    .home.style-logout {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
 </style>
 
 <main id="main" aria-label="Content" tabindex="-1">
@@ -322,7 +343,8 @@ from openedx.core.djangolib.markup import HTML, Text
                   .input-holder {
                     display: flex !important;
                     align-items: center !important;
-                    background-color: #A32044 !important;
+                    background-color: #FFFFFF !important;
+                    border: 2px solid #A32044 !important;
                     border-radius: 50px !important;
                     padding: 0 20px !important;
                     height: 52px !important;
@@ -339,10 +361,15 @@ from openedx.core.djangolib.markup import HTML, Text
                     justify-content: center !important;
                     vertical-align: middle !important;
                   }
+                  
+                  .input-holder svg path {
+                    fill: #A32044 !important;
+                  }
+                  
                   .search-input {
                     background-color: transparent !important;
                     border: none !important;
-                    color: white !important;
+                    color: #292C2E !important;
                     outline: none !important;
                     font-size: 16px !important;
                     width: 100% !important;
@@ -352,12 +379,12 @@ from openedx.core.djangolib.markup import HTML, Text
                   }
 
                   .search-input::placeholder {
-                    color: white !important;
+                    color: #70787E !important;
                     opacity: 1 !important;
                   }
 
                   .search-button {
-                    background-color: #481720 !important;
+                    background-color: #A32044 !important;
                     color: #fff !important;
                     border-radius: 50px !important;
                     padding: 0 24px !important;
@@ -369,6 +396,13 @@ from openedx.core.djangolib.markup import HTML, Text
                     align-items: center !important;
                     justify-content: center !important;
                     white-space: nowrap !important;
+                    transition: all 0.3s ease !important;
+                  }
+                  
+                  .search-button:hover {
+                    background-color: #8B1A38 !important;
+                    transform: translateY(-1px) !important;
+                    box-shadow: 0 4px 12px rgba(163, 32, 68, 0.3) !important;
                   }
                 </style>
 
@@ -380,7 +414,7 @@ from openedx.core.djangolib.markup import HTML, Text
                               <div class="search-field-wrapper" style="padding: 20px;">
                               <label class="input-holder">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-right: 10px; margin-top: 7px;">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4ZM2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8C14 9.29583 13.5892 10.4957 12.8907 11.4765L17.7071 16.2929C18.0976 16.6834 18.0976 17.3166 17.7071 17.7071C17.3166 18.0976 16.6834 18.0976 16.2929 17.7071L11.4765 12.8907C10.4957 13.5892 9.29583 14 8 14C4.68629 14 2 11.3137 2 8Z" fill="#fff"></path>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4ZM2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8C14 9.29583 13.5892 10.4957 12.8907 11.4765L17.7071 16.2929C18.0976 16.6834 18.0976 17.3166 17.7071 17.7071C17.3166 18.0976 16.6834 18.0976 16.2929 17.7071L11.4765 12.8907C10.4957 13.5892 9.29583 14 8 14C4.68629 14 2 11.3137 2 8Z" fill="#A32044"></path>
                                 </svg>
                                 <input class="search-input" name="search_query" type="text" placeholder="Busca tu curso" />
                               </label>
