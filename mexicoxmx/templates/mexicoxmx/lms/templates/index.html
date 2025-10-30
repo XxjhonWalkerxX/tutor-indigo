@@ -23,6 +23,7 @@ from openedx.core.djangolib.markup import HTML, Text
     /* Eliminar espacios del body y contenedores principales */
     body {
         padding-top: 0 !important;
+        margin-top: 0 !important;
     }
     
     .content-wrapper {
@@ -39,6 +40,29 @@ from openedx.core.djangolib.markup import HTML, Text
     .home.style-logout {
         margin-top: 0 !important;
         padding-top: 0 !important;
+    }
+    
+    /* Asegurar en mobile que todo empiece desde arriba */
+    @media (max-width: 768px) {
+        html, body {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+        }
+        
+        .window-wrap {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+        }
+        
+        .wrapper {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+        }
+        
+        #main {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+        }
     }
 </style>
 
@@ -297,7 +321,19 @@ from openedx.core.djangolib.markup import HTML, Text
               }
             </style>
             <div class="banner-container">
-              <img src="${static.url('images/fondo_intro1.png')}" alt="Banner principal" class="imagen-intro" />
+              <!-- Imagen responsive con WebP -->
+              <picture>
+                <!-- WebP para todos los tamaños -->
+                <source 
+                  srcset="${static.url('images/fondo_intro1.webp')}" 
+                  type="image/webp">
+                
+                <!-- PNG fallback (imagen por defecto) -->
+                <img 
+                  src="${static.url('images/fondo_intro1.png')}" 
+                  alt="Banner principal" 
+                  class="imagen-intro">
+              </picture>
               
               <!-- Contenido sobre el banner -->
               <div class="banner-content">
@@ -343,8 +379,8 @@ from openedx.core.djangolib.markup import HTML, Text
                   .input-holder {
                     display: flex !important;
                     align-items: center !important;
-                    background-color: #F6F1EB !important;
-                    border: 1px solid #E5D4BF !important;
+                    background-color: #E5D4BF !important;
+                    border: 2.3px solid #2D5649 !important;
                     border-radius: 50px !important;
                     padding: 0 20px !important;
                     height: 52px !important;
