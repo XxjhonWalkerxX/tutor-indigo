@@ -8,8 +8,18 @@ from django.urls import reverse
 from openedx.core.djangolib.markup import HTML, Text
 %>
 
-
-
+<style>
+    /* Ocultar el header solo en la página de inicio */
+    header.global-header {
+        display: none !important;
+    }
+    
+    /* Ajustar el contenido principal para que no tenga espacio del header */
+    #main {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+</style>
 
 <main id="main" aria-label="Content" tabindex="-1">
     <style>
@@ -92,7 +102,6 @@ from openedx.core.djangolib.markup import HTML, Text
                 display: flex;
                 gap: 15px;
                 align-items: center;
-                margin-left: 550px;
               }
               
               .btn-registrate {
@@ -267,11 +276,11 @@ from openedx.core.djangolib.markup import HTML, Text
               }
             </style>
             <div class="banner-container">
-              <img src="${static.url('images/fondo_intro3.png')}" alt="Banner principal" class="imagen-intro" />
+              <img src="${static.url('images/fondo_intro1.png')}" alt="Banner principal" class="imagen-intro" />
               
               <!-- Contenido sobre el banner -->
               <div class="banner-content">
-                <img src="${static.url('images/Celular.png')}" alt="Celular Aprende.mx" class="celular-image" />
+                <img src="${static.url('images/Celular1.png')}" alt="Celular Aprende.mx" class="celular-image" />
                 
                 <div class="banner-text-content">
                   <h1 class="banner-title">Aprende, crece<br>y transforma tu futuro</h1>
