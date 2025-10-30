@@ -321,19 +321,7 @@ from openedx.core.djangolib.markup import HTML, Text
               }
             </style>
             <div class="banner-container">
-              <!-- Imagen responsive con WebP -->
-              <picture>
-                <!-- WebP para todos los tamaños -->
-                <source 
-                  srcset="${static.url('images/fondo_intro1.webp')}" 
-                  type="image/webp">
-                
-                <!-- PNG fallback (imagen por defecto) -->
-                <img 
-                  src="${static.url('images/fondo_intro1.png')}" 
-                  alt="Banner principal" 
-                  class="imagen-intro">
-              </picture>
+              <img src="${static.url('images/fondo_intro1.png')}" alt="Banner principal" class="imagen-intro" />
               
               <!-- Contenido sobre el banner -->
               <div class="banner-content">
