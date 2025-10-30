@@ -3,57 +3,64 @@
 <style>
     .logo-text-container {
         display: flex;
-        align-items: center; /* Alineación vertical */
-        justify-content: center; /* Centrado horizontal */
-        gap: 30px;
-        padding: 20px;
-        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        padding: 5px 0;
+        flex-wrap: nowrap;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
     .logo-img {
-        height: 75px;
-        width: auto;
-        max-width: 100%;
+        width: 50px;
+        height: 40px;
         display: block;
+        object-fit: contain;
+        flex-shrink: 0;
     }
 
     .divider {
-        height: 50px;
-        width: 4px;
+        height: 40px;
+        width: 3px;
         background-color: #C9A06C;
+        flex-shrink: 0;
     }
 
     .logo-description {
-        font-size: 18px;
-        color: #4A4A4A;
+        font-size: 15px;
+        font-weight: 400;
+        color: #FFFFFF;
         margin: 0;
-        line-height: 1.3;
-        max-width: 400px;
+        line-height: 1.4;
+        white-space: nowrap;
     }
 
     @media (max-width: 768px) {
         .logo-text-container {
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
+            padding: 8px 0;
         }
         .logo-img {
-            height: 75px;
+            width: 40px;
+            height: 32px;
         }
         .divider {
             display: none;
         }
         .logo-description {
-            font-size: 16px;
+            font-size: 14px;
+            line-height: 1.3;
             text-align: center;
+            white-space: normal;
+            max-width: 90%;
         }
     }
 </style>
 
 <div class="logo-text-container">
-    <img src="${static.url("images/logo_central.png")}" class="logo-img" alt="Logo Aprende.mx" />
+    <img src="${static.url("images/logo_a.png")}" class="logo-img" alt="Logo Aprende.mx" />
     <div class="divider"></div>
-    <p class="logo-description">
-        La plataforma de cursos en línea <br />
-        de la Secretaría de Educación Pública
-    </p>
+    <p class="logo-description">La plataforma de cursos en línea de la Secretaría de Educación Pública</p>
 </div>

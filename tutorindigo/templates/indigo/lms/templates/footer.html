@@ -83,6 +83,113 @@
 </div>
 % else:
 <!-- NEW IN INDIGO update footer -->
+  <!-- Contenedor de logos aliados -->
+  <div class="logos-aliados-container">
+    <style>
+      .logos-aliados-container {
+        background-color: #E5D4BF;
+        width: 100%;
+        padding: 60px 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 40px;
+      }
+      
+      .logos-aliados-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        max-width: 1200px;
+        width: 100%;
+        align-items: center;
+        justify-items: center;
+      }
+      
+      .logo-aliado-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 80px;
+      }
+      
+      .logo-aliado-item img {
+        max-width: 200px;
+        max-height: 70px;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        filter: grayscale(0%);
+        opacity: 0.85;
+        transition: all 0.3s ease;
+      }
+      
+      .logo-aliado-item img:hover {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      
+      @media (max-width: 1024px) {
+        .logos-aliados-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 30px;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .logos-aliados-container {
+          padding: 40px 20px;
+        }
+        
+        .logos-aliados-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 25px;
+        }
+        
+        .logo-aliado-item {
+          height: 60px;
+        }
+        
+        .logo-aliado-item img {
+          max-width: 150px;
+          max-height: 50px;
+        }
+      }
+    </style>
+    
+    <div class="logos-aliados-grid">
+      <!-- Fila 1 -->
+      <div class="logo-aliado-item">
+        <img src="${static.url('images/logo_porlapaz.png')}" alt="Por la paz y contra las adicciones">
+      </div>
+      <div class="logo-aliado-item">
+        <img src="${static.url('images/logo_cenapred.png')}" alt="CENAPRED">
+      </div>
+      <div class="logo-aliado-item">
+        <img src="${static.url('images/Logo_Cofepris.png')}" alt="COFEPRIS">
+      </div>
+      <div class="logo-aliado-item">
+        <img src="${static.url('images/Logo_STEM.png')}" alt="Movimiento STEM+">
+      </div>
+      
+      <!-- Fila 2 -->
+      <div class="logo-aliado-item">
+        <img src="${static.url('images/Logo_CIIES.png')}" alt="CIIES">
+      </div>
+      <div class="logo-aliado-item">
+        <img src="${static.url('images/Logo_viveSaludable.png')}" alt="Vive Saludable Vive Feliz">
+      </div>
+      <div class="logo-aliado-item">
+        <img src="${static.url('images/Logo_OCEI.png')}" alt="OCEI">
+      </div>
+      <div class="logo-aliado-item">
+        <img src="${static.url('images/Logo_aprende.png')}" alt="@prende.mx">
+      </div>
+    </div>
+  </div>
+  
   <div class="wrapper wrapper-footer">
     <footer id="footer" class="tutor-container"
       ## When rendering the footer through the branding API,
@@ -114,10 +221,9 @@
             </ol>
           </nav>
           {% endif %}
-        <div class="powered-area" style="text-align: center; padding-top: 45px;">
-          <img src="https://sisadmin.mexicox.gob.mx/extramexicox/eduaprende.jpg" alt="Runs on Tutor" class="footer-logo-responsive" height="70px"/></div>
-        </div>
-        <div style="text-align: center;">
+
+
+        <div style="text-align: center; padding: 15px;">
           <span class="copyright-site">©${datetime.now().year}. Todos los derechos reservados.</span>
         </div>
         <div class="references" style="text-align: center;">
