@@ -73,12 +73,22 @@ from openedx.core.djangolib.markup import HTML, Text
           width: 100%;
           height: 670px;
           display: block;
+          object-fit: cover;
+          object-position: center;
         }
 
         @media (max-width: 768px) {
           .imagen-intro {
             margin-top: 0 !important;
-            height: 450px !important;
+            height: 550px !important;
+            object-fit: cover !important;
+            object-position: center center !important;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .imagen-intro {
+            height: 650px !important;
           }
         }
     </style>
@@ -269,12 +279,17 @@ from openedx.core.djangolib.markup import HTML, Text
               }
               
               @media (max-width: 768px) {
+                .banner-container {
+                  min-height: 550px;
+                }
+                
                 .banner-content {
                   display: flex !important;
                   flex-direction: column;
-                  padding: 30px 20px 80px !important;
-                  justify-content: center;
+                  padding: 40px 20px 100px !important;
+                  justify-content: flex-start !important;
                   align-items: center;
+                  height: auto !important;
                 }
                 
                 .celular-image {
@@ -285,38 +300,67 @@ from openedx.core.djangolib.markup import HTML, Text
                   max-width: 100%;
                   align-items: center;
                   text-align: center;
-                  gap: 15px;
+                  gap: 20px;
+                  padding-top: 20px;
                 }
                 
                 .banner-title {
-                  font-size: 28px !important;
+                  font-size: 32px !important;
                   text-align: center !important;
-                  line-height: 1.2 !important;
+                  line-height: 1.3 !important;
+                  margin-bottom: 5px !important;
                 }
                 
                 .banner-description {
-                  font-size: 14px !important;
+                  font-size: 15px !important;
                   text-align: center !important;
-                  padding: 0 10px;
+                  padding: 0 15px;
+                  line-height: 1.6 !important;
                 }
                 
                 .banner-buttons {
                   margin-left: 0 !important;
+                  margin-top: 10px !important;
                   flex-direction: column;
-                  gap: 10px;
+                  gap: 12px;
                   width: 100%;
-                  max-width: 300px;
+                  max-width: 280px;
                 }
                 
                 .btn-registrate,
                 .btn-inicia-sesion {
                   width: 100% !important;
-                  padding: 12px 20px !important;
-                  font-size: 15px !important;
+                  padding: 14px 20px !important;
+                  font-size: 16px !important;
                 }
                 
                 .contenedor-verde {
-                  padding: 12px 10px;
+                  padding: 10px 15px;
+                  position: absolute;
+                  bottom: 0;
+                }
+              }
+              
+              @media (max-width: 480px) {
+                .banner-container {
+                  min-height: 650px;
+                }
+                
+                .banner-content {
+                  padding: 30px 15px 110px !important;
+                }
+                
+                .banner-title {
+                  font-size: 28px !important;
+                }
+                
+                .banner-description {
+                  font-size: 14px !important;
+                  padding: 0 10px;
+                }
+                
+                .banner-buttons {
+                  max-width: 260px;
                 }
               }
             </style>
