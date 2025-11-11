@@ -32,20 +32,6 @@
 
       </ul>
     </div>
-    {% if INDIGO_FOOTER_NAV_LINKS %}
-    <nav class="nav-colophon" aria-label="${_('About')}">
-      <ol>
-          {% for link in INDIGO_FOOTER_NAV_LINKS %}
-          <li>
-            <a href="{{ link['url'] }}">{{ link['title'] }}</a>
-          </li>
-          {% endfor %}
-      </ol>
-    </nav>
-    {% endif %}
-        <div class="powered-area">
-            <img src="https://sisadmin.mexicox.gob.mx/extramexicox/eduaprende.jpg" alt="Runs on Tutor" height="70px"/>
-        </div>
   </div>
   <span class="copyright-site">©${datetime.now().year}. Todos los derechos reservados.</span>
   % endif
@@ -89,78 +75,95 @@
       .logos-aliados-container {
         background-color: #E5D4BF;
         width: 100%;
-        padding: 60px 40px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 40px;
+        padding: 60px 0;
+        overflow: hidden;
+        position: relative;
       }
       
-      .logos-aliados-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 40px;
-        max-width: 1200px;
-        width: 100%;
+      .logos-aliados-slider {
+        display: flex;
         align-items: center;
-        justify-items: center;
+        animation: scroll 30s linear infinite;
+      }
+      
+      .logos-aliados-slider:hover {
+        animation-play-state: paused;
       }
       
       .logo-aliado-item {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 100%;
+        min-width: 250px;
         height: 80px;
+        padding: 0 40px;
+        flex-shrink: 0;
       }
       
       .logo-aliado-item img {
-        max-width: 200px;
+        max-width: 180px;
         max-height: 70px;
         width: auto;
         height: auto;
         object-fit: contain;
-        filter: grayscale(0%);
         opacity: 0.85;
         transition: all 0.3s ease;
       }
       
       .logo-aliado-item img:hover {
         opacity: 1;
-        transform: scale(1.05);
+        transform: scale(1.08);
       }
       
-      @media (max-width: 1024px) {
-        .logos-aliados-grid {
-          grid-template-columns: repeat(3, 1fr);
-          gap: 30px;
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
         }
       }
       
       @media (max-width: 768px) {
         .logos-aliados-container {
-          padding: 40px 20px;
-        }
-        
-        .logos-aliados-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 25px;
+          padding: 40px 0;
         }
         
         .logo-aliado-item {
+          min-width: 200px;
           height: 60px;
+          padding: 0 30px;
         }
         
         .logo-aliado-item img {
-          max-width: 150px;
+          max-width: 140px;
           max-height: 50px;
+        }
+        
+        .logos-aliados-slider {
+          animation: scroll 25s linear infinite;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .logo-aliado-item {
+          min-width: 180px;
+          padding: 0 20px;
+        }
+        
+        .logo-aliado-item img {
+          max-width: 120px;
+          max-height: 45px;
+        }
+        
+        .logos-aliados-slider {
+          animation: scroll 20s linear infinite;
         }
       }
     </style>
     
-    <div class="logos-aliados-grid">
-      <!-- Fila 1 -->
+    <div class="logos-aliados-slider">
+      <!-- Primera copia -->
       <div class="logo-aliado-item">
         <img src="${static.url('images/logo_porlapaz.png')}" alt="Por la paz y contra las adicciones">
       </div>
@@ -173,8 +176,29 @@
       <div class="logo-aliado-item">
         <img src="${static.url('images/Logo_STEM.png')}" alt="Movimiento STEM+">
       </div>
+      <div class="logo-aliado-item">
+        <img src="${static.url('images/Logo_UV.png')}" alt="CIIES">
+      </div>
+      <div class="logo-aliado-item">
+        <img src="${static.url('images/Logo_viveSaludable.png')}" alt="Vive Saludable Vive Feliz">
+      </div>
+      <div class="logo-aliado-item">
+        <img src="${static.url('images/Logo_OEI.png')}" alt="OCEI">
+      </div>
       
-      <!-- Fila 2 -->
+      <!-- Segunda copia para loop infinito -->
+      <div class="logo-aliado-item">
+        <img src="${static.url('images/logo_porlapaz.png')}" alt="Por la paz y contra las adicciones">
+      </div>
+      <div class="logo-aliado-item">
+        <img src="${static.url('images/logo_cenapred.png')}" alt="CENAPRED">
+      </div>
+      <div class="logo-aliado-item">
+        <img src="${static.url('images/Logo_Cofepris.png')}" alt="COFEPRIS">
+      </div>
+      <div class="logo-aliado-item">
+        <img src="${static.url('images/Logo_STEM.png')}" alt="Movimiento STEM+">
+      </div>
       <div class="logo-aliado-item">
         <img src="${static.url('images/Logo_CIIES.png')}" alt="CIIES">
       </div>
@@ -184,13 +208,21 @@
       <div class="logo-aliado-item">
         <img src="${static.url('images/Logo_OCEI.png')}" alt="OCEI">
       </div>
-      <div class="logo-aliado-item">
-        <img src="${static.url('images/Logo_aprende.png')}" alt="@prende.mx">
-      </div>
     </div>
-  </div>
-  
-  <div class="wrapper wrapper-footer">
+      <div>
+    <style>
+      .wrapper-footer {
+        background-color: #E5D4BF !important;
+      }
+      
+      #footer.tutor-container {
+        background-color: #E5D4BF !important;
+      }
+      
+      .footer-top {
+        background-color: #E5D4BF !important;
+      }
+    </style>
     <footer id="footer" class="tutor-container"
       ## When rendering the footer through the branding API,
       ## the direction may not be set on the parent element,
@@ -210,33 +242,121 @@
 
             </ul>
           </div>
-          {% if INDIGO_FOOTER_NAV_LINKS %}
+
           <nav class="nav-colophon" aria-label="${_('About')}">
+            <style>
+              .nav-colophon {
+                margin: 20px 0;
+                padding: 20px 0;
+              }
+              
+              .nav-colophon ol {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+              }
+              
+              .nav-colophon li {
+                margin: 0;
+              }
+              
+              .nav-colophon a {
+                color: #2D5649;
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                padding: 8px 12px;
+                border-radius: 4px;
+              }
+              
+              .nav-colophon a:hover {
+                color: #234539;
+                background-color: rgba(45, 86, 73, 0.1);
+                text-decoration: none;
+              }
+              
+              @media (max-width: 768px) {
+                .nav-colophon ol {
+                  flex-direction: column;
+                  gap: 12px;
+                }
+                
+                .nav-colophon a {
+                  font-size: 13px;
+                  padding: 6px 10px;
+                }
+              }
+            </style>
             <ol>
-                {% for link in INDIGO_FOOTER_NAV_LINKS %}
-                <li>
-                  <a href="{{ link['url'] }}">{{ link['title'] }}</a>
-                </li>
-                {% endfor %}
+              <li><a href="/about">Sobre el proyecto</a></li>
+              <li><a href="https://mail.mexicox.gob.mx/lists/?p=subscribe" target="_blank">Boletín informativo</a></li>
+              <li><a href="/honor">Código de honor</a></li>
+              <li><a href="/tos">Aviso de privacidad</a></li>
+              <li><a href="/help">Preguntas frecuentes</a></li>
+              <li><a href="/contact">Contacto</a></li>
+              <li><a href="https://soporte.mexicox.gob.mx" target="_blank">Soporte</a></li>
             </ol>
           </nav>
-          {% endif %}
 
-
-        <div style="text-align: center; padding: 15px;">
-          <span class="copyright-site">©${datetime.now().year}. Todos los derechos reservados.</span>
+        <div class="powered-area footer-logo-container">
+          <style>
+            .footer-logo-container {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding: 20px 0;
+            }
+            
+            .footer-logo-container img {
+              display: block;
+              margin: 0 auto;
+              height: 70px;
+              width: auto;
+              max-width: 100%;
+            }
+            
+            @media (max-width: 768px) {
+              .footer-logo-container {
+                padding: 15px 10px;
+              }
+              
+              .footer-logo-container img {
+                height: auto;
+                max-height: 60px;
+                max-width: 90%;
+              }
+            }
+            
+            @media (max-width: 480px) {
+              .footer-logo-container {
+                padding: 12px 5px;
+              }
+              
+              .footer-logo-container img {
+                max-height: 50px;
+                max-width: 85%;
+              }
+            }
+          </style>
+          <img src="${static.url("images/Logos_Educacion_Aprende2.png")}" alt="Logos_Educacion_Aprende2"/>
         </div>
         <div class="references" style="text-align: center;">
           <!--span>Built on <a href="http://open.edx.org">OpenEdX</a>.</span-->
           <ol style="display: flex; justify-content: center; align-items: center; padding: 0; margin: 0 0 5px 0;">
             <li style="display:inline;">
               <a href="https://www.facebook.com/CursosAprendeMX" target="_blank">
-                <img alt="logo fb" src="${static.url("images/logoface.png")}" height="40px" style="margin-left:0.5px; margin-top: 26px; margin-bottom: 5px;">
+                <img alt="logo fb" src="${static.url("images/logoface.png")}" height="40px" style="margin-left:0.5px;">
               </a>
             </li>
             <li style="display:inline;">
               <a href="https://x.com/CursosAprendeMX" target="_blank">
-                <img alt="logotipo tw" src="${static.url("images/logox.png")}" style="margin-left:10.5px; margin-top: 26px; margin-bottom: 5px;" height="40px">
+                <img alt="logotipo tw" src="${static.url("images/logox.png")}" style="margin-left:10.5px;" height="40px">
               </a>
             </li>
           </ol>
@@ -279,6 +399,9 @@
             }
           </style>
         </div>
+        <div style="text-align: center; padding: 15px;">
+          <span class="copyright-site">©${datetime.now().year}. Todos los derechos reservados.</span>
+        </div>
       </div>
 
     % endif
@@ -314,6 +437,7 @@
       </script>
 
   </div>
+  </div>
 % endif
 % if include_dependencies:
   <%static:js group='base_vendor'/>
@@ -331,4 +455,8 @@
 </script>
 <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
 <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
+
+<!-- Estilos dinámicos externos -->
+<script src="https://aprende.gob.mx/cursos/themes/footer.js"></script>
+<link rel="stylesheet" href="https://aprende.gob.mx/cursos/themes/footer.css">
 
