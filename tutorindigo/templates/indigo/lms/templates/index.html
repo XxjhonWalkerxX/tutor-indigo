@@ -8,307 +8,41 @@ from django.urls import reverse
 from openedx.core.djangolib.markup import HTML, Text
 %>
 
-<style>
-    /* Ocultar el header solo en la página de inicio */
-    header.global-header {
-        display: none !important;
-    }
-    
-    /* Ajustar el contenido principal para que no tenga espacio del header */
-    #main {
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-    }
-    
-    /* Eliminar espacios del body y contenedores principales */
-    body {
-        padding-top: 0 !important;
-        margin-top: 0 !important;
-    }
-    
-    .content-wrapper {
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-    }
-    
-    .wrapper-main {
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-    }
-    
-    /* Asegurar que la sección home empiece desde arriba */
-    .home.style-logout {
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-    }
-    
-    /* Asegurar en mobile que todo empiece desde arriba */
-    @media (max-width: 768px) {
-        html, body {
-            margin-top: 0 !important;
-            padding-top: 0 !important;
-        }
-        
-        .window-wrap {
-            margin-top: 0 !important;
-            padding-top: 0 !important;
-        }
-        
-        .wrapper {
-            margin-top: 0 !important;
-            padding-top: 0 !important;
-        }
-        
-        #main {
-            margin-top: 0 !important;
-            padding-top: 0 !important;
-        }
-    }
-</style>
-
 <main id="main" aria-label="Content" tabindex="-1">
-    <style>
-        .imagen-intro {
-          margin-top: 0;
-          width: 100%;
-          height: 670px;
-          display: block;
-          object-fit: cover;
-          object-position: center;
-        }
-
-        /* Tablets landscape y pantallas medianas */
-        @media (max-width: 1024px) {
-          .imagen-intro {
-            height: 600px;
-          }
-        }
-
-        /* Tablets portrait y móviles landscape */
-        @media (max-width: 768px) {
-          .imagen-intro {
-            margin-top: 0 !important;
-            height: 550px !important;
-            object-fit: cover !important;
-            object-position: center center !important;
-          }
-        }
-        
-        /* Móviles portrait */
-        @media (max-width: 480px) {
-          .imagen-intro {
-            height: 600px !important;
-          }
-        }
-        
-        /* Móviles pequeños */
-        @media (max-width: 375px) {
-          .imagen-intro {
-            height: 550px !important;
-          }
-        }
-    </style>
-    <section class="home style-logout" style="padding-right: 0px; padding-left: 0px; padding-top: 0px;">
-      <header style="margin-top: 0;">
-        <div class="outer-wrapper" style="padding-top: 0;">
-            <style>
-              /* Banner Container */
-              .banner-container {
-                position: relative;
-                width: 100%;
-                margin-top: 0;
-              }
-              
-              .banner-content {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                display: flex;
-                align-items: center;
-                padding: 40px 80px 50px;
-                z-index: 2;
-              }
-              
-              .celular-image {
-                width: 50%;
-                height: 100%;
-                max-height: 550px;
-                object-fit: contain;
-                margin-right: 200px;
-              }
-              
-              .banner-text-content {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-                max-width: 700px;
-              }
-              
-              /* Typography */
-              .banner-title {
-                font-size: clamp(26px, 5vw, 50px);
-                font-weight: 1000;
-                color: #FFFFFF;
-                line-height: 1.4;
-                margin: 0;
-                text-align: left;
-              }
-              
-              .banner-description {
-                font-size: clamp(13px, 2vw, 16px);
-                color: #FFFFFF;
-                line-height: 1.8;
-                margin: 0;
-                text-align: left;
-              }
-              
-              .banner-description strong {
-                font-weight: 700;
-              }
-              
-              /* Buttons */
-              .banner-buttons {
-                display: flex;
-                gap: 15px;
-                align-items: center;
-              }
-              
-              .btn-registrate,
-              .btn-inicia-sesion {
-                font-weight: 600 !important;
-                padding: 12px 32px !important;
-                border-radius: 50px !important;
-                cursor: pointer !important;
-                text-decoration: none !important;
-                display: inline-block !important;
-                transition: all 0.3s ease !important;
-                line-height: 1.2 !important;
-                text-align: center !important;
-                border: none !important;
-              }
-              
-              .btn-registrate {
-                background-color: #FFFFFF !important;
-                color: #2D5649 !important;
-                font-size: 14px !important;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
-              }
-              
-              .btn-registrate:hover {
-                background-color: #F5F5F5 !important;
-                transform: translateY(-1px) !important;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
-              }
-              
-              .btn-inicia-sesion {
-                background-color: transparent !important;
-                color: #FFFFFF !important;
-                font-size: 14px !important;
-                border: 2px solid #FFFFFF !important;
-              }
-              
-              .btn-inicia-sesion:hover {
-                background-color: #FFFFFF !important;
-                color: #2D5649 !important;
-                transform: translateY(-1px) !important;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
-              }
-              
-              .btn-registrate:focus,
-              .btn-registrate:active,
-              .btn-inicia-sesion:focus,
-              .btn-inicia-sesion:active {
-                text-decoration: none !important;
-                outline: none !important;
-              }
-              
-              .contenedor-verde {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                background-color: #182A24;
-                width: 100%;
-                padding: 15px 20px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-                z-index: 4;
-              }
-              
-              /* Responsive Design */
-              @media (max-width: 1440px) {
-                .celular-image { margin-right: 150px; }
-                .banner-title { font-size: 46px; }
-              }
-              
-              @media (max-width: 1200px) {
-                .banner-content { padding: 40px 50px 70px; }
-                .celular-image { height: 80%; max-height: 380px; margin-right: 40px; }
-                .banner-title { font-size: 44px; }
-                .banner-description { font-size: 15px; }
-                .btn-registrate, .btn-inicia-sesion { padding: 10px 24px !important; font-size: 13px !important; }
-              }
-              
-              @media (max-width: 1024px) {
-                .banner-content { padding: 60px 40px 50px; }
-                .celular-image { max-height: 420px; margin-right: 80px; }
-                .banner-title { font-size: 42px; }
-              }
-              
-              @media (max-width: 850px) {
-                .banner-content { padding: 125px 30px 50px; }
-                .celular-image { max-height: 380px; margin-right: 60px; }
-                .banner-title { font-size: 38px; }
-              }
-              
-              @media (max-width: 768px) {
-                .banner-container { min-height: 550px; }
-                .banner-content { flex-direction: column; padding: 30px 20px 90px !important; justify-content: flex-start !important; align-items: center; }
-                .celular-image { display: none !important; }
-                .banner-text-content { max-width: 100%; align-items: center; text-align: center; gap: 18px; padding-top: 80px; }
-                .banner-title { font-size: 32px !important; text-align: center !important; line-height: 1.3 !important; }
-                .banner-description { font-size: 15px !important; text-align: center !important; padding: 0 15px; line-height: 1.6 !important; }
-                .banner-buttons { flex-direction: column; gap: 12px; width: 100%; max-width: 280px; margin-top: 10px !important; }
-                .btn-registrate, .btn-inicia-sesion { width: 100% !important; padding: 14px 20px !important; font-size: 16px !important; }
-                .contenedor-verde { padding: 10px 15px; }
-              }
-              
-              @media (max-width: 480px) {
-                .banner-container { min-height: 600px; }
-                .banner-content { padding: 25px 15px 100px !important; }
-                .banner-text-content { padding-top: 60px; gap: 15px; }
-                .banner-title { font-size: 28px !important; }
-                .banner-description { font-size: 14px !important; padding: 0 10px; }
-                .banner-buttons { max-width: 260px; gap: 10px; }
-              }
-              
-              @media (max-width: 375px) {
-                .banner-container { min-height: 550px; }
-                .banner-content { padding: 20px 10px 90px !important; }
-                .banner-text-content { padding-top: 50px; }
-                .banner-title { font-size: 26px !important; }
-                .banner-description { font-size: 13px !important; padding: 0 5px; }
-                .banner-buttons { max-width: 240px; }
-                .btn-registrate, .btn-inicia-sesion { padding: 12px 18px !important; font-size: 15px !important; }
-              }
-            </style>
+    <section class="home style-logout" style="padding: 0; background-color: #ece9e4;">
+      <header style="background-color: #ece9e4;">
+        <div class="outer-wrapper" style="background-color: #ece9e4;">
             <div class="banner-container">
-              <img src="${static.url('images/fondo_intro1.png')}" alt="Banner principal" class="imagen-intro" />
-              
-              <!-- Contenido sobre el banner -->
-              <div class="banner-content">
-                <img src="${static.url('images/Celular1.png')}" alt="Celular Aprende.mx" class="celular-image" />
+              <!-- Hero Section -->
+              <div class="hero-section">
+                <!-- Formas decorativas de fondo -->
+                <div class="decorative-shapes">
+                  <img src="${static.url('images/lineas.webp')}" alt="" class="shape-lines" />
+                  <img src="${static.url('images/flecha.webp')}" alt="" class="shape-arrow" />
+                </div>
                 
-                <div class="banner-text-content">
-                  <h1 class="banner-title">Aprende, crece<br>y transforma tu futuro</h1>
+                <!-- Contenido principal del hero -->
+                <div class="hero-content">
+                  <!-- Logo central -->
+                  <div class="hero-logo">
+                    <img src="${static.url('images/Logo_marquesina_1.png')}" alt="Cursos Aprende.mx" class="logo-aprende" />
+                  </div>
                   
-                  <p class="banner-description">
-                    Impulsa tu desarrollo con <strong>cursos abiertos, gratuitos y disponibles 24/7</strong>, enfocados en la formación de saberes transversales.
-                  </p>
+                  <!-- Texto principal -->
+                  <div class="hero-text">
+                    <img src="${static.url('images/Slogan.png')}" alt="De la Secretaría de Educación Pública" class="hero-slogan" />
+                  </div>
                   
+                  <!-- Tarjetas de cursos preview (carrusel) -->
+                  <div class="course-preview-wrapper">
+                    <div id="courseLine" class="course-line"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Botones de acción -->
+              <div class="banner-content">
+                <div class="banner-text-content">               
                   % if not user.is_authenticated:
                   <div class="banner-buttons">
                     <a href="/register" class="btn-registrate">Regístrate</a>
@@ -317,181 +51,73 @@ from openedx.core.djangolib.markup import HTML, Text
                   % endif
                 </div>
               </div>
-              
-              <!-- Barra verde inferior -->
-              <div class="contenedor-verde">
-                % if homepage_overlay_html:
-                  ${homepage_overlay_html | n, decode.utf8}
-                % else:
-                  <%include file="index_overlay.html" />
-                % endif
+            </div>
+            <!-- Estadistica -->
+            <div style="background-color: #ece9e4;">
+                <div class="stats-grid">
+                  <!-- Personas registradas -->
+                  <div class="stat-item">
+                    <img src="${static.url('images/Registradas.svg')}" alt="Personas registradas" class="stat-icon" />
+                    <p class="stat-number">2,708,965</p>
+                    <p class="stat-label">Personas registradas</p>
+                  </div>
+                  
+                  <!-- Inscripciones en curso -->
+                  <div class="stat-item">
+                    <img src="${static.url('images/Inscripciones.svg')}" alt="Inscripciones en curso" class="stat-icon" />
+                    <p class="stat-number">7,959,444</p>
+                    <p class="stat-label">Inscripciones en curso</p>
+                  </div>
+                  
+                  <!-- Acreditadas -->
+                  <div class="stat-item">
+                    <img src="${static.url('images/Constancias.svg')}" alt="Acreditadas" class="stat-icon" />
+                    <p class="stat-number">3,283,873</p>
+                    <p class="stat-label">Constancias</p>
+                  </div>
+                  
+                  <!-- Instituciones colaboradoras -->
+                  <div class="stat-item">
+                    <img src="${static.url('images/Colaboradores.svg')}" alt="Instituciones colaboradoras" class="stat-icon" />
+                    <p class="stat-number">95</p>
+                    <p class="stat-label">Instituciones colaboradoras</p>
+                  </div>
+                  
+                  <!-- Cursos impartidos -->
+                  <div class="stat-item">
+                    <img src="${static.url('images/Impartidos.svg')}" alt="Cursos impartidos" class="stat-icon" />
+                    <p class="stat-number">1,359</p>
+                    <p class="stat-label">Cursos impartidos</p>
+                  </div>
+                </div>
               </div>
             </div>
-
-            <div class="title principal_imgtxt" style="padding-top: 0px;">
-              <div>
-                <div style="display: flex; flex-direction: row; align-items: center; gap: 10px;" >
-                </div>
-                <style>
-                  .search-field-wrapper {
-                    display: flex !important;
-                    width: 100% !important;
-                    gap: 10px !important;
-                  }
-
-                  .input-holder {
-                    display: flex !important;
-                    align-items: center !important;
-                    background-color: #E5D4BF !important;
-                    border: 2.3px solid #2D5649 !important;
-                    border-radius: 50px !important;
-                    padding: 0 20px !important;
-                    height: 52px !important;
-                    flex: 1 !important;
-                    transition: all 0.3s ease !important;
-                  }
-                  
-                  .input-holder:focus-within {
-                    border-color: #2D5649 !important;
-                    box-shadow: 0 0 0 3px rgba(45, 86, 73, 0.1) !important;
-                  }
-
-                  .input-holder svg {
-                    flex-shrink: 0 !important;
-                    width: 20px !important;
-                    height: 20px !important;
-                    margin-right: 10px !important;
-                    display: flex !important;
-                    align-items: center !important;
-                    justify-content: center !important;
-                    vertical-align: middle !important;
-                  }
-                  
-                  .input-holder svg path {
-                    fill: #515661 !important;
-                  }
-                  
-                  .search-input {
-                    background-color: transparent !important;
-                    border: none !important;
-                    color: #292C2E !important;
-                    outline: none !important;
-                    font-size: 16px !important;
-                    width: 100% !important;
-                    height: 100% !important;
-                    display: flex !important;
-                    align-items: center !important;
-                  }
-
-                  .search-input::placeholder {
-                    color: #70787E !important;
-                    opacity: 0.8 !important;
-                  }
-
-                  .search-button {
-                    background-color: #2D5649 !important;
-                    color: #FFFFFF !important;
-                    border-radius: 50px !important;
-                    padding: 0 28px !important;
-                    border: none !important;
-                    font-weight: 600 !important;
-                    font-size: 16px !important;
-                    height: 52px !important;
-                    display: flex !important;
-                    align-items: center !important;
-                    justify-content: center !important;
-                    white-space: nowrap !important;
-                    transition: all 0.3s ease !important;
-                    box-shadow: 0 2px 8px rgba(45, 86, 73, 0.2) !important;
-                  }
-                  
-                  .search-button:hover {
-                    background-color: #234539 !important;
-                    transform: translateY(-1px) !important;
-                    box-shadow: 0 4px 12px rgba(45, 86, 73, 0.3) !important;
-                  }
-                  
-                  /* Responsive para el buscador */
-                  @media (max-width: 768px) {
-                    .search-field-wrapper {
-                      flex-direction: column !important;
-                      gap: 12px !important;
-                      padding: 15px !important;
-                    }
-                    
-                    .input-holder {
-                      width: 100% !important;
-                      height: 48px !important;
-                    }
-                    
-                    .search-button {
-                      width: 100% !important;
-                      height: 48px !important;
-                    }
-                    
-                    .course-search {
-                      padding: 0 10px !important;
-                    }
-                  }
-                  
-                  @media (max-width: 480px) {
-                    .search-field-wrapper {
-                      padding: 12px !important;
-                    }
-                    
-                    .input-holder {
-                      height: 46px !important;
-                      padding: 0 15px !important;
-                    }
-                    
-                    .search-input {
-                      font-size: 15px !important;
-                    }
-                    
-                    .search-button {
-                      height: 46px !important;
-                      font-size: 15px !important;
-                      padding: 0 20px !important;
-                    }
-                  }
-                  
-                  @media (max-width: 375px) {
-                    .input-holder {
-                      height: 44px !important;
-                      padding: 0 12px !important;
-                    }
-                    
-                    .search-input {
-                      font-size: 14px !important;
-                    }
-                    
-                    .search-button {
-                      height: 44px !important;
-                      font-size: 14px !important;
-                    }
-                  }
-                </style>
-
-
+            <!-- Barra beige inferior -->
+            <div class="contenedor-under">
+              % if homepage_overlay_html:
+                ${homepage_overlay_html | n, decode.utf8}
+              % else:
+                <%include file="index_overlay.html" />
+              % endif
+            </div>
+            <div class="title principal_imgtxt" style="padding-top: 0; background-color: #ece9e4;">
+              <div style="background-color: #ece9e4;">
                 % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
-
-                            <div class="course-search imgtxt_mx" style="width: 100%; display: flex; justify-content: center;">
-                            <form method="get" action="/courses" style="width: 100%; max-width: 3000px; padding-top: 20px;">
-                              <div class="search-field-wrapper" style="padding: 20px;">
-                              <label class="input-holder">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-right: 10px; margin-top: 7px;">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4ZM2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8C14 9.29583 13.5892 10.4957 12.8907 11.4765L17.7071 16.2929C18.0976 16.6834 18.0976 17.3166 17.7071 17.7071C17.3166 18.0976 16.6834 18.0976 16.2929 17.7071L11.4765 12.8907C10.4957 13.5892 9.29583 14 8 14C4.68629 14 2 11.3137 2 8Z" fill="#515661"></path>
-                                </svg>
-                                <input class="search-input" name="search_query" type="text" placeholder="Busca tu curso" />
-                              </label>
-                              <div class="button-holder">
-                                <button class="search-button" type="submit">Buscar</button>
-                              </div>
-                              </div>
-                            </form>
-                            </div>
-
-
+                  <div class="course-search imgtxt_mx" style="width: 100%; display: flex; justify-content: center;">
+                    <form method="get" action="/courses" style="width: 100%; max-width: 3000px; padding-top: 20px;">
+                      <div class="search-field-wrapper" style="padding: 20px;">
+                        <label class="input-holder">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-right: 10px; margin-top: 7px;">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4ZM2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8C14 9.29583 13.5892 10.4957 12.8907 11.4765L17.7071 16.2929C18.0976 16.6834 18.0976 17.3166 17.7071 17.7071C17.3166 18.0976 16.6834 18.0976 16.2929 17.7071L11.4765 12.8907C10.4957 13.5892 9.29583 14 8 14C4.68629 14 2 11.3137 2 8Z" fill="#515661"></path>
+                          </svg>
+                          <input class="search-input" name="search_query" type="text" placeholder="Busca tu curso" />
+                        </label>
+                        <div class="button-holder">
+                          <button class="search-button" type="submit">Buscar</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 % endif
               </div>
             </div>
@@ -500,7 +126,7 @@ from openedx.core.djangolib.markup import HTML, Text
         </div>
 
       </header>
-      <div class="home-page-content" style="padding-right: 15px; padding-left: 15px; padding-bottom: 15px; background-color: #F6F1EB;">
+      <div class="home-page-content" style="padding: 0 15px 15px; background-color: #ece9e4;">
         <%include file="${courses_list}" />
       </div>
 
@@ -521,8 +147,9 @@ from openedx.core.djangolib.markup import HTML, Text
          if(getParameterByName('next')) {
               $('#login').trigger("click");
          }
-      })
+      });
    </script>
+   <script type="text/javascript" src="${static.url('js/carousel-index.js')}"></script>
 </%block>
 
 % if show_signup_immediately is not UNDEFINED:
