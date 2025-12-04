@@ -3,64 +3,22 @@
 <style>
     .logo-text-container {
         display: flex;
-        align-items: center;
         justify-content: center;
-        gap: 15px;
-        padding: 5px 0;
-        flex-wrap: nowrap;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .logo-img {
-        width: 50px;
-        height: 40px;
-        display: block;
-        object-fit: contain;
-        flex-shrink: 0;
-    }
-
-    .divider {
-        height: 40px;
-        width: 3px;
-        background-color: #C9A06C;
-        flex-shrink: 0;
-    }
-
-    .logo-description {
-        font-size: 15px;
-        font-weight: 400;
-        color: #FFFFFF;
+        align-items: center;
+        width: 100%;
+        padding: 0;
         margin: 0;
-        line-height: 1.4;
-        white-space: nowrap;
     }
-
-    @media (max-width: 768px) {
-        .logo-text-container {
-            flex-direction: column;
-            gap: 8px;
-            padding: 8px 0;
-        }
-        .logo-img {
-            width: 40px;
-            height: 32px;
-        }
-        .divider {
-            display: none;
-        }
-        .logo-description {
-            font-size: 14px;
-            line-height: 1.3;
-            text-align: center;
-            white-space: normal;
-            max-width: 90%;
-        }
+    
+    .logo-img {
+        max-width: 300px;
+        width: 50%;
+        height: auto;
+        object-fit: contain;
+        display: block;
     }
 </style>
 
 <div class="logo-text-container">
-    <img src="${static.url("images/logo_a.png")}" class="logo-img" alt="Logo Aprende.mx" />
-    <div class="divider"></div>
-    <p class="logo-description">La plataforma de cursos en línea de la Secretaría de Educación Pública</p>
+    <img src="https://aprende.gob.mx/images/educ_aprende.png" class="logo-img" alt="Logo Aprende.mx" />
 </div>

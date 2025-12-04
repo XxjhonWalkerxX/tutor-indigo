@@ -1,0 +1,437 @@
+// Index Page Custom Styles
+// Ocultar header global
+header.global-header { display: none !important; }
+
+// Background y reset de márgenes
+html, body, #main, .content-wrapper, .wrapper-main, .home.style-logout {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    background-color: #ece9e4 !important;
+}
+
+// Fuente personalizada TT Rounds Neue
+@font-face {
+    font-family: 'TT Rounds Neue';
+    src: url('../fonts/TT_Rounds_Neue_Trial_Variable.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+// Banner container
+.banner-container {
+    width: 100%;
+    background-color: #ece9e4;
+}
+
+.banner-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 60px;
+}
+
+.banner-buttons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+// Botones
+.btn-registrate, .btn-inicia-sesion {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    padding: 12px 32px !important;
+    border-radius: 50px !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    transition: all 0.3s ease !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+}
+
+.btn-registrate {
+    background-color: #ece9e4 !important;
+    color: #2D5649 !important;
+    border: 2px solid #2D5649 !important;
+    
+    &:hover {
+        background-color: #ddd9d4 !important;
+        color: #2D5649 !important;
+        transform: translateY(-1px) !important;
+        text-decoration: none !important;
+    }
+}
+
+.btn-inicia-sesion {
+    background-color: #2D5649 !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    
+    &:hover {
+        background-color: #234438 !important;
+        color: #FFFFFF !important;
+        transform: translateY(-1px) !important;
+        text-decoration: none !important;
+    }
+}
+
+.btn-registrate:focus, .btn-registrate:active, 
+.btn-inicia-sesion:focus, .btn-inicia-sesion:active {
+    outline: none;
+}
+
+// Hero Section
+.hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    background-color: #ece9e4;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.decorative-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.shape-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+}
+
+.shape-arrow {
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    width: 120px;
+    opacity: 0.4;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.hero-logo {
+    margin-bottom: 30px;
+}
+
+.logo-aprende {
+    max-width: 180px;
+    padding-top: 60px;
+}
+
+.hero-text {
+    margin-bottom: 40px;
+}
+.hero-slogan {
+    max-width: 450px;
+    margin: 0 auto;
+    display: block;
+}
+
+.hero-slogan-text {
+    font-family: 'TT Rounds Neue', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: #2D5649;
+    margin: 0 auto;
+    max-width: 500px;
+    text-align: center;
+    
+    .slogan-highlight {
+        font-weight: 700;
+        color: #2D5649;
+    }
+}
+
+// Carrusel
+.course-preview-wrapper {
+    position: relative;
+    width: 100%;
+    height: 340px;
+    margin-top: 25px;
+    overflow: visible;
+}
+
+.course-line {
+    display: flex;
+    gap: 40px;
+    will-change: transform;
+}
+
+.course-card-mini {
+    width: 220px;
+    height: 300px;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    flex-shrink: 0;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+}
+
+// Contenedor beige
+.contenedor-under {
+    background-color: #E5D4BF;
+    width: 100%;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+// Estadísticas
+.stats-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #ece9e4;
+    padding: 20px;
+}
+
+.stats-title {
+    font-family: 'TT Rounds Neue', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #2D5649;
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #2D5649;
+    display: inline-block;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 40px;
+    margin-bottom: 40px;
+    justify-items: center;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.stat-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+}
+
+.stat-number {
+    font-family: 'TT Rounds Neue', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #2D5649;
+    margin: 0 0 5px 0;
+    line-height: 1;
+}
+
+.stat-label {
+    font-family: 'TT Rounds Neue', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #2D5649;
+    margin: 0;
+}
+
+// Buscador
+.search-field-wrapper {
+    display: flex !important;
+    width: 100% !important;
+    gap: 10px !important;
+}
+
+.input-holder {
+    display: flex !important;
+    align-items: center !important;
+    background-color: #E5D4BF !important;
+    border: 2.3px solid #2D5649 !important;
+    border-radius: 50px !important;
+    padding: 0 20px !important;
+    height: 52px !important;
+    flex: 1 !important;
+    transition: all 0.3s ease !important;
+    
+    &:focus-within {
+        border-color: #2D5649 !important;
+        box-shadow: 0 0 0 3px rgba(45, 86, 73, 0.1) !important;
+    }
+    
+    svg {
+        flex-shrink: 0 !important;
+        width: 20px !important;
+        height: 20px !important;
+        margin-right: 10px !important;
+        
+        path {
+            fill: #515661 !important;
+        }
+    }
+}
+
+.search-input {
+    background-color: transparent !important;
+    border: none !important;
+    color: #292C2E !important;
+    outline: none !important;
+    font-size: 16px !important;
+    width: 100% !important;
+    height: 100% !important;
+    
+    &::placeholder {
+        color: #70787E !important;
+        opacity: 0.8 !important;
+    }
+}
+
+.search-button {
+    background-color: #2D5649 !important;
+    color: #FFFFFF !important;
+    border-radius: 50px !important;
+    padding: 0 28px !important;
+    border: none !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    height: 52px !important;
+    box-shadow: 0 4px 12px rgba(45, 86, 73, 0.3) !important;
+}
+
+// Responsive
+@media (max-width: 768px) {
+    html, body, #main, .window-wrap, .wrapper {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    .banner-container { padding-bottom: 30px; }
+    .banner-content { padding: 25px 20px; }
+    .banner-buttons {
+        flex-direction: row;
+        gap: 12px;
+        width: 100%;
+        max-width: 400px;
+        justify-content: center;
+    }
+    
+    .btn-registrate, .btn-inicia-sesion {
+        flex: 1;
+        padding: 12px 20px !important;
+        font-size: 14px !important;
+    }
+    
+    .contenedor-under { padding: 10px 15px; }
+    .hero-section {
+        min-height: 450px;
+        padding: 40px 0 60px 0;
+    }
+    
+    .logo-aprende { max-width: 85px; }
+    .hero-slogan-text {
+        font-size: 20px;
+        max-width: 320px;
+    }
+    .shape-arrow {
+        width: 80px;
+        bottom: 5%;
+        right: 3%;
+    }
+    
+    .course-preview-wrapper { height: 270px; }
+    .course-card-mini {
+        width: 180px;
+        height: 240px;
+    }
+    .course-line { gap: 30px; }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    
+    .stat-item {
+        grid-column: auto !important;
+        margin: 0 !important;
+        
+        &:nth-child(5) {
+            grid-column: 1 / -1;
+            justify-self: center;
+        }
+    }
+    
+    .stat-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .stat-number { font-size: 28px; }
+    .stat-label { font-size: 12px; }
+}
+
+@media (max-width: 480px) {
+    .banner-container { padding-bottom: 25px; }
+    .banner-content { padding: 20px 15px; }
+    .banner-buttons { max-width: 260px; }
+    .hero-slogan { max-width: 195px; }
+    .shape-arrow { width: 60px; }
+    .course-preview-wrapper { height: 240px; }
+    .course-card-mini {
+        width: 150px;
+        height: 210px;
+    }
+    .course-line { gap: 24px; }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .stat-item {
+        &:nth-child(5) {
+            grid-column: 1 / -1;
+            justify-self: center;
+        }
+    }
+    
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .stat-number { font-size: 24px; }
+    .stat-label { font-size: 11px; }
+}

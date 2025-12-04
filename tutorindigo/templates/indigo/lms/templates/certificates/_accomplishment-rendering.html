@@ -59,10 +59,16 @@ course_mode_class = course_mode if course_mode else ''
     .accomplishment-name {
         font-family: 'Patria Regular', serif;
         color: #717170;
-        white-space: nowrap;       /* Sin quiebres de línea */
         font-size: 40pt;
         text-align: center;
         margin-top: -40px;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        line-height: 1.2;
       }
     .info-curso{
         text-align: center;
@@ -216,6 +222,12 @@ course_mode_class = course_mode if course_mode else ''
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+  }
+
+  .accomplishment-name {
+    max-width: 900px !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
   }
 
   .contenedor_principal {
