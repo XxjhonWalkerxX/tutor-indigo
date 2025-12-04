@@ -11,6 +11,7 @@
     header.course-profile {
         overflow: visible;
         .intro-inner-wrapper {
+          background: #ECE9E4;
             padding: 0 0 60px;
             @include media-breakpoint-up(md) {
                 padding: 0 0 20px;
