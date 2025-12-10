@@ -2,7 +2,7 @@
 (function () {
   var line = document.getElementById("courseLine");
   if (!line) return; // Solo ejecutar si estamos en la página de inicio
-  
+
   var cards = [];
   var speed = 30; // píxeles por segundo
   var position = 0;
@@ -87,7 +87,7 @@
     }
 
     card.innerHTML =
-      '<div class="card-image" style="width:100%;height:100%;background-image:url(\'' + img + '\');background-size:cover;background-position:center;border-radius:20px;"></div>';
+      '<div class="card-image"><img src="' + img + '" alt="Curso" style="width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;" /></div>';
 
     card.addEventListener("mouseenter", function () { isPaused = true; });
     card.addEventListener("mouseleave", function () { isPaused = false; });
