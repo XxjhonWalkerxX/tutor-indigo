@@ -1,10 +1,9 @@
-<%page expression_filter="h"/>
+<%page expression_filter="h" />
 <%inherit file="main.html" />
-<%namespace name='static' file='static_content.html'/>
+<%namespace name='static' file='static_content.html' />
 <%!
 from django.utils.translation import gettext as _
 from django.urls import reverse
-
 from openedx.core.djangolib.markup import HTML, Text
 %>
 
@@ -12,117 +11,122 @@ from openedx.core.djangolib.markup import HTML, Text
     <section class="home style-logout" style="padding: 0; background-color: #ece9e4;">
       <header style="background-color: #ece9e4;">
         <div class="outer-wrapper" style="background-color: #ece9e4;">
-            <div class="banner-container">
-              <!-- Hero Section -->
-              <div class="hero-section">
-                <!-- Formas decorativas de fondo -->
-                <div class="decorative-shapes">
-                  <img src="${static.url('images/lineas.webp')}" alt="" class="shape-lines" />
-                  <img src="${static.url('images/flecha.webp')}" alt="" class="shape-arrow" />
-                </div>
-                
-                <!-- Contenido principal del hero -->
-                <div class="hero-content">
-                  <!-- Logo central -->
-                  <div class="hero-logo">
-                    <img src="${static.url('images/Logo_marquesina_1.png')}" alt="Cursos Aprende.mx" class="logo-aprende" />
-                  </div>
-                  
-                  <!-- Texto principal -->
-                  <div class="hero-text">
-                    <img src="${static.url('images/Slogan.png')}" alt="De la Secretaría de Educación Pública" class="hero-slogan" />
-                  </div>
-                  
-                  <!-- Tarjetas de cursos preview (carrusel) -->
-                  <div class="course-preview-wrapper">
-                    <div id="courseLine" class="course-line"></div>
-                  </div>
-                </div>
+          <div class="banner-container">
+            <!-- Hero Section -->
+            <div class="hero-section">
+              <!-- Formas decorativas de fondo -->
+              <div class="decorative-shapes">
+                <img src="${static.url('images/lineas.webp')}" alt="" class="shape-lines" />
+                <img src="${static.url('images/flecha.webp')}" alt="" class="shape-arrow" />
               </div>
-              
-              <!-- Botones de acción -->
-              <div class="banner-content">
-                <div class="banner-text-content">               
-                  % if not user.is_authenticated:
-                  <div class="banner-buttons">
-                    <a href="/register" class="btn-registrate">Regístrate</a>
-                    <a href="/login" class="btn-inicia-sesion">Inicia sesión</a>
-                  </div>
-                  % endif
+
+              <!-- Contenido principal del hero -->
+              <div class="hero-content">
+                <!-- Logo central -->
+                <div class="hero-logo">
+                  <img src="${static.url('images/Logo_marquesina_1.png')}" alt="Cursos Aprende.mx"
+                    class="logo-aprende" />
+                </div>
+
+                <!-- Texto principal -->
+                <div class="hero-text">
+                  <img src="${static.url('images/Slogan.png')}" alt="De la Secretaría de Educación Pública"
+                    class="hero-slogan" />
+                </div>
+
+                <!-- Tarjetas de cursos preview (carrusel) -->
+                <div class="course-preview-wrapper">
+                  <div id="courseLine" class="course-line"></div>
                 </div>
               </div>
             </div>
-            <!-- Estadistica -->
-            <div style="background-color: #ece9e4;">
-                <div class="stats-grid">
-                  <!-- Personas registradas -->
-                  <div class="stat-item">
-                    <img src="${static.url('images/Registradas.svg')}" alt="Personas registradas" class="stat-icon" />
-                    <p class="stat-number">2,708,965</p>
-                    <p class="stat-label">Personas registradas</p>
-                  </div>
-                  
-                  <!-- Inscripciones en curso -->
+
+            <!-- Botones de acción -->
+            <div class="banner-content">
+              <div class="banner-text-content">
+                % if not user.is_authenticated:
+                <div class="banner-buttons">
+                  <a href="/register" class="btn-registrate">Regístrate</a>
+                  <a href="/login" class="btn-inicia-sesion">Inicia sesión</a>
+                </div>
+                % endif
+              </div>
+            </div>
+          </div>
+          <!-- Estadistica -->
+          <div style="background-color: #ece9e4;">
+            <div class="stats-grid">
+              <!-- Personas registradas -->
+              <div class="stat-item">
+                <img src="${static.url('images/Registradas.svg')}" alt="Personas registradas" class="stat-icon" />
+                <p class="stat-number">2,708,965</p>
+                <p class="stat-label">Personas registradas</p>
+              </div>
+
+              <!-- Inscripciones en curso 
                   <div class="stat-item">
                     <img src="${static.url('images/Inscripciones.svg')}" alt="Inscripciones en curso" class="stat-icon" />
                     <p class="stat-number">7,959,444</p>
                     <p class="stat-label">Inscripciones en curso</p>
                   </div>
-                  
-                  <!-- Acreditadas -->
-                  <div class="stat-item">
-                    <img src="${static.url('images/Constancias.svg')}" alt="Acreditadas" class="stat-icon" />
-                    <p class="stat-number">3,283,873</p>
-                    <p class="stat-label">Constancias</p>
-                  </div>
-                  
-                  <!-- Instituciones colaboradoras -->
-                  <div class="stat-item">
-                    <img src="${static.url('images/Colaboradores.svg')}" alt="Instituciones colaboradoras" class="stat-icon" />
-                    <p class="stat-number">95</p>
-                    <p class="stat-label">Instituciones colaboradoras</p>
-                  </div>
-                  
-                  <!-- Cursos impartidos -->
-                  <div class="stat-item">
-                    <img src="${static.url('images/Impartidos.svg')}" alt="Cursos impartidos" class="stat-icon" />
-                    <p class="stat-number">1,359</p>
-                    <p class="stat-label">Cursos impartidos</p>
+                  -->
+              <!-- Acreditadas -->
+              <div class="stat-item">
+                <img src="${static.url('images/Constancias.svg')}" alt="Acreditadas" class="stat-icon" />
+                <p class="stat-number">3,283,873</p>
+                <p class="stat-label">Constancias con valor curricular entregadas</p>
+              </div>
+
+              <!-- Instituciones colaboradoras -->
+              <div class="stat-item">
+                <img src="${static.url('images/Colaboradores.svg')}" alt="Instituciones aliadas" class="stat-icon" />
+                <p class="stat-number">95</p>
+                <p class="stat-label">Instituciones aliadas</p>
+              </div>
+
+              <!-- Cursos impartidos -->
+              <div class="stat-item">
+                <img src="${static.url('images/Impartidos.svg')}" alt="Cursos impartidos" class="stat-icon" />
+                <p class="stat-number">1,359</p>
+                <p class="stat-label">Cursos impartidos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Barra beige inferior -->
+        <div class="contenedor-under">
+          % if homepage_overlay_html:
+          ${homepage_overlay_html | n, decode.utf8}
+          % else:
+          <%include file="index_overlay.html" />
+          % endif
+        </div>
+        <div class="title principal_imgtxt" style="padding-top: 0; background-color: #ece9e4;">
+          <div style="background-color: #ece9e4;">
+            % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
+            <div class="course-search imgtxt_mx" style="width: 100%; display: flex; justify-content: center;">
+              <form method="get" action="/courses" style="width: 100%; max-width: 3000px; padding-top: 20px;">
+                <div class="search-field-wrapper" style="padding: 20px;">
+                  <label class="input-holder">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                      style="margin-right: 10px; margin-top: 7px;">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4ZM2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8C14 9.29583 13.5892 10.4957 12.8907 11.4765L17.7071 16.2929C18.0976 16.6834 18.0976 17.3166 17.7071 17.7071C17.3166 18.0976 16.6834 18.0976 16.2929 17.7071L11.4765 12.8907C10.4957 13.5892 9.29583 14 8 14C4.68629 14 2 11.3137 2 8Z"
+                        fill="#515661"></path>
+                    </svg>
+                    <input class="search-input" name="search_query" type="text" placeholder="Busca tu curso" />
+                  </label>
+                  <div class="button-holder">
+                    <button class="search-button" type="submit">Buscar</button>
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
-            <!-- Barra beige inferior -->
-            <div class="contenedor-under">
-              % if homepage_overlay_html:
-                ${homepage_overlay_html | n, decode.utf8}
-              % else:
-                <%include file="index_overlay.html" />
-              % endif
-            </div>
-            <div class="title principal_imgtxt" style="padding-top: 0; background-color: #ece9e4;">
-              <div style="background-color: #ece9e4;">
-                % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
-                  <div class="course-search imgtxt_mx" style="width: 100%; display: flex; justify-content: center;">
-                    <form method="get" action="/courses" style="width: 100%; max-width: 3000px; padding-top: 20px;">
-                      <div class="search-field-wrapper" style="padding: 20px;">
-                        <label class="input-holder">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-right: 10px; margin-top: 7px;">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4ZM2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8C14 9.29583 13.5892 10.4957 12.8907 11.4765L17.7071 16.2929C18.0976 16.6834 18.0976 17.3166 17.7071 17.7071C17.3166 18.0976 16.6834 18.0976 16.2929 17.7071L11.4765 12.8907C10.4957 13.5892 9.29583 14 8 14C4.68629 14 2 11.3137 2 8Z" fill="#515661"></path>
-                          </svg>
-                          <input class="search-input" name="search_query" type="text" placeholder="Busca tu curso" />
-                        </label>
-                        <div class="button-holder">
-                          <button class="search-button" type="submit">Buscar</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                % endif
-              </div>
-            </div>
+            % endif
+          </div>
+        </div>
 
-          <%include file="index_promo_video.html" />
+        <%include file="index_promo_video.html" />
         </div>
 
       </header>
@@ -131,35 +135,37 @@ from openedx.core.djangolib.markup import HTML, Text
       </div>
 
     </section>
-</main>
+  </main>
 
-% if show_homepage_promo_video:
+  % if show_homepage_promo_video:
   <section id="video-modal" class="modal home-page-video-modal video-modal">
     <div class="inner-wrapper">
-      <iframe title="YouTube Video" width="640" height="360" src="//www.youtube.com/embed/${homepage_promo_video_youtube_id}?showinfo=0" frameborder="0" allowfullscreen></iframe>
+      <iframe title="YouTube Video" width="640" height="360"
+        src="//www.youtube.com/embed/${homepage_promo_video_youtube_id}?showinfo=0" frameborder="0"
+        allowfullscreen></iframe>
     </div>
   </section>
-% endif
+  % endif
 
-<%block name="js_extra">
-   <script type="text/javascript">
-      $(window).load(function() {
-         if(getParameterByName('next')) {
-              $('#login').trigger("click");
-         }
+  <%block name="js_extra">
+    <script type="text/javascript">
+      $(window).load(function () {
+        if (getParameterByName('next')) {
+          $('#login').trigger("click");
+        }
       });
-   </script>
-   <script type="text/javascript" src="${static.url('js/carousel-index.js')}"></script>
-</%block>
+    </script>
+    <script type="text/javascript" src="${static.url('js/carousel-index.js')}"></script>
+  </%block>
 
-% if show_signup_immediately is not UNDEFINED:
+  % if show_signup_immediately is not UNDEFINED:
   ## NOTE: This won't work in production, because anonymous views are cached, so it will
   ## show either with or without this extra js for 3 minutes at a time.
-<script type="text/javascript">
-  $(window).load(function() {$('#signup_action').trigger("click");});
-</script>
-% endif
+  <script type="text/javascript">
+    $(window).load(function () { $('#signup_action').trigger("click"); });
+  </script>
+  % endif
 
-<!-- Estilos dinámicos externos -->
-<script src="https://aprende.gob.mx/cursos/themes/index.js"></script>
-<link rel="stylesheet" href="https://aprende.gob.mx/cursos/themes/index.css">
+  <!-- Estilos dinámicos externos -->
+  <script src="https://aprende.gob.mx/cursos/themes/index.js"></script>
+  <link rel="stylesheet" href="https://aprende.gob.mx/cursos/themes/index.css">

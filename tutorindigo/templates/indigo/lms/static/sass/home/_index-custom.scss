@@ -1,9 +1,16 @@
 // Index Page Custom Styles
 // Ocultar header global
-header.global-header { display: none !important; }
+header.global-header {
+    display: none !important;
+}
 
 // Background y reset de márgenes
-html, body, #main, .content-wrapper, .wrapper-main, .home.style-logout {
+html,
+body,
+#main,
+.content-wrapper,
+.wrapper-main,
+.home.style-logout {
     margin-top: 0 !important;
     padding-top: 0 !important;
     background-color: #ece9e4 !important;
@@ -39,7 +46,8 @@ html, body, #main, .content-wrapper, .wrapper-main, .home.style-logout {
 }
 
 // Botones
-.btn-registrate, .btn-inicia-sesion {
+.btn-registrate,
+.btn-inicia-sesion {
     font-size: 14px !important;
     font-weight: 600 !important;
     padding: 12px 32px !important;
@@ -56,7 +64,7 @@ html, body, #main, .content-wrapper, .wrapper-main, .home.style-logout {
     background-color: #ece9e4 !important;
     color: #2D5649 !important;
     border: 2px solid #2D5649 !important;
-    
+
     &:hover {
         background-color: #ddd9d4 !important;
         color: #2D5649 !important;
@@ -69,7 +77,7 @@ html, body, #main, .content-wrapper, .wrapper-main, .home.style-logout {
     background-color: #2D5649 !important;
     color: #FFFFFF !important;
     border: none !important;
-    
+
     &:hover {
         background-color: #234438 !important;
         color: #FFFFFF !important;
@@ -78,8 +86,10 @@ html, body, #main, .content-wrapper, .wrapper-main, .home.style-logout {
     }
 }
 
-.btn-registrate:focus, .btn-registrate:active, 
-.btn-inicia-sesion:focus, .btn-inicia-sesion:active {
+.btn-registrate:focus,
+.btn-registrate:active,
+.btn-inicia-sesion:focus,
+.btn-inicia-sesion:active {
     outline: none;
 }
 
@@ -143,6 +153,7 @@ html, body, #main, .content-wrapper, .wrapper-main, .home.style-logout {
 .hero-text {
     margin-bottom: 40px;
 }
+
 .hero-slogan {
     max-width: 450px;
     margin: 0 auto;
@@ -158,7 +169,7 @@ html, body, #main, .content-wrapper, .wrapper-main, .home.style-logout {
     margin: 0 auto;
     max-width: 500px;
     text-align: center;
-    
+
     .slogan-highlight {
         font-weight: 700;
         color: #2D5649;
@@ -169,7 +180,7 @@ html, body, #main, .content-wrapper, .wrapper-main, .home.style-logout {
 .course-preview-wrapper {
     position: relative;
     width: 100%;
-    height: 340px;
+    height: 320px;
     margin-top: 25px;
     overflow: visible;
 }
@@ -181,12 +192,12 @@ html, body, #main, .content-wrapper, .wrapper-main, .home.style-logout {
 }
 
 .course-card-mini {
-    width: 220px;
-    height: 300px;
+    width: 260px;
+    height: 286px;
     background: #fff;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
     transition: transform 0.3s ease, opacity 0.3s ease;
     flex-shrink: 0;
 }
@@ -194,9 +205,16 @@ html, body, #main, .content-wrapper, .wrapper-main, .home.style-logout {
 .card-image {
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
     border-radius: 20px;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        display: block;
+        border-radius: 20px;
+    }
 }
 
 // Contenedor beige
@@ -233,7 +251,7 @@ html, body, #main, .content-wrapper, .wrapper-main, .home.style-logout {
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 40px;
     margin-bottom: 40px;
     justify-items: center;
@@ -286,18 +304,18 @@ html, body, #main, .content-wrapper, .wrapper-main, .home.style-logout {
     height: 52px !important;
     flex: 1 !important;
     transition: all 0.3s ease !important;
-    
+
     &:focus-within {
         border-color: #2D5649 !important;
         box-shadow: 0 0 0 3px rgba(45, 86, 73, 0.1) !important;
     }
-    
+
     svg {
         flex-shrink: 0 !important;
         width: 20px !important;
         height: 20px !important;
         margin-right: 10px !important;
-        
+
         path {
             fill: #515661 !important;
         }
@@ -312,7 +330,7 @@ html, body, #main, .content-wrapper, .wrapper-main, .home.style-logout {
     font-size: 16px !important;
     width: 100% !important;
     height: 100% !important;
-    
+
     &::placeholder {
         color: #70787E !important;
         opacity: 0.8 !important;
@@ -333,13 +351,24 @@ html, body, #main, .content-wrapper, .wrapper-main, .home.style-logout {
 
 // Responsive
 @media (max-width: 768px) {
-    html, body, #main, .window-wrap, .wrapper {
+
+    html,
+    body,
+    #main,
+    .window-wrap,
+    .wrapper {
         margin-top: 0 !important;
         padding-top: 0 !important;
     }
-    
-    .banner-container { padding-bottom: 30px; }
-    .banner-content { padding: 25px 20px; }
+
+    .banner-container {
+        padding-bottom: 30px;
+    }
+
+    .banner-content {
+        padding: 25px 20px;
+    }
+
     .banner-buttons {
         flex-direction: row;
         gap: 12px;
@@ -347,91 +376,136 @@ html, body, #main, .content-wrapper, .wrapper-main, .home.style-logout {
         max-width: 400px;
         justify-content: center;
     }
-    
-    .btn-registrate, .btn-inicia-sesion {
+
+    .btn-registrate,
+    .btn-inicia-sesion {
         flex: 1;
         padding: 12px 20px !important;
         font-size: 14px !important;
     }
-    
-    .contenedor-under { padding: 10px 15px; }
+
+    .contenedor-under {
+        padding: 10px 15px;
+    }
+
     .hero-section {
         min-height: 450px;
         padding: 40px 0 60px 0;
     }
-    
-    .logo-aprende { max-width: 85px; }
+
+    .logo-aprende {
+        max-width: 85px;
+    }
+
     .hero-slogan-text {
         font-size: 20px;
         max-width: 320px;
     }
+
     .shape-arrow {
         width: 80px;
         bottom: 5%;
         right: 3%;
     }
-    
-    .course-preview-wrapper { height: 270px; }
-    .course-card-mini {
-        width: 180px;
-        height: 240px;
+
+    .course-preview-wrapper {
+        height: 265px;
     }
-    .course-line { gap: 30px; }
-    
+
+    .course-card-mini {
+        width: 210px;
+        height: 231px;
+    }
+
+    .course-line {
+        gap: 30px;
+    }
+
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
     }
-    
+
     .stat-item {
         grid-column: auto !important;
         margin: 0 !important;
-        
+
         &:nth-child(5) {
             grid-column: 1 / -1;
             justify-self: center;
         }
     }
-    
+
     .stat-icon {
         width: 60px;
         height: 60px;
     }
-    
-    .stat-number { font-size: 28px; }
-    .stat-label { font-size: 12px; }
+
+    .stat-number {
+        font-size: 28px;
+    }
+
+    .stat-label {
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 480px) {
-    .banner-container { padding-bottom: 25px; }
-    .banner-content { padding: 20px 15px; }
-    .banner-buttons { max-width: 260px; }
-    .hero-slogan { max-width: 195px; }
-    .shape-arrow { width: 60px; }
-    .course-preview-wrapper { height: 240px; }
-    .course-card-mini {
-        width: 150px;
-        height: 210px;
+    .banner-container {
+        padding-bottom: 25px;
     }
-    .course-line { gap: 24px; }
-    
+
+    .banner-content {
+        padding: 20px 15px;
+    }
+
+    .banner-buttons {
+        max-width: 260px;
+    }
+
+    .hero-slogan {
+        max-width: 195px;
+    }
+
+    .shape-arrow {
+        width: 60px;
+    }
+
+    .course-preview-wrapper {
+        height: 220px;
+    }
+
+    .course-card-mini {
+        width: 170px;
+        height: 187px;
+    }
+
+    .course-line {
+        gap: 24px;
+    }
+
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
-    
+
     .stat-item {
         &:nth-child(5) {
             grid-column: 1 / -1;
             justify-self: center;
         }
     }
-    
+
     .stat-icon {
         width: 50px;
         height: 50px;
     }
-    
-    .stat-number { font-size: 24px; }
-    .stat-label { font-size: 11px; }
+
+    .stat-number {
+        font-size: 24px;
+    }
+
+    .stat-label {
+        font-size: 11px;
+    }
 }
