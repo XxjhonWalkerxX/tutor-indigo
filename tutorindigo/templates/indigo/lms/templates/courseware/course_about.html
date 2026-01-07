@@ -72,7 +72,7 @@ from openedx.core.lib.courses import course_image_url
         <div class="media">
           <div class="hero">
             <!-- NEW IN INDIGO: Add fallback image in case of no course-image using onerror -->
-            <img src="${course_image_urls['large']}" onerror="this.src='${static.url('images/no_course_image.png')}';" alt="" />
+            <img src="${course_image_urls['large']}" alt="" />
           </div>
         </div>
         % endif
