@@ -22,11 +22,11 @@ from django.conf import settings
     <header class="course-image">
       <div class="cover-image">
         <!-- NEW IN INDIGO: Add fallback image in case of no course-image using onerror -->
-        <img src="${course.course_image_url}" onerror="this.src='${static.url('images/no_course_image.png')}';" alt="${course.display_name_with_default} ${course.display_number_with_default}" />
+        <img src="${course.course_image_url}" alt="${course.display_name_with_default} ${course.display_number_with_default}" />
       </div>
     </header>
     <div class="course-info" aria-hidden="true">
-      <h2 class="course-name" style="padding: 10px 20px 0;">
+      <h2 class="course-name">
         <span class="course-code">${course.display_number_with_default}</span>
         <span class="course-title">${course.display_name_with_default}</span>
       </h2>
@@ -62,89 +62,9 @@ from django.conf import settings
         <!-- NEW IN INDIGO Learn more button is displayed under the course image instead of the hover functionality. -->
 
       <a  href="${reverse('about_course', args=[str(course.id)])}" class="learn-more" aria-hidden="true">Saber más</a>
-
-        <!-- Div que contiene la informacion de que institucion se imparte el curso-->
-        <style>
-          .org-logo-container {
-            width: 100%;              /* Usar todo el ancho disponible de la tarjeta */
-            max-width: 250px;         /* Ancho máximo */
-            height: 50px;             /* Altura del logo */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: -12px auto 0;      /* Margen negativo para subir el logo */
-            background-color: #F8E1BF; /* Color de fondo */
-            overflow: hidden;
-          }
-          .course-org-logo {
-            width: 100%;             /* Ancho completo del contenedor */
-            height:40px;            /* Altura fija forzada */
-            object-fit: contain;     /* Mostrar toda la imagen sin recortar */
-            display: block;
-          }
-        </style>
-        <div style="width:100%; background-color:#F8E1BF; display: block; overflow: hidden;">
-            <div class="org-text-container" style="height: 40px; display: flex; align-items: center; justify-content: center; padding: 4px 8px; position: relative; overflow: hidden;">
-                <span class="course-organization auto-fit-text" style="display: block; word-wrap: break-word; text-align: center; font-weight: 500; line-height: 1.2; width: 100%; font-size: 12px; hyphens: auto;">${course.display_org_with_default}</span>
-            </div>
-            <script>
-                (function() {
-                    function adjustTextSize() {
-                        document.querySelectorAll('.auto-fit-text').forEach(function(element) {
-                            var container = element.parentElement;
-                            var containerHeight = container.offsetHeight;
-                            var containerPadding = 14; // padding total (4px arriba + 4px abajo)
-                            var availableHeight = containerHeight - containerPadding;
-                            var fontSize = 12;
-                            var minFontSize = 8;
-                            
-                            // Reset inicial
-                            element.style.fontSize = fontSize + 'px';
-                            element.style.whiteSpace = 'normal';
-                            element.style.overflow = 'hidden';
-                            
-                            // Ajustar tamaño de fuente hasta que el texto quepa en la altura disponible
-                            while (element.scrollHeight > availableHeight && fontSize > minFontSize) {
-                                fontSize -= 0.5;
-                                element.style.fontSize = fontSize + 'px';
-                            }
-                            
-                            // Si aún es muy alto después del tamaño mínimo, forzar ellipsis
-                            if (element.scrollHeight > availableHeight) {
-                                element.style.overflow = 'hidden';
-                                element.style.textOverflow = 'ellipsis';
-                                element.style.display = '-webkit-box';
-                                element.style.webkitBoxOrient = 'vertical';
-                                element.style.webkitLineClamp = Math.floor(availableHeight / (fontSize * 1.2)); // líneas que caben
-                            }
-                        });
-                    }
-                    
-                    // Ejecutar cuando el DOM esté listo
-                    if (document.readyState === 'loading') {
-                        document.addEventListener('DOMContentLoaded', adjustTextSize);
-                    } else {
-                        adjustTextSize();
-                    }
-                    
-                    // También ejecutar después de que las imágenes se carguen
-                    window.addEventListener('load', adjustTextSize);
-                })();
-            </script>
-            <div class="org-logo-container">
-            <!--
-                  % if org_logo_url:
-                    <img
-                    src="${org_logo_url}"
-                    class="course-org-logo"
-                    onerror="this.style.display='none';"
-                    alt="${course.display_org_with_default} logo"
-                    style="margin-top: -5px;"
-                    />
-                  % endif
-            -->
-            </div>
-        </div>
+      <div class="course-organization-wrapper">
+        <span class="course-organization">${course.display_org_with_default}</span>
+      </div>
     </div>
 
     <div class="sr">

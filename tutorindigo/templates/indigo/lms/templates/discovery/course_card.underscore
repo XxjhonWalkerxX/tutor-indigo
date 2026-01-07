@@ -2,14 +2,13 @@
         <header class="course-image">
             <div class="cover-image">
                 <!-- NEW IN INDIGO: Add fallback image in case of no course-image using onerror -->
-                <img src="<%- image_url %>" onerror="this.src='${static.url('images/no_course_image.png')}';" alt="<%- content.display_name %> <%- content.number %>" />
+                <img src="<%- image_url %>" alt="<%- content.display_name %> <%- content.number %>" />
             </div>
         </header>
         <section class="course-info" aria-hidden="true">
             <h2 class="course-name">
                 <span class="course-code"><%- content.number %></span>
                 <span class="course-title"><%- content.display_name %></span>
-
             </h2>
             <div class="course-date" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
@@ -21,11 +20,8 @@
                     ) %>
             </div>
             <a href="/courses/<%- course %>/about" class="learn-more">Saber más</a>
-            <!-- Div que contiene la informacion de que institucion se imparte el curso-->
-            <div style="width:100%; background-color:#F8E1BF; display: block; overflow: hidden;">
-                <div style="height: 40px; display: flex; align-items: center; justify-content: center; padding: 0 8px; overflow: hidden; position: relative;">
-                    <span class="course-organization auto-fit-text" style="display: block; word-wrap: break-word; text-align: center; font-weight: 500; line-height: 1.2; width: 100%; font-size: 12px; color: #000000;"><%- org %></span>
-                </div>
+            <div class="course-organization-wrapper">
+                <span class="course-organization"><%- org %></span>
             </div>
         </section>
         <div class="sr">
