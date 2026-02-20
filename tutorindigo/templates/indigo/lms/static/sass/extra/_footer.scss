@@ -1,7 +1,7 @@
 // Include custom Footer
 .wrapper-footer {
     padding: 25px 0;
-    border-top: 1px solid $gray-light;
+    border-top: 1px solid #E5E7EB;
     @include media-breakpoint-up(md) {
         padding: 45px 0;
     }
@@ -28,7 +28,7 @@ footer.tutor-container {
                 margin: 0 0 15px;
             }
             @include media-breakpoint-up(lg) {
-                float: left;
+                float: none;
             }
         }
     }
@@ -96,40 +96,5 @@ footer.tutor-container {
         font-size: 12px;
         line-height: 16px;
         color: $light-dark;
-    }
-}
-
-body.indigo-dark-theme {
-    .wrapper-footer {
-        border-top: 1px solid $border-color-d;
-        background: $body-bg-d;
-    }
-    footer.tutor-container {
-        .logo-list {
-            li {
-                color: $text-color-primary;
-                &:last-child {
-                    &:after {
-                        background: $text-color-primary;
-                    }
-                }
-            }
-        }
-        .nav-colophon {
-            ol {
-                li {
-                    a {
-                        color:$text-color-primary;
-                        &:hover {
-                            color: $text-color-d;
-                        }
-                    }
-                }
-            }
-        }
-        .copyright-site {
-            color: $text-color-primary;
-        }
-
     }
 }

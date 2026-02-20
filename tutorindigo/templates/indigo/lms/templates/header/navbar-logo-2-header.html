@@ -1,0 +1,22 @@
+## mako
+
+<%page expression_filter="h"/>
+
+<%namespace name='static' file='../static_content.html'/>
+<%!
+from django.urls import reverse
+from django.utils.translation import gettext as _
+from lms.djangoapps.ccx.overrides import get_current_ccx
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+from openedx.features.enterprise_support.utils import get_enterprise_learner_generic_name, get_enterprise_learner_portal
+%>
+
+<h1>
+    <div>
+        <a href="https://aprende.gob.mx">
+            <!-- <img  class="logo"  src="${static.url("images/Logos_Educacion_Aprende.png")}" alt="AprendeMZ"/> -->
+            <img  class="logo"  src="https://aprende.gob.mx/images/logo_educacion_aprende_negro.png" alt="AprendeMZ" style="max-width: 74px; max-width: 433px;">
+        </a>
+    </div>
+</h1>
+

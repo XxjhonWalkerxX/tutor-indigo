@@ -46,3 +46,31 @@
   font-weight: 700;
   font-style: italic;
 }
+@font-face {
+  font-family: 'Patria Regular';
+  src: url('#{$static-path}/fonts/Patria_Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('#{$static-path}/fonts/NotoSans-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('#{$static-path}/fonts/NotoSans-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('#{$static-path}/fonts/NotoSans-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+

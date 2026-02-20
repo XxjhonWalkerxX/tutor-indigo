@@ -1,37 +1,4 @@
 // Include custom discover
-.window-wrap #content.content-wrapper {
-    padding: 0 !important;
-    margin: 0 !important;
-    max-width: 100%;
-    @include media-breakpoint-up(lg) {
-        margin-top: 64px !important;
-    }
-}
-.course-heading-area {
-    margin: 0 0 20px;
-    font-size: 14px;
-    color: #515661;
-    @include media-breakpoint-up(md) {
-        margin: 0 0 30px;
-        font-size: 16px;
-        line-height: 20px;
-    }
-    h2 {
-        color: #111827;
-        font-size: 20px;
-        font-weight: 700;
-        line-height: 30px;
-        margin: 0 0 8px;
-        @include media-breakpoint-up(md) {
-            font-size: 24px;
-            font-weight: 700;
-            margin: 0 0 12px;
-        }
-    }
-    p {
-        margin: 0;
-    }
-}
 .find-courses {
     padding-bottom: 0 !important;
     .courses-container {
@@ -73,79 +40,116 @@
                 }
                 .course {
                     margin: 0;
-                    border: none;
+                    border: 2px solid #2b6959;
                     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06), 0px 1px 3px rgba(0, 0, 0, 0.10);
-                    border-radius: 8px;
+                    border-radius: 0px;
                     overflow: hidden;
-                    background: #fff;
+                    background:#F6F1EB;
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
                     .course-image {
+                        flex-shrink: 0;
                         .cover-image {
-                            height: 162px;
+                            width: 100%;
+                            height: 0;
+                            padding-bottom: 110.22%; /* Proporción 900:992 (992/900 = 1.1022) */
+                            position: relative;
+                            background: #F6F1EB;
+                            overflow: hidden;
                             &:before {
                                 display: none;
                             }
                             img{
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
                                 object-fit: cover;
                                 object-position: center;
-                                height: 100%;
                             }
                         }
                     }
                     .course-info {
                         height: auto;
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
                         font-family: $font-family-title;
-                        padding: 10px 20px 0;
+                        background-color: #F6F1EB;
                         .course-code {
                             display: none;
                         }
                         h2 {
                             font-family: $font-family-title;
-                            height: 72px;
+                            height: auto;
+                            margin-bottom: 0;
+                            padding-inline: 20px;
                         }
                         .course-title {
                             color: #292C2E;
                             font-size: 16px;
-                            line-height: 22px;
-                            height: auto;
-                            padding: 0;
-                            margin: 0 0 5px;
-                            white-space: unset;
-                            overflow: hidden !important;
-                            text-overflow: ellipsis;
-                            display: -webkit-box !important;
-                            -webkit-line-clamp: 2;
-                            -webkit-box-orient: vertical;
-                        }
-                        .course-organization {
-                            color: #6c7885;
-                            font-size: 14px;
                             line-height: 20px;
                             height: auto;
                             padding: 0;
-                            margin: 0 0 15px;
-                            display: block;
+                            margin: 0;
+                            white-space: normal;
                             overflow: hidden;
-                            white-space: nowrap;
                             text-overflow: ellipsis;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 3;
+                            -webkit-box-orient: vertical;
+                            min-height: 60px;
+                            max-height: 60px;
+                        }
+                        .course-organization-wrapper {
+                            width: 100%;
+                            margin-top: auto;
+                            background-color: #F8E1BF;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 10px 12px;
+                            min-height: 55px;
+                            max-height: 70px;
+                            overflow: hidden;
+                        }
+                        .course-organization {
+                            color: #515661;
+                            font-size: clamp(10px, 2.5vw, 12px);
+                            font-weight: 600;
+                            line-height: 1.3;
+                            height: auto;
+                            padding: 0;
+                            margin: 0;
+                            display: -webkit-box;
+                            white-space: normal;
+                            word-break: break-word;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            -webkit-line-clamp: 3;
+                            -webkit-box-orient: vertical;
+                            text-align: center;
+                            width: 100%;
                         }
                         .learn-more {
                             display: block;
-                            border-radius: 6px;
-                            background: $primary;
+                            background: #2b6959;
                             text-align: center;
                             padding: 9px 17px;
                             font-size: 14px;
                             font-weight: 500;
                             line-height: 20px;
-                            margin: 0 0 30px;
                             color: #fff;
+                            margin-top: 6px;
                             &:hover {
                                 opacity: .8;
                             }
                         }
                         .course-date {
                             border-top: 1px solid #ECF0F4;
-                            padding: 10px 20px;
+                            padding-inline: 20px;
                             margin: 0 -20px;
                             color: #515661;
                             font-size: 14px;
@@ -164,7 +168,6 @@
 }
 .saerch-bar-discover {
     margin:  0 0 25px;
-    display: flex;
     @include media-breakpoint-up(md) {
         margin:  0 0 30px;
     }
@@ -197,11 +200,12 @@
         }
     }
     .discover-search {
-        width: 100%;
+        overflow: hidden;
         .wrapper-search-context {
+            overflow: hidden;
             .wrapper-search-input {
                 float: none;
-                display: flex;
+                display: block;
                 margin: 0;
                 width: auto;
                 &:after {
@@ -226,7 +230,6 @@
                         background: $primary;
                         font-family: $font-family-title;
                         border: none;
-                        box-shadow: none !important;
                         @include media-breakpoint-up(sm) {
                             min-width: 100px;
                         }
@@ -237,7 +240,7 @@
                     }
                 }
                 .input-holder {
-                    flex-grow: 1;
+                    overflow: hidden;
                     border-radius: 6px;
                     background: $primary-light;
                     padding: 0 0 0 33px;
@@ -247,10 +250,6 @@
                         left: 12px;
                         font-size: 20px;
                         top: 10px;
-
-                        path {
-                          fill: #4a5564;
-                        }
                     }
                     input {
                         border: none;
@@ -262,10 +261,6 @@
                         font-size: 14px;
                         line-height: 20px;
                         padding: 9px 10px;
-
-                        &::placeholder {
-                            color: #4a5564;
-                        }
                     }
                 }
             }
@@ -283,12 +278,9 @@
     }
 }
 .filter-block {
-    flex: 0 0 80px;
+    float: left;
     position: relative;
     z-index: 9;
-    @include media-breakpoint-up(sm) {
-      flex: 0 0 130px;
-    }
     &.show {
         .dropdown-menu {
             display: block;
@@ -394,142 +386,6 @@
                             background: #fff;
                             .count-number {
                                 display: none;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-body.indigo-dark-theme {
-    .course-heading-area {
-        color: $text-color-primary;
-        h2 {
-            color: $text-color-d;
-        }
-    }
-    .saerch-bar-discover {
-        .filters {
-            .filters-inner {
-                ul {
-                    li {
-                        button {
-                            background: $primary-d !important;
-                            color: $btn-color-d;
-                        }
-                    }
-                }
-            }
-        }
-        .discover-search {
-            .wrapper-search-context {
-                .wrapper-search-input {
-                    .button-holder {
-                        button {
-                            background: $primary-d;
-                            color: $btn-color-d;
-                            &:hover {
-                                background: $primary-d;
-                                color: $btn-color-d;
-                            }
-                        }
-                    }
-                    .input-holder {
-                        background: $primary-light-d;
-                        svg {
-                           path {
-                                color: $text-color-d;
-                           }
-                        }
-                        input {
-                            color: $text-color-d;
-                        }
-                    }
-                }
-            }
-            .search-status-label {
-                color: $text-color-primary;
-            }
-        }
-        .filter-block {
-
-            >a {
-                background-color: $primary-light-d;
-                color: $text-color-d;
-                &:hover {
-                    color: $text-color-d;
-                }
-                svg {
-                    fill: transparent;
-                    stroke: $text-color-d;
-                    &.arrow {
-                        fill: $text-color-d;
-                        stroke: none;
-                    }
-                }
-            }
-            .dropdown-menu {
-                background: $primary-light-d;
-            }
-            .search-facets {
-                .search-facets-lists {
-                    h3 {
-                        color: $text-color-d;
-                    }
-                    ul.facet-list {
-                        li {
-                            button.facet-option {
-                                color: $text-color-d;
-                                &.selected {
-                                    .count {
-                                        background: $primary-d;
-                                        border-color: $primary-d;
-                                        &:before {
-                                            color: $btn-color-d;
-                                        }
-                                    }
-                                }
-                                .count {
-                                    border: 1px solid $text-color-d;
-                                    background: $text-color-d;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    .courses-container {
-        .courses {
-            .courses-listing {
-                li {
-                    .course {
-                        box-shadow: none;
-                        border: 1px solid $border-color-d;
-                        background: $primary-light-d;
-                        .course-info {
-                            .course-title {
-                                color: $text-color-d;
-                            }
-                            .course-organization {
-                                color: $text-color-primary;
-                            }
-                            .learn-more {
-                                background: $primary-d;
-                                color: $btn-color-d;
-                            }
-                            .course-date {
-                                border-top: 1px solid $border-color-d;
-                                color: $text-color-primary;
-                                background: $light-overlay-d;
-                                svg {
-                                    path {
-                                        fill: $text-color-primary;
-                                    }
-                                }
                             }
                         }
                     }

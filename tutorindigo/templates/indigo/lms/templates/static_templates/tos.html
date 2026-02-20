@@ -3,20 +3,171 @@
 <%! from django.utils.translation import gettext as _ %>
 <%inherit file="../main.html" />
 
-<%block name="pagetitle">${_("Terms of Service")}</%block>
+<%block name="pagetitle">Aviso de privacidad Simplificado</%block>
+
+<style>
+    .container.about {
+        text-align: justify;
+    }
+    .container.about p {
+        text-align: justify;
+    }
+    .container.about li {
+        text-align: justify;
+    }
+    .container.about h1.encabezado {
+        margin-top: 60px;
+    }
+</style>
 
 <main id="main" aria-label="Content" tabindex="-1">
     <section class="container about">
-        <h1>
-            <%block name="pageheader">${page_header or _("Terms of Service")}</%block>
+        <h1 class="encabezado">
+            <%block name="pageheader">
+        Aviso de privacidad Simplificado de la plataforma Cursos @prende.mx
+        </%block>
         </h1>
         <p>
-            <%block name="pagecontent">${page_content or _("This page left intentionally blank. Feel free to add your own content.")}</%block>
+            <%block name="pagecontent">
+                <p>
+                    La Secretaría de Educación Pública (SEP), a través de la Dirección General @prende.mx, con domicilio en 
+                    Av. Circunvalación s/n esquina Tabiqueros, Colonia Morelos, Alcaldía Venustiano Carranza, C.P. 15270, 
+                    Ciudad de México, al ser la responsable del tratamiento de los datos personales que proporcione la 
+                    persona titular, se obliga a protegerlos observando los principios de licitud, finalidad, lealtad, 
+                    consentimiento, calidad, proporcionalidad, información y responsabilidad, conforme a la Ley General de 
+                    Transparencia y Acceso a la Información Pública (LGTAIP) y a la Ley General de Protección de Datos 
+                    Personales en Posesión de Sujetos Obligados (LGPDPPSO), publicada en el Diario Oficial de la Federación 
+                    el 20 de marzo de 2025, y demás normativa aplicable a la protección de datos personales
+                </p>
+                <br><h3>
+                    Finalidad
+                </h3><br>
+                <p>
+                    Se entenderá por consentido el uso de sus datos personales que se recaben exclusivamente para 
+                    <b>trámites administrativos de control escolar, informes estadísticos, invitación a actividades de 
+                    formación, capacitación y actualización sin fines de lucro y, en su caso, para la emisión de 
+                    reconocimientos, constancias o diplomas de los servicios educativos </b> ofertados en la plataforma, 
+                    quedando almacenados en las instalaciones o servidores bajo el resguardo de la presente Unidad 
+                    Administrativa, sin que los anteriores sean expuestos al público.
+                </p>
+                <br><h3>
+                    Transferencia de datos personales
+
+                </h3><br>
+                <p>
+                    No se realizarán transferencias adicionales, salvo aquellas situaciones en las que sean necesarias para 
+                    atender requerimientos de información de una autoridad competente o sujetos obligados, así como las 
+                    establecidas por la normatividad aplicable de conformidad con los artículos 16 y 64 de la LGPDPPSO, 
+                    publicada en el Diario Oficial de la Federación el 20 de marzo de 2025, incluyendo el atender los 
+                    requerimientos que provengan de un Colaborador con el que se haya realizado la celebración de 
+                    instrumentos jurídicos y que se encuentren dentro del marco normativo vigente, contemplando que el fin 
+                    por el que solicita la información será simultáneamente observado dentro del apartado de finalidad 
+                    contenida dentro del presente del Aviso de Privacidad.</p>
+                <br><h3>
+                    Ejercicio de los derechos de Acceso, Rectificación, Cancelación u Oposición de sus datos personales (ARCO) 
+                </h3><br>
+                <p>
+                    Nuestra Constitución Política de los Estados Unidos Mexicanos reconoce el derecho que tiene toda 
+                    persona a la protección de sus datos personales, así como el ejercicio de los derechos ARCO (Acceso, 
+                    Rectificación y Cancelación de estos, así como a manifestar su Oposición en los términos que fije la ley). 
+                    Es así que usted tiene derecho a conocer el uso y destino que se le da a sus datos personales (Acceso), 
+                    solicitar la corrección de su información personal cuando esté incompleta, sea inexacta, inadecuada o 
+                    excesiva (Rectificación); que se elimine de nuestros registros o bases de datos cuando considere que su 
+                    tratamiento contraviene lo dispuesto por la ley o porque dejó de ser necesaria para el cumplimiento de 
+                    la finalidad (Cancelación); así como oponerse al uso de sus datos personales para fines específicos 
+                    (Oposición). Usted podrá ejercer sus derechos ARCO, en la Unidad de Transparencia de la Secretaría de 
+                    Educación Pública o bien, a través de la Plataforma Nacional de Transparencia 
+                    <a href="https://www.plataformadetransparencia.org.mx/">https://www.plataformadetransparencia.org.mx</a>
+                    Para ejercer cualquiera de los derechos ARCO, deberá ingresar su solicitud con los siguientes datos:
+                </p>
+                <p>
+                    <ol type="i">
+                        <li>El nombre completo en su carácter de persona titular, así como su domicilio o cualquier otro 
+                            medio para recibir notificaciones. </li>
+                        <li>Los documentos que acrediten su identidad como la persona titular y, en su caso, la 
+                            personalidad e identidad de su representante</li>
+                        <li>La descripción clara y precisa de los datos personales respecto de los que se busca ejercer 
+                            alguno de los derechos ARCO, salvo que se trate del derecho de acceso; de ser posible, el 
+                            área responsable que trata los datos personales y ante el cual se presenta la solicitud</li>
+                        <li>La descripción del derecho ARCO que se pretende ejercer, o bien, lo que solicita la persona 
+                            titular. Si solicita el acceso a sus datos personales, es probable que deba señalar la modalidad 
+                            en la que prefiere que se reproduzcan los datos personales. Si solicita la rectificación o 
+                            corrección de sus datos personales, tendrá que señalar con claridad las modificaciones que 
+                            desea que realicen, así como aportar la documentación que dé sustento a los cambios. Si 
+                            solicita cancelación de sus datos personales, deberá señalar las causas que le motivan a 
+                            solicitar la eliminación de los datos. 
+                            </li>
+                        <li>Si se va a oponer al uso de sus datos personales, deberá manifestar las causas legítimas o la 
+                            situación específica que lo llevan a solicitar el cese en el tratamiento, así como el daño o 
+                            perjuicio que le causaría la persistencia del tratamiento, o en su caso, las finalidades 
+                            específicas respecto de las cuales requiere ejercer el derecho de oposición. </li>
+                        <li>Cualquier otro elemento o documento que facilite la localización de los datos personales. En 
+                            su caso, podrá interponer el Recurso de Revisión contra la negativa de dar trámite a toda 
+                            solicitud para el ejercicio de los derechos ARCO o por falta de respuesta, de conformidad con 
+                            lo previsto en el artículo 96 y 97 de la Ley General de Protección de Datos Personales en 
+                            Posesión de Sujetos Obligados. 
+                            </li>
+                    </ol>
+                </p>
+                <p>
+                    Cabe señalar que la respuesta a su solicitud será en los plazos establecidos dentro del procedimiento, los 
+                    cuales no deberán contravenir lo previsto en los artículos 45, 46, 47, 48, 49 y 50 de la LGPDPPSO.
+                </p>
+                <p>
+                    En caso de manifestar su negativa de tratamiento será necesario elaborar un escrito antes de conceder 
+                    sus datos personales, exponiendo los motivos de su impedimento a esta Unidad Administrativa y remitirla 
+                    al correo: <a href="mailto:unidaddeenlace@nube.sep.gob.mx">unidaddeenlace@nube.sep.gob.mx</a>
+                </p>
+                <br><h3>
+                    Domicilio de la Unidad de Transparencia
+                </h3><br>
+
+                <p>
+                    Ubicada en Donceles # 100, PB, Colonia Centro, Alcaldía Cuauhtémoc, Código Postal 06020, Ciudad de 
+                    México. Teléfono 553601-1000 extensiones 52411, 62558 y 53417. Horario de atención de 9:00 a 15:00 
+                    horas. <a href="http://www.sep.gob.mx/es/sep1/Acceso_a_la_informacion">http://www.sep.gob.mx/es/sep1/Acceso_a_la_informacion</a>
+                </p>
+                <br><h3>
+                    Consulta y cambios al Aviso de Privacidad
+                </h3><br>
+                <p>
+                    El presente Aviso de Privacidad puede sufrir modificaciones, cambios o actualizaciones derivado de 
+                    nuevos requerimientos legales, de nuevas disposiciones administrativas o de otra índole, en este sentido, 
+                    Dirección General @prende.mx, se compromete a mantenerlo informado sobre los cambios que pueda 
+                    sufrir el presente, a través de siguiente página:  <a href="https://cursos.aprende.gob.mx/">https://cursos.aprende.gob.mx/</a>
+                </p>
+                <p>
+                    <a href="https://sep.gob.mx/es/sep1/Avisos_de_privacidad_integrales">https://sep.gob.mx/es/sep1/Avisos_de_privacidad_integrales</a>
+                    (Apartado Virtual de Protección de Datos Personales de la SEP).
+                </p>
+
+                <p align="right"><b>
+                    Fecha de elaboración: 21 de marzo de 2025.
+                </b></p>
+
+
+
+        </%block>
         </p>
         <!-- NEW IN INDIGO: add graphic image -->
         <div class="graphic-img">
             <img src="${static.url('images/tos.svg')}" alt="Runs on Tutor" />
-            <img class="dark" src="${static.url('images/tos-dark.svg')}" alt="Runs on Tutor" />
         </div>
     </section>
 </main>
+<!-- <script>
+  (function(d,t) {
+    var BASE_URL="https://helpdesk.aprende.gob.mx";
+    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=BASE_URL+"/packs/js/sdk.js";
+    g.defer = true;
+    g.async = true;
+    s.parentNode.insertBefore(g,s);
+    g.onload=function(){
+      window.chatwootSDK.run({
+        websiteToken: 'LxT3TnbMgiuKLkee7gUhK9MP',
+        baseUrl: BASE_URL
+      })
+    }
+  })(document,"script");
+</script> -->

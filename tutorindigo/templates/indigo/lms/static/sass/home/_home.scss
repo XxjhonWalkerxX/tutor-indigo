@@ -1,6 +1,8 @@
 // Include custom home
+@import 'index-custom';
+
 section.home {
-    max-width: 1600px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 0 15px;
 }
@@ -31,8 +33,6 @@ section.home {
 }
 #main .home.style-logout  {
     header {
-        background: none;
-        overflow: visible;
         .outer-wrapper {
             .title {
                 width: 100%;
@@ -52,7 +52,7 @@ section.home {
                     }
                     h1 {
                         color: #111827;
-                        font-size: 20px;
+                        font-size: 25px;
                         font-weight: 700;
                         line-height: 30px;
                         margin: 0 0 8px;
@@ -64,7 +64,7 @@ section.home {
                         }
                     }
                     p {
-                        font-size: 16px;
+                        font-size: 20px;
                         line-height: 20px;
                         color: #515661;
                         font-style: normal;
@@ -74,9 +74,13 @@ section.home {
                 .course-search {
                     padding: 0;
                     .search-field-wrapper {
-                      display: flex;
-
-                      .button-holder {
+                        &:after {
+                            clear: both;
+                            content: "";
+                            display: block;
+                        }
+                        .button-holder {
+                            float: right;
                             button {
                                 position: static;
                                 margin: 0 0 0 16px;
@@ -102,7 +106,7 @@ section.home {
                             }
                         }
                         .input-holder {
-                            flex-grow: 1;
+                            overflow: hidden;
                             border-radius: 6px;
                             background: $primary-light;
                             padding: 0 0 0 33px;
@@ -124,84 +128,6 @@ section.home {
                                 font-size: 14px;
                                 line-height: 20px;
                                 padding: 9px 10px;
-
-                                &:focus,
-                                &:focus-visible {
-                                    outline: revert;
-                                    outline-width: 2px;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-body.indigo-dark-theme {
-    h1 {
-        color: $text-color-d;
-    }
-    p a:not(.btn), a:not(.btn) {
-        color: $primary-d;
-        &:hover, &:focus, &:active, a:visited:not(.btn):focus {
-            color: $primary-d;
-        }
-    }
-    .global-header .nav-links .secondary {
-        .btn-holder {
-            .nav-item {
-                .btn {
-                    &.sign-in-btn {
-                        background: $primary-d;
-                        color: $btn-color-d;
-                        border-color: $primary-d;
-                    }
-                    &.register-btn {
-                        color: $text-color-d;
-                        border-color: $text-color-d;
-                        background: none;
-                    }
-                }
-            }
-        }
-    }
-    #main .home.style-logout  {
-        header {
-            background: none;
-            .outer-wrapper {
-                .title {
-                    .heading-group {
-                        h1 {
-                            color: $text-color-d;
-                        }
-                        p {
-                            color: $text-color-primary;
-                        }
-                    }
-                    .course-search {
-                        .search-field-wrapper {
-                            .button-holder {
-                                button {
-                                    color: $btn-color-d;
-                                    background: $primary-d;
-                                    border: none;
-                                    &:hover {
-                                        color: $btn-color-d;
-                                        background: $primary-d;
-                                    }
-                                }
-                            }
-                            .input-holder {
-                                background: $primary-light-d;
-                                svg {
-                                    path {
-                                        fill: $text-color-primary;
-                                    }
-                                }
-                                input {
-                                    color: $text-color-d;
-                                }
                             }
                         }
                     }
