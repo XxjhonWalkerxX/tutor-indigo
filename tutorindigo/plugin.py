@@ -37,6 +37,7 @@ config: t.Dict[str, t.Dict[str, t.Any]] = {
     },
     "unique": {},
     "overrides": {},
+
 }
 
 # Theme templates
