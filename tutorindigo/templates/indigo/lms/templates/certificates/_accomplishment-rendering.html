@@ -34,10 +34,12 @@ course_mode_class = course_mode if course_mode else ''
         font-style: normal;
     }
     .accomplishment-rendering {
-        width: 1100px;height: 850px;
-        box-sizing: border-box;      /* Para que el padding no amplíe el ancho total */
-        padding-right: 200px;   
-        background-size: contain; /* Mantiene la relación de aspecto */
+        width: 1100px;
+        height: 850px;
+        box-sizing: border-box;
+        /* padding-right respeta la franja decorativa de la derecha (~200px) */
+        padding: 16px 210px 16px 20px;
+        background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         display: flex;
@@ -45,38 +47,51 @@ course_mode_class = course_mode if course_mode else ''
         align-items: center;
         justify-content: center;
         margin: auto;
-        padding: 20px;
     }
-    .contenedor_principal{
-        width: 1000px;
-        height: 830px;
+    .contenedor_principal {
+        width: 100%;
+        height: 100%;
         position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 30px; /* espacio para el .feed absoluto */
+        box-sizing: border-box;
+        overflow: hidden;
     }
     .accomplishment-type {
         text-align: center;
-        padding-top: 5px;
-      }
+        padding-top: 8px;
+    }
     .accomplishment-name {
         font-family: 'Patria Regular', serif;
         color: #717170;
-        font-size: 40pt;
+        /* Escala automática: nombres cortos ~38pt, nombres muy largos bajan hasta 22pt */
+        font-size: clamp(22pt, 3.2vw, 38pt);
         text-align: center;
-        margin-top: -40px;
-        max-width: 900px;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 4px auto;
+        max-width: 840px;
+        width: 100%;
         word-wrap: break-word;
         overflow-wrap: break-word;
         hyphens: auto;
-        line-height: 1.2;
-      }
-    .info-curso{
+        line-height: 1.15;
+    }
+    .name-divider {
+        width: 280px;
+        height: 2px;
+        background: linear-gradient(to right, transparent, #AE8420 25%, #AE8420 75%, transparent);
+        margin: 5px auto;
+    }
+    .info-curso {
         text-align: center;
+        width: 100%;
+        margin-top: 4px;
     }
     .info-curso p {
         font-family: 'Noto Sans', sans-serif;
         color: #717170;
-        margin-bottom: 0;
+        margin: 0;
         font-weight: normal;
     }
     .info-curso .texto-normal,
@@ -85,14 +100,17 @@ course_mode_class = course_mode if course_mode else ''
         font-family: 'Noto Sans', sans-serif !important;
     }
     .info-curso .accomplishment-course {
+        display: block;
         font-weight: bold;
-        font-size: 22pt;
+        font-size: clamp(13pt, 1.8vw, 20pt);
         color: #717170;
+        margin-top: 8px;
     }
     .info-curso .accomplishment-statement-detail {
-        font-size: 12pt;
+        font-size: 11pt;
         font-weight: bold;
-        margin-bottom: 50px;
+        margin-top: 5px;
+        margin-bottom: 0;
     }
     .info-secundaria {
         font-family: 'Noto Sans', sans-serif;
@@ -100,20 +118,20 @@ course_mode_class = course_mode if course_mode else ''
         text-align: center;
     }
     .info-secundaria-fecha {
-        margin-top: -40px;
-        font-size: 12pt;
-        font-weight: normal;
+        font-size: 11pt;
+        font-weight: 700;
+        color: #555;
+        margin: 6px 0 0;
     }
     .info-secundaria-calif {
-        margin-top: 15px;
-        font-size: 12pt;
+        font-size: 10pt;
         font-weight: normal;
-        margin-bottom: 15px;
+        margin: 1px 0 0;
     }
     .info-secundaria-duracion {
-        margin-top: -5px;
-        font-size: 12pt;
+        font-size: 10pt;
         font-weight: normal;
+        margin: 0;
     }
     .info-secundaria-cert-id {
         font-size: 9pt;
@@ -124,35 +142,55 @@ course_mode_class = course_mode if course_mode else ''
         font-size: 6pt;
         font-weight: 300;
         text-align: center;
-        line-height: 0.5%;
-        margin-bottom: 15px;
+        line-height: 1.5;
+        margin: 0;
     }
     .img-organization {
         margin-top: 135px;
     }
-    .images {
-        width: 950px;
-        display: flex;
-        flex-direction: row;           /* Alinea horizontalmente */
-        justify-content: space-between;/* Espacio entre los elementos */
-        align-items: center;           /* Centra verticalmente */
-        gap: 20px;
-    }
-
-    /* .images > div {
+    .header-logos {
         display: flex;
         flex-direction: row;
         align-items: center;
-    } */
-
+        justify-content: center;
+    }
+    .header-logos img {
+        display: block;
+        height: 55px;
+        width: auto;
+    }
+    .logo-divider {
+        display: inline-block;
+        width: 1px;
+        height: 45px;
+        background-color: #717170;
+        margin: 0 16px;
+        align-self: center;
+    }
+    .images {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-top: auto; /* empuja la sección al fondo disponible */
+    }
     .logos-row {
         display: flex;
-        flex-direction: row;           /* Alinea horizontalmente los logos */
+        flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: 20px;
-        max-width: 350px;
-        margin: 0 auto;
+        gap: 0;
+        flex: 1; /* ocupa el espacio central entre ilustración y QR */
+    }
+    .logos-row .org-logo-divider {
+        display: inline-block;
+        width: 1px;
+        height: 50px;
+        background-color: #bbb;
+        margin: 0 12px;
+        align-self: center;
     }
     .images > div img {
         display: block;
@@ -185,7 +223,20 @@ course_mode_class = course_mode if course_mode else ''
         max-height: 90px;
         width: auto;
         height: auto;
-        padding-left: 100px;
+    }
+    .qr-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+    }
+    .cert-id-label {
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 6pt;
+        color: #999;
+        text-align: center;
+        max-width: 90px;
+        word-break: break-all;
     }
     .feed {
     position: absolute;
@@ -221,7 +272,8 @@ course_mode_class = course_mode if course_mode else ''
     background-position: center !important;
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
+    /* mantener padding derecho para respetar la franja en impresión */
+    padding: 8px 53mm 8px 8px !important;
   }
 
   .accomplishment-name {
@@ -271,29 +323,35 @@ course_mode_class = course_mode if course_mode else ''
                 <span class="accomplishment-type-symbol">
                 </span>
                 % if not fullTheme:
-                    <img class="src" src="${static.url("images/ENDOSO_5.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;">
+                <div class="header-logos">
+                    <img src="https://aprende.gob.mx/images/Logo_buen_gobierno.png" alt="Buen Gobierno">
+                    <span class="logo-divider"></span>
+                    <img src="https://aprende.gob.mx/images/Logo_educacion.png" alt="SEP">
+                    <span class="logo-divider"></span>
+                    <img src="https://aprende.gob.mx/images/Logo_aprende.png" alt="Aprende.mx">
+                </div>
                 % else:
-                <img class="src" src="https://aprende.gob.mx/images/Logo_Educ_RG.png" alt="Logo Aprende.mx" height="55px" style="display: block; margin: 0 auto;">
-                <!-- <img class="src" src="${static.url("images/ENDOSO_2.png")}" alt="logo gobierno" height="55px" style="display: block; margin: 0 auto;"> -->
+                <div class="header-logos">
+                    <img src="https://aprende.gob.mx/images/Logo_educacion.png" alt="SEP">
+                    <span class="logo-divider"></span>
+                    <img src="https://aprende.gob.mx/images/Logo_aprende.png" alt="Aprende.mx">
+                </div>
                 % endif
-                <div style="margin-top: 25px;">
-                    <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 15pt; color: #717170;"><strong>Otorgan la presente</strong></span>
+                <div style="margin-top: 10px;">
+                    <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 13pt; color: #717170;">Otorgan la presente</span>
                     <br>
-                    <br>
-                    <span style="font-family: 'Patria Regular', serif; font-size: 41pt; color: #AE8420; font-weight: bold;"><strong>CONSTANCIA</strong></span>
-                    <br>
-                    <br>
-                    <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 15pt; color: #717170;"><strong>a</strong></span>
+                    <span style="font-family: 'Patria Regular', serif; font-size: 40pt; color: #AE8420; font-weight: bold; line-height: 1.1; display: block; margin: 4px 0;">CONSTANCIA</span>
+                    <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 13pt; color: #717170;">a</span>
                 </div>
             </div>
+            <div class="name-divider"></div>
             <div class="accomplishment-name">
                 <strong>${accomplishment_copy_name}</strong>
             </div>
+            <div class="name-divider"></div>
             <div class="info-curso">
                 <p>
                     <span class="texto-normal" style="font-family: 'Noto Sans', sans-serif;">por haber concluido satisfactoriamente el curso masivo abierto en línea</span>
-                    <br>
-                    <br>
                     <span class="accomplishment-course">${accomplishment_copy_course_name}</span>
                 </p>
                 % if customOrganizacionText:
@@ -312,15 +370,16 @@ course_mode_class = course_mode if course_mode else ''
                         % for signatory in certificate_data.get('signatories', []):
                             <p class="info-secundaria info-secundaria-fecha">${signatory['name']}</p>
                             % if course_grade:
-                                <p class="info-secundaria info-secundaria-calif">Calificación: ${course_grade} </p>
+                                <p class="info-secundaria info-secundaria-calif">Calificación: ${course_grade}</p>
                             % endif
                             <p class="info-secundaria info-secundaria-duracion">${signatory['title']}</p>
-                            <p class="info-secundaria info-secundaria-duracion">${signatory['organization']}</p>
+                            % if signatory['organization']:
+                                <p class="info-secundaria info-secundaria-duracion">${signatory['organization']}</p>
+                            % endif
                         % endfor
-                    % endif 
+                    % endif
                 % endif
             </div>
-            <br>
             <section class="images">
                 <div>
                     <img class="img-ilustracion" src="https://aprende.gob.mx/images/mar2026.png">
@@ -335,9 +394,9 @@ course_mode_class = course_mode if course_mode else ''
                         </div>
                     % endif
                 </div>
-                <div>
-                    <img class="img-qr" src="https://certificados.aprende.gob.mx/generate_qr/${certificate_id_number}/" height="100px">
-                    <!-- <p style="font-family: 'Noto Sans', sans-serif; font-size: 9pt; color: #717170; margin-left: -700px; margin-top: -10px">Certificate ID Number: <strong>${certificate_id_number}</strong></p> -->
+                <div class="qr-block">
+                    <img class="img-qr" src="https://certificados.aprende.gob.mx/generate_qr/${certificate_id_number}/">
+                    <p class="cert-id-label">ID: ${certificate_id_number}</p>
                 </div>
             </section>
             <div class="feed">
