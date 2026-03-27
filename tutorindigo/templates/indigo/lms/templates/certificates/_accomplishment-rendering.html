@@ -267,40 +267,50 @@ course_mode_class = course_mode if course_mode else ''
     background-position: center !important;
     box-sizing: border-box;
     margin: 0;
-    /* mantener padding derecho para respetar la franja en impresión */
-    padding: 8px 53mm 8px 8px !important;
+    /* Franja decorativa derecha ≈ 53mm sobre 279.4mm total */
+    padding: 5mm 53mm 5mm 5mm !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   .accomplishment-name {
-    max-width: 900px !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
   }
 
   .contenedor_principal {
-    width: 254mm;
-    height: 215.9mm;
+    /* En impresión usar % para adaptarse al padding del padre */
+    width: 100% !important;
+    height: 100% !important;
     box-sizing: border-box;
+    position: relative !important;
   }
 
-    .img-ilustracion {
-      max-width: 300px !important;
-      max-height: 3000px !important;
+  .images {
+    /* Recalcular bottom en unidades de impresión (36px ≈ 9.5mm) */
+    bottom: 10mm !important;
+  }
+
+  .feed {
+    padding-top: 0 !important;
+  }
+
+  .img-ilustracion {
+    max-width: 55mm !important;
+    max-height: 55mm !important;
   }
   .img-unicef-grande {
-      max-width: 150px !important;
-      max-height: 150px !important;
+    max-width: 40mm !important;
+    max-height: 25mm !important;
   }
   .img-unicef-chico {
-      max-width: 150px !important;
-      max-height: 150px !important;
+    max-width: 40mm !important;
+    max-height: 25mm !important;
   }
   .img-qr {
-      max-width: 90px !important;
-      max-height: 90px !important;
-  }
-  .feed{
-    padding-top: 60px !important;
+    max-width: 24mm !important;
+    max-height: 24mm !important;
   }
 }
 
