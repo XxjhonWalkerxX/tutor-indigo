@@ -45,16 +45,20 @@ course_mode_class = course_mode if course_mode else ''
         align-items: center;
         justify-content: center;
         margin: auto;
-        padding: 20px;
+        padding: 20px 90px 20px 20px;
     }
     .contenedor_principal {
-        width: 960px;
-        height: 810px;
+        width: 100%;
+        height: 100%;
         position: relative;
+        box-sizing: border-box;
     }
     .accomplishment-type {
         text-align: center;
         padding-top: 8px;
+    }
+    .datos {
+        margin-top: 18px;
     }
     .accomplishment-name {
         font-family: 'Patria Regular', serif;
@@ -62,7 +66,7 @@ course_mode_class = course_mode if course_mode else ''
         /* Escala automática: nombres cortos ~38pt, nombres muy largos bajan hasta 22pt */
         font-size: clamp(22pt, 3.2vw, 38pt);
         text-align: center;
-        margin: 4px auto;
+        margin: 0 auto;
         max-width: 840px;
         width: 100%;
         word-wrap: break-word;
@@ -74,12 +78,12 @@ course_mode_class = course_mode if course_mode else ''
         width: 280px;
         height: 2px;
         background: linear-gradient(to right, transparent, #AE8420 25%, #AE8420 75%, transparent);
-        margin: 5px auto;
+        margin: 12px auto;
     }
     .info-curso {
         text-align: center;
         width: 100%;
-        margin-top: 4px;
+        margin-top: 10px;
     }
     .info-curso p {
         font-family: 'Noto Sans', sans-serif;
@@ -97,12 +101,12 @@ course_mode_class = course_mode if course_mode else ''
         font-weight: bold;
         font-size: clamp(13pt, 1.8vw, 20pt);
         color: #717170;
-        margin-top: 8px;
+        margin-top: 12px;
     }
     .info-curso .accomplishment-statement-detail {
         font-size: 11pt;
         font-weight: bold;
-        margin-top: 5px;
+        margin-top: 8px;
         margin-bottom: 0;
     }
     .info-secundaria {
@@ -114,12 +118,12 @@ course_mode_class = course_mode if course_mode else ''
         font-size: 11pt;
         font-weight: 700;
         color: #555;
-        margin: 6px 0 0;
+        margin: 0;
     }
     .info-secundaria-calif {
         font-size: 10pt;
         font-weight: normal;
-        margin: 1px 0 0;
+        margin: 3px 0 0;
     }
     .info-secundaria-duracion {
         font-size: 10pt;
@@ -267,7 +271,7 @@ course_mode_class = course_mode if course_mode else ''
     box-sizing: border-box !important;
     margin: 0 !important;
     /* Franja decorativa derecha ~53mm. Izq 8mm para que logos no se corten */
-    padding: 5mm 53mm 3mm 8mm !important;
+    padding: 5mm 25mm 3mm 8mm !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -299,23 +303,29 @@ course_mode_class = course_mode if course_mode else ''
   /* Separador dorado */
   .name-divider {
     width: 70mm !important;
-    margin: 2mm auto !important;
+    margin: 3mm auto !important;
   }
 
   /* Texto del curso */
+  .info-curso {
+    margin-top: 3mm !important;
+  }
   .info-curso .accomplishment-course {
     font-size: 16pt !important;
-    margin-top: 2mm !important;
+    margin-top: 3mm !important;
   }
   .info-curso .accomplishment-statement-detail {
     font-size: 10pt !important;
-    margin-top: 1.5mm !important;
+    margin-top: 2mm !important;
   }
 
   /* Datos (fecha, calificación, duración) */
+  .datos {
+    margin-top: 5mm !important;
+  }
   .info-secundaria-fecha {
     font-size: 10pt !important;
-    margin-top: 2mm !important;
+    margin-top: 0 !important;
   }
   .info-secundaria-calif,
   .info-secundaria-duracion {
