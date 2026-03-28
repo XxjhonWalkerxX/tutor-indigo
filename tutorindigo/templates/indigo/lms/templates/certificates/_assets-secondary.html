@@ -1,9 +1,14 @@
 <script type="text/javascript">
-
-    document.getElementById("action-print-view").addEventListener("click", printView);
-
     function printView(event) {
-       event.preventDefault();
-       window.print();
+        event.preventDefault();
+        window.print();
+    }
+
+    // El botón solo existe cuando el usuario autenticado ve su propio certificado.
+    // Sin este guard, Brave y otros navegadores con sesión bloqueada lanzan TypeError
+    // y detienen la ejecución de todo el JS de la página.
+    var printBtn = document.getElementById("action-print-view");
+    if (printBtn) {
+        printBtn.addEventListener("click", printView);
     }
 </script>

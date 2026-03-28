@@ -245,10 +245,9 @@ course_mode_class = course_mode if course_mode else ''
     margin: 0;
   }
 
+  /* Solo ocultar visibilidad — NO resetear margin/padding de los elementos internos */
   body * {
     visibility: hidden !important;
-    margin: 0;
-    padding: 0;
   }
 
   .accomplishment-rendering,
@@ -265,52 +264,94 @@ course_mode_class = course_mode if course_mode else ''
     background-size: cover !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
-    box-sizing: border-box;
-    margin: 0;
-    /* Franja decorativa derecha ≈ 53mm sobre 279.4mm total */
-    padding: 5mm 53mm 5mm 5mm !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    /* Franja decorativa derecha ~53mm. Izq 8mm para que logos no se corten */
+    padding: 5mm 53mm 3mm 8mm !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
   }
 
+  .contenedor_principal {
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+  }
+
+  /* Logos de cabecera: reducir para que quepan en el ancho de impresión */
+  .header-logos img {
+    height: 13mm !important;
+  }
+  .logo-divider {
+    height: 11mm !important;
+    margin: 0 3mm !important;
+  }
+
+  /* Nombre */
   .accomplishment-name {
+    font-size: 28pt !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
   }
 
-  .contenedor_principal {
-    /* En impresión usar % para adaptarse al padding del padre */
-    width: 100% !important;
-    height: 100% !important;
-    box-sizing: border-box;
-    position: relative !important;
+  /* Separador dorado */
+  .name-divider {
+    width: 70mm !important;
+    margin: 2mm auto !important;
   }
 
+  /* Texto del curso */
+  .info-curso .accomplishment-course {
+    font-size: 16pt !important;
+    margin-top: 2mm !important;
+  }
+  .info-curso .accomplishment-statement-detail {
+    font-size: 10pt !important;
+    margin-top: 1.5mm !important;
+  }
+
+  /* Datos (fecha, calificación, duración) */
+  .info-secundaria-fecha {
+    font-size: 10pt !important;
+    margin-top: 2mm !important;
+  }
+  .info-secundaria-calif,
+  .info-secundaria-duracion {
+    font-size: 9pt !important;
+  }
+
+  /* Sección inferior (ilustración, logo org, QR) */
   .images {
-    /* Recalcular bottom en unidades de impresión (36px ≈ 9.5mm) */
-    bottom: 10mm !important;
+    bottom: 9mm !important;
   }
-
-  .feed {
-    padding-top: 0 !important;
-  }
-
   .img-ilustracion {
-    max-width: 55mm !important;
-    max-height: 55mm !important;
+    max-width: 45mm !important;
+    max-height: 45mm !important;
   }
   .img-unicef-grande {
-    max-width: 40mm !important;
-    max-height: 25mm !important;
+    max-width: 35mm !important;
+    max-height: 20mm !important;
   }
   .img-unicef-chico {
-    max-width: 40mm !important;
-    max-height: 25mm !important;
+    max-width: 35mm !important;
+    max-height: 20mm !important;
   }
   .img-qr {
-    max-width: 24mm !important;
-    max-height: 24mm !important;
+    max-width: 20mm !important;
+    max-height: 20mm !important;
+  }
+  .cert-id-label {
+    font-size: 5pt !important;
+  }
+
+  /* Pie */
+  .feed {
+    bottom: 1mm !important;
+  }
+  .info-secundaria-nota {
+    font-size: 5pt !important;
   }
 }
 
