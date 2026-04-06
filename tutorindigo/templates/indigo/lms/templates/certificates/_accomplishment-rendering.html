@@ -130,20 +130,12 @@ course_mode_class = course_mode if course_mode else ''
         font-weight: normal;
         margin: 0;
     }
-    .info-secundaria-cert-id {
-        font-size: 9pt;
-        margin-left: -700px;
-        margin-top: -10px;
-    }
     .info-secundaria-nota {
         font-size: 6pt;
         font-weight: 300;
         text-align: center;
         line-height: 1.5;
         margin: 0;
-    }
-    .img-organization {
-        margin-top: 135px;
     }
     .header-logos {
         display: flex;
@@ -195,10 +187,6 @@ course_mode_class = course_mode if course_mode else ''
         display: block;
         margin: 0 auto;
     }
-    .images > div p.info-secundaria-cert-id {
-        font-size: 10pt;
-        color: #555;
-    }
     .img-ilustracion {
         max-width: 300px;
         max-height: 300px;
@@ -206,12 +194,6 @@ course_mode_class = course_mode if course_mode else ''
         height: auto;
     }
     .img-unicef-grande {
-        max-width: 150px;
-        max-height: 100px;
-        width: auto;
-        height: auto;
-    }
-    .img-unicef-chico {
         max-width: 150px;
         max-height: 100px;
         width: auto;
@@ -237,11 +219,29 @@ course_mode_class = course_mode if course_mode else ''
         max-width: 90px;
         word-break: break-all;
     }
+    .constancia-header {
+        margin-top: 10px;
+    }
+    .constancia-header-otorgan {
+        font-family: 'Noto Sans', sans-serif;
+        font-weight: bold;
+        font-size: 13pt;
+        color: #717170;
+    }
+    .constancia-header-titulo {
+        font-family: 'Patria Regular', serif;
+        font-size: 40pt;
+        color: #AE8420;
+        font-weight: bold;
+        line-height: 1.1;
+        display: block;
+        margin: 4px 0;
+    }
     .feed {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
     }
 @media print {
   @page {
@@ -270,7 +270,7 @@ course_mode_class = course_mode if course_mode else ''
     background-position: center !important;
     box-sizing: border-box !important;
     margin: 0 !important;
-    /* Franja decorativa derecha ~53mm. Izq 8mm para que logos no se corten */
+    /* Franja decorativa derecha ~25mm. Izq 8mm para que logos no se corten */
     padding: 5mm 25mm 3mm 8mm !important;
     display: flex !important;
     align-items: center !important;
@@ -344,10 +344,6 @@ course_mode_class = course_mode if course_mode else ''
     max-width: 35mm !important;
     max-height: 20mm !important;
   }
-  .img-unicef-chico {
-    max-width: 35mm !important;
-    max-height: 20mm !important;
-  }
   .img-qr {
     max-width: 20mm !important;
     max-height: 20mm !important;
@@ -393,11 +389,11 @@ course_mode_class = course_mode if course_mode else ''
                     <img src="https://aprende.gob.mx/images/Logo_aprende.png" alt="Aprende.mx">
                 </div>
                 % endif
-                <div style="margin-top: 10px;">
-                    <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 13pt; color: #717170;">Otorgan la presente</span>
+                <div class="constancia-header">
+                    <span class="constancia-header-otorgan">Otorgan la presente</span>
                     <br>
-                    <span style="font-family: 'Patria Regular', serif; font-size: 40pt; color: #AE8420; font-weight: bold; line-height: 1.1; display: block; margin: 4px 0;">CONSTANCIA</span>
-                    <span style="font-family: 'Noto Sans', sans-serif; font-weight: bold; font-size: 13pt; color: #717170;">a</span>
+                    <span class="constancia-header-titulo">CONSTANCIA</span>
+                    <span class="constancia-header-otorgan">a</span>
                 </div>
             </div>
             <div class="name-divider"></div>
@@ -407,7 +403,7 @@ course_mode_class = course_mode if course_mode else ''
             <div class="name-divider"></div>
             <div class="info-curso">
                 <p>
-                    <span class="texto-normal" style="font-family: 'Noto Sans', sans-serif;">por haber concluido satisfactoriamente el curso masivo abierto en línea</span>
+                    <span class="texto-normal">por haber concluido satisfactoriamente el curso masivo abierto en línea</span>
                     <span class="accomplishment-course">${accomplishment_copy_course_name}</span>
                 </p>
                 % if customOrganizacionText:
@@ -441,9 +437,6 @@ course_mode_class = course_mode if course_mode else ''
                     <img class="img-ilustracion" src="https://aprende.gob.mx/images/mar2026.png">
                 </div>
                 <div class="logos-row">
-                    <!-- <div>
-                            <img src="${static.url("images/logo.png")}" alt="${platform_name}">
-                        </div> -->
                     % if organization_logo:
                         <div>
                             <img class="img-unicef-grande" src="${organization_logo.url}" alt="${platform_name}">
@@ -459,33 +452,6 @@ course_mode_class = course_mode if course_mode else ''
                 <p class="info-secundaria info-secundaria-nota">Este curso no acredita al participante como alumno oficial de la institución que lo imparte.</p>
                 <p class="info-secundaria info-secundaria-nota">No contiene créditos académicos ni revalidación académica en ninguno de los programas de estudios formales o de extensión. </p>  
             </div>
-            <!-- <div class="wrapper-accomplishment-metadata">
-                <div class="accomplishment-metadata">
-                    <h2 class="accomplishment-metadata-title hd-6">${accomplishment_copy_more_about}</h2>
-                    <div class="wrapper-metadata">
-                        <dl class="metadata accomplishment-recipient">
-                            <dt class="label sr-only">${_("Awarded to:")}</dt>
-                            <dd class="value copy copy-meta">
-                                <span class="recipient-img">
-                                    <img class="src" src="/static/certificates/images/demo-user-profile.png" alt="Recipient Image">
-                                </span>
-                                <div class="recipient-details">
-                                    <h3 class="recipient-name">${accomplishment_copy_name}</h3>
-                                    <p class="recipient-username">${accomplishment_copy_username} @ ${platform_name}</p>
-                                </div>
-                            </dd>
-                        </dl>
-                        <dl class="metadata accomplishment-id">
-                            <dt class="label copy copy-meta">${certificate_id_number_title}:</dt>
-                            <dd class="value copy copy-base">${certificate_id_number}</dd>
-                        </dl>
-                        <dl class="metadata accomplishment-date">
-                            <dt class="label copy copy-meta">${certificate_date_issued_title}</dt>
-                            <dd class="value copy copy-base">${certificate_date_issued}</dd>
-                        </dl>
-                    </div>
-                </div>
-            </div> -->
         </section>
     </div>
 </main>
